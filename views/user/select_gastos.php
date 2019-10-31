@@ -67,7 +67,7 @@
         <div class="row mb-5 py-5 border-bottom border-success">
 
             <div class="col-md-4 col-sm-10">
-                <a href="select_cultivo.php" class="href text-decoration-none">
+                <a href="dashboard.php?viewCrop" class="href text-decoration-none">
                     <button type="button" class="btn0 btn-light btn-block p-3 shadow mb-4" style="font-size: 20px; text-align:center">
                         <i class="fas fa-align-left float-left"></i>
                         Datos
@@ -86,7 +86,7 @@
 
             <div class="col-md-4 col-sm-10">
                 <a href="select_gastos.php" class="href text-decoration-none">
-                    <button type="button" class="btn2 btn-light btn-block p-3 shadow mb-4 text-white " style="font-size: 20px; text-align:center; background-color: #F7DC6F;">
+                    <button type="button" class="btn2 btn-light btn-block p-3 shadow mb-4 text-white " style="font-size: 20px; text-align:center; background-color: #388E3C;">
                         <i class="fas fa-dollar-sign float-left"></i>
                         Gastos
                     </button>
