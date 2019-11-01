@@ -38,7 +38,40 @@
         </div>
     </div>
 </header>
-
+<div class="container" style="margin-top: 20px;">
+<div class="row">
+    <div class="col-md-4 col-sm-12 pb-4">
+        <div class="card bg-light p-1 shadow p-0 mb-0" style="border-radius: 10px;">
+            <div class="card-header bg-light">
+                <a href="" class="text-decoration-none text-body"data-toggle="modal" data-target="#modalEliminar">
+                    <img src="../../img/svg/close-24px.svg" class="close" alt="">
+                    <h5 style="color: #000000;">28-Octubre-2019</h5>
+                 </a>
+             </div>
+            <div class="card-body">
+                 <h5 class="card-title"> <img src="../../img/svg/grain.svg" style="height:35px;" class="mb-2 mx-auto d-block" alt=""></h5>
+                    <p class="card-text"> <a href="select_cultivo.php" class="text-decoration-none text-body">
+                    <h4 class="text-center">Cultivo de maiz</h4></a></p>
+            </div>
+        </div>
+        </div>
+        <div class="col-md-4 col-sm-12 pb-4">
+        <div class="card bg-light p-1 shadow p-0 mb-0" style="border-radius: 10px;">
+            <div class="card-header bg-light">
+                <a href="" class="text-decoration-none text-body"data-toggle="modal" data-target="#modalEliminar">
+                    <img src="../../img/svg/close-24px.svg" class="close" alt="">
+                    <h5 style="color: #000000;">02-Octubre-2019</h5>
+                 </a>
+             </div>
+            <div class="card-body">
+                 <h5 class="card-title"> <img src="../../img/svg/grain.svg" style="height:35px;" class="mb-2 mx-auto d-block" alt=""></h5>
+                    <p class="card-text"> <a href="select_cultivo.php" class="text-decoration-none text-body">
+                    <h4 class="text-center">Cultivo de trigo</h4></a></p>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
 
 
 
