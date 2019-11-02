@@ -58,14 +58,14 @@
 
         <span class="col-4 col-sm-3 col-md-2 col-lg-2 text-center text-decoration-none">
             <a href="#!">
-                <img src="../../img/svg/growing-plant-green.svg" alt="" style="height:35px; color: green;">
+                <img src="../../img/svg/growing-plant.svg" alt="" style="height:35px; color: green;">
                 <p class="text-muted">Suelo</p>
             </a>
         </span>
 
         <span class="col-4 col-sm-3 col-md-2 col-lg-2 text-center text-decoration-none">
             <a href="#!">
-                <img src="../../img/svg/plant-sample-green.svg" alt="" style="height:35px">
+                <img src="../../img/svg/plant-sample.svg" alt="" style="height:35px">
                 <p class="text-muted">Agroquímico</p>
             </a>
         </span>

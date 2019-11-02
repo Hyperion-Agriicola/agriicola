@@ -73,16 +73,6 @@
     </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
 <script src="../../js/jquery-3.4.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
