@@ -104,7 +104,9 @@
                 </div>
             </div>
         </div>
-        <h5 class="modal-title" id="exampleModalScrollableTitle">Nutrición</h5>
+        <div class="container bg-success" style="margin-top: 20px; margin-bottom: 40px;">
+        <h3 class="modal-title text-white text-center" id="exampleModalScrollableTitle">Nutrición</h3>
+        </div> 
         <div class="row mt-4">
             <div class="col-md-6 col-lg-6 col-sm-12">
                 <label for="rangeOrganic">Materia orgánica</label>
