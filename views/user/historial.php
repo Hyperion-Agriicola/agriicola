@@ -61,20 +61,28 @@ if(!isset($_SESSION['correo'])){
                 include('select_cultivo.php'); 
             }
             else {
-                include('profile.php');
+               
                 ?>
 
-                <div class="container border-bottom border-success" style="margin-top: 60px; margin-bottom: 0px; border-bottom: 2px solid #388E3C!important;">
+            <div class="container border-bottom border-success" style="margin-top: 60px; margin-bottom: 0px; border-bottom: 2px solid #388E3C!important;">
                 <div class="row mb-4">
-                <div class="col-lg-6">
-            <a href="historial.php" class="href text-decoration-none">
+                <div class="col-lg-4">
+            <a href="dashboard.php" class="href text-decoration-none">
                 <button type="button" class="btn0 btn-light btn-block p-3 shadow mb-4 " style="font-size: 20px; text-align:center;">
+                    <i class="fas fa-home float-left "></i>
+                    Inicio
+                </button>
+            </a>
+                </div>
+                <div class="col-lg-4">
+            <a href="historial.php" class="href text-decoration-none">
+                <button type="button" class="btn0 btn-light btn-block p-3 shadow mb-4 text-white " style="font-size: 20px; text-align:center; background-color: #388E3C ;">
                     <i class="fas fa-align-left float-left "></i>
                     Historial de cultivos
                 </button>
             </a>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-4">
             <a href="gastos_generales.php" class="href text-decoration-none">
                 <button type="button" class="btn0 btn-light btn-block p-3 shadow mb-4" style="font-size: 20px; text-align:center; ">
                     <i class="fas fa-dollar-sign float-left "></i>
@@ -84,30 +92,61 @@ if(!isset($_SESSION['correo'])){
                 </div>
                 </div>
                 </div>
-    <div class="container">
-        <div class="text-center text-success">
-            <h1 class="mt-4">Mis cultivos</h1>
-        </div>
-        <div class="row p-3">
-            <a href="dashboard.php?cultivos" class="btn btn-success ml-auto rounded-circle" role="button"
-                data-toggle="tooltip" data-placement="left" title="Agregar nuevo registro"><i
-                    class="fas fa-plus"></i></a>
-            <!-- Paste here your fuck code! -->
-        </div>
 
+        <div class="text-center text-success" style="margin-bottom: 70px;">
+            <h1 class="mt-4">Historial de cultivos</h1>
+        </div>
+    
+
+
+
+
+
+        <div class="container">
         <div class="row">
-            <?php 
-                $data->getCropByID();
-            ?>
+        <div class="col-md-4 col-sm-12 pb-4">
+        <div class="card bg-light p-1 shadow p-0 mb-0" style="border-radius: 10px;">
+            <div class="card-header bg-light">
+                <a href="" class="text-decoration-none text-body"data-toggle="modal" data-target="#modalEliminar">
+                    <img src="../../img/svg/close-24px.svg" class="close" alt="">
+                    <h5 style="color: #000000;">28-Octubre-2019</h5>
+                 </a>
+             </div>
+            <div class="card-body">
+                 <h5 class="card-title"> <img src="../../img/svg/grain.svg" style="height:35px;" class="mb-2 mx-auto d-block" alt=""></h5>
+                    <p class="card-text"> <a href="select_cultivo.php" class="text-decoration-none text-body">
+                    <h4 class="text-center">Cultivo de maiz</h4></a></p>
+            </div>
+        </div>
+        </div>
+        <div class="col-md-4 col-sm-12 pb-4">
+        <div class="card bg-light p-1 shadow p-0 mb-0" style="border-radius: 10px;">
+            <div class="card-header bg-light">
+                <a href="" class="text-decoration-none text-body"data-toggle="modal" data-target="#modalEliminar">
+                    <img src="../../img/svg/close-24px.svg" class="close" alt="">
+                    <h5 style="color: #000000;">02-Octubre-2019</h5>
+                 </a>
+             </div>
+            <div class="card-body">
+                 <h5 class="card-title"> <img src="../../img/svg/grain.svg" style="height:35px;" class="mb-2 mx-auto d-block" alt=""></h5>
+                    <p class="card-text"> <a href="select_cultivo.php" class="text-decoration-none text-body">
+                    <h4 class="text-center">Cultivo de trigo</h4></a></p>
+            </div>
+        </div>
+        </div>
+           
+                
+            
+
+
+           
+
         </div>
     </div>
+    
     <?php
         }
     ?>
-
-
-
-
     <!--Modales-->
     <!--Modal eliminar-->
     <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -121,7 +160,7 @@ if(!isset($_SESSION['correo'])){
                     </button>
                 </div>
                 <div class="modal-body">
-                    ¿Está seguro de eliminar este cultivo? Tome en cuenta que ésta acción es irreversible.
+                    ¿Está seguro de eliminar este gasto? Tome en cuenta que ésta acción es irreversible.
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
@@ -130,11 +169,11 @@ if(!isset($_SESSION['correo'])){
             </div>
         </div>
     </div>
+    </div>
 
-<?php
+    <?php
 include('footer.php');
 ?>
-
     <script src="../../js/jquery-3.4.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -146,3 +185,17 @@ include('footer.php');
 <?php 
 }
 ?>
+
+
+
+
+
+
+
+
+
+<div class="container" style="margin-top: 20px;">
+<div class="row">
+   
+    </div>
+</div>

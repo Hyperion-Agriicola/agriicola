@@ -86,9 +86,9 @@
     <div class="container text-center">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12">
-                    <a href="dashboard.php"  class="close" >
-                        <img src="../../img/svg/close-24px.svg" class="close" alt="">
-                    </a>   
+                <a href="dashboard.php" class="close">
+                    <i class="fas fa-times text-danger"></i>
+                </a>  
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <img src="../../img/svg/grain.svg" style="height:60px;">
@@ -107,10 +107,10 @@
     </header>
     <div class="container">
         
-        <div class="row mb-5 py-5 border-bottom border-success">
+        <div class="row mb-5 py-5 border-bottom border-success" style="border-bottom: 2px solid #388E3C!important;">
 
             <div class="col-md-4 col-sm-10" >
-                <a href="select_cultivo.php" class="href text-decoration-none">
+                <a href="dashboard.php?viewCrop" class="href text-decoration-none">
                     <button type="button" class="btn btn-light btn-block p-3 shadow mb-4 btn0" style="font-size: 20px; text-align:center;">
                         <i class="fas fa-align-left float-left"></i>
                         Datos
@@ -120,7 +120,7 @@
                 
             <div class="col-md-4 col-sm-10">
                 <a href="select_seguimiento.php" class="href text-decoration-none">
-                    <button type="button" class="btn1 btn btn-light btn-block p-3 shadow mb-4 text-white" style="font-size: 20px; text-align:center; background-color: #8E44AD;">
+                    <button type="button" class="btn1 btn btn-light btn-block p-3 shadow mb-4 text-white" style="font-size: 20px; text-align:center; background-color: #388E3C;">
                         <i class="fas fa-chart-line float-left"></i>
                         Seguimiento
                     </button>
@@ -169,11 +169,8 @@
     </div>
 
     
-
-    
     <script src="../../js/jquery-ui.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="../../js/main.js"></script>
-
 </body>
 </html>

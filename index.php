@@ -38,7 +38,7 @@
       </div>
     </nav>
 
-    <div class="container align-self-center mt">
+    <div class="container align-self-center">
 
       <div class="container px-lg-5">
         <div class="row mx-lg-n5">
@@ -56,16 +56,22 @@
                   </div>
                   <div class="form-group">
                     <label for="password">Contraseña</label>
-                    <input type="password" class="form-control" id="password" name="pass" placeholder="**************">
+                    <input type="password" class="form-control" id="password" name="pass" placeholder="******">
                   </div>
-                  <p class="text-center">
-                    <span>¿Has olvidado tu contraseña? </span><a href="pass_recovery.php" class="text-success">Recupérala aquí</a>
+               
+
+
+                  <p class="text-right">
+                    <a href="pass_recovery.php" class="text-success text-decoration-none">Recupera tu contraseña</a>
                   </p>
-                  <div class="col-12 col-sm-12 col-6 col-md-12 text-center mt-4">
-                    <button type="submit" name="userLogin" class="btn btn-success text-uppercase">Iniciar sesión</button>
+                  <div class="col-12 col-sm-12 col-6 col-md-12 text-center my-4">
+                    <button type="submit" name="userLogin" class="btn text-white" style="background: #228B22;">
+                      Iniciar sesión
+                    </button>
                   </div>
-                  <div class="text-center mt-3">
-                    <a class="text-info" href="#!" id="create_account">Crear una cuenta</a>
+                  <div class="text-center mt-5">
+                    <span>¿No tienes una cuenta?</span>
+                    <a class="text-info text-decoration-none" href="#!" id="create_account">Regístrate</a>
                   </div>
               </div>
               </form>
@@ -83,7 +89,7 @@
     <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
       <div class="container">
 
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="background-color: #228B22;">
           Menú
           <i class="fa fa-bars"></i>
         </button>
@@ -91,7 +97,7 @@
           <ul class="navbar-nav ml-auto">
 
             <li class="nav-item">
-              <a class="nav-link text-white" href="index.php">INICIAR SESIÓN</a>
+              <a class="nav-link text-white " href="index.php">Iniciar sesión</a>
             </li>
           </ul>
         </div>
@@ -111,7 +117,7 @@
       <!-- Formulario -->
       <div class="card col-12 col-sm-12 mt-4">
         <div class="card-body">
-          <h1 class="text-center">Registrarse</h1>
+          <h1 class="text-center">Registrarme</h1>
           <form method="POST" action="" class="m-2">
             <div class="row ">
               <div class="col-12 col-sm-12 col-md-6">

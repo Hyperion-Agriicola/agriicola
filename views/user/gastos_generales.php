@@ -61,12 +61,20 @@ if(!isset($_SESSION['correo'])){
                 include('select_cultivo.php'); 
             }
             else {
-                include('profile.php');
+              
                 ?>
 
-                <div class="container border-bottom border-success" style="margin-top: 60px; margin-bottom: 0px; border-bottom: 2px solid #388E3C!important;">
+            <div class="container border-bottom border-success" style="margin-top: 60px; margin-bottom: 0px; border-bottom: 2px solid #388E3C!important;">
                 <div class="row mb-4">
-                <div class="col-lg-6">
+                <div class="col-lg-4">
+            <a href="dashboard.php" class="href text-decoration-none">
+                <button type="button" class="btn0 btn-light btn-block p-3 shadow mb-4 " style="font-size: 20px; text-align:center;">
+                    <i class="fas fa-home float-left "></i>
+                    Inicio
+                </button>
+            </a>
+                </div>
+                <div class="col-lg-4">
             <a href="historial.php" class="href text-decoration-none">
                 <button type="button" class="btn0 btn-light btn-block p-3 shadow mb-4 " style="font-size: 20px; text-align:center;">
                     <i class="fas fa-align-left float-left "></i>
@@ -74,9 +82,9 @@ if(!isset($_SESSION['correo'])){
                 </button>
             </a>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-4">
             <a href="gastos_generales.php" class="href text-decoration-none">
-                <button type="button" class="btn0 btn-light btn-block p-3 shadow mb-4" style="font-size: 20px; text-align:center; ">
+                <button type="button" class="btn0 btn-light btn-block p-3 shadow mb-4 text-white" style="font-size: 20px; text-align:center; background-color: #388E3C ">
                     <i class="fas fa-dollar-sign float-left "></i>
                     Gastos generales
                 </button>
@@ -84,30 +92,76 @@ if(!isset($_SESSION['correo'])){
                 </div>
                 </div>
                 </div>
-    <div class="container">
+
         <div class="text-center text-success">
-            <h1 class="mt-4">Mis cultivos</h1>
+            <h1 class="mt-4">Gastos generales</h1>
         </div>
+        <div class="container">
         <div class="row p-3">
-            <a href="dashboard.php?cultivos" class="btn btn-success ml-auto rounded-circle" role="button"
+            <a href="#" class="btn btn-success ml-auto rounded-circle" role="button"
                 data-toggle="tooltip" data-placement="left" title="Agregar nuevo registro"><i
                     class="fas fa-plus"></i></a>
             <!-- Paste here your fuck code! -->
         </div>
-
+        </div>
+        <div class="container">
         <div class="row">
-            <?php 
-                $data->getCropByID();
-            ?>
+
+            <div class="col-md-4 col-sm-12 pb-4">
+                    <div class="card bg-light p-3 shadow p-0 mb-0 bg-light" style="Border-Radius: 10px;">
+                            <div class="card-header bg-light">
+                                <i class="fas fa-dollar-sign pb-3" style="font-size: 30px; color:green" ></i>
+                                <button type="button" class="close"><span>&times</span></button>
+                                <br>
+                                <a class="text-dark"  style="text-decoration: none;" href="#">
+                                    <h4>Agroquimicos</h4>
+                                </a>
+                            </div>
+                            <div class="card-text pt-3 pl-3">
+                                Esta es información del gasto
+                            </div>
+                    </div>
+            </div>
+                
+            <div class="col-md-4  col-sm-12 pb-4">
+                    <div class="card bg-light p-3 shadow p-0 mb-0 bg-light" style="Border-Radius: 10px;">
+                        <div class="card-header bg-light">
+                            <i class="fas fa-dollar-sign pb-3" style="font-size: 30px; color:green" ></i>
+                            <button type="button" class="close"><span>&times</span></button>
+                            <br>
+                            <a class="text-dark"  style="text-decoration: none;" href="#">
+                                <h4>Semillas</h4>
+                            </a>    
+                        </div>
+                        <div class="card-text pt-3 pl-3">
+                            Esta es información del gasto
+                        </div>
+                    </div>
+            </div>
+
+
+            <div class="col-md-4 col-sm-12">
+                    <div class="card bg-light p-3 shadow p-0 mb-0 bg-light" style="Border-Radius: 10px;" style="box-shadow: 3px;">
+                        <div class="card-header bg-light" >
+                            <i class="fas fa-dollar-sign pb-3" style="font-size: 30px; color:green" ></i>
+                            <button type="button" class="close"><span>&times</span></button>
+                            <br>
+                            <a class="text-dark"  style="text-decoration: none;" href="#">
+                                <h4>Concepto</h4>
+                            </a>    
+                        </div>
+                        <div class="card-text pt-3 pl-3">
+                            Esta es información del gasto
+                        </div>
+                    </div>
+            </div>
+
         </div>
     </div>
+    
     <?php
         }
     ?>
-
-
-
-
     <!--Modales-->
     <!--Modal eliminar-->
     <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -121,7 +175,7 @@ if(!isset($_SESSION['correo'])){
                     </button>
                 </div>
                 <div class="modal-body">
-                    ¿Está seguro de eliminar este cultivo? Tome en cuenta que ésta acción es irreversible.
+                    ¿Está seguro de eliminar este gasto? Tome en cuenta que ésta acción es irreversible.
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
@@ -130,10 +184,11 @@ if(!isset($_SESSION['correo'])){
             </div>
         </div>
     </div>
-
-<?php
+    </div>
+    <?php
 include('footer.php');
 ?>
+
 
     <script src="../../js/jquery-3.4.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>

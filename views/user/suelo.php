@@ -35,14 +35,14 @@
 
         <span class="col-4 col-sm-3 col-md-2 col-lg-2 text-center text-decoration-none">
             <a href="dashboard.php?suelos">
-                <img src="../../img/svg/growing-plant-green.svg" alt="" style="height:60px; color: green;">
+                <img src="../../img/svg/growing-plant.svg" alt="" style="height:60px; color: green;">
                 <p class="text-muted">Suelo</p>
             </a>
         </span>
 
         <span class="col-4 col-sm-3 col-md-2 col-lg-2 text-center text-decoration-none">
             <a href="#!">
-                <img src="../../img/svg/plant-sample-green.svg" alt="" style="height:35px">
+                <img src="../../img/svg/plant-sample.svg" alt="" style="height:35px">
                 <p class="text-muted">Agroquímico</p>
             </a>
         </span>
@@ -104,7 +104,9 @@
                 </div>
             </div>
         </div>
-        <h5 class="modal-title" id="exampleModalScrollableTitle">Nutrición</h5>
+        <div class="container" style="margin-top: 20px; margin-bottom: 40px; background-color: #388E3C;">
+        <h3 class="modal-title text-white text-center" id="exampleModalScrollableTitle">Nutrición</h3>
+        </div> 
         <div class="row mt-4">
             <div class="col-md-6 col-lg-6 col-sm-12">
                 <label for="rangeOrganic">Materia orgánica</label>

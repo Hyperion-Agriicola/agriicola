@@ -72,3 +72,6 @@
 <div class="text-center pt-3">
     <a href="agro.php" class="btn btn-success" role="button" style="width:230px;"><i class="fas fa-save"></i> Guardar</a>
 </div>
+<?php
+include('footer.php');
+?>
