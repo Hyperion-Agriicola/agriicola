@@ -36,7 +36,7 @@
                     $('#inputFechaFinal').val(date.format());
                     $("#modalEventos").modal();
                 },
-                events: 'http://localhost:8888/agriicola-final/config/eventos.php',
+                events: 'http://localhost:8888/agriicola/config/eventos.php',
 
 
                 eventClick: function(calEvent, jsEvent, view) {
@@ -219,11 +219,11 @@
                     success: function(msg) {
                         if (msg) {
                             $('#calendar').fullCalendar('refetchEvents');
-                            /*
+                            
                             if (!modal) {
                                 $('#modalEventos').modal('toggle');
                             }
-                            */
+                            
 
                         }
                     },
