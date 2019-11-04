@@ -63,6 +63,27 @@ if(!isset($_SESSION['correo'])){
             else {
                 include('profile.php');
                 ?>
+
+                <div class="container border-bottom border-success" style="margin-top: 60px; margin-bottom: 0px; border-bottom: 2px solid #388E3C!important;">
+                <div class="row mb-4">
+                <div class="col-lg-6">
+            <a href="historial.php" class="href text-decoration-none">
+                <button type="button" class="btn0 btn-light btn-block p-3 shadow mb-4 " style="font-size: 20px; text-align:center;">
+                    <i class="fas fa-align-left float-left "></i>
+                    Historial de cultivos
+                </button>
+            </a>
+                </div>
+                <div class="col-lg-6">
+            <a href="gastos_generales.php" class="href text-decoration-none">
+                <button type="button" class="btn0 btn-light btn-block p-3 shadow mb-4" style="font-size: 20px; text-align:center; ">
+                    <i class="fas fa-dollar-sign float-left "></i>
+                    Gastos generales
+                </button>
+            </a>
+                </div>
+                </div>
+                </div>
     <div class="container">
         <div class="text-center text-success">
             <h1 class="mt-4">Mis cultivos</h1>
@@ -110,7 +131,9 @@ if(!isset($_SESSION['correo'])){
         </div>
     </div>
 
-
+<?php
+include('footer.php');
+?>
 
     <script src="../../js/jquery-3.4.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>

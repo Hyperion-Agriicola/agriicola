@@ -31,7 +31,7 @@
                                 print_r($data->getUserProfile()[5]);
                             ?>
                         </p>
-                        <a href="dashboard.php?editProfile" class="text-success">Editar perfil</a>
+                        <a href="dashboard.php?editProfile" class="text-white bg-success p-1 rounded-lg">Editar perfil</a>
                             <!-- 
                                 <a href="editar_perfil.php" class="ml-3">
                                 <img class="close"src="../../img/svg/edit-24px.svg" alt="">

@@ -25,7 +25,7 @@
 
 <div class="container">
 
-    <div class="row mb-5 py-5 border-bottom border-success">
+    <div class="row mb-5 py-5 border-bottom border-success" style="border-bottom: 2px solid #388E3C!important;">
 
         <div class="col-md-4 col-sm-10">
             <a href="dashboard.php?viewCrop" class="href text-decoration-none">
@@ -78,7 +78,7 @@
         <div class="col-md-4 col-sm-12 pb-4">
             <div class="card bg-light p-1 shadow p-0 mb-0 bg-light" style="Border-Radius: 10px;">
                 <div class="card-header bg-light">
-                    <img src="../../img/svg/growing-plant-green.svg" style="height:35px" class="mb-2" alt="">
+                    <img src="../../img/svg/growing-plant.svg" style="height:35px" class="mb-2" alt="">
                     <a href="" data-toggle="modal" data-target="#modalEliminar">
                         <button type="button" class="close"><span>&times</span></button>
                     </a>
@@ -96,7 +96,7 @@
         <div class="col-md-4 col-sm-12 pb-4">
             <div class="card bg-light p-1 shadow p-0 mb-0 bg-light" style="Border-Radius: 10px;">
                 <div class="card-header bg-light">
-                    <img src="../../img/svg/plant-sample-green.svg" style="height:35px" class="mb-2" alt="">
+                    <img src="../../img/svg/plant-sample.svg" style="height:35px" class="mb-2" alt="">
                     <a href="" data-toggle="modal" data-target="#modalEliminar">
                         <button type="button" class="close"><span>&times</span></button>
                     </a>
@@ -116,7 +116,9 @@
 
     </div>
 </div>
-
+<?php
+include('footer.php');
+?>
 <!--Modales-->
 <!--Modal eliminar-->
 <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -21,6 +21,10 @@
                 </div>
             </li>
             <li class="nav-item">
+                <a class="nav-link active" href="noticias.php"><i class="fas fa-newspaper"></i>
+                    <span>Noticias</span></a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link active" href="#!"><i class="fas fa-question-circle"></i>
                     <span>Ayuda</span></a>
             </li>

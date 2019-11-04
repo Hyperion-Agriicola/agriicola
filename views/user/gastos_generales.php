@@ -61,7 +61,7 @@ if(!isset($_SESSION['correo'])){
                 include('select_cultivo.php'); 
             }
             else {
-               
+              
                 ?>
 
             <div class="container border-bottom border-success" style="margin-top: 60px; margin-bottom: 0px; border-bottom: 2px solid #388E3C!important;">
@@ -76,7 +76,7 @@ if(!isset($_SESSION['correo'])){
                 </div>
                 <div class="col-lg-4">
             <a href="historial.php" class="href text-decoration-none">
-                <button type="button" class="btn0 btn-light btn-block p-3 shadow mb-4 text-white " style="font-size: 20px; text-align:center; background-color: #388E3C ;">
+                <button type="button" class="btn0 btn-light btn-block p-3 shadow mb-4 " style="font-size: 20px; text-align:center;">
                     <i class="fas fa-align-left float-left "></i>
                     Historial de cultivos
                 </button>
@@ -84,7 +84,7 @@ if(!isset($_SESSION['correo'])){
                 </div>
                 <div class="col-lg-4">
             <a href="gastos_generales.php" class="href text-decoration-none">
-                <button type="button" class="btn0 btn-light btn-block p-3 shadow mb-4" style="font-size: 20px; text-align:center; ">
+                <button type="button" class="btn0 btn-light btn-block p-3 shadow mb-4 text-white" style="font-size: 20px; text-align:center; background-color: #388E3C ">
                     <i class="fas fa-dollar-sign float-left "></i>
                     Gastos generales
                 </button>
@@ -93,53 +93,68 @@ if(!isset($_SESSION['correo'])){
                 </div>
                 </div>
 
-        <div class="text-center text-success" style="margin-bottom: 70px;">
-            <h1 class="mt-4">Historial de cultivos</h1>
+        <div class="text-center text-success">
+            <h1 class="mt-4">Gastos generales</h1>
         </div>
-    
-
-
-
-
-
+        <div class="container">
+        <div class="row p-3">
+            <a href="#" class="btn btn-success ml-auto rounded-circle" role="button"
+                data-toggle="tooltip" data-placement="left" title="Agregar nuevo registro"><i
+                    class="fas fa-plus"></i></a>
+            <!-- Paste here your fuck code! -->
+        </div>
+        </div>
         <div class="container">
         <div class="row">
-        <div class="col-md-4 col-sm-12 pb-4">
-        <div class="card bg-light p-1 shadow p-0 mb-0" style="border-radius: 10px;">
-            <div class="card-header bg-light">
-                <a href="" class="text-decoration-none text-body"data-toggle="modal" data-target="#modalEliminar">
-                    <img src="../../img/svg/close-24px.svg" class="close" alt="">
-                    <h5 style="color: #000000;">28-Octubre-2019</h5>
-                 </a>
-             </div>
-            <div class="card-body">
-                 <h5 class="card-title"> <img src="../../img/svg/grain.svg" style="height:35px;" class="mb-2 mx-auto d-block" alt=""></h5>
-                    <p class="card-text"> <a href="select_cultivo.php" class="text-decoration-none text-body">
-                    <h4 class="text-center">Cultivo de maiz</h4></a></p>
+
+            <div class="col-md-4 col-sm-12 pb-4">
+                    <div class="card bg-light p-3 shadow p-0 mb-0 bg-light" style="Border-Radius: 10px;">
+                            <div class="card-header bg-light">
+                                <i class="fas fa-dollar-sign pb-3" style="font-size: 30px; color:green" ></i>
+                                <button type="button" class="close"><span>&times</span></button>
+                                <br>
+                                <a class="text-dark"  style="text-decoration: none;" href="#">
+                                    <h4>Agroquimicos</h4>
+                                </a>
+                            </div>
+                            <div class="card-text pt-3 pl-3">
+                                Esta es información del gasto
+                            </div>
+                    </div>
             </div>
-        </div>
-        </div>
-        <div class="col-md-4 col-sm-12 pb-4">
-        <div class="card bg-light p-1 shadow p-0 mb-0" style="border-radius: 10px;">
-            <div class="card-header bg-light">
-                <a href="" class="text-decoration-none text-body"data-toggle="modal" data-target="#modalEliminar">
-                    <img src="../../img/svg/close-24px.svg" class="close" alt="">
-                    <h5 style="color: #000000;">02-Octubre-2019</h5>
-                 </a>
-             </div>
-            <div class="card-body">
-                 <h5 class="card-title"> <img src="../../img/svg/grain.svg" style="height:35px;" class="mb-2 mx-auto d-block" alt=""></h5>
-                    <p class="card-text"> <a href="select_cultivo.php" class="text-decoration-none text-body">
-                    <h4 class="text-center">Cultivo de trigo</h4></a></p>
-            </div>
-        </div>
-        </div>
-           
                 
-            
+            <div class="col-md-4  col-sm-12 pb-4">
+                    <div class="card bg-light p-3 shadow p-0 mb-0 bg-light" style="Border-Radius: 10px;">
+                        <div class="card-header bg-light">
+                            <i class="fas fa-dollar-sign pb-3" style="font-size: 30px; color:green" ></i>
+                            <button type="button" class="close"><span>&times</span></button>
+                            <br>
+                            <a class="text-dark"  style="text-decoration: none;" href="#">
+                                <h4>Semillas</h4>
+                            </a>    
+                        </div>
+                        <div class="card-text pt-3 pl-3">
+                            Esta es información del gasto
+                        </div>
+                    </div>
+            </div>
 
 
-           
+            <div class="col-md-4 col-sm-12">
+                    <div class="card bg-light p-3 shadow p-0 mb-0 bg-light" style="Border-Radius: 10px;" style="box-shadow: 3px;">
+                        <div class="card-header bg-light" >
+                            <i class="fas fa-dollar-sign pb-3" style="font-size: 30px; color:green" ></i>
+                            <button type="button" class="close"><span>&times</span></button>
+                            <br>
+                            <a class="text-dark"  style="text-decoration: none;" href="#">
+                                <h4>Concepto</h4>
+                            </a>    
+                        </div>
+                        <div class="card-text pt-3 pl-3">
+                            Esta es información del gasto
+                        </div>
+                    </div>
+            </div>
 
         </div>
     </div>
@@ -170,10 +185,11 @@ if(!isset($_SESSION['correo'])){
         </div>
     </div>
     </div>
-
     <?php
 include('footer.php');
 ?>
+
+
     <script src="../../js/jquery-3.4.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -185,17 +201,3 @@ include('footer.php');
 <?php 
 }
 ?>
-
-
-
-
-
-
-
-
-
-<div class="container" style="margin-top: 20px;">
-<div class="row">
-   
-    </div>
-</div>

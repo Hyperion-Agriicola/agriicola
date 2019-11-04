@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12">
             <a href="dashboard.php" class="close">
-                <img src="../../img/svg/close-24px.svg" class="close" alt="">
+            <i class="fas fa-times text-danger"></i>
             </a>
         </div>
         <div class="col-lg-12 col-md-12 col-sm-12">
@@ -195,6 +195,7 @@
         </div>
     </form>
 </main>
+
 
 <?php
 

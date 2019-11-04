@@ -41,9 +41,9 @@
     <div class="container text-center">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12">
-                    <a href="dashboard.php" type="button" class="close" >
-                        <img src="../../img/svg/close-24px.svg" class="close" alt="">
-                    </a>   
+                <a href="dashboard.php" class="close">
+                    <i class="fas fa-times text-danger"></i>
+                </a>
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <img src="../../img/svg/grain.svg" style="height:60px;">
@@ -64,7 +64,7 @@
     
     <div class="container">
         
-        <div class="row mb-5 py-5 border-bottom border-success">
+        <div class="row mb-5 py-5 border-bottom border-success" style="border-bottom: 2px solid #388E3C!important;">
 
             <div class="col-md-4 col-sm-10">
                 <a href="dashboard.php?viewCrop" class="href text-decoration-none">
@@ -161,13 +161,9 @@
         </div>
     </div> 
        
-        
-    <footer class="footer bg-white col-lg-12 col-md-4 col-sm-12" style="position:relative;">
-        <div class="container text-center">
-            <span class="text-muted">Todos los derechos reservados 2019 &copy; Desarrollado por Hyperion</span>
-        </div>
-    </footer>
-
+    <?php
+include('footer.php');
+?>
     <script src="../../js/jquery-3.4.1.min.js"></script>
     <script src="../../js/jquery-ui.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

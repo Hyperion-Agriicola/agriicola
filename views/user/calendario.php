@@ -8,12 +8,11 @@
         <div id='calendar'></div>
     </div>
 
+    
+    <?php
+    include('footer.php');
+    ?>
 
-    <footer class="footer bg-white col-lg-12 col-md-4 col-sm-12" style="position:relative;">
-        <div class="container text-center">
-            <span class="text-muted">Todos los derechos reservados 2019 &copy; Desarrollado por Hyperion</span>
-        </div>
-    </footer>
     <script>
         $(document).ready(function() {
 
@@ -243,7 +242,6 @@
                 $('#inputDescripcion').val('');
             }
         </script>
-
         <script src="../../js/jquery-ui.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <script src="../../js/main.js"></script>

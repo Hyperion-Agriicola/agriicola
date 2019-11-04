@@ -99,12 +99,9 @@
             </div>
            
         </main>
-        <footer class="footer bg-white " style="position:absolute;">
-            <div class="container text-center">
-                <span class="text-muted">Todos los derechos reservados 2019
-                    &copy; Desarrollado por Hyperion</span>
-            </div>
-        </footer>
+        <?php
+include('footer.php');
+?>
 
         <script src="../../js/jquery-3.4.1.min.js"></script>
         <script src="../../js/jquery-ui.min.js"></script>
