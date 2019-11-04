@@ -396,22 +396,19 @@ class Functions
             while ($row = $execQuery->fetch_array()) {
                 //../../img/svg/grain.svg
                 echo '
-                <div class="col-lg-4 col-md-4 col-sm-4 my-3">
-                    <div class="card shadow bg-light text-center">
-                        <a href="dashboard.php?viewCrop" class="text-decoration-none text-muted">
-                            <div class="card-header bg-white">
-                                ' . $row['fecha_registro'] . '
-                                <a href="" data-toggle="modal" data-target="#modalEliminar">
-                                    <img src="../../img/svg/close-24px.svg" class="close" alt="">
-                                </a>
-                            </div>
-                            <div class="card-body">
-                                <a href="dashboard.php?viewCrop" class="text-decoration-none text-muted">
-                                <img src="../../img/svg/grain.svg" width="60">
-                                <p class="lead mt-3">Cultivo de <strong>' . $row['nombre_predio'] . '</strong> </p>
-                            </div>
-                        </a>
-                    </div>
+                <div class="card shadow-sm bg-light text-center">
+                    <a href="dashboard.php?viewCrop" class="text-decoration-none text-muted">
+                        <div class="card-header bg-white">
+                            ' . $row['fecha_registro'] . '
+                            <a href="" data-toggle="modal" data-target="#modalEliminar">
+                                <img src="../../img/svg/close-24px.svg" class="close" alt="">
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <img src="../../img/svg/grain.svg" width="60">
+                            <p class="lead mt-3">Cultivo de <strong>' . $row['nombre_predio'] . '</strong> </p>
+                        </div>
+                    </a>
                 </div>
                 ';
             }
