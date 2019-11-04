@@ -69,7 +69,7 @@ if(!isset($_SESSION['correo'])){
                 <div class="col-lg-6">
             <a href="historial.php" class="href text-decoration-none">
                 <button type="button" class="btn0 btn-light btn-block p-3 shadow mb-4 " style="font-size: 20px; text-align:center;">
-                    <i class="fas fa-align-left float-left "></i>
+                    <i class="fas fa-history float-left "></i>
                     Historial de cultivos
                 </button>
             </a>
