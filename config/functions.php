@@ -632,6 +632,23 @@ class Functions
 
         return $resultSet;
     }
+
+
+    //Funciones para modificar
+
+    public function getCropToModify()
+    {
+        $conexion = new Database();
+        $email = $_SESSION['correo'];
+
+        $query = "SELECT * FROM cultivos WHERE id_u = (SELECT id_u FROM users WHERE correo = '$email')";
+        $execQuery = $conexion->query($query);
+
+        if (mysqli_num_rows($execQuery) > 0) {
+            while ($row = $execQuery->fetch_array()) {
+            }
+        }    
+    }
 }
 
 ob_end_flush();

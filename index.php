@@ -29,12 +29,12 @@
   <!-- Navegación -->
   <section id="login" class="animated fadeIn animation1 mt-5">
 
-    <div class="container align-self-center ">
-    <div class="container align-self-center">
+    
+  
 
-      <div class="container px-lg-5">
-        <div class="row mx-lg-n5">
-          <div class="col py-3 px-lg-5 align-self-center col-12 col-sm-12 col-md-4 col-lg-6">
+      <div class="container ">
+        <div class="row ">
+          <div class="col py-3 px-lg-5  align-self-center col-12 col-sm-12 col-md-4 col-lg-6">
             <img src="img/agriicola_logo_alternativo.png" width="580" class="img-fluid">
           </div>
           <div class="col py-3 px-lg-5 col-sm-12 col-md-8 col-lg-6">
@@ -53,49 +53,35 @@
                       <span>¿Haz olvidado tu contraseña?</span>
                     </p>
 
-                    <p class="text-center mb-4" style="font-size: 14px;">
+                    <p class="text-center mb-2" style="font-size: 14px;">
                       <a href="pass_recovery.php" class="text-success text-decoration-none">Recupérala</a>
                     </p>
                   </div>
-               
-                  <div class="col-12 col-sm-12 col-6 col-md-12 text-center mt-4 px-5">
-                    <button type="submit" name="userLogin" class="btn btn-block text-white" style="background: #228B22;">
-                      Iniciar sesión
-                    </button>
+                  <div class="row ">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center mt-3">
+                      <button type="submit" name="userLogin" class="btn btn-block text-white" style="background: #228B22;">
+                        Iniciar sesión
+                      </button>
 
-                    <button type="submit" name="" class="btn btn-block text-white mt-3" style="background: #B59B7B;">
-                      Regístrate
-                    </button>
+                      <a type="button"id="create_account" class="btn btn-block text-white mt-3" style="background: #B59B7B;">
+                        Regístrate
+                      </a>
+                  </div>
+                  
               </div>
               </form>
             </div>
           </div>
         </div>
       </div>
+    
     </div>
-    </div>
-    </div>
+    
 
   </section>
 
   <section id="register" class="animated fadeIn animation1">
-    <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
-      <div class="container">
-
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="background-color: #228B22;">
-          Menú
-          <i class="fa fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-
-            <li class="nav-item">
-              <a class="nav-link text-white " href="index.php">Iniciar sesión</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    
 
     <!-- Contenido -->
     <div class="container col-12 col-sm-12 col-md-10 col-lg-10">
@@ -107,12 +93,11 @@
         <div class="col-2 col-md-4"></div>
       </div>
 
-      <!-- Formulario -->
       <div class="card col-12 col-sm-12 mt-4">
         <div class="card-body">
           <h1 class="text-center">Registrarme</h1>
           <form method="POST" action="" class="m-2">
-            <div class="row ">
+            <div class="row mt-3">
               <div class="col-12 col-sm-12 col-md-6">
                 <label for="name">Nombre(s):</label>
                 <input type="text" class="form-control" placeholder="Abraham" id="name" name="userName" required>
@@ -122,7 +107,7 @@
                 <input type="text" class="form-control" placeholder="Ayala Padilla" id="last_name" name="userLastName" required>
               </div>
             </div>
-            <div class="row ">
+            <div class="row mt-3">
               <div class="col-12 col-sm-12 col-md-6">
                 <label for="phone">Teléfono:</label>
                 <input type="tel" class="form-control" placeholder="5545171865" id="phone" name="phoneNumber" required>
@@ -132,7 +117,7 @@
                 <input type="email" class="form-control" placeholder="ejemplo@arpan.com.mx" id="email" name=userEmail required>
               </div>
             </div>
-            <div class="row ">
+            <div class="row mt-3">
               <div class="col-12 col-sm-12 col-md-6">
                 <label for="company_name">Nombre de la empresa:</label>
                 <input type="text" class="form-control" placeholder="ARPAN" id="company_name" name="userCompany" required>
@@ -142,7 +127,9 @@
                 <label for="city_name">Ciudad:</label>
                 <input type="text" class="form-control town ui-autocomplete" placeholder="Morelia" id="city_name" name="userCity" required>
               </div>
+            </div>
 
+            <div class="row mt-3">
               <div class="col-12 col-sm-12 col-md-6">
                 <label for="state_name">Estado:</label>
                 <input type="text" class="form-control state ui-autocomplete" placeholder="Michoacán" id="state_name" name="userState" required>
@@ -152,17 +139,23 @@
                 <label for="pass">Contraseña:</label>
                 <input type="password" class="form-control" placeholder="**********" id="pass" name="userPass1" required>
               </div>
+            </div>
 
+            <div class="row mt-3">
               <div class="col-12 col-sm-12 col-md-6">
                 <label for="repeat_pass">Confirmar contraseña:</label>
                 <input type="password" class="form-control" placeholder="**********" id="repeat_pass" name="userPass2" required>
               </div>
             </div>
 
-            <div class="row ">
+            <div class="row mt-3">
               <div class="col-1 col-sm-1 col-md-3"></div>
               <div class="col-12 col-sm-10 col-6 col-md-6 mt-4">
-                <button type="submit" name="registerUser" class="btn btn-success btn-lg btn-block">Registrarme</button>
+                <button type="submit" name="registerUser" class="btn btn-success btn-lg btn-block" style="background: #228B22;">Registrarme</button>
+
+                <a type="button"id="create_account" class="btn btn-block btn-lg text-white mt-3" style="background: #B59B7B;">
+                        Iniciar sesión
+                </a>
               </div>
             </div>
           </form>
