@@ -27,18 +27,13 @@
     }
   </style>
   <!-- Navegación -->
-  <section id="login" class="animated fadeIn animation1">
-    <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
-      <div class="container">
+  <section id="login" class="animated fadeIn animation1 mt-5">
 
-        <button class="navbar-toggler navbar-toggler-right " type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          Menú
-          <i class="fa fa-bars"></i>
-        </button>
-      </div>
-    </nav>
-
+<<<<<<< HEAD
+    <div class="container align-self-center ">
+=======
     <div class="container align-self-center">
+>>>>>>> 4c0a5661ced6b04dd60002a70f197db2a7d518d8
 
       <div class="container px-lg-5">
         <div class="row mx-lg-n5">
@@ -46,7 +41,7 @@
             <img src="img/agriicola_logo_alternativo.png" width="580" class="img-fluid">
           </div>
           <div class="col py-3 px-lg-5 col-sm-12 col-md-8 col-lg-6">
-            <div class="card p-3">
+            <div class="card px-3 pt-3">
               <div class="card-body">
                 <h1 class="text-center">Iniciar sesión</h1>
                 <form class="p-4" method="POST" action="">
@@ -57,6 +52,15 @@
                   <div class="form-group">
                     <label for="password">Contraseña</label>
                     <input type="password" class="form-control" id="password" name="pass" placeholder="******">
+<<<<<<< HEAD
+                    <p class="text-center mt-2 mb-0" style="font-size: 14px;">
+                      <span>¿Haz olvidado tu contraseña?</span>
+                    </p>
+
+                    <p class="text-center mb-4" style="font-size: 14px;">
+                      <a href="pass_recovery.php" class="text-success text-decoration-none">Recupérala</a>
+                    </p>
+=======
                   </div>
                
 
@@ -72,7 +76,17 @@
                   <div class="text-center mt-5">
                     <span>¿No tienes una cuenta?</span>
                     <a class="text-info text-decoration-none" href="#!" id="create_account">Regístrate</a>
+>>>>>>> 4c0a5661ced6b04dd60002a70f197db2a7d518d8
                   </div>
+               
+                  <div class="col-12 col-sm-12 col-6 col-md-12 text-center mt-4 px-5">
+                    <button type="submit" name="userLogin" class="btn btn-block text-white" style="background: #228B22;">
+                      Iniciar sesión
+                    </button>
+
+                    <button type="submit" name="" class="btn btn-block text-white mt-3" style="background: #B59B7B;">
+                      Regístrate
+                    </button>
               </div>
               </form>
             </div>
