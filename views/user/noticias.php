@@ -44,8 +44,8 @@ include('navbar.php');
       <div class="carousel-item">
         <img src="../../img/menu/agro.jpg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
-          <h5>Third slide label</h5>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+            <h2 class="text-dark">Agroquímicos y pesticidas</h2>
+            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
         </div>
       </div>
     </div>

@@ -29,11 +29,8 @@
   <!-- Navegación -->
   <section id="login" class="animated fadeIn animation1 mt-5">
 
-<<<<<<< HEAD
     <div class="container align-self-center ">
-=======
     <div class="container align-self-center">
->>>>>>> 4c0a5661ced6b04dd60002a70f197db2a7d518d8
 
       <div class="container px-lg-5">
         <div class="row mx-lg-n5">
@@ -52,7 +49,6 @@
                   <div class="form-group">
                     <label for="password">Contraseña</label>
                     <input type="password" class="form-control" id="password" name="pass" placeholder="******">
-<<<<<<< HEAD
                     <p class="text-center mt-2 mb-0" style="font-size: 14px;">
                       <span>¿Haz olvidado tu contraseña?</span>
                     </p>
@@ -60,23 +56,6 @@
                     <p class="text-center mb-4" style="font-size: 14px;">
                       <a href="pass_recovery.php" class="text-success text-decoration-none">Recupérala</a>
                     </p>
-=======
-                  </div>
-               
-
-
-                  <p class="text-right">
-                    <a href="pass_recovery.php" class="text-success text-decoration-none">Recupera tu contraseña</a>
-                  </p>
-                  <div class="col-12 col-sm-12 col-6 col-md-12 text-center my-4">
-                    <button type="submit" name="userLogin" class="btn text-white" style="background: #228B22;">
-                      Iniciar sesión
-                    </button>
-                  </div>
-                  <div class="text-center mt-5">
-                    <span>¿No tienes una cuenta?</span>
-                    <a class="text-info text-decoration-none" href="#!" id="create_account">Regístrate</a>
->>>>>>> 4c0a5661ced6b04dd60002a70f197db2a7d518d8
                   </div>
                
                   <div class="col-12 col-sm-12 col-6 col-md-12 text-center mt-4 px-5">
