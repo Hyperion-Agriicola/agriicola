@@ -35,7 +35,7 @@ include('navbar.php');
         </div>
       </div>
       <div class="carousel-item">
-        <img src="../../img/menu/maiz.jpg" class="d-block w-100" alt="...">
+        <img src="../../img/menu/suelo.jpg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h5>Second slide label</h5>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -44,8 +44,8 @@ include('navbar.php');
       <div class="carousel-item">
         <img src="../../img/menu/agro.jpg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
-            <h2 class="text-dark">Agroquímicos y pesticidas</h2>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+            <h1>Agroquímicos y pesticidas</h1>
+            <p class="pb-4">Sin productos fitosanitarios la producción mundial de frutas y vegetales, forrajes y fibras caería entre 30 y 40% por la acción de plagas.</p>
         </div>
       </div>
     </div>
