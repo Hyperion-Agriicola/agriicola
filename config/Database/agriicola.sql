@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-11-2019 a las 00:54:52
+-- Tiempo de generación: 04-11-2019 a las 18:19:09
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.8
 
@@ -107,6 +107,26 @@ INSERT INTO `cultivos` (`id_u`, `id_cultivo`, `nombre_predio`, `hectareas`, `tip
 (4, 24, '', 0, 'Frutales', 'Acelga', '', '0000-00-00', '', '', '', 'artificial', 'activo', '2019-10-25', NULL),
 (4, 25, '', 0, 'Frutales', 'Acelga', '', '0000-00-00', '', '', '', 'artificial', 'activo', '2019-10-25', NULL),
 (4, 26, '', 0, 'Frutales', 'Toronja', '', '0000-00-00', '', '', '', 'artificial', 'activo', '2019-10-25', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `eventos`
+--
+
+CREATE TABLE `eventos` (
+  `id_u` int(11) NOT NULL,
+  `id_cultivo` int(11) NOT NULL,
+  `id_evento` int(11) NOT NULL,
+  `titulo` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `descripcion` text COLLATE utf8_spanish_ci NOT NULL,
+  `inicio` datetime NOT NULL,
+  `fin` datetime NOT NULL,
+  `color` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `text_color` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `fecha_registro` date NOT NULL,
+  `fecha_modif` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -248,6 +268,14 @@ ALTER TABLE `cultivos`
   ADD KEY `id_u` (`id_u`);
 
 --
+-- Indices de la tabla `eventos`
+--
+ALTER TABLE `eventos`
+  ADD PRIMARY KEY (`id_evento`),
+  ADD KEY `id_cultivo` (`id_cultivo`),
+  ADD KEY `id_u` (`id_u`);
+
+--
 -- Indices de la tabla `gastos`
 --
 ALTER TABLE `gastos`
@@ -304,6 +332,12 @@ ALTER TABLE `cultivos`
   MODIFY `id_cultivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
+-- AUTO_INCREMENT de la tabla `eventos`
+--
+ALTER TABLE `eventos`
+  MODIFY `id_evento` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `gastos`
 --
 ALTER TABLE `gastos`
@@ -354,6 +388,13 @@ ALTER TABLE `corte`
 --
 ALTER TABLE `cultivos`
   ADD CONSTRAINT `cultivos_ibfk_1` FOREIGN KEY (`id_u`) REFERENCES `users` (`id_u`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `eventos`
+--
+ALTER TABLE `eventos`
+  ADD CONSTRAINT `eventos_ibfk_1` FOREIGN KEY (`id_cultivo`) REFERENCES `cultivos` (`id_cultivo`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `eventos_ibfk_2` FOREIGN KEY (`id_u`) REFERENCES `users` (`id_u`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `gastos`
