@@ -396,6 +396,7 @@ class Functions
             while ($row = $execQuery->fetch_array()) {
                 //../../img/svg/grain.svg
                 echo '
+                <div class="col-lg-1 col-md-1 col-sm-12">
                 <div class="card shadow-sm bg-light text-center">
                     <a href="dashboard.php?viewCrop" class="text-decoration-none text-muted">
                         <div class="card-header bg-white">
