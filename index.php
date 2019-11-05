@@ -63,9 +63,9 @@
                         Iniciar sesión
                       </button>
 
-                      <a type="button"id="create_account" class="btn btn-block text-white mt-3" style="background: #B59B7B;">
+                      <button type="button" id="create_account" class="btn btn-block text-white mt-3" style="background: #B59B7B;">
                         Regístrate
-                      </a>
+                      </button>
                   </div>
                   
               </div>
