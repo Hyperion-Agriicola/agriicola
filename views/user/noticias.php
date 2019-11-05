@@ -92,7 +92,7 @@ include('navbar.php');
   <div class="card">
     <img src="../../img/menu/artificial.jpg" class="card-img-top" alt="...">
     <div class="card-body">
-      <h5 class="card-title">Agronomía del Riego</h5>
+      <h5 class="card-title">Agronomía del Riegoss</h5>
       <p class="card-text">Todo cultivo experimenta un intercambio de agua con el suelo que lo sustenta y con la atmósfera que lo envuelve.</p>
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
