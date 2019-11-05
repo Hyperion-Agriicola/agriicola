@@ -37,8 +37,8 @@ include('navbar.php');
       <div class="carousel-item">
         <img src="../../img/menu/suelo.jpg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
-          <h5>Second slide label</h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <h1>Agronomía del Riego</h1>
+          <p class="pb-4">Todo cultivo experimenta un intercambio de agua con el suelo que lo sustenta y con la atmósfera que lo envuelve.</p>
         </div>
       </div>
       <div class="carousel-item">
@@ -75,16 +75,16 @@ include('navbar.php');
   <div class="card">
     <img src="../../img/menu/cult.jpg" class="card-img-top" alt="...">
     <div class="card-body">
-      <h5 class="card-title">Card title that wraps to a new line</h5>
-      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <h5 class="card-title">Acuerdo del tomate: un triunfo que tiene cara de derrota</h5>
+      <p class="card-text">¿Por qué celebrar en México el acuerdo del tomate con Estados Unidos? Los grandes ganadores son los productores de Florida.</p>
     </div>
   </div>
   <div class="card p-3">
     <blockquote class="blockquote mb-0 card-body">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+      <p>Agricultores de Sinaloa buscan cómo resolver nuevo acuerdo sobre tomate</p>
       <footer class="blockquote-footer">
         <small class="text-muted">
-          Someone famous in <cite title="Source Title">Source Title</cite>
+        Camila Ayala Espinosa <cite title="Source Title">Source Title</cite>
         </small>
       </footer>
     </blockquote>
@@ -92,8 +92,8 @@ include('navbar.php');
   <div class="card">
     <img src="../../img/menu/artificial.jpg" class="card-img-top" alt="...">
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+      <h5 class="card-title">Agronomía del Riego</h5>
+      <p class="card-text">Todo cultivo experimenta un intercambio de agua con el suelo que lo sustenta y con la atmósfera que lo envuelve.</p>
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
   </div>
