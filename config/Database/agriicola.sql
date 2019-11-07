@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost:3306
--- Tiempo de generación: 07-11-2019 a las 02:34:02
--- Versión del servidor: 5.7.24
--- Versión de PHP: 7.2.11
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 07-11-2019 a las 20:47:56
+-- Versión del servidor: 10.4.6-MariaDB
+-- Versión de PHP: 7.3.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -55,7 +55,8 @@ CREATE TABLE `agroquimicos` (
 
 INSERT INTO `agroquimicos` (`id_cultivo`, `id_agroquimico`, `aplicacion`, `nombre_comercial`, `precio`, `moneda`, `cantidad`, `unidad`, `dosis`, `tiempo`, `tipo_causa`, `frecuencia`, `fecha_inicio`, `fecha_fin`, `existencia`, `estatus`, `fecha_registro`, `fecha_modif`) VALUES
 (27, 10, 'enfermedad', 'Ambroxol xD', 10, 'pesos', 7, 'ml', 7, 'semana', 'micro', 'Diario', '2019-11-06', '2019-11-14', 4, 'activo', '2019-11-06', NULL),
-(30, 11, 'enfermedad', 'asdasd', 5, 'pesos', 6, 'ml', 5, 'semana', 'micro', 'Diario', '2019-11-06', '2019-11-20', 5, 'activo', '2019-11-06', NULL);
+(30, 11, 'enfermedad', 'asdasd', 5, 'pesos', 6, 'ml', 5, 'semana', 'micro', 'Diario', '2019-11-06', '2019-11-20', 5, 'activo', '2019-11-06', NULL),
+(31, 12, 'nutriente', 'Nutriplant', 2400, 'pesos', 4, 'l', 8, 'dias', 'macro', 'Cada 2 dias', '2019-11-22', '2019-11-22', 3, 'activo', '2019-11-07', NULL);
 
 -- --------------------------------------------------------
 
@@ -107,9 +108,10 @@ CREATE TABLE `cultivos` (
 --
 
 INSERT INTO `cultivos` (`id_u`, `id_cultivo`, `nombre_predio`, `hectareas`, `tipo_especie`, `subespecie`, `variedad`, `fecha_inicio`, `estado`, `municipio`, `localidad`, `tipo_suelo`, `estatus`, `fecha_registro`, `fecha_modif`) VALUES
-(3, 19, 'Maiz', 4, 'Granos', 'Alcachofa', 'Maiz Blanco', '2019-10-25', 'Michoacan de Ocampo', 'Tlalpujahua', 'Tlalpujahua', 'artificial', 'activo', '2019-10-25', NULL),
-(5, 27, 'Predio uno chido', 4, 'Frutales', 'Acelga', 'Aclega chica', '2019-11-07', 'Michoacan', 'Hidalgo', 'Mangana', 'artificial', 'activo', '2019-11-06', '2019-11-06'),
-(5, 30, 'asd', 11, 'Frutales', 'Acelga', 'asd', '2019-11-06', 'asd', 'asd', 'asd', 'natural', 'activo', '2019-11-06', NULL);
+(6, 19, 'Maiz', 4, 'Granos', 'Alcachofa', 'Maiz Blanco', '2019-10-25', 'Michoacan de Ocampo', 'Tlalpujahua', 'Tlalpujahua', 'artificial', 'activo', '2019-10-25', NULL),
+(6, 27, 'Predio uno chido', 4, 'Frutales', 'Acelga', 'Aclega chica', '2019-11-07', 'Michoacan', 'Hidalgo', 'Mangana', 'artificial', 'eliminado', '2019-11-06', '2019-11-06'),
+(6, 30, 'asd', 11, 'Frutales', 'Acelga', 'asd', '2019-11-06', 'asd', 'asd', 'asd', 'natural', 'activo', '2019-11-06', NULL),
+(6, 31, 'Maiz', 1, 'Frutales', 'Acelga', '', '2019-11-15', 'Micj', 'as', 'da', 'artificial', 'activo', '2019-11-07', NULL);
 
 -- --------------------------------------------------------
 
@@ -170,6 +172,23 @@ CREATE TABLE `gastos_generales` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `profiles`
+--
+
+CREATE TABLE `profiles` (
+  `id_profile` int(11) NOT NULL,
+  `id_u` int(11) NOT NULL,
+  `nombre` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `apellido` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `rol` enum('agronomo','agricultor') COLLATE utf8_spanish_ci NOT NULL,
+  `telefono` bigint(10) NOT NULL,
+  `correo` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `acceso` varchar(255) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `suelo_artificial`
 --
 
@@ -189,7 +208,8 @@ CREATE TABLE `suelo_artificial` (
 --
 
 INSERT INTO `suelo_artificial` (`id_cultivo`, `id_suelo_artificial`, `sustrato`, `infraestructura`, `riego`, `estatus`, `fecha_registro`, `fecha_modif`) VALUES
-(27, 6, 'Roca volcánica', 'Invernadero', 'Aspersiòn', 'activo', '2019-11-06', NULL);
+(27, 6, 'Roca volcánica', 'Invernadero', 'Aspersiòn', 'activo', '2019-11-06', NULL),
+(31, 7, 'Arcilla expandida', 'Invernadero', 'AspersiÃ²n', 'activo', '2019-11-07', NULL);
 
 -- --------------------------------------------------------
 
@@ -258,7 +278,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id_u`, `nombre`, `apellido`, `telefono`, `correo`, `acceso`, `empresa`, `tipo_usuario`, `ciudad`, `estado`, `fecha_registro`, `fecha_modif`) VALUES
 (3, 'Abraham', 'Ayala Padilla', 7861191310, 'tonayan@arpan.com', '8cb2237d0679ca88db6464eac60da96345513964', 'ARPAN', 'user', 'Morelia', 'Michoacan de Ocampo', '2019-10-25', NULL),
 (4, 'alex_guzman_luna@hotmail.com', 'Guzman Luna', 7861420889, 'alex@gmail.com', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'IDDEN', 'user', 'Hidalgo', 'Michoacan', '2019-10-25', NULL),
-(5, 'Ivan', 'Suarez', 7861134498, 'ivan.suap@gmail.com', '8cb2237d0679ca88db6464eac60da96345513964', 'HYPERION', 'user', 'Hidalgo', 'Michoacan', '2019-11-06', NULL);
+(5, 'Ivan', 'Suarez', 7861134498, 'ivan.suap@gmail.com', '8cb2237d0679ca88db6464eac60da96345513964', 'HYPERION', 'user', 'Hidalgo', 'Michoacan', '2019-11-06', NULL),
+(6, 'Eduardo', 'Hernandez', 7861125421, 'lalohh68@gmail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'tics', 'user', 'Morelia', 'Michoacan', '2019-11-07', NULL);
 
 --
 -- Índices para tablas volcadas
@@ -308,6 +329,13 @@ ALTER TABLE `gastos_generales`
   ADD KEY `id_u` (`id_u`);
 
 --
+-- Indices de la tabla `profiles`
+--
+ALTER TABLE `profiles`
+  ADD PRIMARY KEY (`id_profile`),
+  ADD KEY `id_u` (`id_u`);
+
+--
 -- Indices de la tabla `suelo_artificial`
 --
 ALTER TABLE `suelo_artificial`
@@ -335,7 +363,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `agroquimicos`
 --
 ALTER TABLE `agroquimicos`
-  MODIFY `id_agroquimico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_agroquimico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `corte`
@@ -347,7 +375,7 @@ ALTER TABLE `corte`
 -- AUTO_INCREMENT de la tabla `cultivos`
 --
 ALTER TABLE `cultivos`
-  MODIFY `id_cultivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id_cultivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de la tabla `eventos`
@@ -368,10 +396,16 @@ ALTER TABLE `gastos_generales`
   MODIFY `id_gasto_general` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `profiles`
+--
+ALTER TABLE `profiles`
+  MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `suelo_artificial`
 --
 ALTER TABLE `suelo_artificial`
-  MODIFY `id_suelo_artificial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_suelo_artificial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `suelo_natural`
@@ -383,7 +417,7 @@ ALTER TABLE `suelo_natural`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_u` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_u` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restricciones para tablas volcadas
@@ -425,6 +459,12 @@ ALTER TABLE `gastos`
 --
 ALTER TABLE `gastos_generales`
   ADD CONSTRAINT `gastos_generales_ibfk_1` FOREIGN KEY (`id_u`) REFERENCES `users` (`id_u`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `profiles`
+--
+ALTER TABLE `profiles`
+  ADD CONSTRAINT `profiles_ibfk_1` FOREIGN KEY (`id_u`) REFERENCES `users` (`id_u`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `suelo_artificial`
