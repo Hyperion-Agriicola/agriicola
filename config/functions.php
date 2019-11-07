@@ -116,7 +116,7 @@ class Functions
         $conexion = new Database();
         $userEmail = $_SESSION['correo'];
 
-        $getUserQuery = "SELECT id_u, id_cultivo FROM cultivos WHERE id_u = (SELECT id_u FROM users WHERE correo = '$userEmail')";
+        $getUserQuery = "SELECT max(id_cultivo) as id_cultivo FROM cultivos WHERE id_u = (SELECT id_u FROM users WHERE correo = '$userEmail')";
         $execUserQuery = $conexion->query($getUserQuery) or trigger_error(mysqli_error($conexion));
 
         if ($execUserQuery) {
@@ -150,7 +150,7 @@ class Functions
 
         $userEmail = $_SESSION['correo'];
 
-        $getUserQuery = "SELECT id_cultivo FROM cultivos WHERE id_u = (SELECT id_u FROM users WHERE correo = '$userEmail')";
+        $getUserQuery = "SELECT max(id_cultivo) as id_cultivo FROM cultivos WHERE id_u = (SELECT id_u FROM users WHERE correo = '$userEmail')";
         $execUserQuery = $conexion->query($getUserQuery) or trigger_error(mysqli_error($conexion));
         if ($execUserQuery) {
             $userRow = $execUserQuery->fetch_array();
@@ -185,7 +185,7 @@ class Functions
         $state,
         $township,
         $town,
-        $groupSelect
+        $groundSelect
     ) {
         $conexion = new Database();
 
@@ -200,9 +200,9 @@ class Functions
             //. " " . $bornDate . " " . $details . " " . $userRow['id_u'];
 
             $insert = "INSERT INTO cultivos(id_u, nombre_predio, hectareas, tipo_especie, subespecie,
-            variedad, fecha_inicio, estado, municipio, localidad, fecha_registro) 
+            variedad, fecha_inicio, estado, municipio, localidad, tipo_suelo, estatus, fecha_registro) 
             VALUES ('$userRow[id_u]', '$name','$hectares','$specieType','$subspecie', 
-            '$variation', '$bornDate', '$state', '$township', '$town', now())";
+            '$variation', '$bornDate', '$state', '$township', '$town', '$groundSelect', 'activo', now())";
 
             $execQuery = $conexion->query($insert) or trigger_error($conexion->error);
 
@@ -224,7 +224,7 @@ class Functions
                         </div>
                     </div>
                 </div>';
-                if ($groupSelect == 'natural') {
+                if ($groundSelect == 'natural') {
                     header('Location: dashboard.php?naturalGround');
                 } else {
                     header('Location: dashboard.php?artificialGround');
@@ -332,7 +332,7 @@ class Functions
         $conexion = new Database();
         $userEmail = $_SESSION['correo'];
 
-        $getUserQuery = "SELECT id_cultivo FROM cultivos WHERE id_u = (SELECT id_u FROM users WHERE correo = '$userEmail');";
+        $getUserQuery = "SELECT max(id_cultivo) as id_cultivo FROM cultivos WHERE id_u = (SELECT id_u FROM users WHERE correo = '$userEmail');";
         $execUserQuery = $conexion->query($getUserQuery) or trigger_error(mysqli_error($conexion));
 
         if ($execUserQuery) {
@@ -385,6 +385,7 @@ class Functions
         }
     }
 
+    //Devuelve las CARDAS de cada cultivo, posteando el id de cultivo con un formulario oculto
     public function getCropByID()
     {
         $conexion = new Database();
@@ -395,20 +396,54 @@ class Functions
         if (mysqli_num_rows($execQuery) > 0) {
             while ($row = $execQuery->fetch_array()) {
                 //../../img/svg/grain.svg
+                $fechaa = $row['fecha_inicio'];
+                $niu_fechaa = explode("-", $fechaa);
+
+                $month = array(
+                    'Enero',
+                    'Febrero',
+                    'Marzo',
+                    'Abril',
+                    'Mayo',
+                    'Junio',
+                    'Julio',
+                    'Agosto',
+                    'Septiembre',
+                    'Octubre',
+                    'Noviembre',
+                    'Diciembre');
+
+                               
                 echo '
-                <div class="card shadow-sm bg-light text-center">
-                    <a href="dashboard.php?viewCrop" class="text-decoration-none text-muted">
-                        <div class="card-header bg-white">
-                            ' . $row['fecha_registro'] . '
-                            <a href="" data-toggle="modal" data-target="#modalEliminar">
-                                <img src="../../img/svg/close-24px.svg" class="close" alt="">
-                            </a>
-                        </div>
-                        <div class="card-body">
-                            <img src="../../img/svg/grain.svg" width="60">
-                            <p class="lead mt-3">Cultivo de <strong>' . $row['nombre_predio'] . '</strong> </p>
-                        </div>
-                    </a>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-4 my-3">
+                    <div class="card shadow bg-light text-center">
+                        
+                            <div class="card-header bg-white">
+                                ' . $niu_fechaa[2] . " de " . $month[$niu_fechaa[1] - 1] . " de " . $niu_fechaa[0] . '
+                                <a href="" data-toggle="modal" data-target="#modalEliminar">
+                                    <img src="../../img/svg/close-24px.svg" class="close" alt="">
+                                </a>    
+                                
+                            </div>
+                            <div class="card-body">
+                                
+                                    <img src="../../img/svg/grain.svg" width="60">
+                                    <p class="lead mt-3"><strong>' . $row['nombre_predio'] . '</strong> </p>
+                                    
+                                  
+                            </div>
+
+                            <div class="card-footer bg-white">
+                                <form action="dashboard.php?viewCrop" method="POST" class="align-right">
+                                    <input type="text" value='.$row['id_cultivo'].' style="display: none;" name="get_id_cultivo">
+                                    <input type="text" value='.$row['tipo_suelo'].' style="display: none;" name="get_tipo_suelo">
+                                    <button type="submit" class="btn btn-block btn-success">
+                                        Ver más
+                                    </button>
+                                </form>
+                            </div>
+                         </a>
+                    </div>
                 </div>
                 ';
             }
@@ -538,13 +573,14 @@ class Functions
         }
     }
 
-    public function getViewCropByID()
+    //Muestra los datos del cultivo en el modal    
+    public function getViewCropByID($id)
     {
         $conexion = new Database();
 
         $email = $_SESSION['correo'];
-        $query = "SELECT * FROM cultivos WHERE id_u = (SELECT id_u FROM users WHERE correo = '$email')";
-
+        $query = "SELECT  * FROM cultivos WHERE id_u = (SELECT id_u FROM users WHERE correo = '$email') AND id_cultivo = '$id';";
+        
         $result = $conexion->query($query);
         $resultSet = array();
         if ($result) {
@@ -561,23 +597,26 @@ class Functions
                 $resultSet[8] = $row['localidad'];
                 $resultSet[9] = $row['fecha_registro'];
                 $resultSet[10] = $row['fecha_modif'];
+                $resultSet[11] = $row['id_cultivo'];
             }
 
             return $resultSet;
         }
     }
 
-    public function getGroundViewByID()
+    //Muestra los datos del suelo en el modal
+    public function getGroundViewByID($id)
     {
         $conexion = new Database();
         $userEmail = $_SESSION['correo'];
-        $query = "SELECT id_cultivo FROM cultivos WHERE id_u = (SELECT id_u FROM users WHERE correo = '$userEmail')";
+        
+        $query = "SELECT id_cultivo FROM cultivos WHERE id_u = (SELECT id_u FROM users WHERE correo = '$userEmail');";
 
         $execQuery = $conexion->query($query);
 
         $row = $execQuery->fetch_array();
 
-        $queryNatural = "SELECT * FROM suelo_natural WHERE id_cultivo = $row[id_cultivo]";
+        $queryNatural = "SELECT * FROM suelo_natural WHERE id_cultivo = '$id'";
         $execQueryNatural = $conexion->query($queryNatural);
 
         if (mysqli_num_rows($execQueryNatural) > 0) {
@@ -594,7 +633,7 @@ class Functions
 
             return $resultSet;
         } else {
-            $queryArtificial = "SELECT * FROM suelo_artificial WHERE id_cultivo = $row[id_cultivo]";
+            $queryArtificial = "SELECT * FROM suelo_artificial WHERE id_cultivo = '$id'";
             $execQueryArtificial = $conexion->query($queryArtificial);
 
             $resultArt = array();
@@ -609,13 +648,13 @@ class Functions
         }
     }
 
-    public function getAgroViewByID()
+    //Muestra los datos del agroquimico en el modal
+    public function getAgroViewByID($id)
     {
         $conexion = new Database();
         $userEmail = $_SESSION['correo'];
 
-        $query = "SELECT * FROM agroquimicos WHERE id_cultivo = 
-        (SELECT id_cultivo FROM cultivos WHERE id_u = (SELECT id_u FROM users WHERE correo = '$userEmail'))";
+        $query = "SELECT * FROM agroquimicos WHERE id_cultivo = '$id' ;";
         $execQuery = $conexion->query($query);
 
         $resultSet = array();
@@ -634,21 +673,295 @@ class Functions
     }
 
 
-    //Funciones para modificar
+    //Funciones para modificar: Ivan
 
-    public function getCropToModify()
+    //Modifica el cultivo
+    public function modifyCrop(
+        $id_cultivo, 
+        $nombre_predio, 
+        $hectareas,
+        $tipo_especie,
+        $subspecie,
+        $variedad,
+        $fecha_inicio,
+        $estado,
+        $municipio,
+        $localidad
+        
+        )
     {
         $conexion = new Database();
-        $email = $_SESSION['correo'];
+        $userEmail = $_SESSION['correo'];
 
-        $query = "SELECT * FROM cultivos WHERE id_u = (SELECT id_u FROM users WHERE correo = '$email')";
+        $query = "UPDATE cultivos SET nombre_predio = '$nombre_predio', hectareas = '$hectareas', tipo_especie = '$tipo_especie', subespecie = '$subspecie', variedad = '$variedad', fecha_inicio = '$fecha_inicio', estado = '$estado', municipio = '$municipio', localidad = '$localidad', fecha_modif = now() WHERE id_cultivo = '$id_cultivo';";
+
+        $result = $conexion->query($query);
+
+            if (!$result) {
+                echo "
+                <div class='container mt-4'>
+                    <div class='alert alert-danger' role='alert'>
+                       Hubo un error al registrar los datos, verifique sus campos o intente más tarde
+                    </div>
+                </div>
+                ";
+            } else {
+                
+            }
+    }
+
+    //Carga el formulario que corresponde, dependiendo si es suelo natural o artificial: Ivan
+    public function getGroundForm($id_cultivo, $tipo_suelo)
+    {
+        $conexion = new Database();
+        $userEmail = $_SESSION['correo'];
+
+        $query = "SELECT * FROM cultivos WHERE id_cultivo = '$id_cultivo' AND tipo_suelo = '$tipo_suelo';";
         $execQuery = $conexion->query($query);
 
         if (mysqli_num_rows($execQuery) > 0) {
-            while ($row = $execQuery->fetch_array()) {
+            if ($tipo_suelo == 'natural'){
+                while ($row = $execQuery->fetch_array()) {
+                    echo '
+                            <form action="" method="POST">
+                           
+                              
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="inputType">Tipo</label>
+                                        <select class="form-control" id="inputType" name="inputType">
+                                            <option disabled>Elige un suelo</option>
+                                            <?php
+                                            $data->getGroundType();
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="inputInfra">Infraestructura</label>
+                                        <select class="form-control" id="inputInfra" name="inputInfra">
+                                            <option disabled>Elige una infraestructura</option>
+                                            <?php
+                                            $data->getInfrastucture();
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="inputWatering">Riego</label>
+                                        <select class="form-control" id="inputWatering" name="inputWatering">
+                                            <option disabled>Elige una infraestructura</option>
+                                            <?php
+                                            $data->getWatering();
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="inputPH">PH</label>
+                                        <input type="number" class="form-control" id="inputPH" name="inputPH"  min="0" max="14">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="inputSalinity">Salinidad</label>
+                                        <input type="number" class="form-control" id="inputSalinity" name="inputSalinity"  min="0">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="inputConduc">Conductividad eléctrica</label>
+                                        <input type="number" class="form-control" id="inputConduc" name="inputConduc">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container" style="margin-top: 20px; margin-bottom: 40px; background-color: #388E3C;">
+                            <h3 class="modal-title text-white text-center" id="exampleModalScrollableTitle">Nutrición</h3>
+                            </div> 
+                            <div class="row mt-4">
+                                <div class="col-md-6 col-lg-6 col-sm-12">
+                                    <label for="rangeOrganic">Materia orgánica</label>
+                                    <input type="range" class="custom-range" min="0" value="50" max="100" step="1" autocomplete="off" id="rangeOrganic" name="rangeOrganic">
+                                    <div id="etiqueta1" class="etiqueta col-lg-12 col-sm-12 text-center"></div>
+                                </div>
+                    
+                                <div class="col-md-6 col-lg-6 col-sm-12">
+                                    <label for="rangeZinc">Zinc</label>
+                                    <input type="range" class="custom-range" min="0" value="50" max="100" step="1" id="rangeZinc" name="rangeZinc">
+                                    <div id="etiqueta2" class="etiqueta col-lg-12 col-sm-12 text-center"></div>
+                                </div>
+                    
+                                <div class="col-md-6 col-lg-6 col-sm-12">
+                                    <label for="rangeNitrates">Nitrátos</label>
+                                    <input type="range" class="custom-range " min="0" value="50" max="100" step="1" id="rangeNitrates" name="rangeNitrates">
+                                    <div id="etiqueta3" class="etiqueta col-lg-12 col-sm-12 text-center"></div>
+                                </div>
+                    
+                                <div class="col-md-6 col-lg-6 col-sm-12">
+                                    <label for="rangePhosphor">Fósforo</label>
+                                    <input type="range" class="custom-range " min="0" value="50" max="100" step="1" id="rangePhosphor" name="rangePhosphor">
+                                    <div id="etiqueta4" class="etiqueta col-lg-12 col-sm-12 text-center"></div>
+                                </div>
+                    
+                                <div class="col-md-6 col-lg-6 col-sm-12">
+                                    <label for="rangePota">Potasio</label>
+                                    <input type="range" class="custom-range " min="0" value="50" max="100" step="1" id="rangePota" name="rangePota">
+                                    <div id="etiqueta5" class="etiqueta col-lg-12 col-sm-12 text-center"></div>
+                                </div>
+                    
+                                <div class="col-md-6 col-lg-6 col-sm-12">
+                                    <label for="rangeMang">Manganeso</label>
+                                    <input type="range" class="custom-range " min="0" value="50" max="100" step="1" id="rangeMang" name="rangeMang">
+                                    <div id="etiqueta6" class="etiqueta col-lg-12 col-sm-12 text-center"></div>
+                                </div>
+                    
+                                <div class="col-md-6 col-lg-6 col-sm-12">
+                                    <label for="rangeCalc">Calcio</label>
+                                    <input type="range" class="custom-range " min="0" value="50" max="100" step="1" id="rangeCalc" name="rangeCalc">
+                                    <div id="etiqueta7" class="etiqueta col-lg-12 col-sm-12 text-center"></div>
+                                </div>
+                    
+                                <div class="col-md-6 col-lg-6 col-sm-12">
+                                    <label for="rangeCopper">Cobre</label>
+                                    <input type="range" class="custom-range " min="0" value="50" max="100" step="1" id="rangeCopper" name="rangeCopper">
+                                    <div id="etiqueta8" class="etiqueta col-lg-12 col-sm-12 text-center"></div>
+                                </div>
+                    
+                                <div class="col-md-6 col-lg-6 col-sm-12">
+                                    <label for="rangeAz">Óxido de azufre</label>
+                                    <input type="range" class="custom-range " min="0" value="50" max="100" step="1" id="rangeAz" name="rangeAz">
+                                    <div id="etiqueta9" class="etiqueta col-lg-12 col-sm-12 text-center"></div>
+                                </div>
+                    
+                                <div class="col-md-6 col-lg-6 col-sm-12">
+                                    <label for="rangeBor">Boro</label>
+                                    <input type="range" class="custom-range " min="0" value="50" max="100" step="1" id="rangeBor" name="rangeBor">
+                                    <div id="etiqueta10" class="etiqueta col-lg-12 col-sm-12 text-center"></div>
+                                </div>
+                    
+                                <div class="col-md-6 col-lg-6 col-sm-12">
+                                    <label for="rangeMag">Magnesio</label>
+                                    <input type="range" class="custom-range " min="0" value="50" max="100" step="1" id="rangeMag" name="rangeMag">
+                                    <div id="etiqueta11" class="etiqueta col-lg-12 col-sm-12 text-center"></div>
+                                </div>
+                    
+                                <div class="col-md-6 col-lg-6 col-sm-12">
+                                    <label for="rangeOxygen">Oxígeno</label>
+                                    <input type="range" class="custom-range " min="0" value="50" max="100" step="1" id="rangeOxygen" name="rangeOxygen">
+                                    <div id="etiqueta12" class="etiqueta col-lg-12 col-sm-12 text-center"></div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                <button name="modifGroundNat" type="submit" class="btn btn-success">Aceptar</button>
+                            </div>
+                        </form>
+                    
+                    
+                    ';
+                }
+            }else{
+                while ($row = $execQuery->fetch_array()) {
+                    echo '
+                    <form action="" method="post">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label for="inputSustrato">Sustrato</label>
+                                <select class="form-control" id="inputSustrato" name="inputSustrato">
+                                    <option disabled>Seleccione un sustrato</option>
+                                    <?php
+                                    $data->getSubstract();
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label for="inputInfra">Infraestructura</label>
+                                <select class="form-control" id="inputInfra" name="inputInfra">
+                                    <option disabled>Seleccione la Infraestructura</option>
+                                    <?php
+                                        $data->getInfrastucture();
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label for="inputWatering">Riego</label>
+                                <select class="form-control" id="inputWatering" name="inputWatering">
+                                    <option disabled>Seleccione el riego</option>
+                                    <?php
+                                        $data->getWatering();
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        <button name="modifGroundArt" type="submit" class="btn btn-success">Aceptar</button>
+                    </div>
+                </form>
+                    ';
+                }
             }
+            
         }    
     }
+
+    //Modificar Suelo Natural: Ivan
+    public function modifyNaturalGround(
+        $id_cultivo,
+        $id_suelo_natural,
+        $infraestructura,
+        $riego,
+        $ph,
+        $salinidad,
+        $conduc_elec,
+        $materia_organica,
+        $zinc,
+        $nitratos,
+        $fosforo,
+        $potasio,
+        $manganeso,
+        $calcio,
+        $cobre,
+        $oxido_azufre,
+        $boro,
+        $magnesio,
+        $oxigeno
+    )
+    {
+        $conexion = new Database();
+
+        $query = "UPDATE suelo_natural SET infraestructura = '$infraestructura', riego = '$riego', ph = '$ph', salinidad = '$salinidad', conduc_elec = '$conduc_elec', materia_organica = '$materia_organica', zinc = '$zinc', nitratos = '$nitratos', fosforo = '$fosforo', potasio = '$potasio', manganeso = '$manganeso, calcio = '$calcio', cobre = '$cobre', oxido_azufre = '$oxido_azufre', boro = '$boro', magnesio = '$magnesio', oxigeno = '$oxigeno', fecha_modif = now() WHERE id_cultivo = '$id_cultivo' AND id_suelo_natural = '$id_suelo_natural';";
+
+        $result = $conexion->query($query);
+
+            if (!$result) {
+                echo "
+                <div class='container mt-4'>
+                    <div class='alert alert-danger' role='alert'>
+                       Hubo un error al registrar los datos, verifique sus campos o intente más tarde
+                    </div>
+                </div>
+                ";
+            } else {
+                
+            }
+    }
 }
+
+/*
+    Lo que me falta es obtener el ID que corresponde, ya sea del suelonatural o artificial para poder modificar.
+    Y los combobox no cargan la informacion en el modal xd
+
+*/
 
 ob_end_flush();

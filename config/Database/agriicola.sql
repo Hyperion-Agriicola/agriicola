@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 04-11-2019 a las 18:19:09
--- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.3.8
+-- Servidor: localhost:3306
+-- Tiempo de generación: 07-11-2019 a las 02:34:02
+-- Versión del servidor: 5.7.24
+-- Versión de PHP: 7.2.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -31,16 +31,16 @@ SET time_zone = "+00:00";
 CREATE TABLE `agroquimicos` (
   `id_cultivo` int(11) NOT NULL,
   `id_agroquimico` int(11) NOT NULL,
-  `aplicacion` varchar(45) CHARACTER SET latin1 NOT NULL,
-  `nombre_comercial` varchar(45) CHARACTER SET latin1 NOT NULL,
+  `aplicacion` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `nombre_comercial` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
   `precio` int(11) NOT NULL,
-  `moneda` varchar(45) CHARACTER SET latin1 NOT NULL,
+  `moneda` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
   `cantidad` int(11) NOT NULL,
-  `unidad` varchar(45) CHARACTER SET latin1 NOT NULL,
+  `unidad` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
   `dosis` int(11) NOT NULL,
-  `tiempo` varchar(45) CHARACTER SET latin1 NOT NULL,
-  `tipo_causa` varchar(45) CHARACTER SET latin1 NOT NULL,
-  `frecuencia` varchar(45) CHARACTER SET latin1 NOT NULL,
+  `tiempo` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `tipo_causa` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `frecuencia` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
   `fecha_inicio` date NOT NULL,
   `fecha_fin` date NOT NULL,
   `existencia` int(11) NOT NULL,
@@ -48,6 +48,14 @@ CREATE TABLE `agroquimicos` (
   `fecha_registro` date NOT NULL,
   `fecha_modif` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `agroquimicos`
+--
+
+INSERT INTO `agroquimicos` (`id_cultivo`, `id_agroquimico`, `aplicacion`, `nombre_comercial`, `precio`, `moneda`, `cantidad`, `unidad`, `dosis`, `tiempo`, `tipo_causa`, `frecuencia`, `fecha_inicio`, `fecha_fin`, `existencia`, `estatus`, `fecha_registro`, `fecha_modif`) VALUES
+(27, 10, 'enfermedad', 'Ambroxol xD', 10, 'pesos', 7, 'ml', 7, 'semana', 'micro', 'Diario', '2019-11-06', '2019-11-14', 4, 'activo', '2019-11-06', NULL),
+(30, 11, 'enfermedad', 'asdasd', 5, 'pesos', 6, 'ml', 5, 'semana', 'micro', 'Diario', '2019-11-06', '2019-11-20', 5, 'activo', '2019-11-06', NULL);
 
 -- --------------------------------------------------------
 
@@ -79,15 +87,15 @@ CREATE TABLE `corte` (
 CREATE TABLE `cultivos` (
   `id_u` int(11) NOT NULL,
   `id_cultivo` int(11) NOT NULL,
-  `nombre_predio` varchar(45) CHARACTER SET latin1 NOT NULL,
+  `nombre_predio` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
   `hectareas` double NOT NULL,
-  `tipo_especie` varchar(45) CHARACTER SET latin1 NOT NULL,
-  `subespecie` varchar(45) CHARACTER SET latin1 NOT NULL,
-  `variedad` varchar(45) CHARACTER SET latin1 NOT NULL,
+  `tipo_especie` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `subespecie` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `variedad` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
   `fecha_inicio` date NOT NULL,
-  `estado` varchar(45) CHARACTER SET latin1 NOT NULL,
-  `municipio` varchar(45) CHARACTER SET latin1 NOT NULL,
-  `localidad` varchar(45) CHARACTER SET latin1 NOT NULL,
+  `estado` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `municipio` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `localidad` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
   `tipo_suelo` enum('artificial','natural') COLLATE utf8_spanish_ci NOT NULL,
   `estatus` enum('activo','finalizado','eliminado') COLLATE utf8_spanish_ci NOT NULL,
   `fecha_registro` date NOT NULL,
@@ -100,13 +108,8 @@ CREATE TABLE `cultivos` (
 
 INSERT INTO `cultivos` (`id_u`, `id_cultivo`, `nombre_predio`, `hectareas`, `tipo_especie`, `subespecie`, `variedad`, `fecha_inicio`, `estado`, `municipio`, `localidad`, `tipo_suelo`, `estatus`, `fecha_registro`, `fecha_modif`) VALUES
 (3, 19, 'Maiz', 4, 'Granos', 'Alcachofa', 'Maiz Blanco', '2019-10-25', 'Michoacan de Ocampo', 'Tlalpujahua', 'Tlalpujahua', 'artificial', 'activo', '2019-10-25', NULL),
-(4, 20, '', 0, 'Frutales', 'Acelga', '', '0000-00-00', '', '', '', 'artificial', 'activo', '2019-10-25', NULL),
-(4, 21, '', 0, 'Frutales', 'Acelga', '', '0000-00-00', '', '', '', 'artificial', 'activo', '2019-10-25', NULL),
-(4, 22, '', 0, 'Frutales', 'Acelga', '', '0000-00-00', '', '', '', 'artificial', 'activo', '2019-10-25', NULL),
-(4, 23, '', 0, 'Frutales', 'Acelga', '', '0000-00-00', '', '', '', 'artificial', 'activo', '2019-10-25', NULL),
-(4, 24, '', 0, 'Frutales', 'Acelga', '', '0000-00-00', '', '', '', 'artificial', 'activo', '2019-10-25', NULL),
-(4, 25, '', 0, 'Frutales', 'Acelga', '', '0000-00-00', '', '', '', 'artificial', 'activo', '2019-10-25', NULL),
-(4, 26, '', 0, 'Frutales', 'Toronja', '', '0000-00-00', '', '', '', 'artificial', 'activo', '2019-10-25', NULL);
+(5, 27, 'Predio uno chido', 4, 'Frutales', 'Acelga', 'Aclega chica', '2019-11-07', 'Michoacan', 'Hidalgo', 'Mangana', 'artificial', 'activo', '2019-11-06', '2019-11-06'),
+(5, 30, 'asd', 11, 'Frutales', 'Acelga', 'asd', '2019-11-06', 'asd', 'asd', 'asd', 'natural', 'activo', '2019-11-06', NULL);
 
 -- --------------------------------------------------------
 
@@ -173,13 +176,20 @@ CREATE TABLE `gastos_generales` (
 CREATE TABLE `suelo_artificial` (
   `id_cultivo` int(11) NOT NULL,
   `id_suelo_artificial` int(11) NOT NULL,
-  `sustrato` varchar(45) CHARACTER SET latin1 NOT NULL,
-  `infraestructura` varchar(45) CHARACTER SET latin1 NOT NULL,
-  `riego` varchar(45) CHARACTER SET latin1 NOT NULL,
+  `sustrato` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `infraestructura` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `riego` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
   `estatus` enum('activo','finalizado','eliminado') COLLATE utf8_spanish_ci NOT NULL,
   `fecha_registro` date NOT NULL,
   `fecha_modif` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `suelo_artificial`
+--
+
+INSERT INTO `suelo_artificial` (`id_cultivo`, `id_suelo_artificial`, `sustrato`, `infraestructura`, `riego`, `estatus`, `fecha_registro`, `fecha_modif`) VALUES
+(27, 6, 'Roca volcánica', 'Invernadero', 'Aspersiòn', 'activo', '2019-11-06', NULL);
 
 -- --------------------------------------------------------
 
@@ -190,9 +200,9 @@ CREATE TABLE `suelo_artificial` (
 CREATE TABLE `suelo_natural` (
   `id_cultivo` int(11) NOT NULL,
   `id_suelo_natural` int(11) NOT NULL,
-  `tipo_suelo` varchar(45) CHARACTER SET latin1 NOT NULL,
-  `infraestructura` varchar(45) CHARACTER SET latin1 NOT NULL,
-  `riego` varchar(45) CHARACTER SET latin1 NOT NULL,
+  `tipo_suelo` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `infraestructura` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `riego` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
   `ph` int(11) NOT NULL,
   `salinidad` int(11) NOT NULL,
   `conduc_elec` int(11) NOT NULL,
@@ -212,6 +222,13 @@ CREATE TABLE `suelo_natural` (
   `fecha_registro` date NOT NULL,
   `fecha_modif` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `suelo_natural`
+--
+
+INSERT INTO `suelo_natural` (`id_cultivo`, `id_suelo_natural`, `tipo_suelo`, `infraestructura`, `riego`, `ph`, `salinidad`, `conduc_elec`, `materia_organica`, `zinc`, `nitratos`, `fosforo`, `potasio`, `manganeso`, `calcio`, `cobre`, `oxido_azufre`, `boro`, `magnesio`, `oxigeno`, `estatus`, `fecha_registro`, `fecha_modif`) VALUES
+(30, 4, 'Arenosos', 'Invernadero', 'AspersiÃ²n', 12, 12, 10, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 'activo', '2019-11-06', NULL);
 
 -- --------------------------------------------------------
 
@@ -240,7 +257,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id_u`, `nombre`, `apellido`, `telefono`, `correo`, `acceso`, `empresa`, `tipo_usuario`, `ciudad`, `estado`, `fecha_registro`, `fecha_modif`) VALUES
 (3, 'Abraham', 'Ayala Padilla', 7861191310, 'tonayan@arpan.com', '8cb2237d0679ca88db6464eac60da96345513964', 'ARPAN', 'user', 'Morelia', 'Michoacan de Ocampo', '2019-10-25', NULL),
-(4, 'alex_guzman_luna@hotmail.com', 'Guzman Luna', 7861420889, 'alex@gmail.com', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'IDDEN', 'user', 'Hidalgo', 'Michoacan', '2019-10-25', NULL);
+(4, 'alex_guzman_luna@hotmail.com', 'Guzman Luna', 7861420889, 'alex@gmail.com', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'IDDEN', 'user', 'Hidalgo', 'Michoacan', '2019-10-25', NULL),
+(5, 'Ivan', 'Suarez', 7861134498, 'ivan.suap@gmail.com', '8cb2237d0679ca88db6464eac60da96345513964', 'HYPERION', 'user', 'Hidalgo', 'Michoacan', '2019-11-06', NULL);
 
 --
 -- Índices para tablas volcadas
@@ -317,7 +335,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `agroquimicos`
 --
 ALTER TABLE `agroquimicos`
-  MODIFY `id_agroquimico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_agroquimico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `corte`
@@ -329,7 +347,7 @@ ALTER TABLE `corte`
 -- AUTO_INCREMENT de la tabla `cultivos`
 --
 ALTER TABLE `cultivos`
-  MODIFY `id_cultivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_cultivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de la tabla `eventos`
@@ -353,19 +371,19 @@ ALTER TABLE `gastos_generales`
 -- AUTO_INCREMENT de la tabla `suelo_artificial`
 --
 ALTER TABLE `suelo_artificial`
-  MODIFY `id_suelo_artificial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_suelo_artificial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `suelo_natural`
 --
 ALTER TABLE `suelo_natural`
-  MODIFY `id_suelo_natural` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_suelo_natural` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_u` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_u` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas

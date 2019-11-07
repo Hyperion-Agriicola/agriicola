@@ -88,19 +88,19 @@
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
                     <label for="inputPH">PH</label>
-                    <input type="number" class="form-control" id="inputPH" name="inputPH" placeholder="1">
+                    <input type="number" class="form-control" id="inputPH" name="inputPH"  min="0" max="14">
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
                     <label for="inputSalinity">Salinidad</label>
-                    <input type="number" class="form-control" id="inputSalinity" name="inputSalinity" placeholder="14">
+                    <input type="number" class="form-control" id="inputSalinity" name="inputSalinity"  min="0">
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
                     <label for="inputConduc">Conductividad eléctrica</label>
-                    <input type="number" class="form-control" id="inputConduc" name="inputConduc" placeholder="4">
+                    <input type="number" class="form-control" id="inputConduc" name="inputConduc">
                 </div>
             </div>
         </div>

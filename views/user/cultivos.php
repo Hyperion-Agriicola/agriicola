@@ -87,17 +87,7 @@
                     <input type="number" placeholder="1" class="form-control" id="inputHectare" name="hectares">
                 </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-12">
-                <div class="form-group">
-                    <label for="inputSubspecie">Subespecie</label>
-                    <select name="subspecie" class="form-control" id="inputSubspecie">
-                        <option disabled>Selecciona una subespecie</option>
-                        <?php 
-                            $data->getSubspecie();
-                        ?>
-                    </select>
-                </div>
-            </div>
+
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
                     <label for="inputSpecie">Tipo de especie</label>
@@ -109,6 +99,19 @@
                     </select>
                 </div>
             </div>
+            
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="form-group">
+                    <label for="inputSubspecie">Subespecie</label>
+                    <select name="subspecie" class="form-control" id="inputSubspecie">
+                        <option disabled>Selecciona una subespecie</option>
+                        <?php 
+                            $data->getSubspecie();
+                        ?>
+                    </select>
+                </div>
+            </div>
+            
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
                     <label for="inputVariation">Variedad</label>
