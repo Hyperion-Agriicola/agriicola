@@ -58,7 +58,7 @@
                     <select class="form-control" id="inputSustrato" name="inputSustrato">
                         <option disabled>Seleccione un sustrato</option>
                         <?php
-                        $data->getSubstract();
+                        $data->getSubstract("");
                         ?>
                     </select>
                 </div>
@@ -69,7 +69,7 @@
                     <select class="form-control" id="inputInfra" name="inputInfra">
                         <option disabled>Seleccione la Infraestructura</option>
                         <?php
-                        $data->getInfrastucture();
+                        $data->getInfrastucture("");
                         ?>
                     </select>
                 </div>
@@ -80,7 +80,7 @@
                     <select class="form-control" id="inputWatering" name="inputWatering">
                         <option disabled>Seleccione el riego</option>
                         <?php
-                        $data->getWatering();
+                        $data->getWatering("");
                         ?>
                     </select>
                 </div>

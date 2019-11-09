@@ -3,6 +3,7 @@ ob_start();
 session_start();
 include('../../config/functions.php');
 $data = new Functions();
+$data2 = new Functions();
 
 if(!isset($_SESSION['correo'])){
     header('Location: ../../index.php');
@@ -59,6 +60,8 @@ if(!isset($_SESSION['correo'])){
                 include('suelo_art.php');
             }else if(isset($_GET['viewCrop'])){
                 include('select_cultivo.php'); 
+            }else if(isset($_GET['viewCrop?seguimiento'])){
+                include('select_seguimiento.php'); 
             }
             else {
                 include('profile.php');
@@ -137,8 +140,12 @@ include('footer.php');
 
     <script src="../../js/jquery-3.4.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.1/jquery.validate.min.js"></script>
+  <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.1/additional-methods.min.js"></script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="../../js/validation.js"></script>
     <script src="../../js/main.js"></script>
 </body>
 

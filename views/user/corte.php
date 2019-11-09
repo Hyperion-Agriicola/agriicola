@@ -42,7 +42,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-12">
                         <div class="form-group">
                             <label for="inputCliente">Cliente</label>
-                            <input type="text" class="form-control" id="inputName" name="cliente" placeholder="Nutriente">
+                            <input type="text" class="form-control" id="inputName" name="Cliente" placeholder="Nutriente">
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12">

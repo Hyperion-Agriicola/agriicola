@@ -41,14 +41,16 @@
             <div class="card px-3 pt-3">
               <div class="card-body">
                 <h1 class="text-center">Iniciar sesión</h1>
-                <form class="p-4" method="POST" action="">
+                <form id="form-vali" class="p-4" method="POST" action="">
                   <div class="form-group">
                     <label for="emaill">Correo electrónico</label>
                     <input type="email" class="form-control" id="emaill" name="email" aria-describedby="emailHelp" placeholder="usuario@arpan.com.mx">
+                    <span id="mess1"></span>
                   </div>
                   <div class="form-group">
                     <label for="password">Contraseña</label>
-                    <input type="password" class="form-control" id="password" name="pass" placeholder="******">
+                    <input type="password" class="form-control" maxlength="6" id="password" name="pass" placeholder="******">
+                    <span id="pass1"></span>
                     <p class="text-center mt-2 mb-0" style="font-size: 14px;">
                       <span>¿Haz olvidado tu contraseña?</span>
                     </p>
@@ -96,31 +98,31 @@
       <div class="card col-12 col-sm-12 mt-4">
         <div class="card-body">
           <h1 class="text-center">Registrarme</h1>
-          <form method="POST" action="" class="m-2">
+          <form id="registro" method="POST" action="" class="m-2">
             <div class="row mt-3">
               <div class="col-12 col-sm-12 col-md-6">
                 <label for="name">Nombre(s):</label>
-                <input type="text" class="form-control" placeholder="Abraham" id="name" name="userName" required>
+                <input type="text" class="form-control" placeholder="Ingresa tu nombre" id="name" name="userName" required>
               </div>
               <div class="col-12 col-sm-12 col-md-6">
                 <label for="last_name">Apellido(s):</label>
-                <input type="text" class="form-control" placeholder="Ayala Padilla" id="last_name" name="userLastName" required>
+                <input type="text" class="form-control" placeholder="Ingresa tus apellidos" id="last_name" name="userLastName" required>
               </div>
             </div>
-            <div class="row mt-3">
+            <div class="row mt-1">
               <div class="col-12 col-sm-12 col-md-6">
                 <label for="phone">Teléfono:</label>
-                <input type="tel" class="form-control" placeholder="5545171865" id="phone" name="phoneNumber" required>
+                <input type="tel" class="form-control" placeholder="0000000000" id="phone" name="phoneNumber" required>
               </div>
               <div class="col-12 col-sm-12 col-md-6">
                 <label for="email">Correo electrónico:</label>
-                <input type="email" class="form-control" placeholder="ejemplo@arpan.com.mx" id="email" name=userEmail required>
+                <input type="email" class="form-control" placeholder="ejemplo@agriicola.com.mx" id="email" name=userEmail required>
               </div>
             </div>
-            <div class="row mt-3">
+            <div class="row mt-1">
               <div class="col-12 col-sm-12 col-md-6">
                 <label for="company_name">Nombre de la empresa:</label>
-                <input type="text" class="form-control" placeholder="ARPAN" id="company_name" name="userCompany" required>
+                <input type="text" class="form-control" placeholder="Ingresa el nombre de tu empresa" id="company_name" name="userCompany" required>
               </div>
 
               <div class="col-12 col-sm-12 col-md-6">
@@ -129,7 +131,7 @@
               </div>
             </div>
 
-            <div class="row mt-3">
+            <div class="row mt-1">
               <div class="col-12 col-sm-12 col-md-6">
                 <label for="state_name">Estado:</label>
                 <input type="text" class="form-control state ui-autocomplete" placeholder="Michoacán" id="state_name" name="userState" required>
@@ -137,14 +139,14 @@
 
               <div class="col-12 col-sm-12 col-md-6">
                 <label for="pass">Contraseña:</label>
-                <input type="password" class="form-control" placeholder="**********" id="pass" name="userPass1" required>
+                <input type="password" class="form-control" placeholder="******" id="pass" name="userPass1" required>
               </div>
             </div>
 
-            <div class="row mt-3">
+            <div class="row mt-1">
               <div class="col-12 col-sm-12 col-md-6">
                 <label for="repeat_pass">Confirmar contraseña:</label>
-                <input type="password" class="form-control" placeholder="**********" id="repeat_pass" name="userPass2" required>
+                <input type="password" class="form-control" placeholder="******" id="repeat_pass" name="userPass2" required>
               </div>
             </div>
 
@@ -168,9 +170,13 @@
   <!-- Bootstrap y Javascripts -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+  <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.1/jquery.validate.min.js"></script>
+  <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.1/additional-methods.min.js"></script>
 
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="js/validation.js"></script>
   <script src="js/main.js"></script>
+
 
 </body>
 

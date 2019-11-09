@@ -96,7 +96,16 @@
                     </div>
 
                     <div class="card-body pt-3">
-                        <a data-toggle="modal" data-target="#modalModifSuelo" class="close">
+                        <a data-toggle="modal" data-target="<?php 
+                            if($_POST['get_tipo_suelo'] == 'artificial'){
+                                echo '#modalModifSueloArt';
+                            }else{
+                                echo '#modalModifSueloNat';
+                            }
+                               
+                            
+                        
+                        ?>" class="close">
                             <img src="../../img/svg/edit-24px.svg"class="mb-2" alt="">
                         </a>
                         <a data-toggle="modal" data-target="#modalSuelo" class="text-success text-left text-decoration-none" href="#">Ver informacion
@@ -107,35 +116,12 @@
                 </div>      
             </div>
 
-            <div class="col-md-4 col-sm-12 pb-4">  
-                <div class="card bg-light p-1 shadow p-0 mb-0 bg-light" style="Border-Radius: 10px;"> 
-                    <div class="card-header bg-light">
-                        <img src="../../img/svg/plant-sample.svg" style="height:35px" class="mb-2" alt="">
-                        <a href="" data-toggle="modal" data-target="#modalEliminar">
-                            <button type="button" class="close"><span>&times</span></button>
-                        </a>
-                        <br>
-                        <h4>Datos de agroquímico</h4>
-                    </div>
-
-                    <div class="card-body pt-3">
-                        <a data-toggle="modal" data-target="#modalModifCultivo" class="close">
-                            <img src="../../img/svg/edit-24px.svg"class="mb-2" alt="">
-                        </a>
-                        <a data-toggle="modal" data-target="#modalAgro" class="text-success text-left text-decoration-none" href="#">Ver informacion
-
-                        </a>
-                    </div>
-                          
-                </div>      
-            </div>
-
             <?php
                 if(isset($_POST['get_id_cultivo'])){
-                    echo $_POST['get_id_cultivo'];
-                    echo $_POST['get_tipo_suelo'];
-                    
-                    $data->getAgroViewByID($_POST['get_id_cultivo'])[0];
+         
+                    $data->getCardAgro($_POST['get_id_cultivo']);
+                    $_POST['get_id_cultivo'];
+                    $_POST['get_tipo_suelo'];
                 }else{
                     header('Location: dashboard.php');
                 }
@@ -173,7 +159,7 @@
 
     <!---Modal de cultivo-->
     <div class="modal fade" id="modalDatos" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog ">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">
@@ -301,7 +287,7 @@
                                         
     <!---Modal de suelo-->
     <div class="modal fade" id="modalSuelo" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog ">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">
@@ -342,125 +328,9 @@
         </div>
     </div>
                                        
-    <!---Modal de agro-->
-    <div class="modal fade" id="modalAgro" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">
-                        <?php
-                        print_r($data->getAgroViewByID($_POST['get_id_cultivo'])[0]);
-                        ?>
-                    </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <p class="lead">Nombre comercial</p>
-                            <p class="text-muted">
-                                <?php
-                                print_r($data->getAgroViewByID($_POST['get_id_cultivo'])[1]);
-                                ?>
-                            </p>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <p class="lead">Precio</p>
-                            <p class="text-muted">
-                                <?php
-                                print_r($data->getAgroViewByID($_POST['get_id_cultivo'])[2]);
-                                ?>
-                            </p>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <p class="lead">Moneda</p>
-                            <p class="text-muted">
-                                <?php
-                                print_r($data->getAgroViewByID($_POST['get_id_cultivo'])[3]);
-                                ?>
-                            </p>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <p class="lead">Cantidad</p>
-                            <p class="text-muted">
-                                <?php
-                                print_r($data->getAgroViewByID($_POST['get_id_cultivo'])[4]);
-                                ?>
-                            </p>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <p class="lead">Unidad</p>
-                            <p class="text-muted">
-                                <?php
-                                print_r($data->getAgroViewByID($_POST['get_id_cultivo'])[5]);
-                                ?>
-                            </p>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <p class="lead">Fecha Inicio</p>
-                            <p class="text-muted">
-                                <?php
-                                $fecha = $data->getAgroViewByID($_POST['get_id_cultivo'])[6];
-                                $niu_fecha = explode("-", $fecha);
-
-                                $month = array(
-                                    'Enero',
-                                    'Febrero',
-                                    'Marzo',
-                                    'Abril',
-                                    'Mayo',
-                                    'Junio',
-                                    'Julio',
-                                    'Agosto',
-                                    'Septiembre',
-                                    'Octubre',
-                                    'Noviembre',
-                                    'Diciembre');
-
-                                print_r($niu_fecha[2] . " de " . $month[$niu_fecha[1] - 1] . " de " . $niu_fecha[0]);
-                                ?>
-                            </p>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <p class="lead">Fecha Fin</p>
-                            <p class="text-muted">
-                                <?php
-                                $fechaa = $data->getAgroViewByID($_POST['get_id_cultivo'])[7];
-                                $niu_fechaa = explode("-", $fechaa);
-
-                                $month = array(
-                                    'Enero',
-                                    'Febrero',
-                                    'Marzo',
-                                    'Abril',
-                                    'Mayo',
-                                    'Junio',
-                                    'Julio',
-                                    'Agosto',
-                                    'Septiembre',
-                                    'Octubre',
-                                    'Noviembre',
-                                    'Diciembre');
-
-                                print_r($niu_fechaa[2] . " de " . $month[$niu_fechaa[1] - 1] . " de " . $niu_fechaa[0]);
-                                ?>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!--Modal modifiacr cultivo--> 
     <div class="modal fade" id="modalModifCultivo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">
@@ -496,25 +366,26 @@
                             <div class="col-lg-6 col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label for="inputSpecie">Tipo de especie</label>
-                                    <select name="specieType" class="form-control" id="inputSpecie" value="<?php 
-                                        print_r($data->getViewCropByID($_POST['get_id_cultivo'])[2]);
-                                    ?>">
+                                    <select name="specieType" class="form-control" id="inputSpecie">
+                                  
                                         <option disabled>Selecciona una especie</option>
-                                        <?php 
-                                            $data->getSpecie();
+                                        
+                                        <?php
+                                            //echo '<option value="'. $data->getViewCropByID($_POST["get_id_cultivo"])[2] .'" selected ></option>' ;
+                                            $data->getSpecie($data->getViewCropByID($_POST["get_id_cultivo"])[2]);
+                                            
                                         ?>
                                     </select>
+                                    
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label for="inputSubspecie">Subespecie</label>
-                                    <select name="subspecie" class="form-control" id="inputSubspecie"value="<?php 
-                                        print_r($data->getViewCropByID($_POST['get_id_cultivo'])[3]);
-                                    ?>">
+                                    <select name="subspecie" class="form-control" id="inputSubspecie">
                                         <option disabled>Selecciona una subespecie</option>
                                         <?php 
-                                            $data->getSubspecie();
+                                            $data->getSubspecie($data->getViewCropByID($_POST['get_id_cultivo'])[3]);
                                         ?>
                                     </select>
                                 </div>
@@ -587,25 +458,295 @@
         </div>
     </div>
 
-    
 
-    <!--Modal modifiacr suelo--> 
-    <div class="modal fade" id="modalModifSuelo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+    <!--Modal modifiacr suelo artificial--> 
+    <div class="modal fade" id="modalModifSueloArt" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">
-                        Modificar cultivo
+                        Modificar suelo artificial
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <?php
-                        $data->getGroundForm($_POST['get_id_cultivo'], $_POST['get_tipo_suelo']);
-                        
-                    ?>
+                <form action="" method="post">
+                    <input type="text" name="inputID_Cultivo" id="id_cultivo" value="
+                        <?php 
+                            print_r($data->getViewCropByID($_POST['get_id_cultivo'])[11]);
+                        ?>" style="display: none;">
+                    <input type="text" name ="inputID_suelo_art" style="display: none;" value="
+                        <?php 
+                            print_r($data->getGroundViewByID($_POST['get_id_cultivo'])[3]);
+                        ?>
+                    ">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label for="inputSustrato">Sustrato</label>
+                                <select class="form-control" id="inputSustrato" name="inputSustrato">
+                                    <option disabled>Seleccione un sustrato</option>
+                                    <?php
+                                    $data->getSubstract($data->getGroundViewByID($_POST['get_id_cultivo'])[0]);
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label for="inputInfra">Infraestructura</label>
+                                <select class="form-control" id="inputInfra" name="inputInfra">
+                                    <option disabled>Seleccione la Infraestructura</option>
+                                    <?php
+                                    $data->getInfrastucture($data->getGroundViewByID($_POST['get_id_cultivo'])[1]);
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label for="inputWatering">Riego</label>
+                                <select class="form-control" id="inputWatering" name="inputWatering">
+                                    <option disabled>Seleccione el riego</option>
+                                    <?php
+                                    $data->getWatering($data->getGroundViewByID($_POST['get_id_cultivo'])[2]);
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        <button name="modifGroundArt" type="submit" class="btn btn-success">Aceptar</button>
+                    </div>
+                </form>
+                </div>
+                
+            </div>
+        </div>
+    </div> 
+    
+    <!--Modal modifiacr suelo natural--> 
+    <div class="modal fade" id="modalModifSueloNat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        Modificar suelo natural
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                <form action="" method="POST">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <input type="text" name="inputID_Cultivo" id="id_cultivo" value="
+                                    <?php 
+                                        print_r($data->getViewCropByID($_POST['get_id_cultivo'])[11]);
+                                    ?>" style="display: none;">
+                                <input type="text" name ="inputID_suelo_nat" style="display: none;" value="
+                                    <?php 
+                                        print_r($data->getGroundViewByID($_POST['get_id_cultivo'])[18]);
+                                    ?>
+                                ">
+                                <label for="inputType">Tipo</label>
+                                <select class="form-control" id="inputType" name="inputType">
+                                    <option disabled>Elige un suelo</option>
+                                    <?php
+                                    $data->getGroundType($data->getGroundViewByID($_POST['get_id_cultivo'])[0]);
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label for="inputInfra">Infraestructura</label>
+                                <select class="form-control" id="inputInfra" name="inputInfra">
+                                    <option disabled>Elige una infraestructura</option>
+                                    <?php
+                                    $data->getInfrastucture($data->getGroundViewByID($_POST['get_id_cultivo'])[1]);
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label for="inputWatering">Riego</label>
+                                <select class="form-control" id="inputWatering" name="inputWatering">
+                                    <option disabled>Elige una infraestructura</option>
+                                    <?php
+                                    $data->getWatering($data->getGroundViewByID($_POST['get_id_cultivo'])[2]);
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label for="inputPH">PH</label>
+                                <input type="number" class="form-control" id="inputPH" name="inputPH"  min="0" max="14" value = 
+                                    <?php 
+                                        print_r($data->getGroundViewByID($_POST['get_id_cultivo'])[3]);
+                                    ?>
+                                >
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label for="inputSalinity">Salinidad</label>
+                                <input type="number" class="form-control" id="inputSalinity" name="inputSalinity"  min="0" value = 
+                                    <?php 
+                                        print_r($data->getGroundViewByID($_POST['get_id_cultivo'])[4]);
+                                    ?>
+                                >
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label for="inputConduc">Conductividad eléctrica</label>
+                                <input type="number" class="form-control" id="inputConduc" name="inputConduc" value = 
+                                    <?php 
+                                        print_r($data->getGroundViewByID($_POST['get_id_cultivo'])[5]);
+                                    ?>
+                                >
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container" style="margin-top: 20px; margin-bottom: 40px; ">
+                    <h3 class="modal-title text-muted text-center" id="exampleModalScrollableTitle">Nutrición</h3>
+                    </div> 
+                    <div class="row mt-4">
+                        <div class="col-md-6 col-lg-6 col-sm-12">
+                            <label for="rangeOrganic">Materia orgánica</label>
+                            <input type="range" class="custom-range" min="0" max="100" step="1" autocomplete="off" id="rangeOrganic" name="rangeOrganic" value = 
+                                    <?php 
+                                        print_r($data->getGroundViewByID($_POST['get_id_cultivo'])[6]);
+                                    ?>
+                                >
+                            <div id="etiqueta1" class="etiqueta col-lg-12 col-sm-12 text-center"></div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-6 col-sm-12">
+                            <label for="rangeZinc">Zinc</label>
+                            <input type="range" class="custom-range" min="0"  max="100" step="1" id="rangeZinc" name="rangeZinc" value = 
+                                    <?php 
+                                        print_r($data->getGroundViewByID($_POST['get_id_cultivo'])[7]);
+                                    ?>
+                                >
+                            <div id="etiqueta2" class="etiqueta col-lg-12 col-sm-12 text-center"></div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-6 col-sm-12">
+                            <label for="rangeNitrates">Nitrátos</label>
+                            <input type="range" class="custom-range " min="0"  max="100" step="1" id="rangeNitrates" name="rangeNitrates" value = 
+                                    <?php 
+                                        print_r($data->getGroundViewByID($_POST['get_id_cultivo'])[8]);
+                                    ?>
+                                >
+                            <div id="etiqueta3" class="etiqueta col-lg-12 col-sm-12 text-center"></div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-6 col-sm-12">
+                            <label for="rangePhosphor">Fósforo</label>
+                            <input type="range" class="custom-range " min="0"  max="100" step="1" id="rangePhosphor" name="rangePhosphor" value = 
+                                    <?php 
+                                        print_r($data->getGroundViewByID($_POST['get_id_cultivo'])[9]);
+                                    ?>
+                                >
+                            <div id="etiqueta4" class="etiqueta col-lg-12 col-sm-12 text-center"></div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-6 col-sm-12">
+                            <label for="rangePota">Potasio</label>
+                            <input type="range" class="custom-range " min="0"  max="100" step="1" id="rangePota" name="rangePota" value = 
+                                    <?php 
+                                        print_r($data->getGroundViewByID($_POST['get_id_cultivo'])[10]);
+                                    ?>
+                                >
+                            <div id="etiqueta5" class="etiqueta col-lg-12 col-sm-12 text-center"></div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-6 col-sm-12">
+                            <label for="rangeMang">Manganeso</label>
+                            <input type="range" class="custom-range " min="0"  max="100" step="1" id="rangeMang" name="rangeMang" value = 
+                                    <?php 
+                                        print_r($data->getGroundViewByID($_POST['get_id_cultivo'])[11]);
+                                    ?>
+                                >
+                            <div id="etiqueta6" class="etiqueta col-lg-12 col-sm-12 text-center"></div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-6 col-sm-12">
+                            <label for="rangeCalc">Calcio</label>
+                            <input type="range" class="custom-range " min="0" max="100" step="1" id="rangeCalc" name="rangeCalc" value = 
+                                    <?php 
+                                        print_r($data->getGroundViewByID($_POST['get_id_cultivo'])[12]);
+                                    ?>
+                                >
+                            <div id="etiqueta7" class="etiqueta col-lg-12 col-sm-12 text-center"></div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-6 col-sm-12">
+                            <label for="rangeCopper">Cobre</label>
+                            <input type="range" class="custom-range " min="0" max="100" step="1" id="rangeCopper" name="rangeCopper" value = 
+                                    <?php 
+                                        print_r($data->getGroundViewByID($_POST['get_id_cultivo'])[13]);
+                                    ?>
+                                >
+                            <div id="etiqueta8" class="etiqueta col-lg-12 col-sm-12 text-center"></div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-6 col-sm-12">
+                            <label for="rangeAz">Óxido de azufre</label>
+                            <input type="range" class="custom-range " min="0" max="100" step="1" id="rangeAz" name="rangeAz" value = 
+                                    <?php 
+                                        print_r($data->getGroundViewByID($_POST['get_id_cultivo'])[14]);
+                                    ?>
+                                >
+                            <div id="etiqueta9" class="etiqueta col-lg-12 col-sm-12 text-center"></div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-6 col-sm-12">
+                            <label for="rangeBor">Boro</label>
+                            <input type="range" class="custom-range " min="0"  max="100" step="1" id="rangeBor" name="rangeBor" value = 
+                                    <?php 
+                                        print_r($data->getGroundViewByID($_POST['get_id_cultivo'])[15]);
+                                    ?>
+                                >
+                            <div id="etiqueta10" class="etiqueta col-lg-12 col-sm-12 text-center"></div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-6 col-sm-12">
+                            <label for="rangeMag">Magnesio</label>
+                            <input type="range" class="custom-range " min="0" max="100" step="1" id="rangeMag" name="rangeMag" value = 
+                                    <?php 
+                                        print_r($data->getGroundViewByID($_POST['get_id_cultivo'])[16]);
+                                    ?>
+                                >
+                            <div id="etiqueta11" class="etiqueta col-lg-12 col-sm-12 text-center"></div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-6 col-sm-12">
+                            <label for="rangeOxygen">Oxígeno</label>
+                            <input type="range" class="custom-range " min="0" max="100" step="1" id="rangeOxygen" name="rangeOxygen" value = 
+                                    <?php 
+                                        print_r($data->getGroundViewByID($_POST['get_id_cultivo'])[17]);
+                                    ?>
+                                >
+                            <div id="etiqueta12" class="etiqueta col-lg-12 col-sm-12 text-center"></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        <button name="modifGroundNat" type="submit" class="btn btn-success">Aceptar</button>
+                    </div>
+                </form>
                 </div>
                 
             </div>
@@ -627,6 +768,67 @@
 
             $data->modifyCrop($id_cultivo, $nombre_predio, $hectareas, $tipo_especie, $subspecie, $variedad, $fecha_inicio, $estado, $municipio, $localidad);
         }
-
         
+        if (isset($_POST['modifGroundNat'])){
+            $id_cultivo = $_POST['inputID_Cultivo'];
+            $id_suelo_natural = $_POST['inputID_suelo_nat'];
+            $tipo_suelo = $_POST['inputType'];
+            $infraestructura = $_POST['inputInfra'];
+            $riego = $_POST['inputWatering'];
+            $ph = $_POST['inputPH'];
+            $salinidad = $_POST['inputSalinity'];
+            $conduc_elec = $_POST['inputConduc'];
+            $materia_organica = $_POST['rangeOrganic'];
+            $zinc = $_POST['rangeZinc'];
+            $nitratos = $_POST['rangeNitrates'];
+            $fosforo = $_POST['rangePhosphor'];
+            $potasio = $_POST['rangePota'];
+            $manganeso = $_POST['rangeMang'];
+            $calcio = $_POST['rangeCalc'];
+            $cobre = $_POST['rangeCopper'];
+            $oxido_azufre = $_POST['rangeAz'];
+            $boro = $_POST['rangeBor'];
+            $magnesio = $_POST['rangeMag'];
+            $oxigeno = $_POST['rangeOxygen'];
+
+            $data->modifyNaturalGround($id_cultivo, $id_suelo_natural, $tipo_suelo, $infraestructura, $riego, $ph, $salinidad, $conduc_elec, $materia_organica, $zinc, $nitratos, $fosforo, $potasio, $manganeso, $calcio, $cobre, $oxido_azufre, $boro, $magnesio, $oxigeno);
+        }
+
+        if (isset($_POST['modifGroundArt'])){
+            $id_cultivo = $_POST['inputID_Cultivo'];
+            $id_suelo_artificial = $_POST['inputID_suelo_art'];
+            $sustrato = $_POST['inputSustrato'];
+            $infraestructura = $_POST['inputInfra'];
+            $riego = $_POST['inputWatering'];
+
+            $data->modifyGroundArt($id_cultivo, $id_suelo_artificial, $sustrato, $infraestructura, $riego);
+        }
+
+        if (isset($_POST['modifAgro'])){
+            $id_cultivo = $_POST['input_id_cultivo'];
+            $id_agroquimico = $_POST['input_id_agroquimico'];
+            $origen = $_POST['origin'];
+            $nombre_comercial = $_POST['name_agroq'];
+            $precio = $_POST['precio'];
+            $moneda = $_POST['moneda'];
+            $cantidad = $_POST['cantidad'];
+            $unidad = $_POST['unidad'];
+            $dosis = $_POST['dosis'];
+            $tiempo = $_POST['tiempo'];
+            $frecuencia = $_POST['frecuencia'];
+            $fecha_inicio = $_POST['fecha_inicio'];
+            $fecha_fin = $_POST['fecha_fin'];
+            $existencia = $_POST['existencia'];
+
+            if ($origen == "Enfermedad") {
+                $tipo_causa = $_POST['enfermedad'];
+            } else if ($origen == "Plaga") {
+                $tipo_causa = $_POST['plaga'];
+            } else {
+                $tipo_causa = $_POST['nutricion'];
+            }
+            
+
+            $data->modifyAgro($id_cultivo, $id_agroquimico, $origen, $nombre_comercial, $precio, $moneda, $cantidad, $unidad, $dosis, $tiempo, $tipo_causa, $frecuencia, $fecha_inicio, $fecha_fin, $existencia);
+        }
    ?>

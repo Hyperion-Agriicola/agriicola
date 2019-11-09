@@ -56,9 +56,9 @@
                 <div class="form-group">
                     <label for="inputAplicacion">Aplicación</label>
                     <select class="form-control" id="inputAplicacion" name="origin">
-                        <option value="nutriente">Nutriente</option>
-                        <option value="enfermedad">Enfermedad</option>
-                        <option value="plaga">Plaga</option>
+                        <option value="Nutriente">Nutriente</option>
+                        <option value="Enfermedad">Enfermedad</option>
+                        <option value="Plaga">Plaga</option>
                     </select>
                 </div>
             </div>
@@ -139,7 +139,7 @@
                         <select class="form-control" name="enfermedad">
                             <option disabled>Elige una enfermedad</option>
                             <?php 
-                                $data->getDiseases();
+                                $data->getDiseases("");
                             ?>
                         </select>
                     </div>
@@ -149,7 +149,7 @@
                         <select class="form-control" name="plaga">
                             <option disabled>Selecciona una plaga</option>
                             <?php
-                                $data->getBugs();
+                                $data->getBugs("");
                             ?>
                         </select>
                     </div>

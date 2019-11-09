@@ -27,7 +27,7 @@
 
         $conexion = new Database();
 
-        $name = $_POST['name'];
+        $name = $_POST['namecrop'];
         $hectares = $_POST['hectares'];
         $subspecie = $_POST['subspecie'];
         $specieType = $_POST['specieType'];
@@ -73,12 +73,12 @@
         <span class="col-sm-2 col-md-3 col-lg-3"></span>
     </div>
 
-    <form action="" method="post">
+    <form id="crop" action="" method="post">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
                     <label for="inputName">Nombre predio</label>
-                    <input type="text" class="form-control" id="inputName" name="name" placeholder="Maiz">
+                    <input type="text" class="form-control" id="inputName" name="namecrop" placeholder="Maiz">
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
@@ -94,7 +94,7 @@
                     <select name="specieType" class="form-control" id="inputSpecie">
                         <option disabled>Selecciona una especie</option>
                         <?php 
-                            $data->getSpecie();
+                            $data->getSpecie("");
                         ?>
                     </select>
                 </div>
@@ -106,7 +106,7 @@
                     <select name="subspecie" class="form-control" id="inputSubspecie">
                         <option disabled>Selecciona una subespecie</option>
                         <?php 
-                            $data->getSubspecie();
+                            $data->getSubspecie("");
                         ?>
                     </select>
                 </div>

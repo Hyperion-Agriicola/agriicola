@@ -28,35 +28,55 @@
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
                     <label for="inputName">Nombre</label>
-                    <input type="text" class="form-control" id="inputName" name="Nombre" placeholder="">
+                    <input type="text" class="form-control" id="inputName" name="Nombre"  value = "
+                        <?php 
+                            print_r($data->getUserData()[0]);
+                        ?>
+                    ">
                 </div>
             </div>
 
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
                     <label for="inputApellido">Apellidos</label>
-                    <input type="text" class="form-control" id="inputApellido" name="Apellido" placeholder="">
+                    <input type="text" class="form-control" id="inputApellido" name="Apellido" value = "
+                        <?php 
+                            print_r($data->getUserData()[1]);
+                        ?>
+                    ">
                 </div>
             </div>
 
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
                     <label for="inputEmail">Correo electrónico</label>
-                    <input type="text" class="form-control" id="inputEmail" name="Email" placeholder="">
+                    <input type="text" class="form-control" id="inputEmail" name="Email" value = "
+                        <?php 
+                            print_r($data->getUserData()[3]);
+                        ?>
+                    ">
                 </div>
             </div>
 
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
-                    <label for="inputApellido">Apellidos</label>
-                    <input type="text" class="form-control" id="inputApellido" name="Apellido" placeholder="">
+                    <label for="inputEmpresa">Empresa</label>
+                    <input type="text" class="form-control" id="inputEmpresa" name="Empresa" value = "
+                        <?php 
+                            print_r($data->getUserData()[5]);
+                        ?>
+                    ">
                 </div>
             </div>
 
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
                     <label for="inputTelefono">Teléfono</label>
-                    <input type="text" class="form-control" id="inputTelefono" name="Telefono" placeholder="">
+                    <input type="text" class="form-control" id="inputTelefono" name="Telefono" value = "
+                        <?php 
+                            print_r($data->getUserData()[2]);
+                        ?>
+                    ">
                 </div>
             </div>
 
@@ -67,11 +87,10 @@
                 </div>
             </div>
         </div>
+        <div class="text-center pt-3">
+            <button type="submit" class="btn btn-success"  style="width:230px;"><i class="fas fa-save"></i> Guardar</a>
+            </button>
     </form>
 </main>
-<div class="text-center pt-3">
-    <a href="agro.php" class="btn btn-success" role="button" style="width:230px;"><i class="fas fa-save"></i> Guardar</a>
-</div>
-<?php
-include('footer.php');
-?>
+
+

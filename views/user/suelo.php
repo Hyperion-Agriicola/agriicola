@@ -58,7 +58,7 @@
                     <select class="form-control" id="inputType" name="inputType">
                         <option disabled>Elige un suelo</option>
                         <?php
-                        $data->getGroundType();
+                        $data->getGroundType("");
                         ?>
                     </select>
                 </div>
@@ -69,7 +69,7 @@
                     <select class="form-control" id="inputInfra" name="inputInfra">
                         <option disabled>Elige una infraestructura</option>
                         <?php
-                        $data->getInfrastucture();
+                        $data->getInfrastucture("");
                         ?>
                     </select>
                 </div>
@@ -80,7 +80,7 @@
                     <select class="form-control" id="inputWatering" name="inputWatering">
                         <option disabled>Elige una infraestructura</option>
                         <?php
-                        $data->getWatering();
+                        $data->getWatering("");
                         ?>
                     </select>
                 </div>
