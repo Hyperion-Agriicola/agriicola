@@ -385,13 +385,40 @@ class Functions
         }
     }
 
+    public function deleteCultivos($id_cultivo_recibido)
+    {
+        $conexion = new Database();
+        $sql="UPDATE agroquimicos SET estatus='eliminado' WHERE id_cultivo=".$id_cultivo_recibido;
+        $result = $conexion->query($sql);
+
+        $sql="UPDATE suelo_natural SET estatus='eliminado' WHERE id_cultivo=".$id_cultivo_recibido;
+        $result = $conexion->query($sql);
+
+        $sql="UPDATE suelo_artificial SET estatus='eliminado' WHERE id_cultivo=".$id_cultivo_recibido;
+        $result = $conexion->query($sql);
+
+        $sql="UPDATE gastos SET estatus='eliminado' WHERE id_cultivo=".$id_cultivo_recibido;
+        $result = $conexion->query($sql);
+
+        $sql="UPDATE cultivos SET estatus='eliminado' WHERE id_cultivo=".$id_cultivo_recibido;
+        $result = $conexion->query($sql);
+    }
+
+
+    public function deleteAgroquimicos($id_agro_recibido)
+    {
+        $conexion = new Database();
+        $sql="UPDATE agroquimicos SET estatus='eliminado' WHERE id_agroquimico=".$id_agro_recibido;
+        $result = $conexion->query($sql);
+    }
+
     //Devuelve las CARDS de cada cultivo, posteando el id de cultivo con un formulario oculto
     public function getCropByID()
     {
         $conexion = new Database();
         $email = $_SESSION['correo'];
 
-        $query = "SELECT * FROM cultivos WHERE id_u = (SELECT id_u FROM users WHERE correo = '$email')";
+        $query = "SELECT * FROM cultivos WHERE id_u = (SELECT id_u FROM users WHERE correo = '$email') AND estatus!='eliminado'";
         $execQuery = $conexion->query($query);
         if (mysqli_num_rows($execQuery) > 0) {
             while ($row = $execQuery->fetch_array()) {
@@ -420,7 +447,9 @@ class Functions
                         
                             <div class="card-header bg-white">
                                 ' . $niu_fechaa[2] . " de " . $month[$niu_fechaa[1] - 1] . " de " . $niu_fechaa[0] . '
-                                <a href="" data-toggle="modal" data-target="#modalEliminar">
+                                
+                                
+                                <a href="" data-toggle="modal" data-target="#modalEliminar'.$row["id_cultivo"].'">
                                     <img src="../../img/svg/close-24px.svg" class="close" alt="">
                                 </a>    
                                 
@@ -445,6 +474,30 @@ class Functions
                          </a>
                     </div>
                 </div>
+                <!--Modal eliminar-->
+                <div class="modal fade" id="modalEliminar'.$row["id_cultivo"].'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Advertencia</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                ¿Está seguro de eliminar este cultivo? Tome en cuenta que ésta acción es irreversible.
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                <a href="dashboard.php?cultivo='.$row['id_cultivo'].'" class="btn btn-success" role="button" aria-disabled="true">Aceptar</a>
+                           
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
                 ';
             }
         } else {
@@ -776,7 +829,7 @@ class Functions
 
         $conexion = new Database();
         
-        $query = "SELECT * FROM agroquimicos WHERE id_cultivo = '$id_cultivo'";
+        $query = "SELECT * FROM agroquimicos WHERE id_cultivo = '$id_cultivo' AND estatus !='eliminado'";
         $execQuery = $conexion->query($query);
 
         if (mysqli_num_rows($execQuery) > 0) {
@@ -886,7 +939,7 @@ class Functions
                         <div class="card bg-light p-1 shadow p-0 mb-0 bg-light" style="Border-Radius: 10px;"> 
                             <div class="card-header bg-light">
                                 <img src="../../img/svg/plant-sample.svg" style="height:35px" class="mb-2" alt="">
-                                <a href="" data-toggle="modal" data-target="#modalEliminar">
+                                <a href="" data-toggle="modal" data-target="#modalEliminar'.$row['id_agroquimico'].'">
                                     <button type="button" class="close"><span>&times</span></button>
                                 </a>
                                 <br>
@@ -1131,6 +1184,28 @@ class Functions
                             </div>
                         </div>
                     </div>    
+
+                    <!--Modal eliminar--> 
+                    <div class="modal fade" id="modalEliminar'.$row['id_agroquimico'].'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">¡Atención!</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    ¿Estas seguro de eliminar este agroquímico?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                    <a href="dashboard.php?eliminarAgro='.$row['id_agroquimico'].'" class="btn btn-success" role="button" aria-disabled="true">Aceptar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 ';
                 
             }
