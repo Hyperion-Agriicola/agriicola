@@ -88,24 +88,44 @@
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
                     <label for="inputPH">PH</label>
-                    <input type="number" class="form-control" id="inputPH" name="inputPH"  min="0" max="14">
+                    <!-- <input type="number" class="form-control" id="inputPH" name="inputPH"  min="0" max="14"> -->
+                    <select class="form-control" name="inputPH" id="inputPH" required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    </select>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
-                    <label for="inputSalinity">Salinidad</label>
-                    <input type="number" class="form-control" id="inputSalinity" name="inputSalinity"  min="0">
+                    <label for="inputSalinity">Salinidad
+                        <i class="icon-grey-color fas fa-question-circle"
+                            data-toggle="tooltip" data-placement="top" title="Selecciona un número con las flechas de la derecha o escríbelo"></i>
+                    </label>
+                    <input placeholder="..." type="number" class="form-control" id="inputSalinity" name="inputSalinity"  min="0" required>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
-                    <label for="inputConduc">Conductividad eléctrica</label>
-                    <input type="number" class="form-control" id="inputConduc" name="inputConduc" min="0">
+                    <label for="inputConduc">Conductividad eléctrica
+                        <i class="icon-grey-color fas fa-question-circle"
+                                data-toggle="tooltip" data-placement="top" title="Selecciona un número con las flechas de la derecha o escríbelo"></i>
+                    </label>
+                    <input placeholder="..." type="number" class="form-control" id="inputConduc" name="inputConduc" min="0" required>
                 </div>
             </div>
         </div>
         <div class="container" style="margin-top: 20px; margin-bottom: 40px; background-color: #388E3C;">
-        <h3 class="modal-title text-white text-center" id="exampleModalScrollableTitle">Nutrición</h3>
+        <h3 class="modal-title text-white text-center p-2" id="exampleModalScrollableTitle">Nutrición</h3>
         </div> 
         <div class="row mt-4">
             <div class="col-md-6 col-lg-6 col-sm-12">

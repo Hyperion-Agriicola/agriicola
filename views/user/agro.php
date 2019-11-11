@@ -71,8 +71,11 @@
 
             <div class="col-lg-3 col-md-3 col-sm-6">
                 <div class="form-group">
-                    <label for="inputPrecio">Precio</label>
-                    <input type="number" placeholder="700" class="form-control" id="inputPrecio" name="precio" min="0">
+                    <label for="inputPrecio">Precio
+                        <i class="icon-grey-color fas fa-question-circle"
+                                data-toggle="tooltip" data-placement="top" title="Selecciona un número con las flechas o escríbelo"></i>
+                    </label>
+                    <input type="number" min="0" placeholder="..." class="form-control" id="inputPrecio" name="precio">
                 </div>
             </div>
 
@@ -89,8 +92,11 @@
 
             <div class="col-lg-3 col-md-3 col-sm-6">
                 <div class="form-group">
-                    <label for="inputCantidad">Cantidad</label>
-                    <input type="number" placeholder="700" class="form-control" id="inputCantidad" name="cantidad" min="0">
+                    <label for="inputCantidad">Cantidad
+                        <i class="icon-grey-color fas fa-question-circle"
+                                    data-toggle="tooltip" data-placement="top" title="Selecciona un número con las flechas o escríbelo"></i>
+                    </label>
+                    <input type="number" min="0" placeholder="..." class="form-control" id="inputCantidad" name="cantidad">
                 </div>
             </div>
 
@@ -107,8 +113,11 @@
 
             <div class="col-lg-3 col-md-3 col-sm-6">
                 <div class="form-group">
-                    <label for="inputDosis">Dosis</label>
-                    <input type="number" placeholder="700" class="form-control" id="inputDosis" name="dosis" min="0">
+                    <label for="inputDosis">Dosis
+                        <i class="icon-grey-color fas fa-question-circle"
+                                    data-toggle="tooltip" data-placement="top" title="Selecciona un número con las flechas o escríbelo"></i>
+                    </label>
+                    <input type="number" min="0" placeholder="..." class="form-control" id="inputDosis" name="dosis">
                 </div>
             </div>
 
@@ -183,8 +192,11 @@
 
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
-                    <label for="inputExistencia">Existencia</label>
-                    <input type="number" placeholder=10 class="form-control" id="inputExistencia" name="existencia">
+                    <label for="inputExistencia">Existencia
+                        <i class="icon-grey-color fas fa-question-circle"
+                                    data-toggle="tooltip" data-placement="top" title="Selecciona un número con las flechas o escríbelo"></i>
+                    </label>
+                    <input type="number" min="0" placeholder="..." class="form-control" id="inputExistencia" name="existencia">
                 </div>
             </div>
 

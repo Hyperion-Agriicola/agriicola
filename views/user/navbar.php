@@ -1,6 +1,6 @@
 <!-- Main bar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm bg-white">
-    <a class="navbar-brand" href="dashboard.php">
+    <a id="imageBrand" class="navbar-brand" href="dashboard.php">
         <img src="../../img/agriicola_logo_alternativo.png" width="140" class="d-inline-block align-top" alt="">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -8,7 +8,8 @@
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
         <ul class="navbar-nav">
-            <li class="nav-item">
+            <!--
+                <li class="nav-item">
                 <div class="bg-light rounded border">
                     <div class="input-group">
                         <div class="input-group-prepend">
@@ -20,12 +21,13 @@
                     </div>
                 </div>
             </li>
+             -->
             <li class="nav-item">
-                <a class="nav-link active" href="noticias.php"><i class="fas fa-newspaper"></i>
+                <a id="showNews" class="nav-link active" href="noticias.php"><i class="fas fa-newspaper"></i>
                     <span>Noticias</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="#!"><i class="fas fa-question-circle"></i>
+                <a id="askForHelp" class="nav-link active" href="#!"><i class="fas fa-question-circle"></i>
                     <span>Ayuda</span></a>
             </li>
             <li class="nav-item">

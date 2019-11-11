@@ -19,6 +19,7 @@ if(!isset($_SESSION['correo'])){
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.11.0/css/bootstrap-tour-standalone.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../css/main.css">
     <link rel="stylesheet" href="../../css/animate.css">
@@ -85,7 +86,7 @@ if(!isset($_SESSION['correo'])){
                 <div class="container border-bottom border-success" style="margin-top: 60px; margin-bottom: 0px; border-bottom: 2px solid #388E3C!important;">
                 <div class="row mb-4">
                 <div class="col-lg-6">
-            <a href="dashboard.php?viewHistory" class="href text-decoration-none">
+            <a id="showHistory" href="dashboard.php?viewHistory" class="href text-decoration-none">
                 <button type="button" class="btn0 btn-light btn-block p-3 shadow mb-4 " style="font-size: 20px; text-align:center;">
                     <i class="fas fa-history float-left "></i>
                     Historial de cultivos
@@ -93,7 +94,7 @@ if(!isset($_SESSION['correo'])){
             </a>
                 </div>
                 <div class="col-lg-6">
-            <a href="dashboard.php?viewSpend" class="href text-decoration-none">
+            <a id="showOncost" href="dashboard.php?viewSpend" class="href text-decoration-none">
                 <button type="button" class="btn0 btn-light btn-block p-3 shadow mb-4" style="font-size: 20px; text-align:center; ">
                     <i class="fas fa-dollar-sign float-left "></i>
                     Gastos generales
@@ -107,7 +108,7 @@ if(!isset($_SESSION['correo'])){
             <h1 class="mt-4">Mis cultivos</h1>
         </div>
         <div class="row p-3">
-            <a href="dashboard.php?cultivos" class="btn btn-success ml-auto rounded-circle" role="button"
+            <a id="addNewCrop" href="dashboard.php?cultivos" class="btn btn-success ml-auto rounded-circle" role="button"
                 data-toggle="tooltip" data-placement="left" title="Agregar nuevo registro"><i
                     class="fas fa-plus"></i></a>
             <!-- Paste here your fuck code! -->
@@ -132,14 +133,15 @@ include('footer.php');
 ?>
 
     <script src="../../js/jquery-3.4.1.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>¡
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.1/jquery.validate.min.js"></script>
-  <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.1/additional-methods.min.js"></script>
-    
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.1/additional-methods.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.11.0/js/bootstrap-tour-standalone.min.js"></script>
     <script src="../../js/validation.js"></script>
     <script src="../../js/main.js"></script>
+    <script src="../../js/tour.js"></script>
 </body>
 
 </html>

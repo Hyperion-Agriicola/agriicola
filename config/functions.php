@@ -17,28 +17,46 @@ class Functions
         $userPass1,
         $userPass2
     ) {
-        $connection = new Database();
+        $conexion = new Database();
 
-        if ($userPass1 == $userPass2) {
-            $insert = "INSERT INTO users(nombre, apellido, telefono, correo, 
-            acceso, empresa, tipo_usuario, ciudad, estado, fecha_registro) VALUES ('$userName', '$userlastName', 
-            '$phoneNumber', '$userEmail', sha1('$userPass2'), '$userCompany', 'user', '$userCity', '$userState', now())";
+        $checkForEmail = "SELECT correo FROM users WHERE correo = '$userEmail'";
+        $emailResponse = $conexion->query($checkForEmail);
 
-            $result = mysqli_query($connection, $insert);
-
-            if ($result) {
-                session_start();
-                $_SESSION['correo'] = $userEmail;
-                header('Location: views/user/dashboard.php');
-            }
-        } else {
+        if(mysqli_num_rows($emailResponse) > 0){
             echo "
-            <div class='container mt-4'>
-                <div class='alert alert-danger' role='alert'>
-                    Las contraseñas no coinciden, intente de nuevo
-                </div>
-            </div>
-            ";
+                    <div class='container mt-4'>
+                        <div class='alert alert-danger' role='alert'>
+                            El correo que intentas registrar ya existe, intenta con otro
+                        </div>
+                    </div";
+                
+        }else{
+            $checkForPhone = "SELECT telefono FROM users WHERE telefono = '$phoneNumber'";
+            $phoneResponse = $conexion->query($checkForPhone);
+
+            if(mysqli_num_rows($phoneResponse) > 0){
+                echo "
+                <div class='container mt-4'>
+                    <div class='alert alert-danger' role='alert'>
+                        El teléfono que intentas ingresar ya existe, intenta con otro
+                    </div>
+                </div";
+            }else{
+                $upperUserName = ucwords($userName);
+                $upperUserLastName = ucwords($userlastName);
+
+                $insert = "INSERT INTO users(nombre, apellido, telefono, correo, 
+                acceso, empresa, tipo_usuario, ciudad, estado, fecha_registro) VALUES ('$upperUserName', '$upperUserLastName', 
+                '$phoneNumber', '$userEmail', sha1('$userPass2'), '$userCompany', 'user', '$userCity', '$userState', now())";
+
+                $result = mysqli_query($conexion, $insert);
+
+                if ($result) {
+                    session_start();
+                    $_SESSION['correo'] = $userEmail;
+                    header('Location: views/user/dashboard.php');
+                }
+            }
         }
     }
 
@@ -1215,31 +1233,26 @@ class Functions
 
     }
 
-    //Funcion obtner los datos del usuario
-    public function getUserData(){
+    //Funcion obtner los datos del usuario: Abraham
+    function getUserData(){
         $conexion = new Database();
         $userEmail = $_SESSION['correo'];
 
-        $query = "SELECT * FROM users WHERE correo = '$userEmail';";
-        $result = $conexion->query($query);
+        $query = "SELECT * FROM users WHERE correo = '$userEmail'";
+        $execQuery = $conexion->query($query);
+
         $resultSet = array();
-        if ($result) {
-
-            while ($row = $result->fetch_array()) {
-                $resultSet[0] = $row['nombre'];
-                $resultSet[1] = $row['apellido'];
-                $resultSet[2] = $row['telefono'];
-                $resultSet[3] = $row['correo'];
-                $resultSet[4] = $row['acceso'];
-                $resultSet[5] = $row['empresa'];
-                $resultSet[6] = $row['tipo_usuario'];
-                $resultSet[7] = $row['ciudad'];
-                $resultSet[8] = $row['estado'];
-                
-            }
-
-            return $resultSet;
+        while ($row = $execQuery->fetch_array()) {
+            $resultSet[0] = $row['id_u'];
+            $resultSet[1] = $row['nombre'];
+            $resultSet[2] = $row['apellido'];
+            $resultSet[3] = $row['telefono'];
+            $resultSet[4] = $row['empresa'];
+            $resultSet[5] = $row['ciudad'];
+            $resultSet[6] = $row['estado'];
         }
+
+        return $resultSet;
     }
 
     //Funciones para modificar: Ivan
@@ -1784,9 +1797,77 @@ class Functions
                 header("Location: dashboard.php?viewCropSpend");
                 
             }
-        
+    }
 
-        
+    
+    //Función editar usuario: Abraham
+    function updateUserData($userName, $userlastName, $phoneNumber, $userCity, $userState,
+    $userCompany, $currentPassword, $newPassword, $repeatPassword){
+
+        $conexion = new Database();
+        $userEmail = $_SESSION['correo'];
+
+        if(!empty($currentPassword)){
+            $checkForPasswordQuery = "SELECT acceso FROM users WHERE acceso = sha1('$currentPassword') 
+            AND correo = '$userEmail'";
+            $execPassQuery = $conexion->query($checkForPasswordQuery);
+
+            if(mysqli_num_rows($execPassQuery) > 0){
+                if($newPassword == $repeatPassword){
+                    $request = "UPDATE users SET nombre = '$userName', apellido = '$userlastName', 
+                    telefono = '$phoneNumber', acceso = sha1('$repeatPassword'), empresa = '$userCompany',
+                    ciudad = '$userCity', estado = '$userState', fecha_modif = now()
+                    WHERE correo = '$userEmail'";
+
+                    $response = $conexion->query($request) or trigger_error($conexion->error);
+
+                    if($response){
+                        echo "
+                        <div class='container mt-4'>
+                            <div class='alert alert-success' role='alert'>
+                                ¡Tus datos y tu contraseña han sido actualizados correctamente! 
+                                <a href='dashboard.php'>Volver al inicio</a>
+                            </div>
+                        </div>";
+                    }
+                }else{
+                    echo "
+                    <div class='container mt-4'>
+                        <div class='alert alert-danger' role='alert'>
+                            La contraseña nueva no coincide, inténtalo de nuevo
+                        </div>
+                    </div>";
+                }
+            }else{
+                echo "
+                    <div class='container mt-4'>
+                        <div class='alert alert-danger' role='alert'>
+                        Tu contraseña actual es incorrecta. <a href='#!'>Olvidé mi contraseña</a>
+                        </div>
+                    </div>
+                    ";
+            }
+        }else{
+            $upperUserName = ucwords($userName);
+            $upperUserLastName = ucwords($userlastName);
+
+            $request = "UPDATE users SET nombre = '$upperUserName', apellido = '$upperUserLastName', 
+                telefono = '$phoneNumber', empresa = '$userCompany',
+                ciudad = '$userCity', estado = '$userState', fecha_modif = now()
+                WHERE correo = '$userEmail'";
+
+                $response = $conexion->query($request) or trigger_error($conexion->error);
+
+                if($response){
+                    echo "
+                    <div class='container mt-4'>
+                        <div class='alert alert-success' role='alert'>
+                            ¡Tus datos han sido actualizados correctamente! 
+                            <a href='dashboard.php'>Volver al inicio</a>
+                        </div>
+                    </div";
+                }
+        }
     }
 }
 

@@ -52,7 +52,7 @@
                     <input type="password" class="form-control" id="password" name="pass" placeholder="******">
                     <span id="pass1"></span>
                     <p class="text-center mt-2 mb-0" style="font-size: 14px;">
-                      <span>¿Haz olvidado tu contraseña?</span>
+                      <span>¿Has olvidado tu contraseña?</span>
                     </p>
 
                     <p class="text-center mb-2" style="font-size: 14px;">
@@ -65,7 +65,7 @@
                         Iniciar sesión
                       </button>
 
-                      <button type="button" id="create_account" class="btn btn-block text-white mt-3" style="background: #B59B7B;">
+                      <button type="button" id="create_account" class="brown-button btn btn-block text-white mt-3">
                         Regístrate
                       </button>
                   </div>
@@ -112,7 +112,7 @@
             <div class="row mt-1">
               <div class="col-12 col-sm-12 col-md-6">
                 <label for="phone">Teléfono:</label>
-                <input type="tel" class="form-control" placeholder="0000000000" id="phone" name="phoneNumber" required>
+                <input type="tel" class="form-control" placeholder="1122334455" id="phone" name="phoneNumber" required>
               </div>
               <div class="col-12 col-sm-12 col-md-6">
                 <label for="email">Correo electrónico:</label>
@@ -155,7 +155,7 @@
               <div class="col-12 col-sm-10 col-6 col-md-6 mt-4">
                 <button type="submit" name="registerUser" class="btn btn-success btn-lg btn-block" style="background: #228B22;">Registrarme</button>
 
-                <a type="button"id="create_account" class="btn btn-block btn-lg text-white mt-3" style="background: #B59B7B;">
+                <a href="index.php" class="brown-button btn btn-block btn-lg text-white mt-3">
                         Iniciar sesión
                 </a>
               </div>

@@ -77,14 +77,20 @@
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
-                    <label for="inputName">Nombre predio</label>
+                    <label for="inputName">Nombre predio
+                        <i class="icon-grey-color fas fa-question-circle"
+                            data-toggle="tooltip" data-placement="top" title="Este es el nombre para tu cultivo, ej. Tomate"></i>
+                    </label>
                     <input type="text" class="form-control" id="inputName" name="namecrop" placeholder="Predio La Joya">
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
-                    <label for="inputHectare">Hectáreas</label>
-                    <input type="number" placeholder="1" class="form-control" id="inputHectare" name="hectares" min="1">
+                    <label for="inputHectare">Hectáreas
+                        <i class="icon-grey-color fas fa-question-circle"
+                                data-toggle="tooltip" data-placement="top" title="Selecciona un número con las flechas de la derecha o escríbelo"></i>
+                    </label>
+                    <input type="number" placeholder="..." class="form-control" id="inputHectare" name="hectares" min="1">
                 </div>
             </div>
 
@@ -114,13 +120,19 @@
             
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
-                    <label for="inputVariation">Variedad</label>
+                    <label for="inputVariation">Variedad
+                        <i class="icon-grey-color fas fa-question-circle"
+                                data-toggle="tooltip" data-placement="top" title="¿Qué tipo de cultivo es? Ej. Cherry"></i>
+                    </label>
                     <input type="text" name="variation" class="form-control" id="inputVariation" placeholder="Variedad del cultivo">
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
-                    <label for="inputDate">Fecha de inicio</label>
+                    <label for="inputDate">Fecha de inicio
+                        <i class="icon-grey-color fas fa-question-circle"
+                                data-toggle="tooltip" data-placement="top" title="¿Qué día comienza el cultivo oficialmente?"></i>
+                    </label>
                     <input type="date" class="form-control" id="inputDate" name="bornDate" >
                 </div>
             </div>
