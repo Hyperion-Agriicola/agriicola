@@ -73,7 +73,7 @@
         <span class="col-sm-2 col-md-3 col-lg-3"></span>
     </div>
 
-    <form id="crop" action="" method="post">
+    <form class="crop" action="" method="post">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">

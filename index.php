@@ -49,7 +49,7 @@
                   </div>
                   <div class="form-group">
                     <label for="password">Contraseña</label>
-                    <input type="password" class="form-control" maxlength="6" id="password" name="pass" placeholder="******">
+                    <input type="password" class="form-control" id="password" name="pass" placeholder="******">
                     <span id="pass1"></span>
                     <p class="text-center mt-2 mb-0" style="font-size: 14px;">
                       <span>¿Haz olvidado tu contraseña?</span>
@@ -98,7 +98,7 @@
       <div class="card col-12 col-sm-12 mt-4">
         <div class="card-body">
           <h1 class="text-center">Registrarme</h1>
-          <form id="registro" method="POST" action="" class="m-2">
+          <form class="registro" method="POST" action="" class="m-2">
             <div class="row mt-3">
               <div class="col-12 col-sm-12 col-md-6">
                 <label for="name">Nombre(s):</label>

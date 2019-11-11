@@ -3,8 +3,8 @@
             <div class="container text-center">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12">
-                        <a href="dashboard.php?viewCropSpend" type="button" class="close" >
-                            <img src="../../img/svg/close-24px.svg" class="close" alt="">
+                        <a href="dashboard.php?viewCropSpend"  class="close" >
+                        <i class="fas fa-times text-danger"></i>
                         </a>   
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12">
@@ -25,7 +25,7 @@
 
         <main class="container mt-4">
            
-            <form action="" method="POST">
+            <form id="reg_gasto" action="" method="POST">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12">
                         <div class="form-group">

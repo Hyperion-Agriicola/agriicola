@@ -1040,7 +1040,7 @@ class Functions
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="" method="POST">
+                                    <form class="reg_agro" action="" method="POST">
                                         <input name="input_id_cultivo" id="input_id_cultivo" value='.$row['id_cultivo'].' style="display: none;">
                                         <input name="input_id_agroquimico" id="input_id_agroquimico" value='.$row['id_agroquimico'].' style="display: none;">
                                         <div class="row">

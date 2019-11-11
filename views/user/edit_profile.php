@@ -23,12 +23,12 @@
 </header>
 
 <main class="container mt-4">
-    <form action="" method="post">
+    <form class="registro" action="" method="post">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
                     <label for="inputName">Nombre</label>
-                    <input type="text" class="form-control" id="inputName" name="Nombre"  value = "
+                    <input type="text" class="form-control" id="inputName" name="userName"  value = "
                         <?php 
                             print_r($data->getUserData()[0]);
                         ?>
@@ -39,7 +39,7 @@
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
                     <label for="inputApellido">Apellidos</label>
-                    <input type="text" class="form-control" id="inputApellido" name="Apellido" value = "
+                    <input type="text" class="form-control" id="inputApellido" name="userLastName" value = "
                         <?php 
                             print_r($data->getUserData()[1]);
                         ?>
@@ -50,7 +50,7 @@
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
                     <label for="inputEmail">Correo electrónico</label>
-                    <input type="text" class="form-control" id="inputEmail" name="Email" value = "
+                    <input type="text" class="form-control" id="inputEmail" name="userEmail" value = "
                         <?php 
                             print_r($data->getUserData()[3]);
                         ?>
@@ -61,7 +61,7 @@
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
                     <label for="inputEmpresa">Empresa</label>
-                    <input type="text" class="form-control" id="inputEmpresa" name="Empresa" value = "
+                    <input type="text" class="form-control" id="inputEmpresa" name="userCompany" value = "
                         <?php 
                             print_r($data->getUserData()[5]);
                         ?>
@@ -72,7 +72,7 @@
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
                     <label for="inputTelefono">Teléfono</label>
-                    <input type="text" class="form-control" id="inputTelefono" name="Telefono" value = "
+                    <input type="text" class="form-control" id="inputTelefono" name="phoneNumber" value = "
                         <?php 
                             print_r($data->getUserData()[2]);
                         ?>
@@ -83,7 +83,7 @@
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
                     <label for="inputPass">Contraseña</label>
-                    <input type="text" class="form-control" id="inputPass" name="Contraseña" placeholder="">
+                    <input type="text" class="form-control" id="inputPass" name="userPass1" placeholder="">
                 </div>
             </div>
         </div>

@@ -318,7 +318,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="#" method="POST">
+                    <form class="crop" action="#" method="POST">
                         <input type="text" name="inputID_cultivo" id="id_cultivo" 
                             value="<?php 
                                         print_r($data->getViewCropByID($_POST['get_id_cultivo'])[11]);
@@ -327,7 +327,7 @@
                             <div class="col-lg-6 col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label for="inputName">Nombre predio</label>
-                                    <input type="text" class="form-control" id="inputName" name="name" value="<?php 
+                                    <input type="text" class="form-control" id="inputName" name="namecrop" value="<?php 
                                         print_r($data->getViewCropByID($_POST['get_id_cultivo'])[0]);
                                     ?>">
                                 </div>
@@ -518,7 +518,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                <form action="" method="POST">
+                <form class="groundre" action="" method="POST">
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-12">
                             <div class="form-group">
