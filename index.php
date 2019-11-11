@@ -165,7 +165,8 @@
       </div>
     </div>
   </section>
-
+ 
+  
 
   <!-- Bootstrap y Javascripts -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -185,6 +186,7 @@
 
 <?php
 include('config/functions.php');
+include('views/user/footer.php');
 $data = new Functions();
 
 if (isset($_POST['userLogin'])) {
