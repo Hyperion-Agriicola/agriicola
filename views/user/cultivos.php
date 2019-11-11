@@ -78,13 +78,13 @@
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
                     <label for="inputName">Nombre predio</label>
-                    <input type="text" class="form-control" id="inputName" name="namecrop" placeholder="Maiz">
+                    <input type="text" class="form-control" id="inputName" name="namecrop" placeholder="Predio La Joya">
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
                     <label for="inputHectare">Hectáreas</label>
-                    <input type="number" placeholder="1" class="form-control" id="inputHectare" name="hectares">
+                    <input type="number" placeholder="1" class="form-control" id="inputHectare" name="hectares" min="1">
                 </div>
             </div>
 
@@ -115,13 +115,13 @@
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
                     <label for="inputVariation">Variedad</label>
-                    <input type="text" name="variation" class="form-control" id="inputVariation" placeholder="Maiz blanco">
+                    <input type="text" name="variation" class="form-control" id="inputVariation" placeholder="Variedad del cultivo">
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
                     <label for="inputDate">Fecha de inicio</label>
-                    <input type="date" class="form-control" id="inputDate" name="bornDate" placeholder="Fecha">
+                    <input type="date" class="form-control" id="inputDate" name="bornDate" >
                 </div>
             </div>
 

@@ -100,7 +100,7 @@
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
                     <label for="inputConduc">Conductividad eléctrica</label>
-                    <input type="number" class="form-control" id="inputConduc" name="inputConduc">
+                    <input type="number" class="form-control" id="inputConduc" name="inputConduc" min="0">
                 </div>
             </div>
         </div>

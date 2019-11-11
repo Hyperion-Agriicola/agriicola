@@ -68,6 +68,16 @@ if(!isset($_SESSION['correo'])){
             }else if(isset($_GET['eliminarAgro']) ){
                 $data->deleteAgroquimicos($_GET['eliminarAgro']);
                 header('Location: dashboard.php');
+            }else if(isset($_GET['gastoGeneral'])){
+                include('nuevo_gasto_general.php'); 
+            }else if(isset($_GET['viewSpend'])){
+                include('gastos_generales.php'); 
+            }else if(isset($_GET['viewHistory'])){
+                include('historial.php'); 
+            }else if(isset($_GET['viewCropSpend'])){
+                include('select_gastos.php'); 
+            }else if(isset($_GET['viewCropNewSpend'])){
+                include('gasto.php'); 
             }else{
                 include('profile.php');
                 ?>
@@ -75,7 +85,7 @@ if(!isset($_SESSION['correo'])){
                 <div class="container border-bottom border-success" style="margin-top: 60px; margin-bottom: 0px; border-bottom: 2px solid #388E3C!important;">
                 <div class="row mb-4">
                 <div class="col-lg-6">
-            <a href="historial.php" class="href text-decoration-none">
+            <a href="dashboard.php?viewHistory" class="href text-decoration-none">
                 <button type="button" class="btn0 btn-light btn-block p-3 shadow mb-4 " style="font-size: 20px; text-align:center;">
                     <i class="fas fa-history float-left "></i>
                     Historial de cultivos
@@ -83,7 +93,7 @@ if(!isset($_SESSION['correo'])){
             </a>
                 </div>
                 <div class="col-lg-6">
-            <a href="gastos_generales.php" class="href text-decoration-none">
+            <a href="dashboard.php?viewSpend" class="href text-decoration-none">
                 <button type="button" class="btn0 btn-light btn-block p-3 shadow mb-4" style="font-size: 20px; text-align:center; ">
                     <i class="fas fa-dollar-sign float-left "></i>
                     Gastos generales

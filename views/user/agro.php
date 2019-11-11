@@ -72,7 +72,7 @@
             <div class="col-lg-3 col-md-3 col-sm-6">
                 <div class="form-group">
                     <label for="inputPrecio">Precio</label>
-                    <input type="number" placeholder="700" class="form-control" id="inputPrecio" name="precio">
+                    <input type="number" placeholder="700" class="form-control" id="inputPrecio" name="precio" min="0">
                 </div>
             </div>
 
@@ -90,7 +90,7 @@
             <div class="col-lg-3 col-md-3 col-sm-6">
                 <div class="form-group">
                     <label for="inputCantidad">Cantidad</label>
-                    <input type="number" placeholder="700" class="form-control" id="inputCantidad" name="cantidad">
+                    <input type="number" placeholder="700" class="form-control" id="inputCantidad" name="cantidad" min="0">
                 </div>
             </div>
 
@@ -108,7 +108,7 @@
             <div class="col-lg-3 col-md-3 col-sm-6">
                 <div class="form-group">
                     <label for="inputDosis">Dosis</label>
-                    <input type="number" placeholder="700" class="form-control" id="inputDosis" name="dosis">
+                    <input type="number" placeholder="700" class="form-control" id="inputDosis" name="dosis" min="0">
                 </div>
             </div>
 

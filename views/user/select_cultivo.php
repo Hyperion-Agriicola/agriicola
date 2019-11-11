@@ -49,7 +49,7 @@
             </div>
 
             <div class="col-md-4 col-sm-10">
-                <a href="select_gastos.php" class="href text-decoration-none">
+                <a href="dashboard.php?viewCropSpend" class="href text-decoration-none">
                     <button type="button" class="btn2 btn-light btn-block p-3 shadow mb-4" style="font-size: 20px; text-align:center">
                         <i class="fas fa-dollar-sign float-left"></i>
                         Gastos
@@ -64,9 +64,7 @@
                 <div class="card bg-light p-1 shadow p-0 mb-0 bg-light" style="Border-Radius: 10px;"> 
                     <div class="card-header bg-light">
                         <img src="../../img/svg/grain.svg" style="height:35px" class="mb-2" alt="">
-                        <a href="" data-toggle="modal" data-target="#modalEliminar">
-                            <button type="button" class="close"><span>&times</span></button>
-                        </a>
+                        
                         <br>
                         <h4>Datos del cultivo</h4>
                     </div>
@@ -84,13 +82,11 @@
                 </div>      
             </div>
 
-            <div class="col-md-4 col-sm-12 pb-4">  
+            <div class="col-md-4 col-sm-12 pb-4" >  
                 <div class="card bg-light p-1 shadow p-0 mb-0 bg-light" style="Border-Radius: 10px;"> 
                     <div class="card-header bg-light">
                         <img src="../../img/svg/growing-plant.svg" style="height:35px" class="mb-2" alt="">
-                        <a href="" data-toggle="modal" data-target="#modalEliminar">
-                            <button type="button" class="close"><span>&times</span></button>
-                        </a>
+                        
                         <br>
                         <h4>Datos del suelo</h4>
                     </div>

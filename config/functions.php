@@ -1041,8 +1041,8 @@ class Functions
                                 </div>
                                 <div class="modal-body">
                                     <form action="" method="POST">
-                                        <input name="input_id_cultivo" id="input_id_cultivo" value='.$row['id_cultivo'].'>
-                                        <input name="input_id_agroquimico" id="input_id_agroquimico" value='.$row['id_agroquimico'].'>
+                                        <input name="input_id_cultivo" id="input_id_cultivo" value='.$row['id_cultivo'].' style="display: none;">
+                                        <input name="input_id_agroquimico" id="input_id_agroquimico" value='.$row['id_agroquimico'].' style="display: none;">
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-sm-12">
                                                 <div class="form-group">
@@ -1313,7 +1313,7 @@ class Functions
         $conexion = new Database();
         
 
-        $query = "UPDATE suelo_natural SET tipo_suelo = '$tipo_suelo', infraestructura = '$infraestructura', riego = '$riego', ph = '$ph', salinidad = '$salinidad', conduc_elec = '$conduc_elec', materia_organica = '$materia_organica', zinc = '$zinc', nitratos = '$nitratos', fosforo = '$fosforo', potasio = '$potasio', manganeso = '$manganeso', calcio = '$calcio', cobre = '$cobre', oxido_azufre = '$oxido_azufre', boro = '$boro', magnesio = '$magnesio', oxigeno = '$oxigeno' WHERE id_cultivo = '$id_cultivo' AND id_suelo_natural = '$id_suelo_natural';";
+        $query = "UPDATE suelo_natural SET tipo_suelo = '$tipo_suelo', infraestructura = '$infraestructura', riego = '$riego', ph = '$ph', salinidad = '$salinidad', conduc_elec = '$conduc_elec', materia_organica = '$materia_organica', zinc = '$zinc', nitratos = '$nitratos', fosforo = '$fosforo', potasio = '$potasio', manganeso = '$manganeso', calcio = '$calcio', cobre = '$cobre', oxido_azufre = '$oxido_azufre', boro = '$boro', magnesio = '$magnesio', oxigeno = '$oxigeno', fecha_modif = now() WHERE id_cultivo = '$id_cultivo' AND id_suelo_natural = '$id_suelo_natural';";
 
         $result = $conexion->query($query);
         
@@ -1406,6 +1406,387 @@ class Functions
         } else {
             
         }
+    }
+
+    public function getCardGeneralSpend(){
+        $conexion = new Database();
+        $email = $_SESSION['correo'];
+
+       
+        
+        $query = "SELECT * FROM gastos_generales WHERE id_u = (SELECT id_u FROM users WHERE correo = '$email')";
+        $execQuery = $conexion->query($query);
+        
+
+        if (mysqli_num_rows($execQuery) > 0) {
+            while ($row = $execQuery->fetch_array()) {
+                $fecha = $row['fecha_gasto'];
+                $niu_fecha = explode("-", $fecha);
+                $month = array(
+                    'Enero',
+                    'Febrero',
+                    'Marzo',
+                    'Abril',
+                    'Mayo',
+                    'Junio',
+                    'Julio',
+                    'Agosto',
+                    'Septiembre',
+                    'Octubre',
+                    'Noviembre',
+                    'Diciembre');
+                echo '
+                    <div class="col-md-4 col-sm-12 pb-4">  
+                        <div class="card bg-light p-1 shadow p-0 mb-0 bg-light" style="Border-Radius: 10px;"> 
+                            <div class="card-header bg-light">
+                            <i class="fas fa-dollar-sign pb-3" style="font-size: 30px; color:green" ></i>
+                                <br>
+                                <h4>'.$row['concepto'].'</h4>
+                                
+                            </div>
+
+                            <div class="card-body pt-3">
+                                
+                                <a data-toggle="modal" data-target="#modalGasto'.$row['id_gasto_general'].'" class="text-success text-left text-decoration-none" href="#">Ver informacion
+
+                                </a>
+                            </div>
+                                
+                        </div>      
+                    </div>
+
+                    <!---Modal de gasto general-->
+                    <div class="modal fade" id="modalGasto'.$row['id_gasto_general'].'" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog ">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">
+                                        '.$row['concepto'].'
+                                    </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <p class="lead">Concepto</p>
+                                            <p class="text-muted">
+                                            '.$row['concepto'].'
+                                            </p>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <p class="lead">Cantidad</p>
+                                            <p class="text-muted">
+                                            '.$row['catidad'].' '.$row['moneda'].'
+                                            </p>
+                                        </div>
+                                        
+                                        
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <p class="lead">Fecha</p>
+                                            <p class="text-muted">
+                                                                                                        
+                                                '.$niu_fecha[2] . " de " . $month[$niu_fecha[1] - 1] . " de " . $niu_fecha[0].'
+                                                                
+                                            </p>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                ';
+
+            }
+        } else {
+            echo "
+                <div class='col-lg-1 col-md-1 col-sm-12'></div>
+                <div class='col-lg-4 col-md-4 col-sm-12'></div>
+                <div class='col-lg-4 col-md-4 col-sm-12'>
+                    <h3>No hay datos</h3>
+                    <img src='../../img/svg/alerts/no_data.svg' width='150'>
+                    <p><a class='text-success' href='dashboard.php?gastoGeneral'>Registrar nuevo gasto</a></p>
+                </div>
+                <div class='col-lg-4 col-md-4 col-sm-12'></div>
+            ";
+        }    
+
+    }
+
+    public function insertGeneralSpend($concepto, $precio, $moneda, $fecha){
+        $conexion = new Database();
+        $email = $_SESSION['correo'];
+
+        $getUserQuery = "SELECT id_u FROM users WHERE correo = '$email'";
+
+        $execUserQuery = $conexion->query($getUserQuery) or trigger_error(mysqli_error($conexion));
+
+        if($execUserQuery){
+            $userRow = $execUserQuery->fetch_array();
+
+            $query = "INSERT INTO gastos_generales(concepto, catidad, moneda, fecha_gasto, fecha_registro, id_u) VALUES ('$concepto', '$precio', '$moneda', '$fecha', now(), '$userRow[id_u]')";
+
+            $result = $conexion->query($query);
+
+            if (!$result) {
+                echo "
+                <div class='container mt-4'>
+                    <div class='alert alert-danger' role='alert'>
+                    Hubo un error al registrar los datos, verifique sus campos o intente más tarde
+                    </div>
+                </div>
+                ";
+            } else {
+                header("Location: dashboard.php?viewSpend");
+                
+            }
+        }
+
+        
+    }
+
+    public function getCardHistory(){
+        $conexion = new Database();
+        $email = $_SESSION['correo'];
+
+        $query = "SELECT * FROM cultivos WHERE id_u = (SELECT id_u FROM users WHERE correo = '$email') AND estatus ='eliminado'";
+        $execQuery = $conexion->query($query);
+        if (mysqli_num_rows($execQuery) > 0) {
+            while ($row = $execQuery->fetch_array()) {
+                //../../img/svg/grain.svg
+                $fechaa = $row['fecha_inicio'];
+                $niu_fechaa = explode("-", $fechaa);
+
+                $month = array(
+                    'Enero',
+                    'Febrero',
+                    'Marzo',
+                    'Abril',
+                    'Mayo',
+                    'Junio',
+                    'Julio',
+                    'Agosto',
+                    'Septiembre',
+                    'Octubre',
+                    'Noviembre',
+                    'Diciembre');
+
+                               
+                echo '
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12 my-3">
+                    <div class="card shadow bg-light text-center">
+                        
+                            <div class="card-header bg-white">
+                                ' . $niu_fechaa[2] . " de " . $month[$niu_fechaa[1] - 1] . " de " . $niu_fechaa[0] . '             
+                                
+                            </div>
+                            <div class="card-body">
+                                
+                                    <img src="../../img/svg/grain.svg" width="60">
+                                    <p class="lead mt-3"><strong>' . $row['nombre_predio'] . '</strong> </p>
+                                    <p class="text-muted">Estado: '.$row['estatus'].'</p>
+                                  
+                            </div>
+                            <!--
+                            <div class="card-footer bg-white">
+                                <form action="dashboard.php?viewCrop" method="POST" class="align-right">
+                                    <input type="text" value='.$row['id_cultivo'].' style="display: none;" name="get_id_cultivo">
+                                    <input type="text" value='.$row['tipo_suelo'].' style="display: none;" name="get_tipo_suelo">
+                                    <button type="submit" class="btn btn-block btn-success">
+                                        Ver más
+                                    </button>
+                                </form>
+                            </div>
+                         </a>-->
+                    </div>
+                </div>
+                <!--Modal eliminar-->
+                <div class="modal fade" id="modalEliminar'.$row["id_cultivo"].'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Advertencia</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                ¿Está seguro de eliminar este cultivo? Tome en cuenta que ésta acción es irreversible.
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                <a href="dashboard.php?cultivo='.$row['id_cultivo'].'" class="btn btn-success" role="button" aria-disabled="true">Aceptar</a>
+                           
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                ';
+            }
+        } else {
+            echo "
+                <div class='col-lg-1 col-md-1 col-sm-12'></div>
+                <div class='col-lg-4 col-md-4 col-sm-12'></div>
+                <div class='col-lg-4 col-md-4 col-sm-12'>
+                    <h3>No hay datos</h3>
+                    <img src='../../img/svg/alerts/no_data.svg' width='150'>
+                    
+                </div>
+                <div class='col-lg-4 col-md-4 col-sm-12'></div>
+            ";
+        }
+    }
+
+    public function getCardCropSpend($id_cultivo){
+        $conexion = new Database();
+        $email = $_SESSION['correo'];
+
+        $query = "SELECT * FROM gastos WHERE id_cultivo = '$id_cultivo'";
+        $execQuery = $conexion->query($query);
+    
+        if (mysqli_num_rows($execQuery) > 0) {
+            while ($row = $execQuery->fetch_array()) {
+                $fecha = $row['fecha_gasto'];
+                $niu_fecha = explode("-", $fecha);
+                $month = array(
+                    'Enero',
+                    'Febrero',
+                    'Marzo',
+                    'Abril',
+                    'Mayo',
+                    'Junio',
+                    'Julio',
+                    'Agosto',
+                    'Septiembre',
+                    'Octubre',
+                    'Noviembre',
+                    'Diciembre');
+                
+                    echo '
+                    <div class="col-md-4 col-sm-12 pb-4">  
+                        <div class="card bg-light p-1 shadow p-0 mb-0 bg-light" style="Border-Radius: 10px;"> 
+                            <div class="card-header bg-light">
+                            <i class="fas fa-dollar-sign pb-3" style="font-size: 30px; color:green" ></i>
+                                <br>
+                                <h4>'.$row['concepto'].'</h4>
+                                
+                            </div>
+
+                            <div class="card-body pt-3">
+                               
+                                <a data-toggle="modal" data-target="#modalGasto'.$row['id_gasto'].'" class="text-success text-left text-decoration-none" href="#">Ver informacion
+
+                                </a>
+                            </div>
+                                
+                        </div>      
+                    </div>
+
+                    <!---Modal de gasto general-->
+                    <div class="modal fade" id="modalGasto'.$row['id_gasto'].'" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog ">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">
+                                        '.$row['concepto'].'
+                                    </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <p class="lead">Concepto</p>
+                                            <p class="text-muted">
+                                            '.$row['concepto'].'
+                                            </p>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <p class="lead">Cantidad</p>
+                                            <p class="text-muted">
+                                            '.$row['precio'].' '.$row['moneda'].'
+                                            </p>
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <p class="lead">Frecuencia</p>
+                                            <p class="text-muted">
+                                            '.$row['frecuencia'].'
+                                            </p>
+                                        </div>
+                                        
+                                        
+                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                            <p class="lead">Fecha</p>
+                                            <p class="text-muted">
+                                                                                                        
+                                                '.$niu_fecha[2] . " de " . $month[$niu_fecha[1] - 1] . " de " . $niu_fecha[0].'
+                                                                
+                                            </p>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                ';
+
+            }
+        } else {
+            echo "
+                <div class='col-lg-1 col-md-1 col-sm-12'></div>
+                <div class='col-lg-4 col-md-4 col-sm-12'></div>
+                <div class='col-lg-4 col-md-4 col-sm-12'>
+                    <h3>No hay datos</h3>
+                    <img src='../../img/svg/alerts/no_data.svg' width='150'>
+                    <p><a class='text-success' href='dashboard.php?gastoGeneral'>Registrar nuevo gasto</a></p>
+                </div>
+                <div class='col-lg-4 col-md-4 col-sm-12'></div>
+            ";
+        }    
+    }
+
+    public function insertCropSpend($id_cultivo, $concepto, $precio, $moneda, $frecuencia, $fecha){
+        $conexion = new Database();
+       
+            $query = "INSERT INTO gastos(id_cultivo, concepto, precio, moneda, frecuencia, fecha_gasto, fecha_registro) VALUES ('$id_cultivo', '$concepto', '$precio', '$moneda', '$frecuencia', '$fecha', now())";
+
+            $result = $conexion->query($query);
+
+            if (!$result) {
+                echo "
+                <div class='container mt-4'>
+                    <div class='alert alert-danger' role='alert'>
+                    Hubo un error al registrar los datos, verifique sus campos o intente más tarde
+                    </div>
+                </div>
+                ";
+            } else {
+                header("Location: dashboard.php?viewCropSpend");
+                
+            }
+        
+
+        
     }
 }
 
