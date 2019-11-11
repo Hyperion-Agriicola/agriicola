@@ -23,7 +23,7 @@
 </header>
 
 <main class="container mt-4">
-    <form action="" method="post">
+    <form class="registro" action="" method="post">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
@@ -56,7 +56,7 @@
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
                     <label for="currentPassword">Contraseña Actual</label>
-                    <input type="password" class="form-control" id="currentPassword" name="currentPassword" placeholder="*****">
+                    <input type="password" class="form-control" id="currentPassword" name="userPass" placeholder="*****">
                 </div>
             </div>
 
@@ -106,7 +106,7 @@ if(isset($_POST['updateUserData'])){
 
     $userCompany = $_POST['userCompany'];
     
-    $currentPassword = $_POST['currentPassword'];
+    $currentPassword = $_POST['userPass'];
     $newPassword = $_POST['newPassword'];
     $repeatPassword = $_POST['repeatPassword'];
 

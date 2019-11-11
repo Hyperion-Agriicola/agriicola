@@ -48,6 +48,11 @@ $.validator.addMethod("PASSWORD",function(value,element){
 $.validator.addMethod('EMAIL',function(value, element){
     return this.optional(element) || /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum|es)$/i.test(value);
 },"<span><p class='text-danger' style='font-size: 12px;'>*Ingrese una dirección de correo electronico válida.</p></span>");
+$.validator.addMethod("user_pass_not_same", function(value, element) {
+    return $('#name').val() != $('#currentPassword').val()
+    }, "<span><p class='text-danger' style='font-size: 12px;'>*La contraseña debe ser diferente a la actual.</p></span>");
+   
+
 jQuery( ".registro" ).validate({
             rules: {
                     userName: {
@@ -93,6 +98,13 @@ jQuery( ".registro" ).validate({
                      },
                      userPass:{
                         PASSWORD: true
+                     },
+                     newPassword:{
+                         PASSWORD: true,
+                         user_pass_not_same: true
+                     },
+                     repeatPassword:{
+                         equalTo: "#newPassword"
                      }
             },
             messages: {
@@ -134,6 +146,13 @@ jQuery( ".registro" ).validate({
                     userPass2:{
                         required:"<span><p class='text-danger' style='font-size: 12px;'>*Confirme la contraseña.</p></span>",
                         equalTo: "<span><p class='text-danger' style='font-size: 12px;'>*Las contraseñas no coinciden.</p></span>"
+                    },
+                    newPassword:{
+                        notEqualTo: "<span><p class='text-danger' style='font-size: 12px;'>*La contraseñ debe ser diferente a la actual.</p></span>"
+                    },
+                    repeatPassword:{
+                        required: "<span><p class='text-danger' style='font-size: 12px;'>*Confirme la contraseña.</p></span>",
+                        equalTo: "<span><p class='text-danger' style='font-size: 12px;'>*La contraseña no coinciden con la nueva contraseña.</p></span>"
                     }
             }
     });

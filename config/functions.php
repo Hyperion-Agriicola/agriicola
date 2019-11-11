@@ -26,7 +26,7 @@ class Functions
             echo "
                     <div class='container mt-4'>
                         <div class='alert alert-danger' role='alert'>
-                            El correo que intentas registrar ya existe, intenta con otro
+                            El correo que intenta registrar ya existe, intente con otro
                         </div>
                     </div";
                 
@@ -38,7 +38,7 @@ class Functions
                 echo "
                 <div class='container mt-4'>
                     <div class='alert alert-danger' role='alert'>
-                        El teléfono que intentas ingresar ya existe, intenta con otro
+                        El teléfono que intenta ingresar ya existe, intente con otro
                     </div>
                 </div";
             }else{
@@ -1825,7 +1825,7 @@ class Functions
                         echo "
                         <div class='container mt-4'>
                             <div class='alert alert-success' role='alert'>
-                                ¡Tus datos y tu contraseña han sido actualizados correctamente! 
+                                ¡Sus datos y su contraseña han sido actualizados correctamente! 
                                 <a href='dashboard.php'>Volver al inicio</a>
                             </div>
                         </div>";
@@ -1834,7 +1834,7 @@ class Functions
                     echo "
                     <div class='container mt-4'>
                         <div class='alert alert-danger' role='alert'>
-                            La contraseña nueva no coincide, inténtalo de nuevo
+                            La contraseña nueva no coincide, inténtelo de nuevo
                         </div>
                     </div>";
                 }
@@ -1842,7 +1842,7 @@ class Functions
                 echo "
                     <div class='container mt-4'>
                         <div class='alert alert-danger' role='alert'>
-                        Tu contraseña actual es incorrecta. <a href='#!'>Olvidé mi contraseña</a>
+                        Su contraseña actual es incorrecta. <a href='#!'>Olvidé mi contraseña</a>
                         </div>
                     </div>
                     ";
@@ -1862,7 +1862,7 @@ class Functions
                     echo "
                     <div class='container mt-4'>
                         <div class='alert alert-success' role='alert'>
-                            ¡Tus datos han sido actualizados correctamente! 
+                            ¡Sus datos han sido actualizados correctamente! 
                             <a href='dashboard.php'>Volver al inicio</a>
                         </div>
                     </div";
