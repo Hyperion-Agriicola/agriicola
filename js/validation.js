@@ -95,6 +95,9 @@ jQuery( ".registro" ).validate({
                      userPass2:{
                         required: true,
                         equalTo: "#pass"
+                     },
+                     userPass:{
+                        PASSWORD: true
                      }
             },
             messages: {

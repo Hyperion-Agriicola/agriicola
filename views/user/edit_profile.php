@@ -83,7 +83,7 @@
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
                     <label for="inputPass">Contraseña</label>
-                    <input type="text" class="form-control" id="inputPass" name="userPass1" placeholder="">
+                    <input type="text" class="form-control" id="inputPass" name="userPass" placeholder="">
                 </div>
             </div>
         </div>
