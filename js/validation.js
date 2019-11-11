@@ -70,24 +70,19 @@ jQuery( ".registro" ).validate({
                     userEmail: {
                         required: true,
                         EMAIL: true,
-                        email: true,
+                        email: true
                     },
                      userCompany:{
                         required: true,
                      },
                      userCity: {
-                         required: true
+                         required: true,
+                         letterswithbasicpunc: true
                      },
-                        remote:{
-                        url:  "localidades.php" /* Cambiar nombre del archivo*/
-                        },
                      userState:{
-                         required: true
-                     },
-                        remote:{
-                            url:"../config/searching/town.php", /* Cambiar nombre del archivo*/
-                            type: "post"
-                        },
+                         required: true,
+                         letterswithbasicpunc: true
+                    },
                      userPass1:{
                          required: true,
                         PASSWORD: true
@@ -125,11 +120,13 @@ jQuery( ".registro" ).validate({
                     },
                     userCity:{
                         required: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese una ciudad válida.</p></span>",
-                        remote:"<span><p class='text-danger' style='font-size: 12px;'>*La ciudad no existe, ingrese una ciudad valida .</p></span>"
+                        remote:"<span><p class='text-danger' style='font-size: 12px;'>*La ciudad no existe, ingrese una ciudad valida .</p></span>",
+                        letterswithbasicpunc: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese solo letras.</p></span>"
                     },
                     userState:{
                         required: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese un estado válido.</p></span>",
-                        remote:"<span><p class='text-danger' style='font-size: 12px;'>*El no existe, ingrese un estado valido .</p></span>"
+                        remote:"<span><p class='text-danger' style='font-size: 12px;'>*El no existe, ingrese un estado valido .</p></span>",
+                        letterswithbasicpunc: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese solo letras.</p></span>"
                     },
                     userPass1:{
                         required: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese una contraseña.</p></span>"
