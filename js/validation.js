@@ -79,6 +79,7 @@ jQuery( ".registro" ).validate({
                     },
                      userCompany:{
                         required: true,
+                        lettersonly: true
                      },
                      userCity: {
                          required: true,
@@ -89,7 +90,7 @@ jQuery( ".registro" ).validate({
                          letterswithbasicpunc: true
                     },
                      userPass1:{
-                         required: true,
+                        required: true,
                         PASSWORD: true
                      },
                      userPass2:{
@@ -97,13 +98,16 @@ jQuery( ".registro" ).validate({
                         equalTo: "#pass"
                      },
                      userPass:{
+                         required: true,
                         PASSWORD: true
                      },
                      newPassword:{
+                         required: true,
                          PASSWORD: true,
                          user_pass_not_same: true
                      },
                      repeatPassword:{
+                         required: true,
                          equalTo: "#newPassword"
                      }
             },
@@ -129,6 +133,7 @@ jQuery( ".registro" ).validate({
                     },
                     userCompany:{
                         required: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese el nombre de su empresa.</p></span>",
+                        lettersonly: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese solo letras, no se aceptan caracteres especiales.</p></span>"
                     },
                     userCity:{
                         required: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese una ciudad válida.</p></span>",
@@ -148,7 +153,11 @@ jQuery( ".registro" ).validate({
                         equalTo: "<span><p class='text-danger' style='font-size: 12px;'>*Las contraseñas no coinciden.</p></span>"
                     },
                     newPassword:{
-                        notEqualTo: "<span><p class='text-danger' style='font-size: 12px;'>*La contraseñ debe ser diferente a la actual.</p></span>"
+                        required:"<span><p class='text-danger' style='font-size: 12px;'>*Este campo es obligatrio. porfavor introduzca una nueva contraseña.</p></span>",
+                        notEqualTo: "<span><p class='text-danger' style='font-size: 12px;'>*La contraseña debe ser diferente a la actual.</p></span>"
+                    },
+                    userPass:{
+                        required: "<span><p class='text-danger' style='font-size: 12px;'>*Este campo es obligatrio. porfavor introduzca su contraseña actual.</p></span>"
                     },
                     repeatPassword:{
                         required: "<span><p class='text-danger' style='font-size: 12px;'>*Confirme la contraseña.</p></span>",

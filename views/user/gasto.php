@@ -25,7 +25,7 @@
 
         <main class="container mt-4">
            
-            <form id="reg_gasto" action="" method="POST">
+            <form class="reg_gasto" action="" method="POST">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12">
                         <div class="form-group">
