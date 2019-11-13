@@ -481,9 +481,9 @@ class Functions
                             </div>
 
                             <div class="card-footer bg-white">
-                                <form action="dashboard.php?viewCrop" method="POST" class="align-right">
-                                    <input type="text" value='.$row['id_cultivo'].' style="display: none;" name="get_id_cultivo">
-                                    <input type="text" value='.$row['tipo_suelo'].' style="display: none;" name="get_tipo_suelo">
+                                <form action="dashboard.php?viewCrop" method="GET" class="align-right">
+                                    <input type="text" value='.$row['id_cultivo'].' style="display: none;" name="id_cultivo">
+                                    <input type="text" value='.$row['tipo_suelo'].' style="display: none;" name="id_suelo">
                                     <button type="submit" class="btn btn-block btn-success">
                                         Ver más
                                     </button>
@@ -520,14 +520,13 @@ class Functions
             }
         } else {
             echo "
-                <div class='col-lg-1 col-md-1 col-sm-12'></div>
-                <div class='col-lg-4 col-md-4 col-sm-12'></div>
-                <div class='col-lg-4 col-md-4 col-sm-12'>
-                    <h3>No hay datos</h3>
-                    <img src='../../img/svg/alerts/no_data.svg' width='150'>
-                    <p><a class='text-success' href='dashboard.php?cultivos'>Crear un nuevo registro</a></p>
+                <div class='col-lg-4 col-md-4 col-sm-4 col-4'></div>
+                <div class='col-lg-4 col-md-4 col-sm-4 col-4'>
+                    <h3 class='text-center'>No hay datos</h3>
+                    <img class='col-12 col-sm-12 col-md-11 col-lg-11' src='../../img/svg/alerts/no_data.svg'>
+                    <h5 class='text-center'><a class='text-success' href='dashboard.php?cultivos'>Crear un nuevo registro</a></h5>
                 </div>
-                <div class='col-lg-4 col-md-4 col-sm-12'></div>
+                <div class='col-lg-4 col-md-4 col-sm-4 col-4'></div>
             ";
         }
     }
@@ -664,10 +663,11 @@ class Functions
                 $str = $str."<option value='$row[nom_enfermedad]' selected>$row[nom_enfermedad]</option>";
             }else{
             
-                $str = $str." <option value='$row[nom_enfermedad]'>$row[nom_enfermedad]</option>";
+                $str = $str."<option value='$row[nom_enfermedad]'>$row[nom_enfermedad]</option>";
             
             }
         }
+        
         return $str;
     }
 
@@ -702,11 +702,10 @@ class Functions
             if($selected == $row['nom_plaga']){
                 $str = $str."<option value='$row[nom_plaga]' selected>$row[nom_plaga]</option>";
             }else{
-                $str = $str."<option value='$row[nom_plaga]'>$row[nom_plaga]</option>
-            ";
+                $str = $str."<option value='$row[nom_plaga]'>$row[nom_plaga]</option>";
             }
         }
-
+        
         return $str;
     }
 
@@ -1521,15 +1520,14 @@ class Functions
             }
         } else {
             echo "
-                <div class='col-lg-1 col-md-1 col-sm-12'></div>
-                <div class='col-lg-4 col-md-4 col-sm-12'></div>
-                <div class='col-lg-4 col-md-4 col-sm-12'>
-                    <h3>No hay datos</h3>
-                    <img src='../../img/svg/alerts/no_data.svg' width='150'>
-                    <p><a class='text-success' href='dashboard.php?gastoGeneral'>Registrar nuevo gasto</a></p>
-                </div>
-                <div class='col-lg-4 col-md-4 col-sm-12'></div>
-            ";
+            <div class='col-lg-4 col-md-4 col-sm-4 col-4'></div>
+            <div class='col-lg-4 col-md-4 col-sm-4 col-4'>
+                <h3 class='text-center'>No hay datos</h3>
+                <img class='col-12 col-sm-12 col-md-11 col-lg-11' src='../../img/svg/alerts/no_data.svg' width='150px'>
+                <h5 class='text-center'><a class='text-success' href='dashboard.php?gastoGeneral'>Crear un nuevo gasto</a></h5>
+            </div>
+            <div class='col-lg-4 col-md-4 col-sm-4 col-4'></div>
+        ";
         }    
 
     }
@@ -1649,15 +1647,13 @@ class Functions
             }
         } else {
             echo "
-                <div class='col-lg-1 col-md-1 col-sm-12'></div>
-                <div class='col-lg-4 col-md-4 col-sm-12'></div>
-                <div class='col-lg-4 col-md-4 col-sm-12'>
-                    <h3>No hay datos</h3>
-                    <img src='../../img/svg/alerts/no_data.svg' width='150'>
-                    
-                </div>
-                <div class='col-lg-4 col-md-4 col-sm-12'></div>
-            ";
+            <div class='col-lg-4 col-md-4 col-sm-4 col-4'></div>
+            <div class='col-lg-4 col-md-4 col-sm-4 col-4'>
+                <h3 class='text-center'>No hay datos</h3>
+                <img class='col-12 col-sm-12 col-md-11 col-lg-11' src='../../img/svg/alerts/no_data.svg' width='150px'>
+            </div>
+            <div class='col-lg-4 col-md-4 col-sm-4 col-4'></div>
+        ";
         }
     }
 
@@ -1766,14 +1762,13 @@ class Functions
             }
         } else {
             echo "
-                <div class='col-lg-1 col-md-1 col-sm-12'></div>
-                <div class='col-lg-4 col-md-4 col-sm-12'></div>
-                <div class='col-lg-4 col-md-4 col-sm-12'>
-                    <h3>No hay datos</h3>
-                    <img src='../../img/svg/alerts/no_data.svg' width='150'>
-                    <p><a class='text-success' href='dashboard.php?gastoGeneral'>Registrar nuevo gasto</a></p>
+                <div class='col-lg-4 col-md-4 col-sm-4 col-4'></div>
+                <div class='col-lg-4 col-md-4 col-sm-4 col-4'>
+                    <h3 class='text-center'>No hay datos</h3>
+                    <img class='col-12 col-sm-12 col-md-11 col-lg-11' src='../../img/svg/alerts/no_data.svg' width='150px'>
+                    <h5 class='text-center'><a class='text-success' href='dashboard.php?newSpend=".$_GET['Spend']."'>Crear un nuevo gasto</a></h5>
                 </div>
-                <div class='col-lg-4 col-md-4 col-sm-12'></div>
+                <div class='col-lg-4 col-md-4 col-sm-4 col-4'></div>
             ";
         }    
     }

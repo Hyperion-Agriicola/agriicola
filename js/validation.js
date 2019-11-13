@@ -17,7 +17,7 @@ jQuery(function(){
             },
             pass:{
                 required: true,
-                maxlength: 6,
+                maxlength: 16,
                 minlength: 6
             }
         },
@@ -29,8 +29,8 @@ jQuery(function(){
             },
             pass:{
                 required: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese su contraseña.</p></span>",
-                maxlength:"<span><p class='text-danger' style='font-size: 12px;'>*Contraseña invalida, solo se aceptan 6 caracteres.</p></span>",
-                minlength:"<span><p class='text-danger' style='font-size: 12px;'>*Contraseña invalida, solo se aceptan 6 caracteres.</p></span>"
+                maxlength:"<span><p class='text-danger' style='font-size: 12px;'>*Contraseña invalida, solo se aceptan maximo 16 caracteres.</p></span>",
+                minlength:"<span><p class='text-danger' style='font-size: 12px;'>*Contraseña invalida, solo se aceptan minimo 6 caracteres.</p></span>"
             }
         }
     });
@@ -43,13 +43,13 @@ jQuery(function() {
         return this.optional( element ) || /^[a-zñ.\s\sáéíóúñÑÁÉÍÓÚüÜ]+$/i.test( value );
     }, "<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo letras.</p>" );
 $.validator.addMethod("PASSWORD",function(value,element){
-    return this.optional(element) || /^(?=.*\d)(?=.*[a-zñ])(?=.*[A-ZÑ]).{6}$/i.test(value);
-},"<span><p class='text-danger' style='font-size: 12px;'>*La contraseña debe contener 6 caracteres con letras minúsculas, mayúsculas y al menos un número.</p></span>");
+    return this.optional(element) || /^(?=.*\d)(?=.*[a-zñ])(?=.*[A-ZÑ]).{6,16}$/i.test(value);
+},"<span><p class='text-danger' style='font-size: 12px;'>*La contraseña debe contener minimo 6 y maximo 16 caracteres y almenos un número.</p></span>");
 $.validator.addMethod('EMAIL',function(value, element){
     return this.optional(element) || /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum|es)$/i.test(value);
 },"<span><p class='text-danger' style='font-size: 12px;'>*Ingrese una dirección de correo electronico válida.</p></span>");
 $.validator.addMethod("user_pass_not_same", function(value, element) {
-    return $('#name').val() != $('#currentPassword').val()
+    return $('#newPassword').val() != $('#currentPassword').val()
     }, "<span><p class='text-danger' style='font-size: 12px;'>*La contraseña debe ser diferente a la actual.</p></span>");
    
 

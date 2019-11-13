@@ -16,7 +16,9 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h4 class="text-muted">
-                            Mi predio uno
+                        <?php
+                            print_r($data->getViewCropByID($_GET['Spend'])[0]);
+                        ?>
                         </h4>
                     </div>
                 </div>
@@ -30,7 +32,7 @@
         <div class="row mb-5 py-5 border-bottom border-success" style="border-bottom: 2px solid #388E3C!important;">
 
             <div class="col-md-4 col-sm-10">
-                <a href="dashboard.php?viewCrop" class="href text-decoration-none">
+                <a href="dashboard.php?id_cultivo=<?php echo $_GET['Spend'];?>&id_suelo=<?php echo $_GET['Ground'];?>" class="href text-decoration-none">
                     <button type="button" class="btn0 btn-light btn-block p-3 shadow mb-4" style="font-size: 20px; text-align:center">
                         <i class="fas fa-align-left float-left"></i>
                         Datos
@@ -39,7 +41,7 @@
             </div>
                 
             <div class="col-md-4 col-sm-10">
-                <a href="select_seguimiento.php" class="href text-decoration-none">
+                <a href="dashboard.php?Tracing=<?php echo $_GET['Spend'];?>&Ground=<?php echo $_GET['Ground'];?>" class="href text-decoration-none">
                     <button type="button" class="btn1 btn btn-light btn-block p-3 shadow mb-4" style="font-size: 20px; text-align:center;">
                         <i class="fas fa-chart-line float-left"></i>
                         Seguimiento
@@ -48,7 +50,7 @@
             </div>
 
             <div class="col-md-4 col-sm-10">
-                <a href="dashboard.php?viewCropSpend" class="href text-decoration-none">
+                <a href="dashboard.php?Spend=<?php echo $_GET['Spend'];?>&Ground=<?php echo $_GET['Ground'];?>" class="href text-decoration-none">
                     <button type="button" class="btn2 btn-light btn-block p-3 shadow mb-4 text-white " style="font-size: 20px; text-align:center; background-color: #388E3C;">
                         <i class="fas fa-dollar-sign float-left"></i>
                         Gastos
@@ -66,12 +68,12 @@
         </div>
             
         <div class="row p-3">
-            <a href="dashboard.php?viewCropNewSpend" class="btn btn-success ml-auto rounded-circle" role="button"><i class="fas fa-plus"></i></a>
+            <a href="dashboard.php?newSpend=<?php echo $_GET['Spend'];?>&Ground=<?php echo $_GET['Ground'];?>" class="btn btn-success ml-auto rounded-circle" role="button"><i class="fas fa-plus"></i></a>
         </div>
             
         <div class="row">
             <?php
-                $data->getCardCropSpend("34");
+                $data->getCardCropSpend($_GET['Spend']);
             ?>
         </div>
     </div> 

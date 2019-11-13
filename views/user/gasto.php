@@ -3,7 +3,7 @@
             <div class="container text-center">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12">
-                        <a href="dashboard.php?viewCropSpend"  class="close" >
+                        <a href="dashboard.php?Spend=<?php echo $_GET['newSpend'];?>&Ground=<?php echo $_GET['Ground'];?>"  class="close" >
                         <i class="fas fa-times text-danger"></i>
                         </a>   
                     </div>
@@ -82,7 +82,7 @@
 
         <?php
             if(isset($_POST['insertSpend'])){
-                $id_cultivo = '34';
+                $id_cultivo = $_GET['newSpend'];
                 $concepto = $_POST['Concepto'];
                 $precio = $_POST['Precio'];
                 $moneda = $_POST['Moneda'];
@@ -90,6 +90,7 @@
                 $fecha = $_POST['Fecha'];
 
                 $data->insertCropSpend($id_cultivo, $concepto, $precio, $moneda, $frecuencia, $fecha);
+                header('Location: dashboard.php?Spend='.$_GET['newSpend'].'&Ground='.$_GET['Ground'].'');
             }
         ?>
    

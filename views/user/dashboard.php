@@ -33,7 +33,6 @@ if(!isset($_SESSION['correo'])){
     <?php
             include('navbar.php');
             
-
             if (isset($_GET['cultivos'])) {
                 include('cultivos.php');
             } else if (isset($_GET['suelos'])) {
@@ -58,9 +57,9 @@ if(!isset($_SESSION['correo'])){
                 include('suelo.php');
             }else if(isset($_GET['artificialGround'])){
                 include('suelo_art.php');
-            }else if(isset($_GET['viewCrop'])){
+            }else if(isset($_REQUEST['id_cultivo'])){
                 include('select_cultivo.php'); 
-            }else if(isset($_GET['viewCrop?seguimiento'])){
+            }else if(isset($_GET['Tracing'])){
                 include('select_seguimiento.php'); 
             }else if(isset($_GET['cultivo']) ){
                 $data->deleteCultivos($_GET['cultivo']);
@@ -74,9 +73,9 @@ if(!isset($_SESSION['correo'])){
                 include('gastos_generales.php'); 
             }else if(isset($_GET['viewHistory'])){
                 include('historial.php'); 
-            }else if(isset($_GET['viewCropSpend'])){
+            }else if(isset($_GET['Spend'])){
                 include('select_gastos.php'); 
-            }else if(isset($_GET['viewCropNewSpend'])){
+            }else if(isset($_GET['newSpend'])){
                 include('gasto.php'); 
             }else{
                 include('profile.php');
