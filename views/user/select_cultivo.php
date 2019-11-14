@@ -58,8 +58,9 @@
     </div>
 
 
-    <div class="row">
-        <div class="col-md-4 col-sm-12 pb-4">  
+    <div class="row mb-5 py-5 border-bottom border-success" style="border-bottom: 2px solid #388E3C!important; ;">
+
+        <div class="col-md-6 col-sm-12 pb-4 px-5 ">  
             <div class="card bg-light p-1 shadow p-0 mb-0 bg-light" style="Border-Radius: 10px;"> 
                 <div class="card-header bg-light">
                     <img src="../../img/svg/grain.svg" style="height:35px" class="mb-2" alt="">
@@ -81,7 +82,7 @@
             </div>      
         </div>
 
-        <div class="col-md-4 col-sm-12 pb-4" >  
+        <div class="col-md-6 col-sm-12 pb-4 px-5">  
             <div class="card bg-light p-1 shadow p-0 mb-0 bg-light" style="Border-Radius: 10px;"> 
                 <div class="card-header bg-light">
                     <img src="../../img/svg/growing-plant.svg" style="height:35px" class="mb-2" alt="">
@@ -109,12 +110,29 @@
                 </div>                                     
             </div>      
         </div>
+
+                       
+    </div> 
+
+    <div class="text-center">
+        <h1 class="text-success mt-4">Agroquímicos</h1>
+           
+    </div>
+
+    <div class="row p-3">
+            <a id="addNewAgro" href="dashboard.php?agro" class="btn btn-success ml-auto rounded-circle" role="button"
+                data-toggle="tooltip" data-placement="left" title="Agregar nuevo agroquímico">
+                <i class="fas fa-plus"></i>
+            </a>
+    </div>    
+                            
+    <div class="row"> 
         <?php
             $data->getCardAgro($_GET['id_cultivo']);
-        ?>                
-    </div>  
-</div>
+        ?> 
+    </div>
 
+</div>
     <!--Modales-->
     
 
