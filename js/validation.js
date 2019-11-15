@@ -6,7 +6,7 @@
 jQuery(function(){
     $.validator.addMethod('EMAIL',function(value, element){
         return this.optional(element) || /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum|es)$/i.test(value);
-    },"<span><p class='text-danger' style='font-size: 12px;'>*Ingrese una dirección de correo electronico válida.</p></span>");
+    },"<span><p class='text-danger' style='font-size: 12px;'>*Ingrese una dirección de correo electrónico válida.</p></span>");
         
     jQuery("#form-vali").validate({
         rules:{
@@ -23,14 +23,14 @@ jQuery(function(){
         },
         messages:{
             email:{
-                required:"<span><p class='text-danger' style='font-size: 12px;'>*Ingrese una dirección de correo electronico.</p></span>",
-                EMAIL:"<span><p class='text-danger' style='font-size: 12px;'>*Ingrese una dirección de correo electronico válida.</p></span>",
-                email: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese una dirección de correo electronico válida.</p></span>"
+                required:"<span><p class='text-danger' style='font-size: 12px;'>*Ingrese una dirección de correo electrónico.</p></span>",
+                EMAIL:"<span><p class='text-danger' style='font-size: 12px;'>*Ingrese una dirección de correo electrónico válida.</p></span>",
+                email: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese una dirección de correo electrónico válida.</p></span>"
             },
             pass:{
                 required: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese su contraseña.</p></span>",
-                maxlength:"<span><p class='text-danger' style='font-size: 12px;'>*Contraseña invalida, solo se aceptan maximo 16 caracteres.</p></span>",
-                minlength:"<span><p class='text-danger' style='font-size: 12px;'>*Contraseña invalida, solo se aceptan minimo 6 caracteres.</p></span>"
+                maxlength:"<span><p class='text-danger' style='font-size: 12px;'>*Contraseña invalida, solo se aceptan máximo 16 caracteres.</p></span>",
+                minlength:"<span><p class='text-danger' style='font-size: 12px;'>*Contraseña invalida, solo se aceptan mínimo 6 caracteres.</p></span>"
             }
         }
     });
@@ -44,10 +44,10 @@ jQuery(function() {
     }, "<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo letras.</p>" );
 $.validator.addMethod("PASSWORD",function(value,element){
     return this.optional(element) || /^(?=.*\d)(?=.*[a-zñ])(?=.*[A-ZÑ]).{6,16}$/i.test(value);
-},"<span><p class='text-danger' style='font-size: 12px;'>*La contraseña debe contener minimo 6 y maximo 16 caracteres y almenos un número.</p></span>");
+},"<span><p class='text-danger' style='font-size: 12px;'>*La contraseña debe contener mínimo 6 y máximo 16 caracteres y al menos un número.</p></span>");
 $.validator.addMethod('EMAIL',function(value, element){
     return this.optional(element) || /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum|es)$/i.test(value);
-},"<span><p class='text-danger' style='font-size: 12px;'>*Ingrese una dirección de correo electronico válida.</p></span>");
+},"<span><p class='text-danger' style='font-size: 12px;'>*Ingrese una dirección de correo electrónico válida.</p></span>");
 $.validator.addMethod("user_pass_not_same", function(value, element) {
     return $('#newPassword').val() != $('#currentPassword').val()
     }, "<span><p class='text-danger' style='font-size: 12px;'>*La contraseña debe ser diferente a la actual.</p></span>");
@@ -83,11 +83,11 @@ jQuery( ".registro" ).validate({
                      },
                      userCity: {
                          required: true,
-                         letterswithbasicpunc: true
+                         lettersonly: true
                      },
                      userState:{
                          required: true,
-                         letterswithbasicpunc: true
+                         lettersonly: true
                     },
                      userPass1:{
                         required: true,
@@ -113,10 +113,10 @@ jQuery( ".registro" ).validate({
             },
             messages: {
                     userName: {
-                            required: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese nombre.</p></span>"
+                            required: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese su nombre(s).</p></span>"
                     },
                     userLastName:{
-                        required: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese apellidos.</p></span>"
+                        required: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese su apellido(s).</p></span>"
                     },
                     phoneNumber:{
                         number: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese sólo números.</p></span>",
@@ -125,11 +125,9 @@ jQuery( ".registro" ).validate({
                         required: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese un número teléfonico.</p></span>"
                     },
                     userEmail:{
-                        EMAIL: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese una dirección de correo electronico válida.</p></span>",
-                        email: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese una dirección de correo electronico válida.</p></span>",
-                        required: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese una dirección de correo electrónico.</p></span>",
-                        remote: "<span><p class='text-danger' style='font-size: 12px;'>*La dirección de correo electrónico ya existe.</p></span>",
-                        url: "<span><p class='text-danger' style='font-size: 12px;'>*La dirección de correo electrónico ya existe.</p></span>"
+                        EMAIL: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese una dirección de correo electrónico válida.</p></span>",
+                        email: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese una dirección de correo electrónico válida.</p></span>",
+                        required: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese una dirección de correo electrónico.</p></span>"
                     },
                     userCompany:{
                         required: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese el nombre de su empresa.</p></span>",
@@ -137,13 +135,13 @@ jQuery( ".registro" ).validate({
                     },
                     userCity:{
                         required: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese una ciudad válida.</p></span>",
-                        remote:"<span><p class='text-danger' style='font-size: 12px;'>*La ciudad no existe, ingrese una ciudad valida .</p></span>",
-                        letterswithbasicpunc: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese solo letras.</p></span>"
+                        remote:"<span><p class='text-danger' style='font-size: 12px;'>*La ciudad no existe, ingrese una ciudad válida .</p></span>",
+                        lettersonly: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese solo letras.</p></span>"
                     },
                     userState:{
                         required: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese un estado válido.</p></span>",
-                        remote:"<span><p class='text-danger' style='font-size: 12px;'>*El no existe, ingrese un estado valido .</p></span>",
-                        letterswithbasicpunc: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese solo letras.</p></span>"
+                        remote:"<span><p class='text-danger' style='font-size: 12px;'>*El estado no existe, ingrese un estado válido .</p></span>",
+                        lettersonly: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese solo letras.</p></span>"
                     },
                     userPass1:{
                         required: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese una contraseña.</p></span>"
@@ -171,7 +169,7 @@ jQuery( ".registro" ).validate({
  jQuery(function(){
     $.validator.addMethod( "alphanumeric", function( value, element ) {
         return this.optional( element ) || /^[A-Za-z0-9\sñ\s\sáéíóúñÑÁÉÍÓÚüÜ]+$/i.test( value );
-    }, "<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo letras y numros.</p>" );
+    }, "<p class='text-danger' style='font-size: 12px;'>*Ingrese solo letras y números.</p>" );
     $.validator.addMethod( "lettersonly", function( value, element ) {
         return this.optional( element ) || /^[a-zñA-ZÑ\s\s\sáéíóúñÑÁÉÍÓÚüÜ]+$/i.test( value );
     }, "<p class='text-danger' style='font-size: 12px;'>*Ingrese solo letras.</p>" );
@@ -206,6 +204,7 @@ jQuery( ".registro" ).validate({
             },
             bornDate:{
                 required: true,
+                validDate: true,
                 date: true,
             },
             state:{
@@ -223,12 +222,12 @@ jQuery( ".registro" ).validate({
         },
         messages:{
             namecrop:{
-                required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese un nombre, puede incluir numeros .</p>",
+                required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese un nombre, puede incluir números .</p>",
                 alphanumeric: "<p class='text-danger' style='font-size: 12px;'>*Ingrese solo letras y numeros.</p>"
             },
             hectares:{
-                required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese hectareas.</p>",
-                number:"<p class='text-danger' style='font-size: 12px;'>*Ingrese solo numeros.</p>",
+                required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese hectáreas.</p>",
+                number:"<p class='text-danger' style='font-size: 12px;'>*Ingrese solo números.</p>",
                 min: "<p class='text-danger' style='font-size: 12px;'>*Numero negativos inválidos.</p>",
                 max: "<p class='text-danger' style='font-size: 12px;'>*Número no mayor a 100000.</p>",
             },
@@ -244,8 +243,8 @@ jQuery( ".registro" ).validate({
             },
             bornDate:{
                 required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese una fecha.</p>",
-                date: "<p class='text-danger' style='font-size: 12px;'>*Ingrese una fecha valida.</p>",
-                max: "<p class='text-danger' style='font-size: 12px;'>*Ingrese una fec valida.</p>"
+                date: "<p class='text-danger' style='font-size: 12px;'>*Ingrese una fecha válida.</p>",
+                max: "<p class='text-danger' style='font-size: 12px;'>*Ingrese una fec válida.</p>"
             },
             state:{
                 required:"<p class='text-danger' style='font-size: 12px;'>*Ingrese un estado.</p>",
@@ -343,7 +342,7 @@ jQuery(function(){
                 $(element).data('validation.running', false);
             }, 0);
         }
-        return this.optional(element) || this.optional(end[0]) || new Date(value) < new Date(end.val());
+        return this.optional(element) || this.optional(end[0]) || new Date(value) <= new Date(end.val());
 
     }, "<p class='text-danger' style='font-size: 12px;'>*La fecha deber ser anterior a la fecha de finalización correspondiente.</p>");
     
@@ -360,9 +359,13 @@ jQuery(function(){
                 $(element).data('validation.running', false);
             }, 0);
         }
-        return this.optional(element) || this.optional(start[0]) || new Date(value) > new Date($(params).val());
+        return this.optional(element) || this.optional(start[0]) || new Date(value) >= new Date($(params).val());
 
     }, "<p class='text-danger' style='font-size: 12px;'>*La fecha debe ser posterior a la fecha de inicio correspondiente.</p>");
+    jQuery.validator.addMethod("validDate", function(value, element) {
+        return this.optional(element) || moment(value,"DD/MM/YYYY").isValid();
+    }, "<p class='text-danger' style='font-size: 12px;'>*Ingresa el formato correcto DD/MM/YYYY.</p>");
+
     jQuery(".reg_agro").validate({
             rules:{
                 name_agroq:{
@@ -393,6 +396,7 @@ jQuery(function(){
                 fecha_inicio:{
                     dateBefore: "#inputFechaFinal",
                     required: true,
+                    validDate: true,
                     date: true
                     
     
@@ -401,6 +405,7 @@ jQuery(function(){
                 fecha_fin:{
                     dateAfter: "#inputFechaInicio",
                     required: true,
+                    validDate: true,
                     date: true
                     
                   
@@ -428,16 +433,16 @@ jQuery(function(){
                 },
                 cantidad:{
                     required:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad.</p>",
-                    number:"<p class='text-danger' style='font-size: 12px;'>*Ingrese solo numeros.</p>",
+                    number:"<p class='text-danger' style='font-size: 12px;'>*Ingrese solo números.</p>",
                     min:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad valida, solo se aceptan cantidades positivas.</p>",
-                    maxlength:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad valida, no mayor a 11 dígitos.</p>"
+                    maxlength:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad válida, no mayor a 11 dígitos.</p>"
                     
                 },
                 dosis:{
                     required:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una dosis .</p>",
                     number:"<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo números.</p>",
-                    maxlength:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una dosis valida, solo se aceptan 4 digitos.</p>",
-                    min:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una dosis valida, solo se aceptan cantidades positivas .</p>"
+                    maxlength:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una dosis valida, solo se aceptan 4 dígitos.</p>",
+                    min:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una dosis válida, solo se aceptan cantidades positivas .</p>"
                 },
                 fecha_inicio:{
                     required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese una fecha de inicio.</p>"
@@ -448,8 +453,8 @@ jQuery(function(){
                 existencia:{
                     required:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad.</p>",
                     number:"<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo números.</p>",
-                    maxlength:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad valida, solo se aceptan 4 digitos.</p>",
-                    min:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad valida, solo se aceptan cantidades positivas .</p>"
+                    maxlength:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad válida, solo se aceptan 4 dígitos.</p>",
+                    min:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad válida, solo se aceptan cantidades positivas .</p>"
                 }
 
             }
@@ -460,7 +465,7 @@ jQuery(function(){
 jQuery(function(){
     $.validator.addMethod( "alphanumeric", function( value, element ) {
         return this.optional( element ) || /^[A-za-z0-9\sñ\s\sáéíóúñÑÁÉÍÓÚüÜ]+$/i.test( value );
-    }, "<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo letras y numros.</p>" );
+    }, "<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo letras y numeros.</p>" );
     jQuery(".reg_gasto").validate({
         rules:{
             Concepto:{
@@ -482,19 +487,90 @@ jQuery(function(){
         messages:{
             Concepto:{
                 required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese el concepto del gasto.</p>",
-                alphanumeric: "<p class='text-danger' style='font-size: 12px;'>*Ingrese solo letras o numeros.</p>"
+                alphanumeric: "<p class='text-danger' style='font-size: 12px;'>*Ingrese solo letras o números.</p>"
             },
             Precio:{
                 required:"<p class='text-danger' style='font-size: 12px;'>*Ingrese un precio.</p>",
                 number:"<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo números.</p>",
-                maxlength:"<p class='text-danger' style='font-size: 12px;'>*Ingrese un precio valido, solo se aceptan 11 digitos.</p>",
+                maxlength:"<p class='text-danger' style='font-size: 12px;'>*Ingrese un precio valido, solo se aceptan 11 dígitos.</p>",
                 min:"<p class='text-danger' style='font-size: 12px;'>*Ingrese un precio valido, solo se aceptan precios positivos .</p>"
             },
             Fecha:{
                 required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese una fecha.</p>",
-                date: "<p class='text-danger' style='font-size: 12px;'>*Ingrese una fecha valida.</p>",
-                max: "<p class='text-danger' style='font-size: 12px;'>*Ingrese una fecha valida.</p>"
+                date: "<p class='text-danger' style='font-size: 12px;'>*Ingrese una fecha válida.</p>",
+                max: "<p class='text-danger' style='font-size: 12px;'>*Ingrese una fecha válida.</p>"
             }
         }
     });
+});
+
+/**Modal calendario  */
+jQuery(function(){
+    function compareDates() {
+    
+            var endTime = endDate.getTime() + $('#inputFechaInicio').parseValToNumber();
+            var startTime = startDate.getTime() + $('#inputFechaFinal').parseValToNumber();
+            return endTime >= startTime;
+    }
+    function comparetimes() {
+    
+        var endTime = endDate.getTime() + $('#inputFechaInicio').parseValToNumber();
+        var startTime = startDate.getTime() + $('#inputFechaFinal').parseValToNumber();
+        return endTime <= startTime;
+}
+    jQuery.validator.addMethod("checkTimes", function(value, element) {
+        /* see function above*/
+        return  comparetimes() ;
+      }, "<p class='text-danger' style='font-size: 12px;'>*Horas invalidas, asegurate de que la fecha de inicio sea anterior a la fecha de finalización.</p>");
+    jQuery(".form-eventos").validate({
+        rules:{
+            titulo:{
+                required: true,
+                alphanumeric: true
+            },
+            fecha_inicio:{
+                required: true,
+                dateBefore: "#inputFechaFinal",
+                validDate: true
+            },
+            fecha_final:{
+                required: true, 
+                dateAfter: "#inputFechaInicio",
+                validDate: true
+
+            },
+            hora_inicio:{
+                required: true,
+                checkDates: true,
+                checkTimes: true
+            },
+            hora_final:{
+                required: true,
+                checkDates: true,
+                checkTimes: true
+            },
+            descripcion:{
+                required: true
+            }
+        },
+        messages:{
+            titulo:{
+                required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese un titulo de evento.</p>",
+                alphanumeric: "<p class='text-danger' style='font-size: 12px;'>*Solo se aceptan letras y números.</p>"
+            },
+            fecha_inicio:{
+                required: "<p class='text-danger' style='font-size: 12px;'>*Seleccione una fecha de inicio.</p>"
+            },
+            fecha_final:{
+                required: "<p class='text-danger' style='font-size: 12px;'>*Seleccione una fecha de finalización.</p>"
+            },
+            hora_final:{
+                required: "<p class='text-danger' style='font-size: 12px;'>*Seleccione una hora de finalización.</p>"
+            },
+            descripcion:{
+                required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese una descripcion del evento.</p>"
+            }
+        }
+    });
+
 });

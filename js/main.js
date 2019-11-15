@@ -23,27 +23,51 @@ $(document).ready(function () {
         minLength: 1
     });
 
-    $('#inputTipo').show();
-    $('#inputCausaP').hide();
-    $('#inputCausaE').hide();
+    $('.inputTipo').show();
+    $('.inputCausaP').hide();
+    $('.inputCausaE').hide();
 
     $("[name='origin']").change(function () {
-        var selectedText = $("#inputAplicacion option:selected").html();
+        var selectedText = $("inputAplicacion option:selected").html();
         if (selectedText == 'Nutriente') {
             console.log(selectedText);
-            $('#inputCausaE').hide();
-            $('#inputCausaP').hide();
-            $('#inputTipo').show();
+            $('.inputCausaE').hide();
+            $('.inputCausaP').hide();
+            $('.inputTipo').show();
         } else if (selectedText == 'Plaga') {
             console.log(selectedText);
-            $('#inputCausaP').show();
-            $('#inputCausaE').hide();
-            $('#inputTipo').hide();
+            $('.inputCausaP').show();
+            $('.inputCausaE').hide();
+            $('.inputTipo').hide();
         } else if (selectedText == 'Enfermedad') {
             console.log(selectedText);
-            $('#inputTipo').hide();
-            $('#inputCausaP').hide();
-            $('#inputCausaE').show();
+            $('.inputTipo').hide();
+            $('.inputCausaP').hide();
+            $('.inputCausaE').show();
+        }
+    });
+
+    $('#inputTipo2').show();
+    $('#inputCausaP2').hide();
+    $('#inputCausaE2').hide();
+
+    $("[name='origin2']").change(function () {
+        var selectedText = $("#inputAplicacion2 option:selected").html();
+        if (selectedText == 'Nutriente') {
+            console.log(selectedText);
+            $('#inputCausaE2').hide();
+            $('#inputCausaP2').hide();
+            $('#inputTipo2').show();
+        } else if (selectedText == 'Plaga') {
+            console.log(selectedText);
+            $('#inputCausaP2').show();
+            $('#inputCausaE2').hide();
+            $('#inputTipo2').hide();
+        } else if (selectedText == 'Enfermedad') {
+            console.log(selectedText);
+            $('#inputTipo2').hide();
+            $('#inputCausaP2').hide();
+            $('#inputCausaE2').show();
         }
     });
 

@@ -60,8 +60,8 @@
         <div class="row mb-5 pb-5">
 
             <div class="col-md-4 col-sm-10" >
-                <a href="#" class="href text-decoration-none">
-                    <button type="button" class="btn3 btn btn-light btn-block p-3 shadow mb-4" style="font-size: 20px; text-align:center;">
+                <a href="" class="href text-decoration-none">
+                    <button type="button" class="btn3 btn btn-light btn-block p-3 shadow mb-4" style="font-size: 20px; text-align:center; background-color: #F28322; color: white;">
                         <i class="fas fa-calendar-day float-left"></i>
                         Calendario
                     </button>
@@ -85,7 +85,13 @@
                     </button>
                 </a>
             </div>
-
-            <h1 class="text-center col-sm-12 col-12 col-md-12 col-lg-12">Proximamente</h1>
+            
+                <?php
+                    include('calendario.php');
+                ?>    
+           
+            
         </div>
+
+        
     </div>

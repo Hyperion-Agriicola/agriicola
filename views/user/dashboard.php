@@ -23,7 +23,58 @@ if(!isset($_SESSION['correo'])){
     <link rel="stylesheet" href="../../css/main.css">
     <link rel="stylesheet" href="../../css/animate.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+
+    <script
+			  src="https://code.jquery.com/jquery-3.4.1.min.js"
+			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+			  crossorigin="anonymous"></script>
+        <script src="../../js/calendario/moment.min.js"></script>
+
+        <!--Fullcalendar-->
+        
+        <script src="../../js/calendario/fullcalendar.min.js"></script>
+        <link rel="stylesheet" href="../../css/calendario/fullcalendar.min.css">
+        <script src="../../js/calendario/es-us.js"></script>
+        <script src="../../js/calendario/bootstrap-clockpicker.min.js" ></script>
+        <link rel="stylesheet" href="../../css/calendario/bootstrap-clockpicker.min.css">
     <title>AGRIICOLA</title>
+
+
+    <style>
+        .fc th{
+            padding: 15px;
+            background: #5C6BC0;
+            color: #fff;
+            font-weight: 500;
+        }
+        .fc-toolbar{
+            padding-left: 35px;
+            padding-right: 35px;
+        }
+        .fc-today{
+            background: #9FA8DA!important;
+        }
+        
+
+        .fc-button{
+            width: 80px;
+            height:50px !important;
+            background: #3949AB;
+            color: #ffffff !important;
+            font-weight: 500 !important;
+            border: none;
+            padding: 10px;
+        }
+
+        .fc-content{
+            height:25px;
+            font-size:15px;
+            
+        }
+
+
+    
+       </style>
 </head>
 
 <body class="bg-white">
@@ -77,6 +128,8 @@ if(!isset($_SESSION['correo'])){
                 include('select_gastos.php'); 
             }else if(isset($_GET['newSpend'])){
                 include('gasto.php'); 
+            }else if(isset($_GET['calendar'])){
+                include('calendario.php'); 
             }else{
                 include('profile.php');
                 ?>
@@ -130,8 +183,9 @@ if(!isset($_SESSION['correo'])){
 include('footer.php');
 ?>
 
-    <script src="../../js/jquery-3.4.1.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>¡
+    <script src="../../js/jquery-3.4.1.js"></script>
+    <script src="../../js/jquery-ui.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.1/jquery.validate.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.1/additional-methods.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

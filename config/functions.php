@@ -428,6 +428,7 @@ class Functions
         $conexion = new Database();
         $sql="UPDATE agroquimicos SET estatus='eliminado' WHERE id_agroquimico=".$id_agro_recibido;
         $result = $conexion->query($sql);
+        
     }
 
     //Devuelve las CARDS de cada cultivo, posteando el id de cultivo con un formulario oculto
@@ -957,7 +958,7 @@ class Functions
                             <div class="card-header bg-light">
                                 <img src="../../img/svg/plant-sample.svg" style="height:35px" class="mb-2" alt="">
                                 <a href="" data-toggle="modal" data-target="#modalEliminar'.$row['id_agroquimico'].'">
-                                    <button type="button" class="close"><span>&times</span></button>
+                                    <button type="button" class="close edit_data"><span>&times</span></button>
                                 </a>
                                 <br>
                                 <h4>'.$row['aplicacion'].' : '.$row['nombre_comercial'].'</h4>
@@ -965,7 +966,7 @@ class Functions
                             </div>
 
                             <div class="card-body pt-3">
-                                <a data-toggle="modal" data-target="#edit'.str_replace(' ' , '',  $row['nombre_comercial']).'" class="close">
+                                <a id="'.$row['id_agroquimico'].'"data-toggle="modal" data-target="#edit'.str_replace(' ' , '',  $row['nombre_comercial']).'" class="close">
                                     <img src="../../img/svg/edit-24px.svg"class="mb-2" alt="">
                                 </a>
                                 <a data-toggle="modal" data-target="#'.str_replace(' ' , '',  $row['nombre_comercial']).'" class="text-success text-left text-decoration-none" href="#">Ver informacion
@@ -1037,170 +1038,14 @@ class Functions
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                                         
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!--Modal modif agroquimico-->
-                    <div class="modal fade" id="edit'.str_replace(' ' , '',  $row['nombre_comercial']).'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">
-                                        Modificar cultivo
-                                    </h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <form class="reg_agro" action="" method="POST">
-                                        <input name="input_id_cultivo" id="input_id_cultivo" value='.$row['id_cultivo'].' style="display: none;">
-                                        <input name="input_id_agroquimico" id="input_id_agroquimico" value='.$row['id_agroquimico'].' style="display: none;">
-                                        <div class="row">
-                                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                                <div class="form-group">
-                                                    <label for="inputAplicacion">Aplicación</label>
-                                                    <select class="form-control" id="inputAplicacion" name="origin">
-                                                        '.$selected_aplicacion.'
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                                <div class="form-group">
-                                                    <label for="inputNombreComercial">Nombre comercial</label>
-                                                    <input type="text" placeholder="Nutriplant" class="form-control" id="inputNombreComercial" name="name_agroq" value="'.$row['nombre_comercial'].'">
-                                                </div>
-                                            </div>
-                                
-                                            <div class="col-lg-3 col-md-3 col-sm-6">
-                                                <div class="form-group">
-                                                    <label for="inputPrecio">Precio</label>
-                                                    <input type="number" placeholder="700" class="form-control" id="inputPrecio" name="precio" value="'.$row['precio'].'">
-                                                </div>
-                                            </div>
-                                
-                                            <div class="col-lg-3 col-md-3 col-sm-6">
-                                                <div class="form-group">
-                                                    <label for="inputMoneda">Moneda</label>
-                                                    <select class="form-control" id="inputMoneda" name="moneda">
-                                                        '.$selected_moneda.'
-                                                    </select>
-                                                </div>
-                                            </div>
-                                
-                                            <div class="col-lg-3 col-md-3 col-sm-6">
-                                                <div class="form-group">
-                                                    <label for="inputCantidad">Cantidad</label>
-                                                    <input type="number" placeholder="700" class="form-control" id="inputCantidad" name="cantidad" value="'.$row['cantidad'].'">
-                                                </div>
-                                            </div>
-                                
-                                            <div class="col-lg-3 col-md-3 col-sm-6">
-                                                <div class="form-group">
-                                                    <label for="inputUnidad">Unidad</label>
-                                                    <select class="form-control" id="inputUnidad" name="unidad">
-                                                        '.$selected_unidad.'
-                                                    </select>
-                                                </div>
-                                            </div>
-                                
-                                
-                                            <div class="col-lg-3 col-md-3 col-sm-6">
-                                                <div class="form-group">
-                                                    <label for="inputDosis">Dosis</label>
-                                                    <input type="number" placeholder="700" class="form-control" id="inputDosis" name="dosis" value="'.$row['dosis'].'">
-                                                </div>
-                                            </div>
-                                
-                                            <div class="col-lg-3 col-md-3 col-sm-6">
-                                                <div class="form-group">
-                                                    <label for="inputTiempo">Tiempo</label>
-                                                    <select class="form-control" id="inputTiempo" name="tiempo">
-                                                        '.$selected_tiempo.'
-                                                    </select>
-                                                </div>
-                                            </div>
-                                
-                                
-                                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                                <div class="form-group">
-                                                    <!--Si el campo aplicacion es Nutriente-->
-                                                    <div id="inputTipo">
-                                                        <label for="inputTipo">Tipo</label>
-                                                        <select class="form-control" name="nutricion">
-                                                            '.$selected_nutricion.'
-                                                        </select>
-                                                    </div>
-                                                    <!--Si el campo aplicacion es Enfermedad-->
-                                                    <div id="inputCausaE">
-                                                        <label for="inputTipo">Causa</label>
-                                                        <select class="form-control" name="enfermedad">
-                                                            <option disabled>Elige una enfermedad</option>
-                                                            '.$enfermedad.'
-                                            
-                                                            
-                                                        </select>
-                                                    </div>
-                                                    <!--Si el campo aplicacion es Plaga-->
-                                                    <div id="inputCausaP">
-                                                        <label for="inputTipo">Causa</label>
-                                                        <select class="form-control" name="plaga">
-                                                            <option disabled>Selecciona una plaga</option>
-                                                            '.$plaga.'
-                                                            
-                                                        
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                
-                                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                                <div class="form-group">
-                                                    <label for="inputFrecuencia">Frecuencia</label>
-                                                    <select class="form-control" id="inputFrecuencia" name="frecuencia">
-                                                        <option>Diario</option>
-                                                        <option>Cada 2 dias</option>
-                                                        <option>Cada 3 dias</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                
-                                            <div class="col-lg-3 col-md-3 col-sm-6">
-                                                <div class="form-group">
-                                                    <label for="inputFechaInicio">Fecha de inicio</label>
-                                                    <input type="date" placeholder="Fecha" class="form-control" id="inputFechaInicio" name="fecha_inicio" value="'.$row['fecha_inicio'].'">
-                                                </div>
-                                            </div>
-                                
-                                            <div class="col-lg-3 col-md-3 col-sm-6">
-                                                <div class="form-group">
-                                                    <label for="inputFechaFinal">Fecha de fin</label>
-                                                    <input type="date" placeholder="Fecha" class="form-control" id="inputFechaFinal" name="fecha_fin" value="'.$row['fecha_fin'].'">
-                                                </div>
-                                            </div>
-                                
-                                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                                <div class="form-group">
-                                                    <label for="inputExistencia">Existencia</label>
-                                                    <input type="number" placeholder=10 class="form-control" id="inputExistencia" name="existencia" value="'.$row['existencia'].'">
-                                                </div>
-                                            </div>
-                                
-                                        </div>
-                                        
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                                            <button name="modifAgro" type="submit" class="btn btn-success">Aceptar</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>    
+                        
 
                     <!--Modal eliminar--> 
                     <div class="modal fade" id="modalEliminar'.$row['id_agroquimico'].'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -1229,7 +1074,7 @@ class Functions
 
           
         }        
-
+        
     }
 
     //Funcion obtner los datos del usuario: Abraham
@@ -1864,6 +1709,51 @@ class Functions
                 }
         }
     }
+
+    public function insertNewAgro(
+        $id_cultivo,
+        $aplicacion,
+        $nom_comer,
+        $precio,
+        $moneda,
+        $cantidad,
+        $unidad,
+        $dosis,
+        $tiempo,
+        $tipo,
+        $frecuencia,
+        $fecha_inicio,
+        $fecha_fin,
+        $existencia
+
+    ) {
+
+        $conexion = new Database();
+        
+        $query = "INSERT INTO agroquimicos (id_cultivo, aplicacion, nombre_comercial, precio, moneda,
+        cantidad, unidad, dosis, tiempo, tipo_causa, frecuencia, fecha_inicio, fecha_fin, existencia,
+        fecha_registro) VALUES ('$id_cultivo',  '$aplicacion', '$nom_comer', 
+        '$precio', '$moneda', '$cantidad', '$unidad', '$dosis', '$tiempo', '$tipo', '$frecuencia', '$fecha_inicio',
+        '$fecha_fin', '$existencia', now())";
+
+        $result = $conexion->query($query)
+            or trigger_error(mysqli_error($conexion));
+
+        if (!$result) {
+            echo "
+            <div class='container mt-4'>
+                <div class='alert alert-danger' role='alert'>
+                    Hubo un error al registrar los datos, verifique sus campos o intente más tarde
+                </div>
+            </div>
+            ";
+        } else {
+            header('Location: dashboard.php');
+        }
+    
+    }
+
+   
 }
 
 

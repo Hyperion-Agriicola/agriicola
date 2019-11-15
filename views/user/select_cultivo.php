@@ -27,9 +27,9 @@
     
 <div class="container">
 
-    <div class="row mb-5 py-5 border-bottom border-success" style="border-bottom: 2px solid #388E3C!important;">
+    <div class="row mb-5 py-5 border-bottom border-success" style="border-bottom: 2px solid #388E3C !important;">
             
-        <div class="col-md-4 col-sm-10" >
+        <div class="col-md-4 col-sm-10">
             <a href="dashboard.php?id_cultivo=<?php echo $_GET['id_cultivo'];?>&id_suelo=<?php echo $_GET['id_suelo'];?>" class="href text-decoration-none">
                 <button type="button" class="btn0 btn-light btn-block p-3 shadow mb-4 text-white" style="font-size: 20px; text-align:center; background-color:#388E3C;">
                     <i class="fas fa-align-left float-left"></i>
@@ -58,9 +58,9 @@
     </div>
 
 
-    <div class="row mb-5 py-5 border-bottom border-success" style="border-bottom: 2px solid #388E3C!important; ;">
+    <div class="row mb-5 py-5 border-bottom border-success" style="border-bottom: 2px solid #388E3C !important;">
 
-        <div class="col-md-6 col-sm-12 pb-4 px-5 ">  
+        <div class="col-md-6 col-sm-12 pb-4 px-md-5 px-lg-5">  
             <div class="card bg-light p-1 shadow p-0 mb-0 bg-light" style="Border-Radius: 10px;"> 
                 <div class="card-header bg-light">
                     <img src="../../img/svg/grain.svg" style="height:35px" class="mb-2" alt="">
@@ -82,7 +82,7 @@
             </div>      
         </div>
 
-        <div class="col-md-6 col-sm-12 pb-4 px-5">  
+        <div class="col-md-6 col-sm-12 pb-4 px-md-5 px-lg-5">  
             <div class="card bg-light p-1 shadow p-0 mb-0 bg-light" style="Border-Radius: 10px;"> 
                 <div class="card-header bg-light">
                     <img src="../../img/svg/growing-plant.svg" style="height:35px" class="mb-2" alt="">
@@ -109,9 +109,7 @@
                     </a>
                 </div>                                     
             </div>      
-        </div>
-
-                       
+        </div>                 
     </div> 
 
     <div class="text-center">
@@ -120,19 +118,21 @@
     </div>
 
     <div class="row p-3">
-            <a id="addNewAgro" href="dashboard.php?agro" class="btn btn-success ml-auto rounded-circle" role="button"
-                data-toggle="tooltip" data-placement="left" title="Agregar nuevo agroquímico">
+            <button data-toggle="modal" data-target="#modalAddAgro" href="#" class="btn btn-success ml-auto rounded-circle" role="button" data-toggle="tooltip" data-placement="left" title="Agregar nuevo agroquímico" id="add">
                 <i class="fas fa-plus"></i>
-            </a>
+            </button>
     </div>    
                             
-    <div class="row"> 
+    <div class="row">
         <?php
             $data->getCardAgro($_GET['id_cultivo']);
         ?> 
     </div>
+        
+   
 
 </div>
+
     <!--Modales-->
     
 
@@ -730,7 +730,276 @@
                 
             </div>
         </div>
-    </div>   
+    </div>
+    
+    <!--Modal agregar agro-->
+    <div class="modal fade" id="modalAddAgro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        Nuevo agroquímico
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="reg_agro" action="" method="post" id="addForm">
+                        <input type="text" id="id_cultivo" name="id_cultivo" value="<?php echo $_GET['id_cultivo'];?>">
+                        <input type="hidden" name="id_agroquimico" id="id_agroquimico">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label for="inputAplicacion2">Aplicación</label>
+                                    <select class="form-control" id="inputAplicacion2" name="origin2">
+                                        <option value="Nutriente">Nutriente</option>
+                                        <option value="Enfermedad">Enfermedad</option>
+                                        <option value="Plaga">Plaga</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label for="inputNombreComercial">Nombre comercial</label>
+                                    <input type="text" placeholder="Nutriplant" class="form-control" id="inputNombreComercial" name="name_agroq">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-3 col-sm-6">
+                                <div class="form-group">
+                                    <label for="inputPrecio">Precio
+                                        <i class="icon-grey-color fas fa-question-circle"
+                                                data-toggle="tooltip" data-placement="top" title="Selecciona un número con las flechas o escríbelo"></i>
+                                    </label>
+                                    <input type="number" min="0" placeholder="..." class="form-control" id="inputPrecio" name="precio">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-3 col-sm-6">
+                                <div class="form-group">
+                                    <label for="inputMoneda">Moneda</label>
+                                    <select class="form-control" id="inputMoneda" name="moneda">
+                                        <option value="pesos">Pesos</option>
+                                        <option value="dolar">Dolar</option>
+                                        <option value="euro">Euro</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-3 col-sm-6">
+                                <div class="form-group">
+                                    <label for="inputCantidad">Cantidad
+                                        <i class="icon-grey-color fas fa-question-circle"
+                                                    data-toggle="tooltip" data-placement="top" title="Selecciona un número con las flechas o escríbelo"></i>
+                                    </label>
+                                    <input type="number" min="0" placeholder="..." class="form-control" id="inputCantidad" name="cantidad">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-3 col-sm-6">
+                                <div class="form-group">
+                                    <label for="inputUnidad">Unidad</label>
+                                    <select class="form-control" id="inputUnidad" name="unidad">
+                                        <option value="ml">Mililitros</option>
+                                        <option value="l">Litros</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-3 col-md-3 col-sm-6">
+                                <div class="form-group">
+                                    <label for="inputDosis">Dosis
+                                        <i class="icon-grey-color fas fa-question-circle"
+                                                    data-toggle="tooltip" data-placement="top" title="Selecciona un número con las flechas o escríbelo"></i>
+                                    </label>
+                                    <input type="number" min="0" placeholder="..." class="form-control" id="inputDosis" name="dosis">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-3 col-sm-6">
+                                <div class="form-group">
+                                    <label for="inputTiempo">Tiempo</label>
+                                    <select class="form-control" id="inputTiempo" name="tiempo">
+                                        <option value="semana">Semanas</option>
+                                        <option value="dias">Dias</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <!--Si el campo aplicacion es Nutriente-->
+                                    <div id="inputTipo2">
+                                        <label for="inputTipo">Tipo</label>
+                                        <select class="form-control" name="nutricion" id="nutricion">
+                                            <option value="micro">Micronutrientes</option>
+                                            <option value="macro">Macronutrientes</option>
+                                        </select>
+                                    </div>
+                                    <!--Si el campo aplicacion es Enfermedad-->
+                                    <div id="inputCausaE2">
+                                        <label for="inputTipo">Causa</label>
+                                        <select class="form-control" name="enfermedad">
+                                            <option disabled>Elige una enfermedad</option>
+                                            <?php 
+                                                $data->getDiseases("");
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <!--Si el campo aplicacion es Plaga-->
+                                    <div id="inputCausaP2">
+                                        <label for="inputTipo">Causa</label>
+                                        <select class="form-control" name="plaga">
+                                            <option disabled>Selecciona una plaga</option>
+                                            <?php
+                                                $data->getBugs("");
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label for="inputFrecuencia">Frecuencia</label>
+                                    <select class="form-control" id="inputFrecuencia" name="frecuencia">
+                                        <option>Diario</option>
+                                        <option>Cada 2 dias</option>
+                                        <option>Cada 3 dias</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-3 col-sm-6">
+                                <div class="form-group">
+                                    <label for="inputFechaInicio">Fecha de inicio</label>
+                                    <input type="date" placeholder="Fecha" class="form-control" id="inputFechaInicio" name="fecha_inicio">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-3 col-sm-6">
+                                <div class="form-group">
+                                    <label for="inputFechaFinal">Fecha de fin</label>
+                                    <input type="date" placeholder="Fecha" class="form-control" id="inputFechaFinal" name="fecha_fin">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="form-group">
+                                    <label for="inputExistencia">Existencia
+                                        <i class="icon-grey-color fas fa-question-circle"
+                                                    data-toggle="tooltip" data-placement="top" title="Selecciona un número con las flechas o escríbelo"></i>
+                                    </label>
+                                    <input type="number" min="0" placeholder="..." class="form-control" id="inputExistencia" name="existencia">
+                                </div>
+                            </div>
+
+                        </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                            <button id="addAgro" name="addAgro" type="submit" class="btn btn-success">Aceptar</button>
+                        </div>
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+    <script>  
+ $(document).ready(function(){  
+      $('#add').click(function(){  
+           $('#addAgro').val("Insert");  
+           $('#addForm')[0].reset();  
+      });  
+      $(document).on('click', '.edit_data', function(){  
+           var id_agroquimico = $(this).attr("id");  
+           $.ajax({  
+                url:"fetch.php",  
+                method:"POST",  
+                data:{id_agroquimico:id_agroquimico},  
+                dataType:"json",  
+                success:function(data){  
+                     $('#inputAplicacion2').val(data.aplicacion);  
+                     $('#inputNombreComercial').val(data.nombre_comercial);  
+                     $('#inputPrecio').val(data.gender);  
+                     $('#inputMoneda').val(data.designation);  
+                     $('#inputCantidad').val(data.age);  
+                     $('#inputUnidad').val(data.id);
+                     $('#inputDosis').val(data.id);  
+                     $('#inputTiempo').val(data.id);
+                     
+                     if ($aplicacion == "Enfermedad") {
+                        $('#nutricion').val(data.tipo);
+                        } else if ($aplicacion == "Plaga") {
+                            $tipo = $_POST['plaga'];
+                        } else {
+                            $tipo = $_POST['nutricion'];
+                        }
+                     $('#addAgro').val("Update");  
+                     $('#add_data_Modal').modal('show');  
+                }  
+           });  
+      });  
+      $('#insert_form').on("submit", function(event){  
+           event.preventDefault();  
+           if($('#name').val() == "")  
+           {  
+                alert("Name is required");  
+           }  
+           else if($('#address').val() == '')  
+           {  
+                alert("Address is required");  
+           }  
+           else if($('#designation').val() == '')  
+           {  
+                alert("Designation is required");  
+           }  
+           else if($('#age').val() == '')  
+           {  
+                alert("Age is required");  
+           }  
+           else  
+           {  
+                $.ajax({  
+                     url:"insert.php",  
+                     method:"POST",  
+                     data:$('#insert_form').serialize(),  
+                     beforeSend:function(){  
+                          $('#insert').val("Inserting");  
+                     },  
+                     success:function(data){  
+                          $('#insert_form')[0].reset();  
+                          $('#add_data_Modal').modal('hide');  
+                          $('#employee_table').html(data);  
+                     }  
+                });  
+           }  
+      });  
+      $(document).on('click', '.view_data', function(){  
+           var employee_id = $(this).attr("id");  
+           if(employee_id != '')  
+           {  
+                $.ajax({  
+                     url:"select.php",  
+                     method:"POST",  
+                     data:{employee_id:employee_id},  
+                     success:function(data){  
+                          $('#employee_detail').html(data);  
+                          $('#dataModal').modal('show');  
+                     }  
+                });  
+           }            
+      });  
+ });  
+ </script>
+    
+    
+  
 
    <?php
         if (isset($_POST['modifCrop'])){
@@ -812,6 +1081,50 @@
             
 
             $data->modifyAgro($id_cultivo, $id_agroquimico, $origen, $nombre_comercial, $precio, $moneda, $cantidad, $unidad, $dosis, $tiempo, $tipo_causa, $frecuencia, $fecha_inicio, $fecha_fin, $existencia);
+            header('Location: dashboard.php?id_cultivo='.$_GET['id_cultivo'].'&id_suelo='.$_GET['id_suelo'].'');
+        }
+
+        if(isset($_POST['addAgro'])){
+            $id_cultivo = $_POST['id_cultivo'];
+            $aplicacion = $_POST['origin2'];
+            $nom_comer = $_POST['name_agroq'];
+            $precio = $_POST['precio'];
+            $moneda = $_POST['moneda'];
+            $cantidad = $_POST['cantidad'];
+            $unidad = $_POST['unidad'];
+            $dosis = $_POST['dosis'];
+            $tiempo = $_POST['tiempo'];
+
+            if ($aplicacion == "Enfermedad") {
+                $tipo = $_POST['enfermedad'];
+            } else if ($aplicacion == "Plaga") {
+                $tipo = $_POST['plaga'];
+            } else {
+                $tipo = $_POST['nutricion'];
+            }
+            
+            $frecuencia = $_POST['frecuencia'];
+            $fecha_inicio = $_POST['fecha_inicio'];
+            $fecha_fin = $_POST['fecha_fin'];
+            $existencia = $_POST['existencia'];
+
+            $data->insertNewAgro(
+                $id_cultivo,
+                $aplicacion,
+                $nom_comer,
+                $precio,
+                $moneda,
+                $cantidad,
+                $unidad,
+                $dosis,
+                $tiempo,
+                $tipo,
+                $frecuencia,
+                $fecha_inicio,
+                $fecha_fin,
+                $existencia
+            );
+
             header('Location: dashboard.php?id_cultivo='.$_GET['id_cultivo'].'&id_suelo='.$_GET['id_suelo'].'');
         }
    ?>
