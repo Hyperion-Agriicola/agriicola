@@ -42,8 +42,8 @@ class Functions
                     </div>
                 </div";
             }else{
-                $upperUserName = ucwords($userName);
-                $upperUserLastName = ucwords($userlastName);
+                $upperUserName = ucwords(strtolower($userName));
+                $upperUserLastName = ucwords(strtolower($userlastName));
 
                 $insert = "INSERT INTO users(nombre, apellido, telefono, correo, 
                 acceso, empresa, tipo_usuario, ciudad, estado, fecha_registro) VALUES ('$upperUserName', '$upperUserLastName', 
@@ -209,6 +209,9 @@ class Functions
 
         $userEmail = $_SESSION['correo'];
 
+        $upperName = ucwords(strtolower($name));
+        $upperVariation = ucwords(strtolower($variation));
+
         $getUserQuery = "SELECT id_u FROM users WHERE correo = '$userEmail'";
         $execUserQuery = $conexion->query($getUserQuery) or trigger_error(mysqli_error($conexion));
         if ($execUserQuery) {
@@ -219,8 +222,8 @@ class Functions
 
             $insert = "INSERT INTO cultivos(id_u, nombre_predio, hectareas, tipo_especie, subespecie,
             variedad, fecha_inicio, estado, municipio, localidad, tipo_suelo, estatus, fecha_registro) 
-            VALUES ('$userRow[id_u]', '$name','$hectares','$specieType','$subspecie', 
-            '$variation', '$bornDate', '$state', '$township', '$town', '$groundSelect', 'activo', now())";
+            VALUES ('$userRow[id_u]', '$upperName','$hectares','$specieType','$subspecie', 
+            '$upperVariation', '$bornDate', '$state', '$township', '$town', '$groundSelect', 'activo', now())";
 
             $execQuery = $conexion->query($insert) or trigger_error($conexion->error);
 
@@ -468,7 +471,7 @@ class Functions
                                 ' . $niu_fechaa[2] . " de " . $month[$niu_fechaa[1] - 1] . " de " . $niu_fechaa[0] . '
                                 
                                 
-                                <a href="" data-toggle="modal" data-target="#modalEliminar'.$row["id_cultivo"].'">
+                                <a href="#!" id="modalEliminar'.$row["id_cultivo"].'">
                                     <img src="../../img/svg/close-24px.svg" class="close" alt="">
                                 </a>    
                                 
@@ -482,9 +485,9 @@ class Functions
                             </div>
 
                             <div class="card-footer bg-white">
-                                <form action="dashboard.php?viewCrop" method="GET" class="align-right">
-                                    <input type="text" value='.$row['id_cultivo'].' style="display: none;" name="id_cultivo">
-                                    <input type="text" value='.$row['tipo_suelo'].' style="display: none;" name="id_suelo">
+                                <form action="dashboard.php?viewCrop" method="POST" class="align-right">
+                                    <input type="text" value='.$row['id_cultivo'].' style="display: none;" name="get_id_cultivo">
+                                    <input type="text" value='.$row['tipo_suelo'].' style="display: none;" name="get_tipo_suelo">
                                     <button type="submit" class="btn btn-block btn-success">
                                         Ver más
                                     </button>
@@ -493,41 +496,37 @@ class Functions
                          </a>
                     </div>
                 </div>
-                <!--Modal eliminar-->
-                <div class="modal fade" id="modalEliminar'.$row["id_cultivo"].'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Advertencia</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                ¿Está seguro de eliminar este cultivo? Tome en cuenta que ésta acción es irreversible.
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                                <a href="dashboard.php?cultivo='.$row['id_cultivo'].'" class="btn btn-success" role="button" aria-disabled="true">Aceptar</a>
-                           
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                ';
+                <script>
+                    document.getElementById("modalEliminar'.$row["id_cultivo"].'").addEventListener("click", function(){
+                        
+                            Swal.fire({
+                                title: "Advertencia",
+                                text: "¿Está seguro que desea deshabilitar este cultivo? Tome en cuenta que ésta acción es irreversible",
+                                icon: "warning",
+                                showCancelButton: true,
+                                confirmButtonColor: "#d33",
+                                cancelButtonColor: "#78909c",
+                                cancelButtonText: "Cancelar",
+                                confirmButtonText: "Deshabilitar"
+                                }).then((result) => {
+                                if (result.value) {
+                                    document.location = "dashboard.php?cultivo='.$row['id_cultivo'].'";
+                                }
+                            })
+                        
+                    });
+                </script>';
             }
         } else {
             echo "
-                <div class='col-lg-4 col-md-4 col-sm-4 col-4'></div>
-                <div class='col-lg-4 col-md-4 col-sm-4 col-4'>
-                    <h3 class='text-center'>No hay datos</h3>
-                    <img class='col-12 col-sm-12 col-md-11 col-lg-11' src='../../img/svg/alerts/no_data.svg'>
-                    <h5 class='text-center'><a class='text-success' href='dashboard.php?cultivos'>Crear un nuevo registro</a></h5>
+                <div class='col-lg-1 col-md-1 col-sm-12'></div>
+                <div class='col-lg-4 col-md-4 col-sm-12'></div>
+                <div class='col-lg-4 col-md-4 col-sm-12'>
+                    <h3>No hay datos</h3>
+                    <img src='../../img/svg/alerts/no_data.svg' width='150'>
+                    <p><a class='text-success' href='dashboard.php?cultivos'>Crear un nuevo registro</a></p>
                 </div>
-                <div class='col-lg-4 col-md-4 col-sm-4 col-4'></div>
+                <div class='col-lg-4 col-md-4 col-sm-12'></div>
             ";
         }
     }
@@ -1647,6 +1646,9 @@ class Functions
         $conexion = new Database();
         $userEmail = $_SESSION['correo'];
 
+        $upperUserName = ucwords(strtolower($userName));
+        $upperUserLastName = ucwords(strtolower($userlastName));
+
         if(!empty($currentPassword)){
             $checkForPasswordQuery = "SELECT acceso FROM users WHERE acceso = sha1('$currentPassword') 
             AND correo = '$userEmail'";
@@ -1654,7 +1656,7 @@ class Functions
 
             if(mysqli_num_rows($execPassQuery) > 0){
                 if($newPassword == $repeatPassword){
-                    $request = "UPDATE users SET nombre = '$userName', apellido = '$userlastName', 
+                    $request = "UPDATE users SET nombre = '$upperUserName', apellido = '$upperUserLastName', 
                     telefono = '$phoneNumber', acceso = sha1('$repeatPassword'), empresa = '$userCompany',
                     ciudad = '$userCity', estado = '$userState', fecha_modif = now()
                     WHERE correo = '$userEmail'";
@@ -1688,8 +1690,8 @@ class Functions
                     ";
             }
         }else{
-            $upperUserName = ucwords($userName);
-            $upperUserLastName = ucwords($userlastName);
+            $upperUserName = ucwords(strtolower($userName));
+            $upperUserLastName = ucwords(strtolower($userlastName));
 
             $request = "UPDATE users SET nombre = '$upperUserName', apellido = '$upperUserLastName', 
                 telefono = '$phoneNumber', empresa = '$userCompany',
