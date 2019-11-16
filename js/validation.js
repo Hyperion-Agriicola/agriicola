@@ -14,11 +14,6 @@ jQuery(function(){
                 required: true,
                 EMAIL: true,
                 email: true
-            },
-            pass:{
-                required: true,
-                maxlength: 16,
-                minlength: 6
             }
         },
         messages:{
@@ -26,11 +21,6 @@ jQuery(function(){
                 required:"<span><p class='text-danger' style='font-size: 12px;'>*Ingrese una dirección de correo electrónico.</p></span>",
                 EMAIL:"<span><p class='text-danger' style='font-size: 12px;'>*Ingrese una dirección de correo electrónico válida.</p></span>",
                 email: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese una dirección de correo electrónico válida.</p></span>"
-            },
-            pass:{
-                required: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese su contraseña.</p></span>",
-                maxlength:"<span><p class='text-danger' style='font-size: 12px;'>*Contraseña invalida, solo se aceptan máximo 16 caracteres.</p></span>",
-                minlength:"<span><p class='text-danger' style='font-size: 12px;'>*Contraseña invalida, solo se aceptan mínimo 6 caracteres.</p></span>"
             }
         }
     });
@@ -44,14 +34,14 @@ jQuery(function() {
     }, "<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo letras.</p>" );
 $.validator.addMethod("PASSWORD",function(value,element){
     return this.optional(element) || /^(?=.*\d)(?=.*[a-zñ])(?=.*[A-ZÑ]).{6,16}$/i.test(value);
-},"<span><p class='text-danger' style='font-size: 12px;'>*La contraseña debe contener mínimo 6 y máximo 16 caracteres y al menos un número.</p></span>");
+},"<span class='text-danger' style='font-size: 12px;'>*La contraseña debe contener mínimo 6 y máximo 16 caracteres y al menos un número.</span>");
 $.validator.addMethod('EMAIL',function(value, element){
     return this.optional(element) || /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum|es)$/i.test(value);
-},"<span><p class='text-danger' style='font-size: 12px;'>*Ingrese una dirección de correo electrónico válida.</p></span>");
+},"<span class='pb-0 '><p class='text-danger' style='font-size: 12px;'>*Ingrese una dirección de correo electrónico válida.</p></span>");
 $.validator.addMethod("user_pass_not_same", function(value, element) {
-    return $('#newPassword').val() != $('#currentPassword').val()
-    }, "<span><p class='text-danger' style='font-size: 12px;'>*La contraseña debe ser diferente a la actual.</p></span>");
-   
+    return this.optional(element) || $('#newPassword').val() != $('#currentPassword').val() 
+    },  
+    "<span><p class='text-danger' style='font-size: 12px;'>*La contraseña debe ser diferente a la actual.</p></span>");
 
 jQuery( ".registro" ).validate({
             rules: {
@@ -98,16 +88,15 @@ jQuery( ".registro" ).validate({
                         equalTo: "#pass"
                      },
                      userPass:{
-                         required: true,
-                        PASSWORD: true
+                         required: false,                  
+                        PASSWORD: true,
+                      
                      },
                      newPassword:{
-                         required: true,
-                         PASSWORD: true,
-                         user_pass_not_same: true
+                        user_pass_not_same: true,
+                        PASSWORD: true
                      },
                      repeatPassword:{
-                         required: true,
                          equalTo: "#newPassword"
                      }
             },
@@ -204,8 +193,7 @@ jQuery( ".registro" ).validate({
             },
             bornDate:{
                 required: true,
-                validDate: true,
-                date: true,
+                date: true
             },
             state:{
                 required: true,
@@ -362,10 +350,7 @@ jQuery(function(){
         return this.optional(element) || this.optional(start[0]) || new Date(value) >= new Date($(params).val());
 
     }, "<p class='text-danger' style='font-size: 12px;'>*La fecha debe ser posterior a la fecha de inicio correspondiente.</p>");
-    jQuery.validator.addMethod("validDate", function(value, element) {
-        return this.optional(element) || moment(value,"DD/MM/YYYY").isValid();
-    }, "<p class='text-danger' style='font-size: 12px;'>*Ingresa el formato correcto DD/MM/YYYY.</p>");
-
+    
     jQuery(".reg_agro").validate({
             rules:{
                 name_agroq:{
@@ -396,7 +381,6 @@ jQuery(function(){
                 fecha_inicio:{
                     dateBefore: "#inputFechaFinal",
                     required: true,
-                    validDate: true,
                     date: true
                     
     
@@ -405,12 +389,7 @@ jQuery(function(){
                 fecha_fin:{
                     dateAfter: "#inputFechaInicio",
                     required: true,
-                    validDate: true,
                     date: true
-                    
-                  
-            
-
                 },
                 existencia:{
                     required: true,
