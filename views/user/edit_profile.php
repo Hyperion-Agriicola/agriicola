@@ -22,6 +22,40 @@
     </div>
 </header>
 
+<?php
+
+if (isset($_POST['updateUserData'])) {
+    $userName = $_POST['userName'];
+    $userlastName = $_POST['userLastName'];
+    $phoneNumber = $_POST['phoneNumber'];
+    $userCity = $_POST['userCity'];
+    $userState = $_POST['userState'];
+
+    $userCompany = $_POST['userCompany'];
+
+    $currentPassword = $_POST['userPass'];
+    $newPassword = $_POST['newPassword'];
+    $repeatPassword = $_POST['repeatPassword'];
+
+    /*
+    echo $userName . " "  . $userlastName . " "  . $phoneNumber . " "  . $userCity . " "  . $userState
+    . " "  . $userCompany . " "  . $currentPassword . " "  . $newPassword . " "  . $repeatPassword;
+    */
+
+    $data->updateUserData(
+        $userName,
+        $userlastName,
+        $phoneNumber,
+        $userCity,
+        $userState,
+        $userCompany,
+        $currentPassword,
+        $newPassword,
+        $repeatPassword
+    );
+}
+?>
+
 <main class="container mt-4">
     <form class="registro" action="" method="post">
         <div class="row">
@@ -64,7 +98,7 @@
                 <div class="form-group">
                     <label for="newPassword">Nueva contraseña</label>
                     <input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="*****">
-                    
+
                 </div>
             </div>
 
@@ -94,28 +128,3 @@
         </div>
     </form>
 </main>
-
-<?php 
-
-if(isset($_POST['updateUserData'])){
-    $userName = $_POST['userName'];
-    $userlastName = $_POST['userLastName'];
-    $phoneNumber = $_POST['phoneNumber'];
-    $userCity = $_POST['userCity'];
-    $userState = $_POST['userState'];
-
-    $userCompany = $_POST['userCompany'];
-    
-    $currentPassword = $_POST['userPass'];
-    $newPassword = $_POST['newPassword'];
-    $repeatPassword = $_POST['repeatPassword'];
-
-    /*
-    echo $userName . " "  . $userlastName . " "  . $phoneNumber . " "  . $userCity . " "  . $userState
-    . " "  . $userCompany . " "  . $currentPassword . " "  . $newPassword . " "  . $repeatPassword;
-    */
-
-    $data->updateUserData($userName, $userlastName, $phoneNumber, $userCity, $userState,
-    $userCompany, $currentPassword, $newPassword, $repeatPassword);
-}
-?>

@@ -3,9 +3,21 @@ ob_start();
 
 include('database.php');
 include('catalogDB.php');
+use PHPMailer\PHPMailer\PHPMailer;
 
 class Functions
 {
+    public function checkForEmail($userEmail){
+        $conexion = new Database();
+        $request = "SELECT correo FROM users WHERE correo = '$userEmail'";
+        $emailResponse = $conexion->query($request);
+
+        if(mysqli_num_rows($emailResponse) > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
     public function registerUser(
         $userName,
         $userlastName,
@@ -485,9 +497,9 @@ class Functions
                             </div>
 
                             <div class="card-footer bg-white">
-                                <form action="dashboard.php?viewCrop" method="POST" class="align-right">
-                                    <input type="text" value='.$row['id_cultivo'].' style="display: none;" name="get_id_cultivo">
-                                    <input type="text" value='.$row['tipo_suelo'].' style="display: none;" name="get_tipo_suelo">
+                                <form action="" method="GET" class="align-right">
+                                    <input type="text" value='.$row['id_cultivo'].' style="display: none;" name="id_cultivo">
+                                    <input type="text" value='.$row['tipo_suelo'].' style="display: none;" name="tipo_suelo">
                                     <button type="submit" class="btn btn-block btn-success">
                                         Ver más
                                     </button>
@@ -1752,12 +1764,95 @@ class Functions
         } else {
             header('Location: dashboard.php');
         }
-    
     }
 
-   
+    function sendRecoveryEmail($email, $token){
+        require_once "PHPMailer/PHPMailer.php";
+        require_once "PHPMailer/Exception.php";
+
+        $conexion = new Database();
+        $request = "UPDATE users SET token = '$token', tokenExp = DATE_ADD(now(), 
+        INTERVAL 5 MINUTE) WHERE correo = '$email'"; 
+
+        $setToken = $conexion->query($request) or trigger_error($conexion->error);
+
+        if($setToken){
+            $mailer = new PHPMailer();
+            $mailer->addAddress($email);
+            $mailer->setFrom("contacto@arpan.com.mx", "Agriicola");
+            $mailer->Subject = "Recupere su acceso";
+            $mailer->isHTML(true);
+            $mailer->Body = "
+                Recibimos una petición para la recuperación de su contraseña, de ser así 
+                <a href='https://agriicola-test.000webhostapp.com/password_reset.phpemail=$email&token=$token'>click aquí</a> para crear una nueva clave de acceso.
+                <br>
+                Si usted no hizo ninguna petición simplemente ignore este mensaje, expirará en 5 minutos.<br>
+                Para recibir un nuevo enlace de recuperación por favor visite 
+                <a href='https://agriicola-test.000webhostapp.com/password_reset.php' target='_blank'>
+                    https://agriicola-test.000webhostapp.com/password_reset.php
+                </a>
+
+                <br><br><br>
+                Gracias, <br>
+                Soporte Agriicola.
+            ";
+
+            if($mailer->send()){
+                echo "
+                <div class='container mt-4'>
+                    <div class='alert alert-success' role='alert'>
+                        Se ha enviado un correo electrónico, por favor revíselo y siga los pasos.
+                    </div>
+                </div>";
+            }else{
+                echo $mailer->error;
+            }
+        }else{
+            echo $conexion->error;
+        }
+    }
+
+    public function createNewPAssword($email, $token, $userPass1, $userPass2){
+        $conexion = new Database();
+        $request = "SELECT id_u FROM users WHERE correo = '$email' AND token = '$token'
+        AND token <> '' AND tokenExp > now()";
+
+        $response = $conexion->query($request);
+        
+        if(mysqli_num_rows($response) > 0){
+            if($userPass1 == $userPass2){
+                $requestNewPassword = "UPDATE users SET acceso = sha1('$userPass2') WHERE correo = '$email'";
+                $responseNewPassword = $conexion->query($requestNewPassword);
+
+                if($responseNewPassword){
+                    echo "
+                        <div class='container mt-4'>
+                            <div class='alert alert-success' role='alert'>
+                                Su contraseña se ha cambiado correctamente, ya puede <a href='#!'>iniciar sesión</a>
+                            </div>
+                        </div>";
+                }else{
+                    echo "
+                        <div class='container mt-4'>
+                            <div class='alert alert-danger' role='alert'>
+                                Hubo un error al intentar cambiar la contraseña, intente de nuevo más tarde.
+                            </div>
+                        </div>";
+                }
+            }else{
+                echo "
+            <div class='container mt-4'>
+                <div class='alert alert-danger' role='alert'>
+                    Las contraseñas no coinciden, intente de nuevo
+                </div>
+            </div>
+            ";
+            }
+        }else{
+            //header('Location: https://agriicola-test.000webhostapp.com/index.php');
+            //exit();
+        }
+    }
 }
-
-
 
 ob_end_flush();
