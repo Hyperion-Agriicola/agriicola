@@ -2,10 +2,10 @@
 -- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 07-11-2019 a las 20:47:56
--- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.3.8
+-- Host: localhost
+-- Generation Time: Nov 17, 2019 at 12:14 AM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `agriicola`
+-- Database: `agriicola`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `agroquimicos`
+-- Table structure for table `agroquimicos`
 --
 
 CREATE TABLE `agroquimicos` (
@@ -50,18 +50,17 @@ CREATE TABLE `agroquimicos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Volcado de datos para la tabla `agroquimicos`
+-- Dumping data for table `agroquimicos`
 --
 
 INSERT INTO `agroquimicos` (`id_cultivo`, `id_agroquimico`, `aplicacion`, `nombre_comercial`, `precio`, `moneda`, `cantidad`, `unidad`, `dosis`, `tiempo`, `tipo_causa`, `frecuencia`, `fecha_inicio`, `fecha_fin`, `existencia`, `estatus`, `fecha_registro`, `fecha_modif`) VALUES
-(27, 10, 'enfermedad', 'Ambroxol xD', 10, 'pesos', 7, 'ml', 7, 'semana', 'micro', 'Diario', '2019-11-06', '2019-11-14', 4, 'activo', '2019-11-06', NULL),
-(30, 11, 'enfermedad', 'asdasd', 5, 'pesos', 6, 'ml', 5, 'semana', 'micro', 'Diario', '2019-11-06', '2019-11-20', 5, 'activo', '2019-11-06', NULL),
-(31, 12, 'nutriente', 'Nutriplant', 2400, 'pesos', 4, 'l', 8, 'dias', 'macro', 'Cada 2 dias', '2019-11-22', '2019-11-22', 3, 'activo', '2019-11-07', NULL);
+(33, 14, 'Nutriente', 'Abono de crecimiento', 4, 'pesos', 7, 'ml', 6, 'semana', 'micro', 'Diario', '2019-11-11', '2019-11-20', 6, 'eliminado', '2019-11-11', NULL),
+(34, 15, 'Plaga', 'lc3', 800, 'pesos', 70, 'ml', 2, 'dias', 'AraÃ±a roja', 'Cada 2 dias', '2019-11-20', '2019-11-29', 3, 'activo', '2019-11-11', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `corte`
+-- Table structure for table `corte`
 --
 
 CREATE TABLE `corte` (
@@ -82,7 +81,7 @@ CREATE TABLE `corte` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cultivos`
+-- Table structure for table `cultivos`
 --
 
 CREATE TABLE `cultivos` (
@@ -104,19 +103,17 @@ CREATE TABLE `cultivos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Volcado de datos para la tabla `cultivos`
+-- Dumping data for table `cultivos`
 --
 
 INSERT INTO `cultivos` (`id_u`, `id_cultivo`, `nombre_predio`, `hectareas`, `tipo_especie`, `subespecie`, `variedad`, `fecha_inicio`, `estado`, `municipio`, `localidad`, `tipo_suelo`, `estatus`, `fecha_registro`, `fecha_modif`) VALUES
-(6, 19, 'Maiz', 4, 'Granos', 'Alcachofa', 'Maiz Blanco', '2019-10-25', 'Michoacan de Ocampo', 'Tlalpujahua', 'Tlalpujahua', 'artificial', 'activo', '2019-10-25', NULL),
-(6, 27, 'Predio uno chido', 4, 'Frutales', 'Acelga', 'Aclega chica', '2019-11-07', 'Michoacan', 'Hidalgo', 'Mangana', 'artificial', 'eliminado', '2019-11-06', '2019-11-06'),
-(6, 30, 'asd', 11, 'Frutales', 'Acelga', 'asd', '2019-11-06', 'asd', 'asd', 'asd', 'natural', 'activo', '2019-11-06', NULL),
-(6, 31, 'Maiz', 1, 'Frutales', 'Acelga', '', '2019-11-15', 'Micj', 'as', 'da', 'artificial', 'activo', '2019-11-07', NULL);
+(7, 33, 'Predio Pro', 5, 'Granos', 'Maiz', 'Maiz negro', '2019-11-11', 'Michoacan de Ocampo', 'Hidalgo', 'Mangana', 'artificial', 'activo', '2019-11-11', NULL),
+(8, 34, 'Predio Agua Blanca', 80, 'Frutales', 'Aguacate', 'azul', '2019-11-11', 'Michoacan de Ocampo', 'LÃ¡zaro CÃ¡rdenas', 'LÃ¡zaro CÃ¡rdenas', 'natural', 'activo', '2019-11-11', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `eventos`
+-- Table structure for table `eventos`
 --
 
 CREATE TABLE `eventos` (
@@ -136,7 +133,7 @@ CREATE TABLE `eventos` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `gastos`
+-- Table structure for table `gastos`
 --
 
 CREATE TABLE `gastos` (
@@ -155,7 +152,7 @@ CREATE TABLE `gastos` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `gastos_generales`
+-- Table structure for table `gastos_generales`
 --
 
 CREATE TABLE `gastos_generales` (
@@ -172,7 +169,7 @@ CREATE TABLE `gastos_generales` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `profiles`
+-- Table structure for table `profiles`
 --
 
 CREATE TABLE `profiles` (
@@ -189,7 +186,7 @@ CREATE TABLE `profiles` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `suelo_artificial`
+-- Table structure for table `suelo_artificial`
 --
 
 CREATE TABLE `suelo_artificial` (
@@ -204,17 +201,16 @@ CREATE TABLE `suelo_artificial` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Volcado de datos para la tabla `suelo_artificial`
+-- Dumping data for table `suelo_artificial`
 --
 
 INSERT INTO `suelo_artificial` (`id_cultivo`, `id_suelo_artificial`, `sustrato`, `infraestructura`, `riego`, `estatus`, `fecha_registro`, `fecha_modif`) VALUES
-(27, 6, 'Roca volcánica', 'Invernadero', 'Aspersiòn', 'activo', '2019-11-06', NULL),
-(31, 7, 'Arcilla expandida', 'Invernadero', 'AspersiÃ²n', 'activo', '2019-11-07', NULL);
+(33, 8, 'De origen naturales', 'Invernaderos de alta tecnologia', 'AutomÃ¡tico', 'eliminado', '2019-11-11', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `suelo_natural`
+-- Table structure for table `suelo_natural`
 --
 
 CREATE TABLE `suelo_natural` (
@@ -244,16 +240,16 @@ CREATE TABLE `suelo_natural` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Volcado de datos para la tabla `suelo_natural`
+-- Dumping data for table `suelo_natural`
 --
 
 INSERT INTO `suelo_natural` (`id_cultivo`, `id_suelo_natural`, `tipo_suelo`, `infraestructura`, `riego`, `ph`, `salinidad`, `conduc_elec`, `materia_organica`, `zinc`, `nitratos`, `fosforo`, `potasio`, `manganeso`, `calcio`, `cobre`, `oxido_azufre`, `boro`, `magnesio`, `oxigeno`, `estatus`, `fecha_registro`, `fecha_modif`) VALUES
-(30, 4, 'Arenosos', 'Invernadero', 'AspersiÃ²n', 12, 12, 10, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 'activo', '2019-11-06', NULL);
+(34, 6, 'Arenosos', 'Macro tuneles', 'Rodado', 4, 2, 3, 62, 55, 38, 26, 60, 60, 26, 17, 73, 65, 21, 17, 'activo', '2019-11-11', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -268,46 +264,49 @@ CREATE TABLE `users` (
   `ciudad` char(50) COLLATE utf8_spanish_ci NOT NULL,
   `estado` char(50) COLLATE utf8_spanish_ci NOT NULL,
   `fecha_registro` date NOT NULL,
-  `fecha_modif` date DEFAULT NULL
+  `fecha_modif` date DEFAULT NULL,
+  `token` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `tokenExp` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Volcado de datos para la tabla `users`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id_u`, `nombre`, `apellido`, `telefono`, `correo`, `acceso`, `empresa`, `tipo_usuario`, `ciudad`, `estado`, `fecha_registro`, `fecha_modif`) VALUES
-(3, 'Abraham', 'Ayala Padilla', 7861191310, 'tonayan@arpan.com', '8cb2237d0679ca88db6464eac60da96345513964', 'ARPAN', 'user', 'Morelia', 'Michoacan de Ocampo', '2019-10-25', NULL),
-(4, 'alex_guzman_luna@hotmail.com', 'Guzman Luna', 7861420889, 'alex@gmail.com', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'IDDEN', 'user', 'Hidalgo', 'Michoacan', '2019-10-25', NULL),
-(5, 'Ivan', 'Suarez', 7861134498, 'ivan.suap@gmail.com', '8cb2237d0679ca88db6464eac60da96345513964', 'HYPERION', 'user', 'Hidalgo', 'Michoacan', '2019-11-06', NULL),
-(6, 'Eduardo', 'Hernandez', 7861125421, 'lalohh68@gmail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'tics', 'user', 'Morelia', 'Michoacan', '2019-11-07', NULL);
+INSERT INTO `users` (`id_u`, `nombre`, `apellido`, `telefono`, `correo`, `acceso`, `empresa`, `tipo_usuario`, `ciudad`, `estado`, `fecha_registro`, `fecha_modif`, `token`, `tokenExp`) VALUES
+(5, 'Ivan', 'Suarez', 7861134498, 'ivan.suap@gmail.com', '8cb2237d0679ca88db6464eac60da96345513964', 'HYPERION', 'user', 'Hidalgo', 'Michoacan', '2019-11-06', NULL, '', '0000-00-00 00:00:00'),
+(6, 'Eduardo', 'Hernandez', 7861125421, 'lalohh68@gmail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'tics', 'user', 'Morelia', 'Michoacan', '2019-11-07', NULL, '', '0000-00-00 00:00:00'),
+(7, 'Abraham', 'Ayala Padilla', 7861191310, 'dev.abxy@gmail.com', 'a23cceabef4dec1f5cb71c7a1a3f6073dac756bd', 'ARPAN', 'user', 'Morelia', 'Michoacan de Ocampo', '2019-11-11', '2019-11-11', '50fe2fbf139a9bb14df0f59a85964988', '2019-11-16 17:29:08'),
+(8, 'MARICELA', 'ALVAREZ SANCHEZ', 4432454567, 'MALVAREZ@ITSCH.EDU.MX', '1ba06515413d507858e0071c591356d1ec652af9', 'ITSCH', 'user', 'Hidalgo', 'Michoacan de Ocampo', '2019-11-11', NULL, '', '0000-00-00 00:00:00'),
+(9, 'Lil', 'Pepe', 7861234569, 'lil@agriicola.com', 'a23cceabef4dec1f5cb71c7a1a3f6073dac756bd', 'ARPAN', 'user', 'Morelia', 'Michoacan', '2019-11-11', '2019-11-16', '27939345b942f4517f765a0327dc4933', '2019-11-16 09:25:35');
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `agroquimicos`
+-- Indexes for table `agroquimicos`
 --
 ALTER TABLE `agroquimicos`
   ADD PRIMARY KEY (`id_agroquimico`),
   ADD KEY `id_cultivo` (`id_cultivo`);
 
 --
--- Indices de la tabla `corte`
+-- Indexes for table `corte`
 --
 ALTER TABLE `corte`
   ADD PRIMARY KEY (`id_corte`),
   ADD KEY `id_cultivo` (`id_cultivo`);
 
 --
--- Indices de la tabla `cultivos`
+-- Indexes for table `cultivos`
 --
 ALTER TABLE `cultivos`
   ADD PRIMARY KEY (`id_cultivo`),
   ADD KEY `id_u` (`id_u`);
 
 --
--- Indices de la tabla `eventos`
+-- Indexes for table `eventos`
 --
 ALTER TABLE `eventos`
   ADD PRIMARY KEY (`id_evento`),
@@ -315,165 +314,165 @@ ALTER TABLE `eventos`
   ADD KEY `id_u` (`id_u`);
 
 --
--- Indices de la tabla `gastos`
+-- Indexes for table `gastos`
 --
 ALTER TABLE `gastos`
   ADD PRIMARY KEY (`id_gasto`),
   ADD KEY `id_cultivo` (`id_cultivo`);
 
 --
--- Indices de la tabla `gastos_generales`
+-- Indexes for table `gastos_generales`
 --
 ALTER TABLE `gastos_generales`
   ADD PRIMARY KEY (`id_gasto_general`),
   ADD KEY `id_u` (`id_u`);
 
 --
--- Indices de la tabla `profiles`
+-- Indexes for table `profiles`
 --
 ALTER TABLE `profiles`
   ADD PRIMARY KEY (`id_profile`),
   ADD KEY `id_u` (`id_u`);
 
 --
--- Indices de la tabla `suelo_artificial`
+-- Indexes for table `suelo_artificial`
 --
 ALTER TABLE `suelo_artificial`
   ADD PRIMARY KEY (`id_suelo_artificial`),
   ADD KEY `id_cultivo` (`id_cultivo`);
 
 --
--- Indices de la tabla `suelo_natural`
+-- Indexes for table `suelo_natural`
 --
 ALTER TABLE `suelo_natural`
   ADD PRIMARY KEY (`id_suelo_natural`),
   ADD KEY `id_cultivo` (`id_cultivo`);
 
 --
--- Indices de la tabla `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id_u`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `agroquimicos`
+-- AUTO_INCREMENT for table `agroquimicos`
 --
 ALTER TABLE `agroquimicos`
-  MODIFY `id_agroquimico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_agroquimico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT de la tabla `corte`
+-- AUTO_INCREMENT for table `corte`
 --
 ALTER TABLE `corte`
   MODIFY `id_corte` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `cultivos`
+-- AUTO_INCREMENT for table `cultivos`
 --
 ALTER TABLE `cultivos`
-  MODIFY `id_cultivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_cultivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
--- AUTO_INCREMENT de la tabla `eventos`
+-- AUTO_INCREMENT for table `eventos`
 --
 ALTER TABLE `eventos`
   MODIFY `id_evento` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `gastos`
+-- AUTO_INCREMENT for table `gastos`
 --
 ALTER TABLE `gastos`
   MODIFY `id_gasto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT de la tabla `gastos_generales`
+-- AUTO_INCREMENT for table `gastos_generales`
 --
 ALTER TABLE `gastos_generales`
   MODIFY `id_gasto_general` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `profiles`
+-- AUTO_INCREMENT for table `profiles`
 --
 ALTER TABLE `profiles`
   MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `suelo_artificial`
+-- AUTO_INCREMENT for table `suelo_artificial`
 --
 ALTER TABLE `suelo_artificial`
-  MODIFY `id_suelo_artificial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_suelo_artificial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT de la tabla `suelo_natural`
+-- AUTO_INCREMENT for table `suelo_natural`
 --
 ALTER TABLE `suelo_natural`
-  MODIFY `id_suelo_natural` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_suelo_natural` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT de la tabla `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_u` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_u` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `agroquimicos`
+-- Constraints for table `agroquimicos`
 --
 ALTER TABLE `agroquimicos`
   ADD CONSTRAINT `agroquimicos_ibfk_1` FOREIGN KEY (`id_cultivo`) REFERENCES `cultivos` (`id_cultivo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `corte`
+-- Constraints for table `corte`
 --
 ALTER TABLE `corte`
   ADD CONSTRAINT `corte_ibfk_1` FOREIGN KEY (`id_cultivo`) REFERENCES `cultivos` (`id_cultivo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `cultivos`
+-- Constraints for table `cultivos`
 --
 ALTER TABLE `cultivos`
   ADD CONSTRAINT `cultivos_ibfk_1` FOREIGN KEY (`id_u`) REFERENCES `users` (`id_u`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `eventos`
+-- Constraints for table `eventos`
 --
 ALTER TABLE `eventos`
   ADD CONSTRAINT `eventos_ibfk_1` FOREIGN KEY (`id_cultivo`) REFERENCES `cultivos` (`id_cultivo`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `eventos_ibfk_2` FOREIGN KEY (`id_u`) REFERENCES `users` (`id_u`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `gastos`
+-- Constraints for table `gastos`
 --
 ALTER TABLE `gastos`
   ADD CONSTRAINT `gastos_ibfk_1` FOREIGN KEY (`id_cultivo`) REFERENCES `cultivos` (`id_cultivo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `gastos_generales`
+-- Constraints for table `gastos_generales`
 --
 ALTER TABLE `gastos_generales`
   ADD CONSTRAINT `gastos_generales_ibfk_1` FOREIGN KEY (`id_u`) REFERENCES `users` (`id_u`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `profiles`
+-- Constraints for table `profiles`
 --
 ALTER TABLE `profiles`
   ADD CONSTRAINT `profiles_ibfk_1` FOREIGN KEY (`id_u`) REFERENCES `users` (`id_u`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `suelo_artificial`
+-- Constraints for table `suelo_artificial`
 --
 ALTER TABLE `suelo_artificial`
   ADD CONSTRAINT `suelo_artifical_ibfk_1` FOREIGN KEY (`id_cultivo`) REFERENCES `cultivos` (`id_cultivo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `suelo_natural`
+-- Constraints for table `suelo_natural`
 --
 ALTER TABLE `suelo_natural`
   ADD CONSTRAINT `suelo_natural_ibfk_1` FOREIGN KEY (`id_cultivo`) REFERENCES `cultivos` (`id_cultivo`) ON DELETE CASCADE ON UPDATE CASCADE;
