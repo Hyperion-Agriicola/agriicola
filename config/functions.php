@@ -368,12 +368,14 @@ class Functions
         $getUserQuery = "SELECT max(id_cultivo) as id_cultivo FROM cultivos WHERE id_u = (SELECT id_u FROM users WHERE correo = '$userEmail');";
         $execUserQuery = $conexion->query($getUserQuery) or trigger_error(mysqli_error($conexion));
 
+        $upperNomCom = ucwords(strtolower($nom_comer));
+
         if ($execUserQuery) {
             $userRow = $execUserQuery->fetch_array();
 
             $query = "INSERT INTO agroquimicos (id_cultivo, aplicacion, nombre_comercial, precio, moneda,
             cantidad, unidad, dosis, tiempo, tipo_causa, frecuencia, fecha_inicio, fecha_fin, existencia,
-            fecha_registro) VALUES ('$userRow[id_cultivo]',  '$aplicacion', '$nom_comer', 
+            fecha_registro) VALUES ('$userRow[id_cultivo]',  '$aplicacion', '$upperNomCom', 
             '$precio', '$moneda', '$cantidad', '$unidad', '$dosis', '$tiempo', '$tipo', '$frecuencia', '$fecha_inicio',
             '$fecha_fin', '$existencia', now())";
 
@@ -500,7 +502,7 @@ class Functions
                                 <form action="" method="GET" class="align-right">
                                     <input type="text" value='.$row['id_cultivo'].' style="display: none;" name="id_cultivo">
                                     <input type="text" value='.$row['tipo_suelo'].' style="display: none;" name="tipo_suelo">
-                                    <button type="submit" class="btn btn-block btn-success">
+                                    <button type="submit" class="btn text-uppercase btn-block btn-success">
                                         Ver más
                                     </button>
                                 </form>
@@ -536,7 +538,7 @@ class Functions
                 <div class='col-lg-4 col-md-4 col-sm-12'>
                     <h3>No hay datos</h3>
                     <img src='../../img/svg/alerts/no_data.svg' width='150'>
-                    <p><a class='text-success' href='dashboard.php?cultivos'>Crear un nuevo registro</a></p>
+                    <p><a class='text-success text-uppercase' href='dashboard.php?cultivos'>Crear un nuevo registro</a></p>
                 </div>
                 <div class='col-lg-4 col-md-4 col-sm-12'></div>
             ";
@@ -1345,6 +1347,8 @@ class Functions
         $conexion = new Database();
         $email = $_SESSION['correo'];
 
+        $upperConcept = ucwords(strtolower($concepto));
+
         $getUserQuery = "SELECT id_u FROM users WHERE correo = '$email'";
 
         $execUserQuery = $conexion->query($getUserQuery) or trigger_error(mysqli_error($conexion));
@@ -1352,7 +1356,8 @@ class Functions
         if($execUserQuery){
             $userRow = $execUserQuery->fetch_array();
 
-            $query = "INSERT INTO gastos_generales(concepto, catidad, moneda, fecha_gasto, fecha_registro, id_u) VALUES ('$concepto', '$precio', '$moneda', '$fecha', now(), '$userRow[id_u]')";
+            $query = "INSERT INTO gastos_generales(concepto, catidad, moneda, fecha_gasto, fecha_registro, id_u) 
+            VALUES ('$upperConcept', '$precio', '$moneda', '$fecha', now(), '$userRow[id_u]')";
 
             $result = $conexion->query($query);
 
@@ -1649,7 +1654,7 @@ class Functions
                 echo "
                     <div class='container mt-4'>
                         <div class='alert alert-danger' role='alert'>
-                        Su contraseña actual es incorrecta. <a href='#!'>Olvidé mi contraseña</a>
+                        Su contraseña actual es incorrecta. <a href='../support/password_reset.php'>Olvidé mi contraseña</a>
                         </div>
                     </div>
                     ";

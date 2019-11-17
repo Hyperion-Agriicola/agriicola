@@ -83,7 +83,7 @@
                 <div class="form-group">
                     <label for="inputMoneda">Moneda</label>
                     <select class="form-control" id="inputMoneda" name="moneda">
-                        <option value="pesos">Pesos</option>
+                        <option value="pesos">Pesos Mexicanos</option>
                         <option value="dolar">Dolar</option>
                         <option value="euro">Euro</option>
                     </select>
@@ -171,9 +171,12 @@
                 <div class="form-group">
                     <label for="inputFrecuencia">Frecuencia</label>
                     <select class="form-control" id="inputFrecuencia" name="frecuencia">
-                        <option>Diario</option>
-                        <option>Cada 2 dias</option>
-                        <option>Cada 3 dias</option>
+                        <option value="Diario">Diario</option>
+                        <?php 
+                            for ($i=1; $i < 16; $i++) { 
+                                echo "<option value='Cada ".$i." dias'>Cada ".$i." días</option>";
+                            }
+                        ?>
                     </select>
                 </div>
             </div>

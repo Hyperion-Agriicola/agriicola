@@ -42,7 +42,9 @@ $(document).ready(function () {
                 content: "Para agregar un nuevo cultivo presiona en este botón <br> ¿Te parece si comenzamos por aquí?"
             },
             {
-
+                element: "#addNewSpend",
+                title: "Crea un nuevo gasto",
+                content: "Presiona aquí para agregar un nuevo gasto general"
             }
         ],
         template: "<div class='popover tour'>" +

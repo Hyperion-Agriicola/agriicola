@@ -81,7 +81,7 @@
                         <i class="icon-grey-color fas fa-question-circle"
                             data-toggle="tooltip" data-placement="top" title="Este es el nombre para tu cultivo, ej. Tomate"></i>
                     </label>
-                    <input  class="form-control" id="inputName" name="namecrop" placeholder="Predio La Joya">
+                    <input  class="form-control" id="inputName" name="namecrop" placeholder="Tomate">
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">

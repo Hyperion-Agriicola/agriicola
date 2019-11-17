@@ -33,7 +33,7 @@
 </div>
 <div class="container">
     <div class="row p-3">
-        <a href="dashboard.php?gastoGeneral" class="btn btn-success ml-auto rounded-circle" role="button"
+        <a id="addNewSpend" href="dashboard.php?gastoGeneral" class="btn btn-success ml-auto rounded-circle" role="button"
             data-toggle="tooltip" data-placement="left" title="Agregar nuevo gasto"><i
                 class="fas fa-plus"></i></a>
         <!-- Paste here your fuck code! -->

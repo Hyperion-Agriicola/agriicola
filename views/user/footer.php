@@ -1,9 +1,5 @@
-<div class="container">
-<footer>
-        <div class="row">
-            <div class="col-lg-12 text-center pt-2 text-muted">
-                <p>Todos los derechos reservados 2019 &copy; Desarrollado por Hyperion</p>
-            </div>
-        </div>
+<footer class="footer">
+    <div class="container col-lg-12 text-center text-muted">
+        <span>Todos los derechos reservados 2019 &copy; Desarrollado por Hyperion</span>
+    </div>
 </footer>
-</div>

@@ -27,7 +27,7 @@
                     <span>Noticias</span></a>
             </li>
             <li class="nav-item">
-                <a id="askForHelp" class="nav-link active" href="#!"><i class="fas fa-question-circle"></i>
+                <a id="askForHelp" class="nav-link active" href="dashboard.php?sendHelp"><i class="fas fa-question-circle"></i>
                     <span>Ayuda</span></a>
             </li>
             <li class="nav-item">

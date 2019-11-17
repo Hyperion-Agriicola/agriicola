@@ -20,13 +20,14 @@ if (!isset($_SESSION['correo'])) {
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-bootstrap/0.5pre/css/custom-theme/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
         <link rel="stylesheet" href="../../css/main.css">
         <link rel="stylesheet" href="../../css/animate.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.11.0/css/bootstrap-tour-standalone.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
         <link rel="stylesheet" href="../../css/calendario/fullcalendar.min.css">
         <link rel="stylesheet" href="../../css/calendario/bootstrap-clockpicker.min.css">
+
         <title>AGRIICOLA</title>
 
 
@@ -119,6 +120,8 @@ if (!isset($_SESSION['correo'])) {
                 include('gasto.php');
             } else if (isset($_GET['calendar'])) {
                 include('calendario.php');
+            } else if (isset($_GET['sendHelp'])) {
+                include('../support/support_panel.php');
             } else {
                 include('profile.php');
                 ?>
@@ -144,31 +147,20 @@ if (!isset($_SESSION['correo'])) {
                 </div>
             </div>
             <div class="container">
-                <div class="text-center text-success">
+                <div class="text-center text-success mb-4">
                     <h1 class="mt-4">Mis cultivos</h1>
+                    <a id="addNewCrop" class="mt-2 text-white btn text-uppercase bg-success" href="dashboard.php?cultivos">Crear un cultivo</a>
                 </div>
-                <div class="row p-3">
-                    <a id="addNewCrop" href="dashboard.php?cultivos" class="btn btn-success ml-auto rounded-circle" role="button" data-toggle="tooltip" data-placement="left" title="Agregar nuevo registro"><i class="fas fa-plus"></i></a>
-                    <!-- Paste here your fuck code! -->
-                </div>
-
+                
                 <div class="row">
                     <?php
-                            $data->getCropByID();
-                            ?>
+                        $data->getCropByID();
+                    ?>
                 </div>
             </div>
         <?php
             }
-            ?>
-
-
-        <!--Modales-->
-
-
-        <?php
-            include('footer.php');
-            ?>
+        ?>
 
         <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
@@ -182,11 +174,12 @@ if (!isset($_SESSION['correo'])) {
         <script src="../../js/tour.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tour/0.11.0/js/bootstrap-tour-standalone.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
         <script src="../../js/calendario/moment.min.js"></script>
         <script src="../../js/calendario/fullcalendar.min.js"></script>
         <script src="../../js/calendario/es-us.js"></script>
         <script src="../../js/calendario/bootstrap-clockpicker.min.js"></script>
-        
+
         
     </body>
 

@@ -50,7 +50,7 @@
                   <span id="pass1"></span>
                   <p class="text-center mt-3 mb-0" style="font-size: 14px;">
                     <span>¿Has olvidado tu contraseña?</span>
-                    <a href="views/support/password_reset.php" class="text-success text-decoration-none">Recupérala aquí</a>
+                    <a href="../support/password_reset.php" class="text-success text-decoration-none">Recupérala aquí</a>
                   </p>
                 </div>
                 <div class="row ">
@@ -58,102 +58,11 @@
                     <button type="submit" name="userLogin" class="btn btn-block text-white" style="background: #228B22;">
                       Iniciar sesión
                     </button>
-
-                    <button type="button" id="create_account" class="brown-button btn btn-block text-white mt-3">
-                      Regístrate
-                    </button>
                   </div>
-
                 </div>
               </form>
             </div>
           </div>
-        </div>
-      </div>
-
-    </div>
-
-
-  </section>
-
-  <section id="register" class="animated fadeIn animation1">
-    <!-- Contenido -->
-    <div class="container col-12 col-sm-12 col-md-10 col-lg-10">
-      <div class="row">
-        <div class="col-2 col-md-4"></div>
-        <div class="col-8 col-md-4 col-lg-4 col-sm-8">
-          <img src="img/agriicola_logo_alternativo.png" class="img-fluid">
-        </div>
-        <div class="col-2 col-md-4"></div>
-      </div>
-
-      <div class="card col-12 col-sm-12 mt-4">
-        <div class="card-body">
-          <h1 class="text-center">Registrarme</h1>
-          <form class="registro" method="POST" action="" class="m-2">
-            <div class="row mt-3">
-              <div class="col-12 col-sm-12 col-md-6">
-                <label for="name">Nombre(s):</label>
-                <input type="text" class="form-control" placeholder="Ingresa tu nombre" id="name" name="userName" required>
-              </div>
-              <div class="col-12 col-sm-12 col-md-6">
-                <label for="last_name">Apellido(s):</label>
-                <input type="text" class="form-control" placeholder="Ingresa tus apellidos" id="last_name" name="userLastName" required>
-              </div>
-            </div>
-            <div class="row mt-1">
-              <div class="col-12 col-sm-12 col-md-6">
-                <label for="phone">Teléfono:</label>
-                <input type="tel" class="form-control" placeholder="1122334455" id="phone" name="phoneNumber" required>
-              </div>
-              <div class="col-12 col-sm-12 col-md-6">
-                <label for="email">Correo electrónico:</label>
-                <input type="email" class="form-control" placeholder="ejemplo@agriicola.com.mx" id="email" name=userEmail required>
-              </div>
-            </div>
-            <div class="row mt-1">
-              <div class="col-12 col-sm-12 col-md-6">
-                <label for="company_name">Nombre de la empresa:</label>
-                <input type="text" class="form-control" placeholder="Ingresa el nombre de tu empresa" id="company_name" name="userCompany" required>
-              </div>
-
-              <div class="col-12 col-sm-12 col-md-6">
-                <label for="state_name">Estado:</label>
-                <input type="text" class="form-control state autocomplete" placeholder="Michoacán" id="state_name" name="userState" required>
-              </div>
-            </div>
-
-            <div class="row mt-1">
-              <div class="col-12 col-sm-12 col-md-6">
-                <label for="city_name">Ciudad:</label>
-                <input type="text" class="form-control town autocomplete" placeholder="Morelia" id="city_name" name="userCity" required>
-              </div>
-
-
-              <div class="col-12 col-sm-12 col-md-6">
-                <label for="pass">Contraseña:</label>
-                <input type="password" class="form-control" placeholder="******" id="pass" name="userPass1" required>
-              </div>
-            </div>
-
-            <div class="row mt-1">
-              <div class="col-12 col-sm-12 col-md-6">
-                <label for="repeat_pass">Confirmar contraseña:</label>
-                <input type="password" class="form-control" placeholder="******" id="repeat_pass" name="userPass2" required>
-              </div>
-            </div>
-
-            <div class="row mt-3">
-              <div class="col-1 col-sm-1 col-md-3"></div>
-              <div class="col-12 col-sm-10 col-6 col-md-6 mt-4">
-                <button type="submit" name="registerUser" class="btn btn-success btn-lg btn-block" style="background: #228B22;">Registrarme</button>
-
-                <a href="index.php" class="brown-button btn btn-block btn-lg text-white mt-3">
-                  Iniciar sesión
-                </a>
-              </div>
-            </div>
-          </form>
         </div>
       </div>
     </div>
