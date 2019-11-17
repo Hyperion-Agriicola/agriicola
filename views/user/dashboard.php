@@ -122,7 +122,7 @@ if (!isset($_SESSION['correo'])) {
                 include('calendario.php');
             } else if (isset($_GET['sendHelp'])) {
                 include('../support/support_panel.php');
-            } else {
+            }else {
                 include('profile.php');
                 ?>
 

@@ -184,14 +184,14 @@
             <div class="col-lg-3 col-md-3 col-sm-6">
                 <div class="form-group">
                     <label for="inputFechaInicio">Fecha de inicio</label>
-                    <input type="date" placeholder="Fecha" class="form-control" id="inputFechaInicio" name="fecha_inicio">
+                    <input type="datepicker" placeholder="Fecha" class="form-control" id="inputFechaInicio" name="fecha_inicio">
                 </div>
             </div>
 
             <div class="col-lg-3 col-md-3 col-sm-6">
                 <div class="form-group">
                     <label for="inputFechaFinal">Fecha de fin</label>
-                    <input type="date" placeholder="Fecha" class="form-control" id="inputFechaFinal" name="fecha_fin">
+                    <input type="datepicker" placeholder="Fecha" class="form-control" id="inputFechaFinal" name="fecha_fin">
                 </div>
             </div>
 

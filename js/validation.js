@@ -193,7 +193,6 @@ jQuery( ".registro" ).validate({
             },
             bornDate:{
                 required: true,
-                date: true
             },
             state:{
                 required: true,
@@ -253,7 +252,14 @@ jQuery( ".registro" ).validate({
         }
     });
  });
- 
+ /**datapicker fecha de inicio registro de cultivo */
+$(function(){
+    $("#inputDate").datepicker({
+        dateFormat: "yy-mm-dd",
+        numberOfMonths: 2,
+        minDate: new Date() 
+    });
+});
  /**REgistro suelo natural validaciones */
 
 jQuery(function(){
@@ -315,7 +321,7 @@ jQuery(function(){
     $.validator.addMethod('decimal', function(value, element) {
         return this.optional(element) || /^((\d+(\\.\d{0,2})?)|((\d*(\.\d{1,2}))))$/.test(value);
       }, "<p class='text-danger' style='font-size: 12px;'>*Ingrese el formato correcto 0.00.</p>" );
-    $.validator.addMethod("dateBefore", function (value, element, params) {
+   /*$.validator.addMethod("dateBefore", function (value, element, params) {
         
         var end = $(params);
         if (!end.data('validation.running')) {
@@ -349,8 +355,9 @@ jQuery(function(){
         }
         return this.optional(element) || this.optional(start[0]) || new Date(value) >= new Date($(params).val());
 
-    }, "<p class='text-danger' style='font-size: 12px;'>*La fecha debe ser posterior a la fecha de inicio correspondiente.</p>");
-    
+    },  "<p class='text-danger' style='font-size: 12px;'>*La fecha debe ser posterior a la fecha de inicio correspondiente.</p>");
+    */
+
     jQuery(".reg_agro").validate({
             rules:{
                 name_agroq:{
@@ -379,17 +386,10 @@ jQuery(function(){
 
                 },
                 fecha_inicio:{
-                    dateBefore: "#inputFechaFinal",
-                    required: true,
-                    date: true
-                    
-    
-                  
+                    required: true
                 },
                 fecha_fin:{
-                    dateAfter: "#inputFechaInicio",
-                    required: true,
-                    date: true
+                    required: true
                 },
                 existencia:{
                     required: true,
@@ -427,7 +427,7 @@ jQuery(function(){
                     required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese una fecha de inicio.</p>"
                 },
                 fecha_fin:{
-                    required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese una fecha de finalización.</p>"
+                    required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese una fecha de finalizacion.</p>"
                 },
                 existencia:{
                     required:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad.</p>",
@@ -439,6 +439,40 @@ jQuery(function(){
             }
     });
 });
+
+
+
+/**Validacion fecha inicio-fecha final */
+jQuery( function() {
+    var from = $( "#inputFechaInicio" )
+        .datepicker({
+          dateFormat: "yy-mm-dd",
+          minDate: new Date(),
+          autoclose: true
+        })
+        .on( "change", function() {
+          to.datepicker( "option", "minDate", getDate( this ) );
+        }),
+      to = $( "#inputFechaFinal" ).datepicker({
+        dateFormat: "yy-mm-dd"
+      })
+      .on( "change", function() {
+        from.datepicker( "option", "maxDate", getDate( this ) );
+      });
+  
+    function getDate( element ) {
+      var date;
+      var dateFormat = "yy-mm-dd";
+      try {
+        date = $.datepicker.parseDate( dateFormat, element.value );
+      } catch( error ) {
+        date = null;
+      }
+  
+      return date;
+    }
+  });
+     
 /**Registro de gastos validaciones */
 
 jQuery(function(){
@@ -482,7 +516,20 @@ jQuery(function(){
         }
     });
 });
-
+jQuery(function(){
+    $("#inputFechaGasto").datepicker({
+        dateFormat: "yy-mm-dd",
+        numberOfMonths: 1,
+        minDate: new Date() 
+    });
+});
+jQuery(function(){
+    $("#inputFechaG").datepicker({
+        dateFormat: "yy-mm-dd",
+        numberOfMonths: 1,
+        minDate: new Date() 
+    });
+});
 /**Modal calendario  */
 jQuery(function(){
     function compareDates() {

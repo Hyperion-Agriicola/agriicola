@@ -23,6 +23,7 @@
 </header>
 
 <?php
+
     if (isset($_POST['createCrop'])) {
 
         $conexion = new Database();
@@ -133,12 +134,14 @@
                         <i class="icon-grey-color fas fa-question-circle"
                                 data-toggle="tooltip" data-placement="top" title="¿Qué día comienza el cultivo oficialmente?"></i>
                     </label>
-                    <input type="date" class="form-control" id="inputDate" name="bornDate" >
+                    <input placeholder="Seleccione una fecha" class="form-control" id="inputDate" name="bornDate">
                 </div>
             </div>
 
         </div>
-        <h5 class="modal-title" id="exampleModalScrollableTitle">Ubicación</h5>
+        <div class="container btn-green p-3 text-white mt-1 mb-1">
+            <h3 class="modal-title text-center" id="exampleModalScrollableTitle">Ubicación</h3>
+        </div> 
         <div class="row mt-4">
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
@@ -176,5 +179,6 @@
                 <i class="fas fa-arrow-right"></i></button>
         </div>
     </form>
+   
 </main>
 

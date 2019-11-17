@@ -68,10 +68,9 @@
                      <div class="col-lg-6 col-md-6 col-sm-12">
                         <div class="form-group">
                             <label for="inputFecha">Fecha</label>
-                            <input type="date" class="form-control" id="inputFecha" name="Fecha">
+                            <input placeholder="Seleccione una fecha" class="form-control" id="inputFechaG" name="Fecha">
                         </div>
                     </div>
-
                     </div>
                 </div>
                 <div class="text-center pt-2">
