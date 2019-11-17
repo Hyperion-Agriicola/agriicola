@@ -491,7 +491,7 @@ class Functions
                             <div class="card-body">
                                 
                                     <img src="../../img/svg/grain.svg" width="60">
-                                    <p class="lead mt-3"><strong>' . $row['nombre_predio'] . '</strong> </p>
+                                    <p class="font-weight-bold mt-3"><strong>' . $row['nombre_predio'] . '</strong> </p>
                                     
                                   
                             </div>
@@ -980,7 +980,7 @@ class Functions
                                 <a id="'.$row['id_agroquimico'].'"data-toggle="modal" data-target="#edit'.str_replace(' ' , '',  $row['nombre_comercial']).'" class="close">
                                     <img src="../../img/svg/edit-24px.svg"class="mb-2" alt="">
                                 </a>
-                                <a data-toggle="modal" data-target="#'.str_replace(' ' , '',  $row['nombre_comercial']).'" class="text-success text-left text-decoration-none" href="#">Ver informacion
+                                <a id="modal'.$row['id_agroquimico'].'" class="text-success text-left text-decoration-none" href="#!">Ver informacion
 
                                 </a>
                             </div>
@@ -988,74 +988,27 @@ class Functions
                         </div>      
                     </div>
 
-                    <!---Modal de agro-->
-                    <div class="modal fade" id="'.str_replace(' ' , '',  $row['nombre_comercial']).'" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-                        <div class="modal-dialog ">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">
-                                        '.$row['nombre_comercial'].'
-                                    </h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <p class="lead">Nombre comercial</p>
-                                            <p class="text-muted">
-                                            '.$row['nombre_comercial'].'
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <p class="lead">Precio</p>
-                                            <p class="text-muted">
-                                            '.$row['precio'].'
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <p class="lead">Moneda</p>
-                                            <p class="text-muted">
-                                            '.$row['moneda'].'
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <p class="lead">Cantidad</p>
-                                            <p class="text-muted">
-                                            '.$row['cantidad'].'
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <p class="lead">Unidad</p>
-                                            <p class="text-muted">
-                                            '.$row['unidad'].'
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <p class="lead">Fecha Inicio</p>
-                                            <p class="text-muted">
-                                                                                                        
-                                                '.$niu_fecha[2] . " de " . $month[$niu_fecha[1] - 1] . " de " . $niu_fecha[0].'
-                                                                
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <p class="lead">Fecha Fin</p>
-                                            <p class="text-muted">
-                                                '.$niu_fechaa[2] . " de " . $month[$niu_fechaa[1] - 1] . " de " . $niu_fechaa[0].'
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                        
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
 
+                    <script>
+                        document.getElementById("modal'.$row['id_agroquimico'].'").addEventListener("click", function(){
+                            
+                                Swal.fire({
+                                    title: "'.$row["nombre_comercial"].'",
+                                    showCloseButton: true,
+                                    width: "45rem",
+                                    //icon: "info",
+                                    html: "<img src="+"../../img/svg/plant-sample.svg"+" style="+"height:70px"+" class="+"mb-2"+"><div class="+"row"+"> <div class="+"col-lg-6 col-md-6 col-sm-12"+"> <p class="+"font-weight-bold"+"> Nombre comercial </p> <p class="+"text-muted"+"> '.$row['nombre_comercial'].' </p> </div> <div class="+"col-lg-6 col-md-6 col-sm-12"+"> <p class="+"font-weight-bold"+"> Precio </p> <p class="+"text-muted"+"> '.$row['precio'].' </p> </div> <div class="+"col-lg-6 col-md-6 col-sm-12"+"> <p class="+"font-weight-bold"+"> Moneda </p> <p class="+"text-muted"+"> '.$row['moneda'].' </p> </div> <div class="+"col-lg-6 col-md-6 col-sm-12"+"> <p class="+"font-weight-bold"+"> Cantidad </p> <p class="+"text-muted"+"> '.$row['cantidad'].'</p> </div> <div class="+"col-lg-6 col-md-6 col-sm-12"+"> <p class="+"font-weight-bold"+"> Unidad </p> <p class="+"text-muted"+"> '.$row['unidad'].' </p> </div> <div class="+"col-lg-6 col-md-6 col-sm-12"+"> <p class="+"font-weight-bold"+"> Fecha Inicio </p> <p class="+"text-muted"+"> '.$niu_fecha[2] . " de " . $month[$niu_fecha[1] - 1] . " de " . $niu_fecha[0].' </p> </div> <div class="+"col-lg-6 col-md-6 col-sm-12"+"> <p class="+"font-weight-bold"+"> Fecha Fin </p> <p class="+"text-muted"+"> '.$niu_fechaa[2] . " de " . $month[$niu_fechaa[1] - 1] . " de " . $niu_fechaa[0].' </p> </div> </div>",
+                                       
+                                    showCancelButton: false,
+                                    confirmButtonColor: "#d33",
+                                    confirmButtonText: "Cerrar"
+                                    }).then((result) => {
+                                    
+                                })
+                            
+                        });
+                    </script>
                         
 
                     <!--Modal eliminar--> 
@@ -1338,13 +1291,13 @@ class Functions
                                 <div class="modal-body">
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <p class="lead">Concepto</p>
+                                            <p class="font-weight-bold">Concepto</p>
                                             <p class="text-muted">
                                             '.$row['concepto'].'
                                             </p>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <p class="lead">Cantidad</p>
+                                            <p class="font-weight-bold">Cantidad</p>
                                             <p class="text-muted">
                                             '.$row['catidad'].' '.$row['moneda'].'
                                             </p>
@@ -1352,7 +1305,7 @@ class Functions
                                         
                                         
                                         <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <p class="lead">Fecha</p>
+                                            <p class="font-weight-bold">Fecha</p>
                                             <p class="text-muted">
                                                                                                         
                                                 '.$niu_fecha[2] . " de " . $month[$niu_fecha[1] - 1] . " de " . $niu_fecha[0].'
@@ -1458,7 +1411,7 @@ class Functions
                             <div class="card-body">
                                 
                                     <img src="../../img/svg/grain.svg" width="60">
-                                    <p class="lead mt-3"><strong>' . $row['nombre_predio'] . '</strong> </p>
+                                    <p class="font-weight-bold mt-3"><strong>' . $row['nombre_predio'] . '</strong> </p>
                                     <p class="text-muted">Estado: '.$row['estatus'].'</p>
                                   
                             </div>
@@ -1573,20 +1526,20 @@ class Functions
                                 <div class="modal-body">
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <p class="lead">Concepto</p>
+                                            <p class="font-weight-bold">Concepto</p>
                                             <p class="text-muted">
                                             '.$row['concepto'].'
                                             </p>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <p class="lead">Cantidad</p>
+                                            <p class="font-weight-bold">Cantidad</p>
                                             <p class="text-muted">
                                             '.$row['precio'].' '.$row['moneda'].'
                                             </p>
                                         </div>
 
                                         <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <p class="lead">Frecuencia</p>
+                                            <p class="font-weight-bold">Frecuencia</p>
                                             <p class="text-muted">
                                             '.$row['frecuencia'].'
                                             </p>
@@ -1594,7 +1547,7 @@ class Functions
                                         
                                         
                                         <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <p class="lead">Fecha</p>
+                                            <p class="font-weight-bold">Fecha</p>
                                             <p class="text-muted">
                                                                                                         
                                                 '.$niu_fecha[2] . " de " . $month[$niu_fecha[1] - 1] . " de " . $niu_fecha[0].'

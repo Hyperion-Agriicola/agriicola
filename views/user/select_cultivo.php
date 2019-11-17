@@ -30,7 +30,7 @@
     <div class="row mb-5 py-5 border-bottom border-success" style="border-bottom: 2px solid #388E3C !important;">
             
         <div class="col-md-4 col-sm-10">
-            <a href="dashboard.php?id_cultivo=<?php echo $_GET['id_cultivo'];?>&id_suelo=<?php echo $_GET['id_suelo'];?>" class="href text-decoration-none">
+            <a href="" class="href text-decoration-none">
                 <button type="button" class="btn0 btn-light btn-block p-3 shadow mb-4 text-white" style="font-size: 20px; text-align:center; background-color:#388E3C;">
                     <i class="fas fa-align-left float-left"></i>
                     Datos
@@ -39,7 +39,7 @@
         </div>
 
         <div class="col-md-4 col-sm-10">
-            <a href="dashboard.php?Tracing=<?php echo $_GET['id_cultivo'];?>&Ground=<?php echo $_GET['id_suelo'];?>" class="href text-decoration-none" name="seguimiento">
+            <a href="dashboard.php?Tracing=<?php echo $_GET['id_cultivo'];?>&Ground=<?php echo $_GET['tipo_suelo'];?>" class="href text-decoration-none" name="seguimiento">
                 <button type="button" class=" btn1 btn btn-light btn-block p-3 shadow mb-4" style="font-size: 20px; text-align:center;">
                     <i class="far fa-chart-bar float-left"></i>
                     Seguimiento
@@ -48,7 +48,7 @@
         </div>
 
         <div class="col-md-4 col-sm-10">
-            <a href="dashboard.php?Spend=<?php echo $_GET['id_cultivo'];?>&Ground=<?php echo $_GET['id_suelo'];?>" class="href text-decoration-none">
+            <a href="dashboard.php?Spend=<?php echo $_GET['id_cultivo'];?>&Ground=<?php echo $_GET['tipo_suelo'];?>" class="href text-decoration-none">
                 <button type="button" class="btn2 btn-light btn-block p-3 shadow mb-4" style="font-size: 20px; text-align:center">
                     <i class="fas fa-dollar-sign float-left"></i>
                     Gastos
@@ -73,7 +73,7 @@
                     <a data-toggle="modal" data-target="#modalModifCultivo" class="close">
                         <img src="../../img/svg/edit-24px.svg"class="mb-2" alt="">
                     </a>
-                    <a data-toggle="modal" data-target="#modalDatos" class="text-success text-left text-decoration-none" href="#">Ver informacion
+                    <a id="modalVer" class="text-success text-left text-decoration-none" href="#!">Ver informacion
 
                     </a>
                     
@@ -92,11 +92,11 @@
                 </div>
 
                 <div class="card-body pt-3">
-                    <a data-toggle="modal" data-target="<?php 
+                    <a id="<?php 
                         if($_GET['id_suelo'] == 'artificial'){
-                            echo '#modalModifSueloArt';
+                            echo 'modalModifSueloArt';
                         }else{
-                            echo '#modalModifSueloNat';
+                            echo 'modalModifSueloNat';
                         }
                             
                         
@@ -104,7 +104,7 @@
                     ?>" class="close">
                         <img src="../../img/svg/edit-24px.svg"class="mb-2" alt="">
                     </a>
-                    <a data-toggle="modal" data-target="#modalSuelo" class="text-success text-left text-decoration-none" href="#">Ver informacion
+                    <a id="modalSuelo" class="text-success text-left text-decoration-none" href="#!">Ver informacion
 
                     </a>
                 </div>                                     
@@ -137,175 +137,52 @@
     
 
     <!---Modal de cultivo-->
-    <div class="modal fade" id="modalDatos" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog ">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">
-                        <?php
-                        
-                            print_r($data->getViewCropByID($_GET['id_cultivo'])[0]);
-                        
-                        ?>
-                    </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <p class="lead">Hectáreas</p>
-                            <p class="text-muted">
-                                <?php
-                                
-                                    print_r($data->getViewCropByID($_GET['id_cultivo'])[1]);
-                                
-                                ?>
-                            </p>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <p class="lead">Tipo de Especie</p>
-                            <p class="text-muted">
-                                <?php
-                               
-                                    print_r($data->getViewCropByID($_GET['id_cultivo'])[2]);
-                                
-                                ?>
-                            </p>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <p class="lead">Subespecie</p>
-                            <p class="text-muted">
-                                <?php
-                                
-                                    print_r($data->getViewCropByID($_GET['id_cultivo'])[3]);
-                                
-                                ?>
-                            </p>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <p class="lead">Variedad</p>
-                            <p class="text-muted">
-                                <?php
-                               
-                                    print_r($data->getViewCropByID($_GET['id_cultivo'])[4]);
-                                
-                                ?>
-                            </p>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <p class="lead">Fecha de Inicio</p>
-                            <p class="text-muted">
-                                <?php
-                                
-                                    
-                                
-                                    $fecha = $data->getViewCropByID($_GET['id_cultivo'])[5];
-                                    $niu_fecha = explode("-", $fecha);
-
-                                    $month = array(
-                                        'Enero',
-                                        'Febrero',
-                                        'Marzo',
-                                        'Abril',
-                                        'Mayo',
-                                        'Junio',
-                                        'Julio',
-                                        'Agosto',
-                                        'Septiembre',
-                                        'Octubre',
-                                        'Noviembre',
-                                        'Diciembre');
-
-                                    print_r($niu_fecha[2] . " de " . $month[$niu_fecha[1] - 1] . " de " . $niu_fecha[0]);
-                                
-                                ?>
-                            </p>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <p class="lead">Estado</p>
-                            <p class="text-muted">
-                                <?php
-                               
-                                    print_r($data->getViewCropByID($_GET['id_cultivo'])[6]);
-                                
-                                ?>
-                            </p>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <p class="lead">Municipio</p>
-                            <p class="text-muted">
-                                <?php
-                                
-                                    print_r($data->getViewCropByID($_GET['id_cultivo'])[7]);
-                                
-                                ?>
-                            </p>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <p class="lead">Localidad</p>
-                            <p class="text-muted">
-                                <?php
-                               
-                                print_r($data->getViewCropByID($_GET['id_cultivo'])[8]);
-                            
-                                ?>
-                            </p>
-                        </div>
-                    </div>
-                
-                </div>
-                <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        
-                </div>
-            </div>
-        </div>
-    </div>
+    <script>
+        document.getElementById("modalVer").addEventListener("click", function(){
+            
+                Swal.fire({
+                    title: "<?php print_r($data->getViewCropByID($_GET['id_cultivo'])[0]);?>",
+                    showCloseButton: true,
+                    width: '45rem',
+                    html: "<img src='../../img/svg/grain.svg' style='height:70px' class='mb-2'><div class='row'><div class='col-lg-6 col-md-6 col-sm-12'> <p class='font-weight-bold'>Nombre del predio</p><p class='text-muted'><?php print_r($data->getViewCropByID($_GET['id_cultivo'])[0]);?></p></div><div class='col-lg-6 col-md-6 col-sm-12'> <p class='font-weight-bold'>Hectáreas</p><p class='text-muted'><?php print_r($data->getViewCropByID($_GET['id_cultivo'])[1]);?></p></div><div class='col-lg-6 col-md-6 col-sm-12'><p class='font-weight-bold'>Tipo de Especie</p><p class='text-muted'><?php print_r($data->getViewCropByID($_GET['id_cultivo'])[2]);?></p></div><div class='col-lg-6 col-md-6 col-sm-12'><p class='font-weight-bold'>Subespecie</p><p class='text-muted'><?php print_r($data->getViewCropByID($_GET['id_cultivo'])[3]);?></p></div><div class='col-lg-6 col-md-6 col-sm-12'><p class='font-weight-bold'>Variedad</p><p class='text-muted'><?php print_r($data->getViewCropByID($_GET['id_cultivo'])[4]);?></p></div><div class='col-lg-6 col-md-6 col-sm-12'><p class='font-weight-bold'>Fecha de Inicio</p><p class='text-muted'><?php $fecha = $data->getViewCropByID($_GET['id_cultivo'])[5];$niu_fecha = explode('-', $fecha);$month = array('Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre');print_r($niu_fecha[2] . ' de ' . $month[$niu_fecha[1] - 1] . ' de ' . $niu_fecha[0]);?></p></div><div class='col-lg-6 col-md-6 col-sm-12'><p class='font-weight-bold'>Estado</p><p class='text-muted'><?php print_r($data->getViewCropByID($_GET['id_cultivo'])[6]);?></p></div><div class='col-lg-6 col-md-6 col-sm-12'><p class='font-weight-bold'>Municipio</p><p class='text-muted'><?php print_r($data->getViewCropByID($_GET['id_cultivo'])[7]);?></p></div><div class='col-lg-6 col-md-6 col-sm-12'><p class='font-weight-bold'>Localidad</p><p class='text-muted'><?php print_r($data->getViewCropByID($_GET['id_cultivo'])[8]);?></p></div></div>",
+                    showCancelButton: false,
+                    confirmButtonColor: "#d33",
+                    confirmButtonText: "Cerrar"
+                    }).then((result) => {
+                    if (result.value) {
+                        //document.location = "dashboard.php?cultivo='.$row['id_cultivo'].'";
+                    }
+                })
+            
+        });
+    </script>
                                         
     <!---Modal de suelo-->
-    <div class="modal fade" id="modalSuelo" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog ">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">
-                        <?php
-                        print_r($data->getGroundViewByID($_GET['id_cultivo'])[0]);
-                        ?>
-                    </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <p class="lead">Infraestructura</p>
-                            <p class="text-muted">
-                                <?php
-                                print_r($data->getGroundViewByID($_GET['id_cultivo'])[1]);
-                                ?>
-                            </p>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <p class="lead">Riego</p>
-                            <p class="text-muted">
-                                <?php   
-                                print_r($data->getGroundViewByID($_GET['id_cultivo'])[2]);
-                                ?>
-                            </p>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        
-                </div>
-            </div>
-        </div>
-    </div>
+    
+
+    <script>
+        document.getElementById("modalSuelo").addEventListener("click", function(){
+            
+                Swal.fire({
+                    title: "<?php
+                                 print_r($data->getGroundViewByID($_GET['id_cultivo'])[0]);
+                    
+                            ?>",
+                    showCloseButton: true,
+                    width: '45rem',
+                    //icon: 'info',
+                    html: "<img src='../../img/svg/growing-plant.svg' style='height:70px' class='mb-2'><div class='row'><div class='col-lg-6 col-md-6 col-sm-12'> <p class='font-weight-bold'>Infraestructura</p><p class='text-muted'><?php print_r($data->getGroundViewByID($_GET['id_cultivo'])[1]);?></p></div><div class='col-lg-6 col-md-6 col-sm-12'><p class='font-weight-bold'>Riego</p><p class='text-muted'><?php  print_r($data->getGroundViewByID($_GET['id_cultivo'])[2]);?></p>",
+                    showCancelButton: false,
+                    confirmButtonColor: "#d33",
+                    confirmButtonText: "Cerrar"
+                    }).then((result) => {
+                    if (result.value) {
+                        //document.location = "dashboard.php?cultivo='.$row['id_cultivo'].'";
+                    }
+                })
+            
+        });
+    </script>
                                        
     <!--Modal modifiacr cultivo--> 
     <div class="modal fade" id="modalModifCultivo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

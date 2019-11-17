@@ -1,6 +1,9 @@
 
-
-    
+<script
+			  src="https://code.jquery.com/jquery-3.4.1.min.js"
+			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+			  crossorigin="anonymous"></script>
+        
 <div class="row mt-5">
     <div id='calendar'></div>
 </div>    
@@ -10,29 +13,14 @@
 <script>
     $(document).ready(function(){
         
-        $('#calendar').fullCalendar({
-            windowResize: function(view) {
-            //alert('The calendar has adjusted to a window resize');
-        },
-           
-            
+        $('#calendar').fullCalendar({ 
             header:{
               
                 left: 'prev, today, next',
                 center: 'title',
                 right: 'basicWeek, month'
                 
-            },
-
-            themeButtonIcons:{
-                prev: 'circle-triangle-w',
-  next: 'circle-triangle-e',
-  prevYear: 'seek-prev',
-  nextYear: 'seek-next'
-            },
-            
-
-            
+            }, 
             customButtons:{
                 
             },
@@ -46,7 +34,7 @@
                 $('#inputFechaFinal').val(date.format());
                 $("#modalEventos").modal();
             },
-            events:'http://localhost:8888/agriicola/config/eventos.php',
+            events:'http://localhost:8080/agriicola/config/eventos.php',
         
             
             eventClick:function(calEvent, jsEvent, view){

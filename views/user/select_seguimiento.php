@@ -30,7 +30,7 @@
         <div class="row mb-5 py-5 border-bottom border-success" style="border-bottom: 2px solid #388E3C!important;">
 
             <div class="col-md-4 col-sm-10" >
-                <a href="dashboard.php?id_cultivo=<?php echo $_GET['Tracing'];?>&id_suelo=<?php echo $_GET['Ground'];?>" class="href text-decoration-none">
+                <a href="dashboard.php?id_cultivo=<?php echo $_GET['Tracing'];?>&tipo_suelo=<?php echo $_GET['Ground'];?>" class="href text-decoration-none">
                     <button type="button" class="btn btn-light btn-block p-3 shadow mb-4 btn0" style="font-size: 20px; text-align:center;">
                         <i class="fas fa-align-left float-left"></i>
                         Datos

@@ -65,7 +65,7 @@
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
                     <label for="inputNombreComercial">Nombre comercial</label>
-                    <input type="text" placeholder="Nutriplant" class="form-control" id="inputNombreComercial" name="name_agroq">
+                    <input  placeholder="Nutriplant" class="form-control" id="inputNombreComercial" name="name_agroq">
                 </div>
             </div>
 
@@ -75,7 +75,7 @@
                         <i class="icon-grey-color fas fa-question-circle"
                                 data-toggle="tooltip" data-placement="top" title="Selecciona un número con las flechas o escríbelo"></i>
                     </label>
-                    <input type="number" min="0" placeholder="..." class="form-control" id="inputPrecio" name="precio">
+                    <input type="number" min="1" placeholder="..." class="form-control" id="inputPrecio" name="precio">
                 </div>
             </div>
 
@@ -96,7 +96,7 @@
                         <i class="icon-grey-color fas fa-question-circle"
                                     data-toggle="tooltip" data-placement="top" title="Selecciona un número con las flechas o escríbelo"></i>
                     </label>
-                    <input type="number" min="0" placeholder="..." class="form-control" id="inputCantidad" name="cantidad">
+                    <input type="number" min="1" placeholder="..." class="form-control" id="inputCantidad" name="cantidad">
                 </div>
             </div>
 
@@ -106,6 +106,8 @@
                     <select class="form-control" id="inputUnidad" name="unidad">
                         <option value="ml">Mililitros</option>
                         <option value="l">Litros</option>
+                        <option value="g">Gramos</option>
+                        <option value="Kg">Kilogramos</option>
                     </select>
                 </div>
             </div>
@@ -117,7 +119,7 @@
                         <i class="icon-grey-color fas fa-question-circle"
                                     data-toggle="tooltip" data-placement="top" title="Selecciona un número con las flechas o escríbelo"></i>
                     </label>
-                    <input type="number" min="0" placeholder="..." class="form-control" id="inputDosis" name="dosis">
+                    <input type="number" min="1" placeholder="..." class="form-control" id="inputDosis" name="dosis">
                 </div>
             </div>
 
@@ -196,7 +198,7 @@
                         <i class="icon-grey-color fas fa-question-circle"
                                     data-toggle="tooltip" data-placement="top" title="Selecciona un número con las flechas o escríbelo"></i>
                     </label>
-                    <input type="number" min="0" placeholder="..." class="form-control" id="inputExistencia" name="existencia">
+                    <input type="number" min="1" placeholder="..." class="form-control" id="inputExistencia" name="existencia">
                 </div>
             </div>
 

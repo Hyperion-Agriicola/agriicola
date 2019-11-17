@@ -81,7 +81,7 @@
                         <i class="icon-grey-color fas fa-question-circle"
                             data-toggle="tooltip" data-placement="top" title="Este es el nombre para tu cultivo, ej. Tomate"></i>
                     </label>
-                    <input type="text" class="form-control" id="inputName" name="namecrop" placeholder="Predio La Joya">
+                    <input  class="form-control" id="inputName" name="namecrop" placeholder="Predio La Joya">
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
@@ -124,7 +124,7 @@
                         <i class="icon-grey-color fas fa-question-circle"
                                 data-toggle="tooltip" data-placement="top" title="¿Qué tipo de cultivo es? Ej. Cherry"></i>
                     </label>
-                    <input type="text" name="variation" class="form-control" id="inputVariation" placeholder="Variedad del cultivo">
+                    <input  name="variation" class="form-control" id="inputVariation" placeholder="Variedad del cultivo">
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
@@ -143,21 +143,21 @@
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
                     <label for="inputState">Estado</label>
-                    <input value='' type="text" class="form-control state" id="inputState" name="state"
+                    <input value=''  class="form-control state" id="inputState" name="state"
                         placeholder="Michoacán">
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
                     <label for="inputTownship">Municipio</label>
-                    <input value='' type="text" class="form-control township" id="inputTownship" name="township"
+                    <input value=''  class="form-control township" id="inputTownship" name="township"
                         placeholder="Tlalpujahua">
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
                     <label for="inputTown">Localidad</label>
-                    <input value='' type="text" class="form-control town" id="inputTown" name="town"
+                    <input value=''  class="form-control town" id="inputTown" name="town"
                         placeholder="Tlalpujahuilla">
                 </div>
             </div>

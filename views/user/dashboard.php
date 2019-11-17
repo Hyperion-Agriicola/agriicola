@@ -170,8 +170,8 @@ if (!isset($_SESSION['correo'])) {
             include('footer.php');
             ?>
 
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
         <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.1/jquery.validate.min.js"></script>
         <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.1/additional-methods.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -186,6 +186,8 @@ if (!isset($_SESSION['correo'])) {
         <script src="../../js/calendario/fullcalendar.min.js"></script>
         <script src="../../js/calendario/es-us.js"></script>
         <script src="../../js/calendario/bootstrap-clockpicker.min.js"></script>
+        
+        
     </body>
 
     </html>

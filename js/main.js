@@ -10,27 +10,27 @@ $(document).ready(function () {
 
     selectLocation();
 
-    $('.inputTipo').show();
-    $('.inputCausaP').hide();
-    $('.inputCausaE').hide();
+    $('#inputTipo').show();
+    $('#inputCausaP').hide();
+    $('#inputCausaE').hide();
 
     $("[name='origin']").change(function () {
-        var selectedText = $("inputAplicacion option:selected").html();
+        var selectedText = $("#inputAplicacion option:selected").html();
         if (selectedText == 'Nutriente') {
             console.log(selectedText);
-            $('.inputCausaE').hide();
-            $('.inputCausaP').hide();
-            $('.inputTipo').show();
+            $('#inputCausaE').hide();
+            $('#inputCausaP').hide();
+            $('#inputTipo').show();
         } else if (selectedText == 'Plaga') {
             console.log(selectedText);
-            $('.inputCausaP').show();
-            $('.inputCausaE').hide();
-            $('.inputTipo').hide();
+            $('#inputCausaP').show();
+            $('#inputCausaE').hide();
+            $('#inputTipo').hide();
         } else if (selectedText == 'Enfermedad') {
             console.log(selectedText);
-            $('.inputTipo').hide();
-            $('.inputCausaP').hide();
-            $('.inputCausaE').show();
+            $('#inputTipo').hide();
+            $('#inputCausaP').hide();
+            $('#inputCausaE').show();
         }
     });
 
@@ -63,15 +63,7 @@ $(document).ready(function () {
 
 
     //Calendario
-    document.addEventListener('DOMContentLoaded', function () {
-        var calendarEl = document.getElementById('calendar');
-
-        var calendar = new Calendar(calendarEl, {
-            plugins: [dayGridPlugin]
-        });
-
-        calendar.render();
-    });
+   
 
     //Tooltip noob
     $(function () {
