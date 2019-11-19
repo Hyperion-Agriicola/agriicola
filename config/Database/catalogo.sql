@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-11-2019 a las 07:06:42
+-- Tiempo de generación: 19-11-2019 a las 07:54:47
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.8
 
@@ -93,6 +93,7 @@ CREATE TABLE `especie` (
 --
 
 INSERT INTO `especie` (`id_especie`, `nom_especie`) VALUES
+(3, 'Frutales'),
 (1, 'Granos'),
 (2, 'Hortalizas');
 
@@ -191,7 +192,7 @@ CREATE TABLE `subespecie` (
 --
 
 INSERT INTO `subespecie` (`id_subespecie`, `nom_subespecie`, `id_especie`) VALUES
-(1, 'Maiz', 1),
+(1, 'Maíz', 1),
 (2, 'Trigo', 1),
 (3, 'Cebada', 1),
 (5, 'Soya', 1),
@@ -200,7 +201,7 @@ INSERT INTO `subespecie` (`id_subespecie`, `nom_subespecie`, `id_especie`) VALUE
 (8, 'Quinua', 1),
 (9, 'Mijo', 1),
 (10, 'Cacahuate', 1),
-(11, 'Judia', 1),
+(11, 'Judía', 1),
 (12, 'Lenteja', 1),
 (13, 'Garbanzo', 1),
 (14, 'Frijol', 1),
@@ -225,10 +226,10 @@ INSERT INTO `subespecie` (`id_subespecie`, `nom_subespecie`, `id_especie`) VALUE
 (33, 'Cebolleta', 2),
 (34, 'Col', 2),
 (35, 'Col de Bruselas', 2),
-(36, 'Coloflor', 2),
+(36, 'Coliflor', 2),
 (37, 'Colinabo', 2),
-(38, 'Champiñon', 2),
-(39, 'Chirivia', 2),
+(38, 'Champiñón', 2),
+(39, 'Chirivía', 2),
 (40, 'Envidia', 2),
 (41, 'Escarola', 2),
 (42, 'Esparrago', 2),
@@ -236,7 +237,7 @@ INSERT INTO `subespecie` (`id_subespecie`, `nom_subespecie`, `id_especie`) VALUE
 (44, 'Guindilla', 2),
 (45, 'Guisante', 2),
 (46, 'Hinojo', 2),
-(47, 'Judia verde', 2),
+(47, 'Judía verde', 2),
 (48, 'Lechuga', 2),
 (49, 'Lombarda', 2),
 (50, 'Mandioca', 2),
@@ -246,16 +247,16 @@ INSERT INTO `subespecie` (`id_subespecie`, `nom_subespecie`, `id_especie`) VALUE
 (54, 'Perejil', 2),
 (55, 'Pimiento', 2),
 (56, 'Puerro', 2),
-(57, 'Rabano', 2),
-(58, 'Rabanitoremalacha', 2),
+(57, 'Rábano', 2),
+(58, 'Remolacha', 2),
 (59, 'Repollo', 2),
 (60, 'Seta', 2),
 (61, 'Zanahoria', 2),
 (67, 'Aguacate', 3),
 (68, 'Naranja', 3),
-(69, 'Limon', 3),
+(69, 'Limón', 3),
 (70, 'Lima', 3),
-(71, 'Nispero', 3),
+(71, 'Níspero', 3),
 (72, 'Jitomate', 3),
 (73, 'Tomate', 3),
 (74, 'Fresa', 3),
@@ -265,7 +266,7 @@ INSERT INTO `subespecie` (`id_subespecie`, `nom_subespecie`, `id_especie`) VALUE
 (78, 'Peral', 3),
 (79, 'Manzana', 3),
 (80, 'Toronja', 3),
-(81, 'Platano', 3),
+(81, 'Plátano', 3),
 (82, 'Mango', 3),
 (83, 'Tamarindo', 3),
 (84, 'Arándano', 3),
@@ -276,7 +277,7 @@ INSERT INTO `subespecie` (`id_subespecie`, `nom_subespecie`, `id_especie`) VALUE
 (89, 'Cerezo', 3),
 (90, 'Nectarina', 3),
 (91, 'Anacardo', 3),
-(93, 'Rambutan', 3),
+(93, 'Rambután', 3),
 (94, 'Guindo', 3),
 (95, 'Higuera', 3),
 (96, 'Fruta de estrella', 3),
@@ -444,10 +445,10 @@ ALTER TABLE `tipo_suelo`
 --
 
 --
--- Filtros para la tabla `especie`
+-- Filtros para la tabla `subespecie`
 --
-ALTER TABLE `especie`
-  ADD CONSTRAINT `especie_ibfk_1` FOREIGN KEY (`id_especie`) REFERENCES `subespecie` (`id_especie`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `subespecie`
+  ADD CONSTRAINT `especie_ibfk_1` FOREIGN KEY (`id_especie`) REFERENCES `especie` (`id_especie`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
