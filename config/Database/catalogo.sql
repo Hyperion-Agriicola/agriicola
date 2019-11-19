@@ -2,10 +2,10 @@
 -- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Oct 25, 2019 at 03:02 PM
--- Server version: 10.4.6-MariaDB
--- PHP Version: 7.3.8
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 19-11-2019 a las 07:06:42
+-- Versión del servidor: 10.4.6-MariaDB
+-- Versión de PHP: 7.3.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `catalogo`
+-- Base de datos: `catalogo`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `enfermedades`
+-- Estructura de tabla para la tabla `enfermedades`
 --
 
 CREATE TABLE `enfermedades` (
@@ -34,36 +34,36 @@ CREATE TABLE `enfermedades` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `enfermedades`
+-- Volcado de datos para la tabla `enfermedades`
 --
 
 INSERT INTO `enfermedades` (`id_enfermedad`, `nom_enfermedad`) VALUES
-(32, 'Alternarosis'),
+(32, 'Alternariosis'),
 (31, 'Antracnosis'),
 (2, 'Bacteria'),
 (29, 'Bacteria podredumbre humeda'),
-(37, 'Carbon de la cebola'),
-(36, 'Cercosporosis'),
+(37, 'Carbón de la cebolla'),
+(36, 'Cercosporiosis'),
 (7, 'Chancro bacteriano'),
 (34, 'Esclerotinosis'),
 (4, 'Grasa de la judia'),
 (35, 'Hernia de la col'),
 (1, 'Hongo'),
 (25, 'Hongo de Alternaria'),
-(26, 'Hongo de Botritis'),
-(27, 'Hongo de Fusarosarosis'),
+(26, 'Hongo de Botritys'),
+(27, 'Hongo de Fusarium'),
 (22, 'Hongo de Mildiu'),
-(21, 'Hongo de Oidio'),
+(21, 'Hongo de Oídio'),
 (24, 'Hongo de Roya'),
 (28, 'Hongo de Traqueomicosis'),
 (23, 'Hongo negrilla'),
 (6, 'Mancha angular de las Cucurbitáceas'),
 (5, 'Mancha negra de tomate '),
 (10, 'Marchitamiento bacteriano'),
-(12, 'Mosaico de la sandia'),
-(9, 'Podredumbre blanda '),
+(12, 'Mosaico de la sandía'),
 (8, 'Podredumbre parda de la patata'),
 (11, 'Podredumbres blandas'),
+(9, 'Pudrición blanda'),
 (33, 'Vericilum'),
 (38, 'Viruela del fresal'),
 (3, 'Virus'),
@@ -80,7 +80,7 @@ INSERT INTO `enfermedades` (`id_enfermedad`, `nom_enfermedad`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `especie`
+-- Estructura de tabla para la tabla `especie`
 --
 
 CREATE TABLE `especie` (
@@ -89,18 +89,17 @@ CREATE TABLE `especie` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `especie`
+-- Volcado de datos para la tabla `especie`
 --
 
 INSERT INTO `especie` (`id_especie`, `nom_especie`) VALUES
-(3, 'Frutales'),
 (1, 'Granos'),
 (2, 'Hortalizas');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `infraestructura`
+-- Estructura de tabla para la tabla `infraestructura`
 --
 
 CREATE TABLE `infraestructura` (
@@ -109,22 +108,23 @@ CREATE TABLE `infraestructura` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `infraestructura`
+-- Volcado de datos para la tabla `infraestructura`
 --
 
 INSERT INTO `infraestructura` (`id_infraestructura`, `nom_infraestructura`) VALUES
 (1, 'Invernadero'),
 (7, 'Invernaderos de alta tecnologia'),
 (4, 'Invernaderos para plantulas'),
-(6, 'Macro tuneles'),
-(3, 'Macrotunel'),
+(3, 'Macrotúnel'),
+(6, 'Macrotuneles'),
 (2, 'Malla de sombra'),
-(5, 'Malla sombra');
+(5, 'Malla sombra'),
+(8, 'Sin infraestructura');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `plagas`
+-- Estructura de tabla para la tabla `plagas`
 --
 
 CREATE TABLE `plagas` (
@@ -133,22 +133,25 @@ CREATE TABLE `plagas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `plagas`
+-- Volcado de datos para la tabla `plagas`
 --
 
 INSERT INTO `plagas` (`id_plaga`, `nom_plaga`) VALUES
 (5, 'Araña roja'),
-(2, 'Gusanito'),
+(9, 'Gallina Ciega'),
+(11, 'Minadores de hoja'),
 (4, 'Mosca blanca'),
-(1, 'Mosquita'),
+(10, 'Moscas de la frutas'),
+(1, 'Mosquito'),
 (7, 'Nematodos'),
-(3, 'Pulgon'),
-(6, 'Trips');
+(8, 'Picudo'),
+(3, 'Pulgón'),
+(6, 'Tisanópteros');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `riego`
+-- Estructura de tabla para la tabla `riego`
 --
 
 CREATE TABLE `riego` (
@@ -157,23 +160,24 @@ CREATE TABLE `riego` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `riego`
+-- Volcado de datos para la tabla `riego`
 --
 
 INSERT INTO `riego` (`id_riego`, `nom_riego`) VALUES
-(3, 'Aspersiòn'),
+(3, 'Aspersión'),
 (6, 'Automático'),
 (8, 'Fertirrigación XILEMA'),
 (2, 'Goteo'),
 (5, 'Hidropónico'),
-(4, 'Microaspersiòn'),
+(4, 'Microaspersión'),
 (7, 'Nebulización'),
-(1, 'Rodado');
+(1, 'Rodado'),
+(9, 'Sin riego');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `subespecie`
+-- Estructura de tabla para la tabla `subespecie`
 --
 
 CREATE TABLE `subespecie` (
@@ -183,14 +187,13 @@ CREATE TABLE `subespecie` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `subespecie`
+-- Volcado de datos para la tabla `subespecie`
 --
 
 INSERT INTO `subespecie` (`id_subespecie`, `nom_subespecie`, `id_especie`) VALUES
 (1, 'Maiz', 1),
 (2, 'Trigo', 1),
 (3, 'Cebada', 1),
-(4, 'Tef', 1),
 (5, 'Soya', 1),
 (6, 'Sorgo', 1),
 (7, 'Arroz', 1),
@@ -215,11 +218,11 @@ INSERT INTO `subespecie` (`id_subespecie`, `nom_subespecie`, `id_especie`) VALUE
 (26, 'Boniato', 2),
 (27, 'Brécol', 2),
 (28, 'Brócoli', 2),
-(29, 'Calabacin ', 2),
+(29, 'Calabacín ', 2),
 (30, 'Calabaza', 2),
 (31, 'Cardo', 2),
 (32, 'Cebolla', 2),
-(33, 'Cebollota', 2),
+(33, 'Cebolleta', 2),
 (34, 'Col', 2),
 (35, 'Col de Bruselas', 2),
 (36, 'Coloflor', 2),
@@ -265,7 +268,7 @@ INSERT INTO `subespecie` (`id_subespecie`, `nom_subespecie`, `id_especie`) VALUE
 (81, 'Platano', 3),
 (82, 'Mango', 3),
 (83, 'Tamarindo', 3),
-(84, 'Arandano', 3),
+(84, 'Arándano', 3),
 (85, 'Granada', 3),
 (86, 'Papaya', 3),
 (87, 'Yaca', 3),
@@ -273,7 +276,6 @@ INSERT INTO `subespecie` (`id_subespecie`, `nom_subespecie`, `id_especie`) VALUE
 (89, 'Cerezo', 3),
 (90, 'Nectarina', 3),
 (91, 'Anacardo', 3),
-(92, 'Anon', 3),
 (93, 'Rambutan', 3),
 (94, 'Guindo', 3),
 (95, 'Higuera', 3),
@@ -287,7 +289,7 @@ INSERT INTO `subespecie` (`id_subespecie`, `nom_subespecie`, `id_especie`) VALUE
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sustrato_suelo`
+-- Estructura de tabla para la tabla `sustrato_suelo`
 --
 
 CREATE TABLE `sustrato_suelo` (
@@ -296,7 +298,7 @@ CREATE TABLE `sustrato_suelo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `sustrato_suelo`
+-- Volcado de datos para la tabla `sustrato_suelo`
 --
 
 INSERT INTO `sustrato_suelo` (`id_sustrato_suelo`, `nombre_sustrato`) VALUES
@@ -319,7 +321,7 @@ INSERT INTO `sustrato_suelo` (`id_sustrato_suelo`, `nombre_sustrato`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tipo_suelo`
+-- Estructura de tabla para la tabla `tipo_suelo`
 --
 
 CREATE TABLE `tipo_suelo` (
@@ -328,77 +330,124 @@ CREATE TABLE `tipo_suelo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tipo_suelo`
+-- Volcado de datos para la tabla `tipo_suelo`
 --
 
 INSERT INTO `tipo_suelo` (`id_tipo_suelo`, `nom_tipo_suelo`) VALUES
-(4, 'Arcillosos'),
-(8, 'Arenosos'),
+(4, 'Arcilloso'),
+(8, 'Arcilloso arenoso'),
+(9, 'Arcilloso limoso'),
+(10, 'Arenoso'),
 (1, 'Calizos'),
 (6, 'De turba'),
+(11, 'Franco'),
+(12, 'Franco arcilloso'),
+(13, 'Franco arenoso '),
+(14, 'Franco arenoso arcilloso'),
+(15, 'Franco limoso'),
+(16, 'Franco limoso arcilloso'),
 (3, 'Humiferos o de tierra negra'),
-(2, 'Limosos'),
-(5, 'Pedregosos'),
-(7, 'Salinos');
+(2, 'Limoso'),
+(5, 'Pedregoso'),
+(7, 'Salino');
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `enfermedades`
+-- Indices de la tabla `enfermedades`
 --
 ALTER TABLE `enfermedades`
   ADD PRIMARY KEY (`id_enfermedad`),
   ADD UNIQUE KEY `nom_enfermedad` (`nom_enfermedad`);
 
 --
--- Indexes for table `especie`
+-- Indices de la tabla `especie`
 --
 ALTER TABLE `especie`
   ADD PRIMARY KEY (`id_especie`),
   ADD UNIQUE KEY `nom_especie` (`nom_especie`);
 
 --
--- Indexes for table `infraestructura`
+-- Indices de la tabla `infraestructura`
 --
 ALTER TABLE `infraestructura`
   ADD PRIMARY KEY (`id_infraestructura`),
   ADD UNIQUE KEY `nom_infraestructura` (`nom_infraestructura`);
 
 --
--- Indexes for table `plagas`
+-- Indices de la tabla `plagas`
 --
 ALTER TABLE `plagas`
   ADD PRIMARY KEY (`id_plaga`),
   ADD UNIQUE KEY `nom_plaga` (`nom_plaga`);
 
 --
--- Indexes for table `riego`
+-- Indices de la tabla `riego`
 --
 ALTER TABLE `riego`
   ADD PRIMARY KEY (`id_riego`),
   ADD UNIQUE KEY `nom_riego` (`nom_riego`);
 
 --
--- Indexes for table `subespecie`
+-- Indices de la tabla `subespecie`
 --
 ALTER TABLE `subespecie`
   ADD PRIMARY KEY (`id_subespecie`),
-  ADD UNIQUE KEY `nom_subespecie` (`nom_subespecie`);
+  ADD UNIQUE KEY `nom_subespecie` (`nom_subespecie`),
+  ADD KEY `id_especie` (`id_especie`);
 
 --
--- Indexes for table `sustrato_suelo`
+-- Indices de la tabla `sustrato_suelo`
 --
 ALTER TABLE `sustrato_suelo`
   ADD PRIMARY KEY (`id_sustrato_suelo`);
 
 --
--- Indexes for table `tipo_suelo`
+-- Indices de la tabla `tipo_suelo`
 --
 ALTER TABLE `tipo_suelo`
   ADD PRIMARY KEY (`id_tipo_suelo`),
   ADD UNIQUE KEY `nom_tipo_suelo` (`nom_tipo_suelo`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `infraestructura`
+--
+ALTER TABLE `infraestructura`
+  MODIFY `id_infraestructura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT de la tabla `plagas`
+--
+ALTER TABLE `plagas`
+  MODIFY `id_plaga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT de la tabla `riego`
+--
+ALTER TABLE `riego`
+  MODIFY `id_riego` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT de la tabla `tipo_suelo`
+--
+ALTER TABLE `tipo_suelo`
+  MODIFY `id_tipo_suelo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `especie`
+--
+ALTER TABLE `especie`
+  ADD CONSTRAINT `especie_ibfk_1` FOREIGN KEY (`id_especie`) REFERENCES `subespecie` (`id_especie`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
