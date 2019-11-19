@@ -139,8 +139,8 @@
             </div>
 
         </div>
-        <div class="container btn-green p-3 text-white mt-1 mb-1">
-            <h3 class="modal-title text-center" id="exampleModalScrollableTitle">Ubicación</h3>
+        <div class="container  p-2 text-white mt-1 mb-1" style="margin-top: 0px; margin-bottom: 20px; border-radius: 5px; background-color:#388E3C">
+            <h3 class="modal-title text-center">Ubicación</h3>
         </div> 
         <div class="row mt-4">
             <div class="col-lg-6 col-md-6 col-sm-12">

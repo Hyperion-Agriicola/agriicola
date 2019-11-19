@@ -1,7 +1,10 @@
 <?php
+    //include('../views/dashboard.php');
+    //include('functions.php');
+   // $data = new Functions();
     header('Content-Type: application/json');
     $pdo = new PDO("mysql:dbname=agriicola; host=localhost","root","");
-
+    //$id_u = $data->getUserProfile()[9];
     $accion=(isset($_GET['accion']))?$_GET['accion']:'leer';
     
     switch($accion){
@@ -57,7 +60,7 @@
             break;    
         default:
             //Consulta los eventos en la BD, y los convierte a json para mostrar en calendario
-            $sql = $pdo->prepare("SELECT id_u, id_cultivo, id_evento, titulo as 'title', descripcion, inicio as 'start', fin as 'end', color, text_color as 'textColor' FROM eventos WHERE id_u=7");
+            $sql = $pdo->prepare("SELECT id_u, id_cultivo, id_evento, titulo as 'title', descripcion, inicio as 'start', fin as 'end', color, text_color as 'textColor' FROM eventos WHERE id_u= 10");
             $sql->execute();
             $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
             echo json_encode($resultado);  
