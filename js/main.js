@@ -71,10 +71,10 @@ $(document).ready(function () {
     });
 
 
-    // Read value on page load
+    // Read value  on page load
     $("#result b").html($("#customRange").val());
 
-    // Read value on change
+    // Read value  %" on change
     $("#customRange").change(function () {
         $("#result b").html($(this).val());
     });
@@ -116,10 +116,10 @@ function dataRange() {
     if (rangeOrganic) {
         var etiqueta1 = document.querySelector('#etiqueta1');
         if (etiqueta1) {
-            etiqueta1.innerHTML = rangeOrganic.value;
+            etiqueta1.innerHTML = rangeOrganic.value + " %";
 
             rangeOrganic.addEventListener('input', function () {
-                etiqueta1.innerHTML = rangeOrganic.value;
+                etiqueta1.innerHTML = rangeOrganic.value + " %" ;
             }, false);
         }
     }
@@ -128,10 +128,10 @@ function dataRange() {
     if (rangeZinc) {
         var etiqueta2 = document.querySelector('#etiqueta2');
         if (etiqueta2) {
-            etiqueta2.innerHTML = rangeZinc.value;
+            etiqueta2.innerHTML = rangeZinc.value + " %";
 
             rangeZinc.addEventListener('input', function () {
-                etiqueta2.innerHTML = rangeZinc.value;
+                etiqueta2.innerHTML = rangeZinc.value + " %" ;
             }, false);
         }
     }
@@ -140,10 +140,10 @@ function dataRange() {
     if (rangeNitrates) {
         var etiqueta3 = document.querySelector('#etiqueta3');
         if (etiqueta3) {
-            etiqueta3.innerHTML = rangeNitrates.value;
+            etiqueta3.innerHTML = rangeNitrates.value + " %";
 
             rangeNitrates.addEventListener('input', function () {
-                etiqueta3.innerHTML = rangeNitrates.value;
+                etiqueta3.innerHTML = rangeNitrates.value + " %" ;
             }, false);
         }
     }
@@ -152,10 +152,10 @@ function dataRange() {
     if (rangePhosphor) {
         var etiqueta4 = document.querySelector('#etiqueta4');
         if (etiqueta4) {
-            etiqueta4.innerHTML = rangePhosphor.value;
+            etiqueta4.innerHTML = rangePhosphor.value + " %";
 
             rangePhosphor.addEventListener('input', function () {
-                etiqueta4.innerHTML = rangePhosphor.value;
+                etiqueta4.innerHTML = rangePhosphor.value + " %";
             }, false);
         }
     }
@@ -164,10 +164,10 @@ function dataRange() {
     if (rangePota) {
         var etiqueta5 = document.querySelector('#etiqueta5');
         if (etiqueta5) {
-            etiqueta5.innerHTML = rangePota.value;
+            etiqueta5.innerHTML = rangePota.value + " %";
 
             rangePota.addEventListener('input', function () {
-                etiqueta5.innerHTML = rangePota.value;
+                etiqueta5.innerHTML = rangePota.value + " %";
             }, false);
         }
     }
@@ -176,10 +176,10 @@ function dataRange() {
     if (rangeMang) {
         var etiqueta6 = document.querySelector('#etiqueta6');
         if (etiqueta6) {
-            etiqueta6.innerHTML = rangeMang.value;
+            etiqueta6.innerHTML = rangeMang.value + " %";
 
             rangeMang.addEventListener('input', function () {
-                etiqueta6.innerHTML = rangeMang.value;
+                etiqueta6.innerHTML = rangeMang.value + " %";
             }, false);
         }
     }
@@ -188,10 +188,10 @@ function dataRange() {
     if (rangeCalc) {
         var etiqueta7 = document.querySelector('#etiqueta7');
         if (etiqueta7) {
-            etiqueta7.innerHTML = rangeCalc.value;
+            etiqueta7.innerHTML = rangeCalc.value + " %";
 
             rangeCalc.addEventListener('input', function () {
-                etiqueta7.innerHTML = rangeCalc.value;
+                etiqueta7.innerHTML = rangeCalc.value + " %";
             }, false);
         }
     }
@@ -200,10 +200,10 @@ function dataRange() {
     if (rangeCopper) {
         var etiqueta8 = document.querySelector('#etiqueta8');
         if (etiqueta8) {
-            etiqueta8.innerHTML = rangeCopper.value;
+            etiqueta8.innerHTML = rangeCopper.value + " %";
 
             rangeCopper.addEventListener('input', function () {
-                etiqueta8.innerHTML = rangeCopper.value;
+                etiqueta8.innerHTML = rangeCopper.value + " %";
             }, false);
         }
     }
@@ -212,10 +212,10 @@ function dataRange() {
     if (rangeAz) {
         var etiqueta9 = document.querySelector('#etiqueta9');
         if (etiqueta9) {
-            etiqueta9.innerHTML = rangeAz.value;
+            etiqueta9.innerHTML = rangeAz.value + " %";
 
             rangeAz.addEventListener('input', function () {
-                etiqueta9.innerHTML = rangeAz.value;
+                etiqueta9.innerHTML = rangeAz.value + " %";
             }, false);
         }
     }
@@ -224,10 +224,10 @@ function dataRange() {
     if (rangeBor) {
         var etiqueta10 = document.querySelector('#etiqueta10');
         if (etiqueta10) {
-            etiqueta10.innerHTML = rangeBor.value;
+            etiqueta10.innerHTML = rangeBor.value + " %";
 
             rangeBor.addEventListener('input', function () {
-                etiqueta10.innerHTML = rangeBor.value;
+                etiqueta10.innerHTML = rangeBor.value + " %";
             }, false);
         }
     }
@@ -236,10 +236,10 @@ function dataRange() {
     if (rangeMag) {
         var etiqueta11 = document.querySelector('#etiqueta11');
         if (etiqueta11) {
-            etiqueta11.innerHTML = rangeMag.value;
+            etiqueta11.innerHTML = rangeMag.value + " %";
 
             rangeMag.addEventListener('input', function () {
-                etiqueta11.innerHTML = rangeMag.value;
+                etiqueta11.innerHTML = rangeMag.value + " %";
             }, false);
         }
     }
@@ -248,10 +248,10 @@ function dataRange() {
     if (rangeOxygen) {
         var etiqueta12 = document.querySelector('#etiqueta12');
         if (etiqueta12) {
-            etiqueta12.innerHTML = rangeOxygen.value;
+            etiqueta12.innerHTML = rangeOxygen.value + " %";
 
             rangeOxygen.addEventListener('input', function () {
-                etiqueta12.innerHTML = rangeOxygen.value;
+                etiqueta12.innerHTML = rangeOxygen.value + " %";
             }, false);
         }
     }

@@ -126,7 +126,7 @@
                 </div>
             </div>
         </div>
-        <div class="container btn-green p-3 text-white">
+        <div class="container p-2 text-white" style="margin-top: 0px; margin-bottom: 20px; border-radius: 5px; background-color:#388E3C">
             <h3 class="modal-title text-center" id="exampleModalScrollableTitle">Nutrición</h3>
             <p class="text-center mt-2">En esta zona seleccione el nivel de químicos que tiene su cultivo</p>
         </div> 

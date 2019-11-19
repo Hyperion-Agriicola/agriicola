@@ -116,6 +116,7 @@ class Functions
                 $resultSet[6] = $row['ciudad'];
                 $resultSet[7] = $row['estado'];
                 $resultSet[8] = $row['fecha_registro'];
+                $resultSet[9] = $row['id_u'];
             }
 
             return $resultSet;
@@ -493,7 +494,7 @@ class Functions
                             <div class="card-body">
                                 
                                     <img src="../../img/svg/grain.svg" width="60">
-                                    <p class="font-weight-bold mt-3"><strong>' . $row['nombre_predio'] . '</strong> </p>
+                                    <p class="lead mt-3"><strong>' . $row['nombre_predio'] . '</strong> </p>
                                     
                                   
                             </div>
@@ -979,7 +980,7 @@ class Functions
                             </div>
 
                             <div class="card-body pt-3">
-                                <a id="'.$row['id_agroquimico'].'"data-toggle="modal" data-target="#edit'.str_replace(' ' , '',  $row['nombre_comercial']).'" class="close">
+                                <a id="modif'.$row['id_agroquimico'].'" class="close">
                                     <img src="../../img/svg/edit-24px.svg"class="mb-2" alt="">
                                 </a>
                                 <a id="modal'.$row['id_agroquimico'].'" class="text-success text-left text-decoration-none" href="#!">Ver informacion
@@ -989,8 +990,6 @@ class Functions
                                 
                         </div>      
                     </div>
-
-                    
 
                     <script>
                         document.getElementById("modal'.$row['id_agroquimico'].'").addEventListener("click", function(){
@@ -1033,6 +1032,199 @@ class Functions
                             </div>
                         </div>
                     </div>
+
+                    <!--Modif agro-->
+                    <div style="display: none;">
+                        <form id="modifagro'.$row['id_agroquimico'].'" class="reg_agro" action="" method="POST">
+                            <input name="input_id_cultivo" id="input_id_cultivo" value='.$row['id_cultivo'].' style="display: none;">
+                            <input name="input_id_agroquimico" id="input_id_agroquimico" value='.$row['id_agroquimico'].' style="display: none;">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="inputAplicacion">Aplicación</label>
+                                        <select class="form-control" id="inputAplicacion'.$row['id_agroquimico'].'" name="origin'.$row['id_agroquimico'].'">
+                                            '.$selected_aplicacion.'
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="inputNombreComercial">Nombre comercial</label>
+                                        <input type="text" placeholder="Nutriplant" class="form-control" id="inputNombreComercial" name="name_agroq" value="'.$row['nombre_comercial'].'">
+                                    </div>
+                                </div>
+                    
+                                <div class="col-lg-3 col-md-3 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="inputPrecio">Precio</label>
+                                        <input type="number" placeholder="700" class="form-control" id="inputPrecio" name="precio" value="'.$row['precio'].'">
+                                    </div>
+                                </div>
+                    
+                                <div class="col-lg-3 col-md-3 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="inputMoneda">Moneda</label>
+                                        <select class="form-control" id="inputMoneda" name="moneda">
+                                            '.$selected_moneda.'
+                                        </select>
+                                    </div>
+                                </div>
+                    
+                                <div class="col-lg-3 col-md-3 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="inputCantidad">Cantidad</label>
+                                        <input type="number" placeholder="700" class="form-control" id="inputCantidad" name="cantidad" value="'.$row['cantidad'].'">
+                                    </div>
+                                </div>
+                    
+                                <div class="col-lg-3 col-md-3 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="inputUnidad">Unidad</label>
+                                        <select class="form-control" id="inputUnidad" name="unidad">
+                                            '.$selected_unidad.'
+                                        </select>
+                                    </div>
+                                </div>
+                    
+                    
+                                <div class="col-lg-3 col-md-3 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="inputDosis">Dosis</label>
+                                        <input type="number" placeholder="700" class="form-control" id="inputDosis" name="dosis" value="'.$row['dosis'].'">
+                                    </div>
+                                </div>
+                    
+                                <div class="col-lg-3 col-md-3 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="inputTiempo">Tiempo</label>
+                                        <select class="form-control" id="inputTiempo" name="tiempo">
+                                            '.$selected_tiempo.'
+                                        </select>
+                                    </div>
+                                </div>
+                    
+                    
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <!--Si el campo aplicacion es Nutriente-->
+                                        <div id="inputTipo'.$row['id_agroquimico'].'" id="inputTipo">
+                                            <label for="inputTipo">Tipo</label>
+                                            <select class="form-control" name="nutricion">
+                                                '.$selected_nutricion.'
+                                            </select>
+                                        </div>
+                                        <!--Si el campo aplicacion es Enfermedad-->
+                                        <div id="inputCausaE'.$row['id_agroquimico'].'" id="inputCausaE">
+                                            <label for="inputTipo">Causa</label>
+                                            <select class="form-control" name="enfermedad">
+                                                <option disabled>Elige una enfermedad</option>
+                                                '.$enfermedad.'
+                                
+                                                
+                                            </select>
+                                        </div>
+                                        <!--Si el campo aplicacion es Plaga-->
+                                        <div id="inputCausaP'.$row['id_agroquimico'].'" id="inputCausaP">
+                                            <label for="inputTipo">Causa</label>
+                                            <select class="form-control" name="plaga">
+                                                <option disabled>Selecciona una plaga</option>
+                                                '.$plaga.'
+                                                
+                                            
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                    
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="inputFrecuencia">Frecuencia</label>
+                                        <select class="form-control" id="inputFrecuencia" name="frecuencia">
+                                            <option>Diario</option>
+                                            <option>Cada 2 dias</option>
+                                            <option>Cada 3 dias</option>
+                                        </select>
+                                    </div>
+                                </div>
+                    
+                                <div class="col-lg-3 col-md-3 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="inputFechaInicio">Fecha de inicio</label>
+                                        <input type="date" placeholder="Fecha" class="form-control" id="inputFechaInicio" name="fecha_inicio" value="'.$row['fecha_inicio'].'">
+                                    </div>
+                                </div>
+                    
+                                <div class="col-lg-3 col-md-3 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="inputFechaFinal">Fecha de fin</label>
+                                        <input type="date" placeholder="Fecha" class="form-control" id="inputFechaFinal" name="fecha_fin" value="'.$row['fecha_fin'].'">
+                                    </div>
+                                </div>
+                    
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="inputExistencia">Existencia</label>
+                                        <input type="number" placeholder=10 class="form-control" id="inputExistencia" name="existencia" value="'.$row['existencia'].'">
+                                    </div>
+                                </div>
+                    
+                            </div>
+                            
+                            <div class="swal2">
+                                
+                                <button name="modifAgro" type="submit" class="swal2-confirm swal2-styled" style="background-color: #388e3c;">Aceptar</button>
+                            </div>
+                        </form>
+                    </div>        
+                    
+                    <script>
+                        var form'.$row['id_agroquimico'].' = document.getElementById("modifagro'.$row['id_agroquimico'].'");
+                        document.getElementById("modif'.$row['id_agroquimico'].'").addEventListener("click", function(){
+                                        
+                                Swal.fire({
+                                    title: "Modificar datos del agroquímico",
+                                    showCloseButton: true,
+                                    width: "45rem",
+                                    html: form'.$row['id_agroquimico'].',
+                                    showCancelButton: false,
+                                    showConfirmButton : false,
+                                    
+                                    }).then((result) => {
+                                    if (result.value) {
+                                    // form.submit();
+                                    }
+                                });
+                            
+                        });
+
+                        
+                    </script>
+
+                    <script>
+                        $("#inputTipo'.$row['id_agroquimico'].'").show();
+                        $("#inputCausaP'.$row['id_agroquimico'].'").hide();
+                        $("#inputCausaE'.$row['id_agroquimico'].'").hide();
+                        
+                        $("[name="origin'.$row['id_agroquimico'].'"]").change(function(){
+                            var selectedText = $("#inputAplicacion'.$row['id_agroquimico'].' option:selected").html();
+                            if (selectedText == "Nutriente") {
+                                
+                                $("#inputCausaE'.$row['id_agroquimico'].'").hide();
+                                $("#inputCausaP'.$row['id_agroquimico'].'").hide();
+                                $("#inputTipo'.$row['id_agroquimico'].'").show();
+                            } else if (selectedText == "Plaga") {
+                                
+                                $("#inputCausaP'.$row['id_agroquimico'].'").show();
+                                $("#inputCausaE'.$row['id_agroquimico'].'").hide();
+                                $("#inputTipo'.$row['id_agroquimico'].'").hide();
+                            } else if (selectedText == "Enfermedad") {
+                                
+                                $("#inputTipo'.$row['id_agroquimico'].'").hide();
+                                $("#inputCausaP'.$row['id_agroquimico'].'").hide();
+                                $("#inputCausaE'.$row['id_agroquimico'].'").show();
+                            }
+                        });
+                    </script>
 
                 ';
                 
