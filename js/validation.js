@@ -260,6 +260,7 @@ $(function(){
         minDate: new Date() 
     });
 });
+
  /**REgistro suelo natural validaciones */
 
 jQuery(function(){
@@ -472,6 +473,8 @@ jQuery( function() {
       return date;
     }
   });
+
+
      
 /**Registro de gastos validaciones */
 
@@ -531,49 +534,27 @@ jQuery(function(){
     });
 });
 /**Modal calendario  */
-jQuery(function(){
-    function compareDates() {
-    
-            var endTime = endDate.getTime() + $('#inputFechaInicio').parseValToNumber();
-            var startTime = startDate.getTime() + $('#inputFechaFinal').parseValToNumber();
-            return endTime >= startTime;
-    }
-    function comparetimes() {
-    
-        var endTime = endDate.getTime() + $('#inputFechaInicio').parseValToNumber();
-        var startTime = startDate.getTime() + $('#inputFechaFinal').parseValToNumber();
-        return endTime <= startTime;
-}
-    jQuery.validator.addMethod("checkTimes", function(value, element) {
-        /* see function above*/
-        return  comparetimes() ;
-      }, "<p class='text-danger' style='font-size: 12px;'>*Horas invalidas, asegurate de que la fecha de inicio sea anterior a la fecha de finalización.</p>");
-    jQuery(".form-eventos").validate({
+
+    jQuery("#event-form").validate({
         rules:{
             titulo:{
                 required: true,
                 alphanumeric: true
             },
             fecha_inicio:{
-                required: true,
-                dateBefore: "#inputFechaFinal",
-                validDate: true
+                required: true
             },
             fecha_final:{
-                required: true, 
-                dateAfter: "#inputFechaInicio",
-                validDate: true
+                required: true
 
             },
             hora_inicio:{
-                required: true,
-                checkDates: true,
-                checkTimes: true
+                required: true
+                
             },
             hora_final:{
-                required: true,
-                checkDates: true,
-                checkTimes: true
+                required: true
+               
             },
             descripcion:{
                 required: true
@@ -599,4 +580,3 @@ jQuery(function(){
         }
     });
 
-});

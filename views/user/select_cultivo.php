@@ -236,7 +236,7 @@
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="form-group">
                         <label for="inputDate">Fecha de inicio</label>
-                        <input type="date" class="form-control" id="inputDate" name="bornDate" value="<?php 
+                        <input  class="form-control" id="inputDate" name="bornDate" value="<?php 
                             print_r($data->getViewCropByID($_GET['id_cultivo'])[5]);
                         ?>">
                     </div>

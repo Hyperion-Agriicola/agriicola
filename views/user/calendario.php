@@ -28,8 +28,8 @@
 
             <div class="col-lg-6 col-md-6 col-sm-6">    
                 <div class="form-group">
-                    <label for="inputFechaInicio">Fecha</label>
-                    <input type="date" class="form-control" id="inputFechaInicio" name="fecha_inicio" required>
+                    <label for="inputFechaInicio">Fecha de inicio</label>
+                    <input placeholder="Seleccione una fecha" class="form-control" id="inputFechaInicio" name="fecha_inicio" required>
                 </div>
             </div>
 
@@ -44,8 +44,8 @@
 
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="form-group">
-                    <label for="inputFechaFinal">Fecha de fin</label>
-                    <input type="date" class="form-control" id="inputFechaFinal" name="fecha_final">
+                    <label for="inputFechaFinal">Fecha de finalización</label>
+                    <input placeholder="Seleccione una fecha" class="form-control" id="inputFechaFinal" name="fecha_final">
                 </div>
             </div>
 
