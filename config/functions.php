@@ -1934,12 +1934,12 @@ class Functions
             $mailer->isHTML(true);
             $mailer->Body = "
                 Recibimos una petición para la recuperación de su contraseña, de ser así 
-                <a href='https://agriicola-test.000webhostapp.com/password_reset.phpemail=$email&token=$token'>click aquí</a> para crear una nueva clave de acceso.
+                <a href='https://agriicola.000webhostapp.com/views/support/password_recovery.php?email=$email&token=$token'>click aquí</a> para crear una nueva clave de acceso.
                 <br>
                 Si usted no hizo ninguna petición simplemente ignore este mensaje, expirará en 5 minutos.<br>
                 Para recibir un nuevo enlace de recuperación por favor visite 
-                <a href='https://agriicola-test.000webhostapp.com/password_reset.php' target='_blank'>
-                    https://agriicola-test.000webhostapp.com/password_reset.php
+                <a href='https://agriicola.000webhostapp.com/views/support/password_reset.php' target='_blank'>
+                    https://agriicola.000webhostapp.com/views/support/password_reset.php
                 </a>
 
                 <br><br><br>
@@ -1978,7 +1978,7 @@ class Functions
                     echo "
                         <div class='container mt-4'>
                             <div class='alert alert-success' role='alert'>
-                                Su contraseña se ha cambiado correctamente, ya puede <a href='#!'>iniciar sesión</a>
+                                Su contraseña se ha cambiado correctamente, ya puede <a href='../../index.php'>iniciar sesión</a>
                             </div>
                         </div>";
                 }else{

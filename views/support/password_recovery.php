@@ -35,7 +35,7 @@ ob_start();
                                     <label for="repeat_pass">Confirmar contraseña:</label>
                                     <input type="password" class="form-control" placeholder="******" id="repeat_pass" name="userPass2" required>
                                 </div>
-                                <button type="submit" id="changePassword" name="changePassword" class="form-control btn-green btn btn-block text-white">Enviar correo</button>
+                                <button type="submit" id="changePassword" name="changePassword" class="form-control btn-green btn btn-block text-white">Cambiar contraseña</button>
                             </form>
                         </div>
                     </div>
