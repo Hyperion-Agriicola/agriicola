@@ -184,7 +184,10 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="form-group">
-                        <label for="inputName">Nombre predio</label>
+                        <label for="inputName">Nombre predio
+                        <i class="icon-grey-color fas fa-question-circle"
+                            data-toggle="tooltip" data-placement="top" title='Este es el nombre para tu predio, ej. Predio "San José"'></i>
+                        </label>
                         <input type="text" class="form-control" id="inputName" name="namecrop" value="<?php 
                             print_r($data->getViewCropByID($_GET['id_cultivo'])[0]);
                         ?>">
@@ -192,7 +195,10 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="form-group">
-                        <label for="inputHectare">Hectáreas</label>
+                        <label for="inputHectare">Hectáreas
+                        <i class="icon-grey-color fas fa-question-circle"
+                                data-toggle="tooltip" data-placement="top" title="Selecciona un número con las flechas de la derecha o escríbelo"></i>
+                        </label>
                         <input type="number" class="form-control" id="inputHectare" name="hectares"value="<?php 
                             print_r($data->getViewCropByID($_GET['id_cultivo'])[1]);
                         ?>">
@@ -227,7 +233,10 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="form-group">
-                        <label for="inputVariation">Variedad</label>
+                        <label for="inputVariation">Variedad
+                        <i class="icon-grey-color fas fa-question-circle"
+                                data-toggle="tooltip" data-placement="top" title="¿Qué tipo de cultivo es? Ej. Cherry"></i>
+                        </label>
                         <input type="text" name="variation" class="form-control" id="inputVariation" value="<?php 
                             print_r($data->getViewCropByID($_GET['id_cultivo'])[4]);
                         ?>">
@@ -235,7 +244,10 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="form-group">
-                        <label for="inputDate">Fecha de inicio</label>
+                        <label for="inputDate">Fecha de inicio
+                        <i class="icon-grey-color fas fa-question-circle"
+                                data-toggle="tooltip" data-placement="top" title="¿Qué día comienza el cultivo oficialmente?"></i>
+                        </label>
                         <input  class="form-control" id="inputDate" name="bornDate" value="<?php 
                             print_r($data->getViewCropByID($_GET['id_cultivo'])[5]);
                         ?>">
@@ -425,7 +437,10 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="form-group">
-                        <label for="inputPH">PH</label>
+                        <label for="inputPH">PH
+                        <i class="icon-grey-color fas fa-question-circle"
+                            data-toggle="tooltip" data-placement="top" title="Selecciona un número con las flechas de la derecha o escríbelo"></i>
+                        </label>
                         <input type="number" class="form-control" id="inputPH" name="inputPH"  min="0" max="14" value = 
                             <?php 
                                 print_r($data->getGroundViewByID($_GET['id_cultivo'])[3]);
@@ -435,7 +450,10 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="form-group">
-                        <label for="inputSalinity">Salinidad</label>
+                        <label for="inputSalinity">Salinidad
+                        <i class="icon-grey-color fas fa-question-circle"
+                            data-toggle="tooltip" data-placement="top" title="Selecciona un número con las flechas de la derecha o escríbelo"></i>
+                        </label>
                         <input type="number" class="form-control" id="inputSalinity" name="inputSalinity"  min="0" value = 
                             <?php 
                                 print_r($data->getGroundViewByID($_GET['id_cultivo'])[4]);
@@ -445,7 +463,10 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="form-group">
-                        <label for="inputConduc">Conductividad eléctrica</label>
+                        <label for="inputConduc">Conductividad eléctrica
+                        <i class="icon-grey-color fas fa-question-circle"
+                            data-toggle="tooltip" data-placement="top" title="Selecciona un número con las flechas de la derecha o escríbelo"></i>
+                        </label>
                         <input type="number" class="form-control" id="inputConduc" name="inputConduc" value = 
                             <?php 
                                 print_r($data->getGroundViewByID($_GET['id_cultivo'])[5]);
@@ -942,7 +963,7 @@
         if (isset($_POST['modifAgro'])){
             $id_cultivo = $_POST['input_id_cultivo'];
             $id_agroquimico = $_POST['input_id_agroquimico'];
-            $origen = $_POST['origin'];
+            //$origen = $_POST['origin'];
             $nombre_comercial = $_POST['name_agroq'];
             $precio = $_POST['precio'];
             $moneda = $_POST['moneda'];
@@ -954,17 +975,11 @@
             $fecha_inicio = $_POST['fecha_inicio'];
             $fecha_fin = $_POST['fecha_fin'];
             $existencia = $_POST['existencia'];
-
-            if ($origen == "Enfermedad") {
-                $tipo_causa = $_POST['enfermedad'];
-            } else if ($origen == "Plaga") {
-                $tipo_causa = $_POST['plaga'];
-            } else {
-                $tipo_causa = $_POST['nutricion'];
-            }
+            $tipo_causa = $_POST['tipo_causa'];
+            
             
 
-            $data->modifyAgro($id_cultivo, $id_agroquimico, $origen, $nombre_comercial, $precio, $moneda, $cantidad, $unidad, $dosis, $tiempo, $tipo_causa, $frecuencia, $fecha_inicio, $fecha_fin, $existencia);
+            $data->modifyAgro($id_cultivo, $id_agroquimico, $nombre_comercial, $precio, $moneda, $cantidad, $unidad, $dosis, $tiempo, $tipo_causa, $frecuencia, $fecha_inicio, $fecha_fin, $existencia);
             header('Location: dashboard.php?id_cultivo='.$_GET['id_cultivo'].'&tipo_suelo='.$_GET['tipo_suelo'].'');
         }
 

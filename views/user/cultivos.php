@@ -80,9 +80,9 @@
                 <div class="form-group">
                     <label for="inputName">Nombre predio
                         <i class="icon-grey-color fas fa-question-circle"
-                            data-toggle="tooltip" data-placement="top" title="Este es el nombre para tu cultivo, ej. Tomate"></i>
+                            data-toggle="tooltip" data-placement="top" title='Este es el nombre para tu predio, ej. Predio "San José"'></i>
                     </label>
-                    <input  class="form-control" id="inputName" name="namecrop" placeholder="Tomate">
+                    <input  class="form-control" id="inputName" name="namecrop" placeholder='Predio "San José"'>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">

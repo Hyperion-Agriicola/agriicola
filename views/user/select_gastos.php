@@ -65,11 +65,10 @@
         
         <div class="text-center text-success">
             <h1 class="pt-1">Mis gastos</h1>
+            <a  class="mt-2 mb-4 text-white btn text-uppercase bg-success" href="dashboard.php?newSpend=<?php echo $_GET['Spend'];?>&Ground=<?php echo $_GET['Ground'];?>">Nuevo gasto</a>
         </div>
             
-        <div class="row p-3">
-            <a href="dashboard.php?newSpend=<?php echo $_GET['Spend'];?>&Ground=<?php echo $_GET['Ground'];?>" class="btn btn-success ml-auto rounded-circle" role="button"><i class="fas fa-plus"></i></a>
-        </div>
+      
             
         <div class="row">
             <?php

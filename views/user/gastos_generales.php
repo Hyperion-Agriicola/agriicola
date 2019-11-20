@@ -30,15 +30,9 @@
 
 <div class="text-center text-success">
     <h1 class="mt-4">Gastos generales</h1>
+    <a  id="addNewSpend" class="mt-2 mb-4 text-white btn text-uppercase bg-success" href="dashboard.php?gastoGeneral">Nuevo gasto general</a>
 </div>
-<div class="container">
-    <div class="row p-3">
-        <a id="addNewSpend" href="dashboard.php?gastoGeneral" class="btn btn-success ml-auto rounded-circle" role="button"
-            data-toggle="tooltip" data-placement="left" title="Agregar nuevo gasto"><i
-                class="fas fa-plus"></i></a>
-        <!-- Paste here your fuck code! -->
-    </div>
-</div>
+
 <div class="container">
     <div class="row">
         <?php

@@ -934,22 +934,21 @@ class Functions
                 }
 
                 //Combo nutricion
-                $nutricion = $row["tipo_causa"];
-                $selected_nutricion = "";
-
-                if($nutricion == 'micro'){
-                    $selected_nutricion = '<option value="micro" selected>Micronutrientes</option>
-                    <option value="macro">Macronutrientes</option>';
-                }else if($nutricion == 'macro'){
-                    $selected_nutricion = '<option value="micro">Micronutrientes</option>
-                    <option value="macro" selected>Macronutrientes</option>';
-                }
+                
 
                 //Combo enfermedad
                 $enfermedad = $this->getDiseases2($row['tipo_causa']);
 
                 //Combo plaga
                 $plaga = $this->getBugs2($row['tipo_causa']);
+
+                //Tipo o causa
+                $text = "";
+                if($row['tipo_causa'] == 'micro'){
+                    $text = 'Micronutriente';
+                }else if($row['tipo_causa'] == 'macro'){
+                    $text = 'Macronutriente';
+                }
                 
                 $month = array(
                    'Enero',
@@ -971,7 +970,7 @@ class Functions
                         <div class="card bg-light p-1 shadow p-0 mb-0 bg-light" style="Border-Radius: 10px;"> 
                             <div class="card-header bg-light">
                                 <img src="../../img/svg/plant-sample.svg" style="height:35px" class="mb-2" alt="">
-                                <a href="" data-toggle="modal" data-target="#modalEliminar'.$row['id_agroquimico'].'">
+                                <a href="#!" id="modalEliminar'.$row['id_agroquimico'].'">
                                     <button type="button" class="close edit_data"><span>&times</span></button>
                                 </a>
                                 <br>
@@ -999,7 +998,7 @@ class Functions
                                     showCloseButton: true,
                                     width: "45rem",
                                     //icon: "info",
-                                    html: "<img src="+"../../img/svg/plant-sample.svg"+" style="+"height:70px"+" class="+"mb-2"+"><div class="+"row"+"> <div class="+"col-lg-6 col-md-6 col-sm-12"+"> <p class="+"font-weight-bold"+"> Nombre comercial </p> <p class="+"text-muted"+"> '.$row['nombre_comercial'].' </p> </div> <div class="+"col-lg-6 col-md-6 col-sm-12"+"> <p class="+"font-weight-bold"+"> Precio </p> <p class="+"text-muted"+"> '.$row['precio'].' </p> </div> <div class="+"col-lg-6 col-md-6 col-sm-12"+"> <p class="+"font-weight-bold"+"> Moneda </p> <p class="+"text-muted"+"> '.$row['moneda'].' </p> </div> <div class="+"col-lg-6 col-md-6 col-sm-12"+"> <p class="+"font-weight-bold"+"> Cantidad </p> <p class="+"text-muted"+"> '.$row['cantidad'].'</p> </div> <div class="+"col-lg-6 col-md-6 col-sm-12"+"> <p class="+"font-weight-bold"+"> Unidad </p> <p class="+"text-muted"+"> '.$row['unidad'].' </p> </div> <div class="+"col-lg-6 col-md-6 col-sm-12"+"> <p class="+"font-weight-bold"+"> Fecha Inicio </p> <p class="+"text-muted"+"> '.$niu_fecha[2] . " de " . $month[$niu_fecha[1] - 1] . " de " . $niu_fecha[0].' </p> </div> <div class="+"col-lg-6 col-md-6 col-sm-12"+"> <p class="+"font-weight-bold"+"> Fecha Fin </p> <p class="+"text-muted"+"> '.$niu_fechaa[2] . " de " . $month[$niu_fechaa[1] - 1] . " de " . $niu_fechaa[0].' </p> </div> </div>",
+                                    html: "<img src="+"../../img/svg/plant-sample.svg"+" style="+"height:70px"+" class="+"mb-2"+"><div class="+"row"+"> <div class="+"col-lg-6 col-md-6 col-sm-12"+"> <p class="+"font-weight-bold"+"> Nombre comercial </p> <p class="+"text-muted"+"> '.$row['nombre_comercial'].' </p> </div> <div class="+"col-lg-6 col-md-6 col-sm-12"+"> <p class="+"font-weight-bold"+"> Precio </p> <p class="+"text-muted"+"> $'.$row['precio'].' '.$row['moneda'].' </p> </div> <div class="+"col-lg-6 col-md-6 col-sm-12"+"> <p class="+"font-weight-bold"+"> Tipo o Causa </p> <p class="+"text-muted"+"> '.$text.' </p> </div> <div class="+"col-lg-6 col-md-6 col-sm-12"+"> <p class="+"font-weight-bold"+"> Cantidad </p> <p class="+"text-muted"+"> '.$row['cantidad'].' '.$row['unidad'].'</p> </div> <div class="+"col-lg-6 col-md-6 col-sm-12"+"> <p class="+"font-weight-bold"+"> Dosis </p> <p class="+"text-muted"+"> '.$row['dosis'].' </p> </div> <div class="+"col-lg-6 col-md-6 col-sm-12"+"> <p class="+"font-weight-bold"+"> Frecuencia </p> <p class="+"text-muted"+"> '.$row['frecuencia'].' </p> </div><div class="+"col-lg-6 col-md-6 col-sm-12"+"> <p class="+"font-weight-bold"+"> Fecha Inicio </p> <p class="+"text-muted"+"> '.$niu_fecha[2] . " de " . $month[$niu_fecha[1] - 1] . " de " . $niu_fecha[0].' </p> </div> <div class="+"col-lg-6 col-md-6 col-sm-12"+"> <p class="+"font-weight-bold"+"> Fecha Fin </p> <p class="+"text-muted"+"> '.$niu_fechaa[2] . " de " . $month[$niu_fechaa[1] - 1] . " de " . $niu_fechaa[0].' </p> </div> </div>",
                                        
                                     showCancelButton: false,
                                     confirmButtonColor: "#d33",
@@ -1032,6 +1031,26 @@ class Functions
                             </div>
                         </div>
                     </div>
+                    <script>
+                    document.getElementById("modalEliminar'.$row["id_agroquimico"].'").addEventListener("click", function(){
+                        
+                            Swal.fire({
+                                title: "Advertencia",
+                                text: "¿Está seguro que desea eliminar este agroquímico? Tome en cuenta que ésta acción es irreversible",
+                                icon: "warning",
+                                showCancelButton: true,
+                                confirmButtonColor: "#d33",
+                                cancelButtonColor: "#78909c",
+                                cancelButtonText: "Cancelar",
+                                confirmButtonText: "Eliminar"
+                                }).then((result) => {
+                                if (result.value) {
+                                    document.location = "dashboard.php?eliminarAgro='.$row['id_agroquimico'].'";
+                                }
+                            })
+                        
+                    });
+                </script>
 
                     <!--Modif agro-->
                     <div style="display: none;">
@@ -1042,7 +1061,7 @@ class Functions
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label for="inputAplicacion">Aplicación</label>
-                                        <select class="form-control" id="inputAplicacion'.$row['id_agroquimico'].'" name="origin'.$row['id_agroquimico'].'">
+                                        <select disabled class="form-control" id="inputAplicacion'.$row['id_agroquimico'].'" name="origin'.$row['id_agroquimico'].'">
                                             '.$selected_aplicacion.'
                                         </select>
                                     </div>
@@ -1056,14 +1075,20 @@ class Functions
                     
                                 <div class="col-lg-3 col-md-3 col-sm-6">
                                     <div class="form-group">
-                                        <label for="inputPrecio">Precio</label>
+                                        <label for="inputPrecio">Precio
+                                        <i class="icon-grey-color fas fa-question-circle"
+                                data-toggle="tooltip" data-placement="top" title="Selecciona un número con las flechas o escríbelo"></i>
+                                        </label>
                                         <input type="number" placeholder="700" class="form-control" id="inputPrecio" name="precio" value="'.$row['precio'].'">
                                     </div>
                                 </div>
                     
                                 <div class="col-lg-3 col-md-3 col-sm-6">
                                     <div class="form-group">
-                                        <label for="inputMoneda">Moneda</label>
+                                        <label for="inputMoneda">Moneda
+                                        <i class="icon-grey-color fas fa-question-circle"
+                                data-toggle="tooltip" data-placement="top" title="Selecciona un número con las flechas o escríbelo"></i>
+                                        </label>
                                         <select class="form-control" id="inputMoneda" name="moneda">
                                             '.$selected_moneda.'
                                         </select>
@@ -1072,7 +1097,10 @@ class Functions
                     
                                 <div class="col-lg-3 col-md-3 col-sm-6">
                                     <div class="form-group">
-                                        <label for="inputCantidad">Cantidad</label>
+                                        <label for="inputCantidad">Cantidad
+                                        <i class="icon-grey-color fas fa-question-circle"
+                                data-toggle="tooltip" data-placement="top" title="Selecciona un número con las flechas o escríbelo"></i>
+                                        </label>
                                         <input type="number" placeholder="700" class="form-control" id="inputCantidad" name="cantidad" value="'.$row['cantidad'].'">
                                     </div>
                                 </div>
@@ -1089,7 +1117,10 @@ class Functions
                     
                                 <div class="col-lg-3 col-md-3 col-sm-6">
                                     <div class="form-group">
-                                        <label for="inputDosis">Dosis</label>
+                                        <label for="inputDosis">Dosis
+                                        <i class="icon-grey-color fas fa-question-circle"
+                                data-toggle="tooltip" data-placement="top" title="Selecciona un número con las flechas o escríbelo"></i>
+                                        </label>
                                         <input type="number" placeholder="700" class="form-control" id="inputDosis" name="dosis" value="'.$row['dosis'].'">
                                     </div>
                                 </div>
@@ -1108,31 +1139,38 @@ class Functions
                                     <div class="form-group">
                                         <!--Si el campo aplicacion es Nutriente-->
                                         <div id="inputTipo'.$row['id_agroquimico'].'" id="inputTipo">
-                                            <label for="inputTipo">Tipo</label>
-                                            <select class="form-control" name="nutricion">
-                                                '.$selected_nutricion.'
-                                            </select>
-                                        </div>
-                                        <!--Si el campo aplicacion es Enfermedad-->
-                                        <div id="inputCausaE'.$row['id_agroquimico'].'" id="inputCausaE">
-                                            <label for="inputTipo">Causa</label>
-                                            <select class="form-control" name="enfermedad">
-                                                <option disabled>Elige una enfermedad</option>
-                                                '.$enfermedad.'
-                                
-                                                
-                                            </select>
-                                        </div>
-                                        <!--Si el campo aplicacion es Plaga-->
-                                        <div id="inputCausaP'.$row['id_agroquimico'].'" id="inputCausaP">
-                                            <label for="inputTipo">Causa</label>
-                                            <select class="form-control" name="plaga">
-                                                <option disabled>Selecciona una plaga</option>
-                                                '.$plaga.'
-                                                
+                                            <label for="inputTipo">Tipo o Causa</label>
+                                            <select class="form-control" name="tipo_causa">';
                                             
-                                            </select>
+                                            if(''.$row['aplicacion'].'' == "Nutriente"){
+                                                $nutricion = $row["tipo_causa"];
+                                                $selected_nutricion = "";
+
+                                                if($nutricion == 'micro'){
+                                                    $selected_nutricion = '<option value="micro" selected>Micronutrientes</option>
+                                                    <option value="macro">Macronutrientes</option>';
+                                                }else if($nutricion == 'macro'){
+                                                    $selected_nutricion = '<option value="micro">Micronutrientes</option>
+                                                    <option value="macro" selected>Macronutrientes</option>';
+                                                }
+
+                                                echo ''.$selected_nutricion.'';
+                                            
+                                            }else if(''.$row['aplicacion'].'' == "Enfermedad"){
+                                                echo '
+                                                <option disabled>Elige una enfermedad</option>
+                                                '.$enfermedad.'';
+                                            }else if(''.$row['aplicacion'].'' == "Plaga"){
+                                                echo '
+                                                <option disabled>Selecciona una plaga</option>
+                                                    '.$plaga.'
+                                                ';
+                                            }
+                                            
+                                        echo '
+                                        </select>
                                         </div>
+                                        
                                     </div>
                                 </div>
                     
@@ -1198,32 +1236,6 @@ class Functions
                         });
 
                         
-                    </script>
-
-                    <script>
-                        $("#inputTipo'.$row['id_agroquimico'].'").show();
-                        $("#inputCausaP'.$row['id_agroquimico'].'").hide();
-                        $("#inputCausaE'.$row['id_agroquimico'].'").hide();
-                        
-                        $("[name="origin'.$row['id_agroquimico'].'"]").change(function(){
-                            var selectedText = $("#inputAplicacion'.$row['id_agroquimico'].' option:selected").html();
-                            if (selectedText == "Nutriente") {
-                                
-                                $("#inputCausaE'.$row['id_agroquimico'].'").hide();
-                                $("#inputCausaP'.$row['id_agroquimico'].'").hide();
-                                $("#inputTipo'.$row['id_agroquimico'].'").show();
-                            } else if (selectedText == "Plaga") {
-                                
-                                $("#inputCausaP'.$row['id_agroquimico'].'").show();
-                                $("#inputCausaE'.$row['id_agroquimico'].'").hide();
-                                $("#inputTipo'.$row['id_agroquimico'].'").hide();
-                            } else if (selectedText == "Enfermedad") {
-                                
-                                $("#inputTipo'.$row['id_agroquimico'].'").hide();
-                                $("#inputCausaP'.$row['id_agroquimico'].'").hide();
-                                $("#inputCausaE'.$row['id_agroquimico'].'").show();
-                            }
-                        });
                     </script>
 
                 ';
@@ -1390,7 +1402,6 @@ class Functions
     public function modifyAgro(
         $id_cultivo,
         $id_agroquimico,
-        $aplicacion,
         $nombre_comercial,
         $precio,
         $moneda,
@@ -1406,7 +1417,7 @@ class Functions
     ){
         $conexion = new Database();
 
-        $query = "UPDATE agroquimicos SET aplicacion = '$aplicacion', nombre_comercial = '$nombre_comercial', precio = '$precio', moneda = '$moneda', cantidad = '$cantidad', unidad = '$unidad', dosis = '$dosis', tiempo = '$tiempo', tipo_causa = '$tipo_causa', frecuencia = '$frecuencia', fecha_inicio = '$fecha_inicio', fecha_fin = '$fecha_fin', existencia = '$existencia', fecha_modif = now() WHERE id_cultivo = '$id_cultivo' AND id_agroquimico = '$id_agroquimico';";
+        $query = "UPDATE agroquimicos SET  nombre_comercial = '$nombre_comercial', precio = '$precio', moneda = '$moneda', cantidad = '$cantidad', unidad = '$unidad', dosis = '$dosis', tiempo = '$tiempo', tipo_causa = '$tipo_causa', frecuencia = '$frecuencia', fecha_inicio = '$fecha_inicio', fecha_fin = '$fecha_fin', existencia = '$existencia', fecha_modif = now() WHERE id_cultivo = '$id_cultivo' AND id_agroquimico = '$id_agroquimico';";
 
         $result = $conexion->query($query);
 
@@ -1462,7 +1473,7 @@ class Functions
 
                             <div class="card-body pt-3">
                                 
-                                <a data-toggle="modal" data-target="#modalGasto'.$row['id_gasto_general'].'" class="text-success text-left text-decoration-none" href="#">Ver informacion
+                                <a id="modalViewGeneralSepend'.$row['id_gasto_general'].'" class="text-success text-left text-decoration-none" href="#">Ver informacion
 
                                 </a>
                             </div>
@@ -1470,52 +1481,58 @@ class Functions
                         </div>      
                     </div>
 
-                    <!---Modal de gasto general-->
-                    <div class="modal fade" id="modalGasto'.$row['id_gasto_general'].'" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-                        <div class="modal-dialog ">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">
-                                        '.$row['concepto'].'
-                                    </h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <p class="font-weight-bold">Concepto</p>
-                                            <p class="text-muted">
-                                            '.$row['concepto'].'
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <p class="font-weight-bold">Cantidad</p>
-                                            <p class="text-muted">
-                                            '.$row['catidad'].' '.$row['moneda'].'
-                                            </p>
-                                        </div>
-                                        
-                                        
-                                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <p class="font-weight-bold">Fecha</p>
-                                            <p class="text-muted">
-                                                                                                        
-                                                '.$niu_fecha[2] . " de " . $month[$niu_fecha[1] - 1] . " de " . $niu_fecha[0].'
-                                                                
-                                            </p>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                        
-                                </div>
+                    
+                    <div style="display: none;">
+                        <div id="viewGeneralSpend'.$row['id_gasto_general'].'" class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12"" style="width: 100%;"><p class="text-center" style="width: 100%;"><i class="fas fa-dollar-sign pb-3" style="font-size: 55px; color:green" ></i></p></div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <p class="font-weight-bold">Concepto</p>
+                                <p class="text-muted">
+                                '.$row['concepto'].'
+                                </p>
                             </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <p class="font-weight-bold">Cantidad</p>
+                                <p class="text-muted">
+                                '.$row['catidad'].' '.$row['moneda'].'
+                                </p>
+                            </div>
+                            
+                            
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <p class="font-weight-bold">Fecha</p>
+                                <p class="text-muted">
+                                                                                            
+                                    '.$niu_fecha[2] . " de " . $month[$niu_fecha[1] - 1] . " de " . $niu_fecha[0].'
+                                                    
+                                </p>
+                            </div>
+                            
                         </div>
                     </div>
+
+                    <script>
+                        var view_generalspend'.$row['id_gasto_general'].' = document.getElementById("viewGeneralSpend'.$row['id_gasto_general'].'");
+                        document.getElementById("modalViewGeneralSepend'.$row['id_gasto_general'].'").addEventListener("click", function(){
+                        
+                            Swal.fire({
+                                title: "'.$row['concepto'].'",
+                                showCloseButton: true,
+                                width: "50rem",
+                                html: view_generalspend'.$row['id_gasto_general'].',
+                                showCancelButton: false,
+                                confirmButtonColor: "#d33",
+                                confirmButtonText: "Cerrar"
+                                
+                                }).then((result) => {
+                                if (result.value) {
+                                    //form.submit();
+                                }
+                            })
+                        
+                    });
+                    </script>
+                                
 
 
                 ';
@@ -1700,7 +1717,7 @@ class Functions
 
                             <div class="card-body pt-3">
                                
-                                <a data-toggle="modal" data-target="#modalGasto'.$row['id_gasto'].'" class="text-success text-left text-decoration-none" href="#">Ver informacion
+                                <a id="modalViewSepend'.$row['id_gasto'].'" class="text-success text-left text-decoration-none" href="#!">Ver informacion
 
                                 </a>
                             </div>
@@ -1708,60 +1725,65 @@ class Functions
                         </div>      
                     </div>
 
-                    <!---Modal de gasto general-->
-                    <div class="modal fade" id="modalGasto'.$row['id_gasto'].'" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-                        <div class="modal-dialog ">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">
-                                        '.$row['concepto'].'
-                                    </h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="row">
-                                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <p class="font-weight-bold">Concepto</p>
-                                            <p class="text-muted">
-                                            '.$row['concepto'].'
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <p class="font-weight-bold">Cantidad</p>
-                                            <p class="text-muted">
-                                            '.$row['precio'].' '.$row['moneda'].'
-                                            </p>
-                                        </div>
+                    
 
-                                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <p class="font-weight-bold">Frecuencia</p>
-                                            <p class="text-muted">
-                                            '.$row['frecuencia'].'
-                                            </p>
-                                        </div>
-                                        
-                                        
-                                        <div class="col-lg-6 col-md-6 col-sm-12">
-                                            <p class="font-weight-bold">Fecha</p>
-                                            <p class="text-muted">
-                                                                                                        
-                                                '.$niu_fecha[2] . " de " . $month[$niu_fecha[1] - 1] . " de " . $niu_fecha[0].'
-                                                                
-                                            </p>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                        
-                                </div>
+                    <div  style="display: none;">
+                        <div class="row" id="viewSpend'.$row['id_gasto'].'">
+                        <div class="col-lg-12 col-md-12 col-sm-12"" style="width: 100%;"><p class="text-center" style="width: 100%;"><i class="fas fa-dollar-sign pb-3" style="font-size: 55px; color:green" ></i></p></div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <p class="font-weight-bold">Concepto</p>
+                                <p class="text-muted">
+                                '.$row['concepto'].'
+                                </p>
                             </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <p class="font-weight-bold">Cantidad</p>
+                                <p class="text-muted">
+                                $'.$row['precio'].' '.$row['moneda'].'
+                                </p>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <p class="font-weight-bold">Frecuencia</p>
+                                <p class="text-muted">
+                                '.$row['frecuencia'].'
+                                </p>
+                            </div>
+                            
+                            
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <p class="font-weight-bold">Fecha</p>
+                                <p class="text-muted">
+                                                                                            
+                                    '.$niu_fecha[2] . " de " . $month[$niu_fecha[1] - 1] . " de " . $niu_fecha[0].'
+                                                    
+                                </p>
+                            </div>
+                            
                         </div>
                     </div>
-
+                                
+                    <script>
+                        var view_spend'.$row['id_gasto'].' = document.getElementById("viewSpend'.$row['id_gasto'].'");
+                        document.getElementById("modalViewSepend'.$row['id_gasto'].'").addEventListener("click", function(){
+                        
+                            Swal.fire({
+                                title: "'.$row['concepto'].'",
+                                showCloseButton: true,
+                                width: "50rem",
+                                html: view_spend'.$row['id_gasto'].',
+                                showCancelButton: false,
+                                confirmButtonColor: "#d33",
+                                confirmButtonText: "Cerrar"
+                                
+                                }).then((result) => {
+                                if (result.value) {
+                                    //form.submit();
+                                }
+                            })
+                        
+                    });
+                    </script>
 
                 ';
 
@@ -2001,6 +2023,164 @@ class Functions
         }else{
             //header('Location: https://agriicola-test.000webhostapp.com/index.php');
             //exit();
+        }
+    }
+
+    public function getCardCut($id_cultivo){
+        $conexion = new Database();
+        $email = $_SESSION['correo'];
+
+        $query = "SELECT * FROM corte WHERE id_cultivo = '$id_cultivo'";
+        $execQuery = $conexion->query($query);
+    
+        if (mysqli_num_rows($execQuery) > 0) {
+            while ($row = $execQuery->fetch_array()) {
+                $fecha = $row['fecha_corte'];
+                $niu_fecha = explode("-", $fecha);
+                $month = array(
+                    'Enero',
+                    'Febrero',
+                    'Marzo',
+                    'Abril',
+                    'Mayo',
+                    'Junio',
+                    'Julio',
+                    'Agosto',
+                    'Septiembre',
+                    'Octubre',
+                    'Noviembre',
+                    'Diciembre');
+                
+                    echo '
+                    <div class="col-md-4 col-sm-12 pb-4">  
+                        <div class="card bg-light p-1 shadow p-0 mb-0 bg-light" style="Border-Radius: 10px;"> 
+                            <div class="card-header bg-light">
+                            <i class="fas fa-dollar-sign pb-3" style="font-size: 30px; color:green" ></i>
+                                <br>
+                                <h4>'.$row['cliente'].': '.$row['peso'].' '.$row['unidad'].'</h4>
+                                
+                            </div>
+
+                            <div class="card-body pt-3">
+                               
+                                <a id="modalViewCut'.$row['id_corte'].'" class="text-success text-left text-decoration-none" href="#!">Ver informacion
+
+                                </a>
+                            </div>
+                                
+                        </div>      
+                    </div>';
+
+                    echo '
+                    <div style="display: none;">
+                        
+                        <div id="viewCut'.$row['id_corte'].'" class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12"" style="width: 100%;"><p class="text-center" style="width: 100%;"><i class="fas fa-dollar-sign pb-3" style="font-size: 55px; color:green" ></i></p></div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <p class="font-weight-bold">Cliente</p>
+                                <p class="text-muted">
+                                '.$row['cliente'].'
+                                </p>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <p class="font-weight-bold">Cantidad</p>
+                                <p class="text-muted">
+                                '.$row['peso'].' '.$row['unidad'].'
+                                </p>
+                            </div>
+                            
+                            
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <p class="font-weight-bold">Fecha</p>
+                                <p class="text-muted">
+                                                                                            
+                                    '.$niu_fecha[2] . " de " . $month[$niu_fecha[1] - 1] . " de " . $niu_fecha[0].'
+                                                    
+                                </p>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <p class="font-weight-bold">Mercado</p>
+                                <p class="text-muted">
+                                                                                            
+                                    '.$row['mercado'].'
+                                                    
+                                </p>
+                            </div>
+                            
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <p class="font-weight-bold">Calidad</p>
+                                <p class="text-muted">
+                                                                                            
+                                    '.ucfirst($row['calidad']).' calidad
+                                                    
+                                </p>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <p class="font-weight-bold">Precio</p>
+                                <p class="text-muted">
+                                                                                            
+                                    $'.$row['precio'].' '.$row['moneda'].'
+                                                    
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <script>
+                        var view_cut'.$row['id_corte'].' = document.getElementById("viewCut'.$row['id_corte'].'");
+                        document.getElementById("modalViewCut'.$row['id_corte'].'").addEventListener("click", function(){
+                        
+                            Swal.fire({
+                                title: "'.$row['cliente'].'",
+                                showCloseButton: true,
+                                width: "50rem",
+                                html: view_cut'.$row['id_corte'].',
+                                showCancelButton: false,
+                                confirmButtonColor: "#d33",
+                                confirmButtonText: "Cerrar"
+                                
+                                }).then((result) => {
+                                if (result.value) {
+                                    //form.submit();
+                                }
+                            })
+                        
+                    });
+                    </script>
+                    ';
+                }
+            }else{
+                echo "
+            <div class='col-lg-4 col-md-4 col-sm-4 col-4'></div>
+            <div class='col-lg-4 col-md-4 col-sm-4 col-4'>
+                <h3 class='text-center'>No hay datos</h3>
+                <img class='col-12 col-sm-12 col-md-11 col-lg-11' src='../../img/svg/alerts/no_data.svg' width='150px'>
+                <h5 class='text-center'><a class='text-success' href='dashboard.php?newCut=".$_GET['cut']."&Ground=".$_GET['Ground']."'>Crear un nuevo corte</a></h5>
+            </div>
+            <div class='col-lg-4 col-md-4 col-sm-4 col-4'></div>
+        ";
+            }
+    }
+
+    public function addNewCut($id_cultivo, $cliente, $fecha_corte, $peso, $unidad, $mercado, $calidad, $precio, $moneda){
+        $conexion = new Database();
+        $query = "INSERT INTO corte(id_cultivo, cliente, fecha_corte, peso, unidad, mercado, calidad, precio, moneda, fecha_registro) VALUES('$id_cultivo', '$cliente', '$fecha_corte', '$peso', '$unidad', '$mercado', '$calidad', '$precio', '$moneda', now());";
+        
+        $result = $conexion->query($query)
+            or trigger_error(mysqli_error($conexion));
+
+        if (!$result) {
+            echo "
+            <div class='container mt-4'>
+                <div class='alert alert-danger' role='alert'>
+                    Hubo un error al registrar los datos, verifique sus campos o intente más tarde
+                </div>
+            </div>
+            ";
+        } else {
+            //header('Location: dashboard.php?cut');
         }
     }
 }

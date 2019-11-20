@@ -69,7 +69,7 @@
             </div>
                 
             <div class="col-md-4 col-sm-10">
-                <a href="#" class="href text-decoration-none">
+                <a href="dashboard.php?cut=<?php echo $_GET['Tracing'];?>&Ground=<?php echo $_GET['Ground'];?>" class="href text-decoration-none">
                     <button type="button" class="btn3 btn btn-light btn-block p-3 shadow mb-4" style="font-size: 20px; text-align:center;">
                         <i class="fas fa-hand-holding-usd float-left"></i>
                         Corte

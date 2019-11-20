@@ -37,8 +37,11 @@
 
             <div class="col-lg-3 col-md-3 col-sm-6">
                 <div class="form-group">
-                    <label for="inputPrecio">Monto</label>
-                    <input type="number" class="form-control" id="inputPrecio" min=0 name="Precio" placeholder="100">
+                    <label for="inputPrecio">Monto
+                    <i class="icon-grey-color fas fa-question-circle"
+                                data-toggle="tooltip" data-placement="top" title="Selecciona un número con las flechas de la derecha o escríbelo"></i>
+                    </label>
+                    <input type="number" class="form-control" id="inputPrecio" min=0 name="Precio" placeholder="...">
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6">

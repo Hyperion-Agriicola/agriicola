@@ -122,6 +122,10 @@ if (!isset($_SESSION['correo'])) {
                 include('calendario.php');
             } else if (isset($_GET['sendHelp'])) {
                 include('../support/support_panel.php');
+            }else if (isset($_GET['cut'])) {
+                include('select_seguimiento_corte.php');
+            }else if (isset($_GET['newCut'])) {
+                include('corte.php');
             }else {
                 include('profile.php');
                 ?>
