@@ -38,6 +38,7 @@
                     <label for="inputHoraInicio">Hora</label>
                     <div class="input-group clockpicker" data-autoclose="true">
                         <input type="text" placeholder="08:00" class="form-control" id="inputHoraInicio" name="hora_inicio" required>
+                        <span id="alert1"></span>
                     </div>    
                 </div>
             </div>
@@ -54,6 +55,7 @@
                     <label for="inputHoraFinal">Hora</label>
                     <div class="input-group clockpicker" data-autoclose="true">
                         <input type="text" placeholder="08:00" class="form-control" id="inputHoraFinal" name="hora_final">
+                        <span id="alert2"></span>
                     </div>
                     
                 </div>

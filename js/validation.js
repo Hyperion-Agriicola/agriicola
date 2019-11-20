@@ -257,7 +257,8 @@ $(function(){
     $("#inputDate").datepicker({
         dateFormat: "yy-mm-dd",
         numberOfMonths: 2,
-        minDate: new Date() 
+        minDate: "-2W"
+        
     });
 });
 
@@ -448,7 +449,7 @@ jQuery( function() {
     var from = $( "#inputFechaInicio" )
         .datepicker({
           dateFormat: "yy-mm-dd",
-          minDate: new Date(),
+          minDate: "-2W",
           autoclose: true
         })
         .on( "change", function() {
@@ -474,7 +475,35 @@ jQuery( function() {
     }
   });
 
-
+  jQuery( function() {
+    var from = $( "#inputInicio" )
+        .datepicker({
+          dateFormat: "yy-mm-dd",
+          minDate: "-2W",
+          autoclose: true
+        })
+        .on( "change", function() {
+          to.datepicker( "option", "minDate", getDate( this ) );
+        }),
+      to = $( "#inputFinal" ).datepicker({
+        dateFormat: "yy-mm-dd"
+      })
+      .on( "change", function() {
+        from.datepicker( "option", "maxDate", getDate( this ) );
+      });
+  
+    function getDate( element ) {
+      var date;
+      var dateFormat = "yy-mm-dd";
+      try {
+        date = $.datepicker.parseDate( dateFormat, element.value );
+      } catch( error ) {
+        date = null;
+      }
+  
+      return date;
+    }
+  });
      
 /**Registro de gastos validaciones */
 
@@ -571,6 +600,9 @@ jQuery(function(){
             fecha_final:{
                 required: "<p class='text-danger' style='font-size: 12px;'>*Seleccione una fecha de finalización.</p>"
             },
+            hora_inicio:{
+                required: "<p class='text-danger' style='font-size: 12px;'>*Seleccione una hora de Inicio.</p>"
+            },
             hora_final:{
                 required: "<p class='text-danger' style='font-size: 12px;'>*Seleccione una hora de finalización.</p>"
             },
@@ -579,4 +611,18 @@ jQuery(function(){
             }
         }
     });
-
+    $("#inputHoraFinal").blur(function(){
+        var horaInicio = $("#inputHoraInicio").val();
+        var horaFin = $("#inputHoraFinal").val();
+        if (horaFin == "00:00" && horaInicio > horaFin) {
+            $("#inputHoraFinal").parent().after(
+                $("#alert2").html('<p class="text-success" style="font-size: 12px;">Finalizaste la jornada para esta fecha.</p>')
+            );
+        } else if (horaFin <= horaInicio) {
+            $("#inputHoraFinal").parent().after(
+                $("#alert2").html('<p class="text-danger" style="font-size: 12px;">*La hora de finalización debe ser mayor a la hora de inicio.</p>')
+            );
+            $("#inputHoraFinal").val("");
+        
+        } 
+    })
