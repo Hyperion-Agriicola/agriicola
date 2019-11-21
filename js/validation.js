@@ -551,15 +551,13 @@ jQuery(function(){
 jQuery(function(){
     $("#inputFechaGasto").datepicker({
         dateFormat: "yy-mm-dd",
-        numberOfMonths: 1,
-        minDate: new Date() 
+        numberOfMonths: 2,
     });
 });
 jQuery(function(){
     $("#inputFechaG").datepicker({
         dateFormat: "yy-mm-dd",
-        numberOfMonths: 1,
-        minDate: new Date() 
+        numberOfMonths: 2, 
     });
 });
 /**Modal calendario  */
@@ -623,6 +621,59 @@ jQuery(function(){
                 $("#alert2").html('<p class="text-danger" style="font-size: 12px;">*La hora de finalización debe ser mayor a la hora de inicio.</p>')
             );
             $("#inputHoraFinal").val("");
-        
         } 
     })
+
+    jQuery("#corte").validate({
+        rules:{
+            Cliente:{
+                required: true,
+                lettersonly: true
+            },
+            Fecha:{
+                required: true,
+              
+            },
+            Peso:{
+                required: true,
+                number: true,
+                min: 0,
+                decimal: true
+               
+
+            },
+            Precio:{
+                required:true,
+                number:true,
+                min:0,
+                decimal: true
+            
+            }
+        },
+        messages:{
+            Cliente: {
+                required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese el nombre de un cliente.</p>",
+                lettersonly: "<p class='text-danger' style='font-size: 12px;'>*Ingrese solo letras.</p>"
+            },
+            Fecha:{
+                required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese una fecha.</p>"
+            },
+            Peso:{
+                required:"<p class='text-danger' style='font-size: 12px;'>*Ingrese un peso valido.</p>",
+                number:"<p class='text-danger' style='font-size: 12px;'>*Ingrese solo números.</p>",
+                min: "<p class='text-danger' style='font-size: 12px;'>*Numero negativos inválidos.</p>"
+            },
+            Precio:{
+                required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese un precio válido.</p>",
+                number: "<p class='text-danger' style='font-size: 12px;'>*Ingrese solo números.</p>",
+                min: "<p class='text-danger' style='font-size: 12px;'>*Numero negativos inválidos.</p>",
+
+            }
+        }
+    });
+    jQuery(function(){
+        $("#inputFechaCorte").datepicker({
+            dateFormat: "yy-mm-dd",
+            numberOfMonths: 2,
+        });
+    });

@@ -26,19 +26,19 @@
 
         <main class="container pt-4">
 
-            <form action="" method="post">
+            <form id="corte" action="" method="post">
                 <div class="row">
                 
                     <div class="col-lg-6 col-md-6 col-sm-12">
                         <div class="form-group">
                             <label for="inputCliente">Cliente</label>
-                            <input type="text" class="form-control" id="inputName" name="Cliente" placeholder="Nutriente">
+                            <input type="text" class="form-control" id="inputName" name="Cliente" placeholder="Cliente">
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12">
                         <div class="form-group">
                             <label for="inputFecha">Fecha</label>
-                            <input type="date"  class="form-control" id="inputFecha" name="Fecha">
+                            <input type="datepicker" placeholder="Seleccione una fecha" class="form-control" id="inputFechaCorte" name="Fecha">
                         </div>
                     </div>
 
