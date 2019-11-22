@@ -92,17 +92,17 @@ $(document).ready(function () {
 
 function selectLocation() {
     $(".state").autocomplete({
-        source: "http://localhost/agriicola/config/searching/states.php",
+        source: "http://localhost:8080/agriicola/config/searching/states.php",
         minLength: 1
     });
 
     $(".township").autocomplete({
-        source: "http://localhost/agriicola/config/searching/townships.php",
+        source: "http://localhost:8080/agriicola/config/searching/townships.php",
         minLength: 1
     });
 
     $(".town").autocomplete({
-        source: "http://localhost/agriicola/config/searching/town.php",
+        source: "http://localhost:8080/agriicola/config/searching/town.php",
         minLength: 1
     });
 }

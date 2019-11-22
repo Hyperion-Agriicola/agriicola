@@ -41,7 +41,7 @@
               <form id="form-vali" class="p-4" method="POST" action="">
                 <div class="form-group">
                   <label for="emaill">Correo electrónico</label>
-                  <input type="email" class="form-control" id="emaill" name="email" aria-describedby="emailHelp" placeholder="usuario@arpan.com.mx">
+                  <input type="email" class="form-control" id="emaill" name="email" aria-describedby="emailHelp" placeholder="usuario@mail.com.mx">
                   <span id="mess1"></span>
                 </div>
                 <div class="form-group">

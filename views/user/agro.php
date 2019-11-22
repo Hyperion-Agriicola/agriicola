@@ -125,10 +125,12 @@
 
             <div class="col-lg-3 col-md-3 col-sm-6">
                 <div class="form-group">
-                    <label for="inputTiempo">Tiempo</label>
-                    <select class="form-control" id="inputTiempo" name="tiempo">
-                        <option value="semana">Semanas</option>
-                        <option value="dias">Dias</option>
+                    <label for="inputUnidadDosis">Unidad</label>
+                    <select class="form-control" id="inputUnidadDosis" name="unidad_dosis">
+                    <option value="ml">Mililitros</option>
+                        <option value="l">Litros</option>
+                        <option value="g">Gramos</option>
+                        <option value="Kg">Kilogramos</option>
                     </select>
                 </div>
             </div>
@@ -228,7 +230,7 @@ if (isset($_POST['guardarAgro'])) {
     $precio = $_POST['precio'];
     $moneda = $_POST['moneda'];
     $dosis = $_POST['dosis'];
-    $tiempo = $_POST['tiempo'];
+    $unidad_dosis = $_POST['unidad_dosis'];
 
 
     if ($origen == "Enfermedad") {
@@ -242,6 +244,6 @@ if (isset($_POST['guardarAgro'])) {
     $existencia = $_POST['existencia'];
     $id_u = $data->getUserId($_SESSION['correo']);
 
-    $data->insertAgro($origen, $nombre_comer, $precio, $moneda, $cantidad, $unidad, $dosis, $tiempo, $tipo, $frecuencia, $periodo_ini, $periodo_fin, $existencia);
+    $data->insertAgro($origen, $nombre_comer, $precio, $moneda, $cantidad, $unidad, $dosis, $unidad_dosis, $tipo, $frecuencia, $periodo_ini, $periodo_fin, $existencia);
 }
 ?>

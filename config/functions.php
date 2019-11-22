@@ -354,7 +354,7 @@ class Functions
         $cantidad,
         $unidad,
         $dosis,
-        $tiempo,
+        $unidad_dosis,
         $tipo,
         $frecuencia,
         $fecha_inicio,
@@ -375,9 +375,9 @@ class Functions
             $userRow = $execUserQuery->fetch_array();
 
             $query = "INSERT INTO agroquimicos (id_cultivo, aplicacion, nombre_comercial, precio, moneda,
-            cantidad, unidad, dosis, tiempo, tipo_causa, frecuencia, fecha_inicio, fecha_fin, existencia,
+            cantidad, unidad, dosis, unidad_dosis, tipo_causa, frecuencia, fecha_inicio, fecha_fin, existencia,
             fecha_registro) VALUES ('$userRow[id_cultivo]',  '$aplicacion', '$upperNomCom', 
-            '$precio', '$moneda', '$cantidad', '$unidad', '$dosis', '$tiempo', '$tipo', '$frecuencia', '$fecha_inicio',
+            '$precio', '$moneda', '$cantidad', '$unidad', '$dosis', '$unidad_dosis', '$tipo', '$frecuencia', '$fecha_inicio',
             '$fecha_fin', '$existencia', now())";
 
             $result = $conexion->query($query)
@@ -915,22 +915,50 @@ class Functions
 
                 if($unidad == 'ml'){
                     $selected_unidad = '<option value="ml" selected>Mililitros</option>
-                    <option value="l">Litros</option>';
-                }else if($unidad = 'l'){
+                    <option value="l">Litros</option>
+                    <option value="g">Gramos</option>
+                    <option value="Kg">Kilogramos</option>';
+                }else if($unidad == 'l'){
                     $selected_unidad = '<option value="ml">Mililitros</option>
-                    <option value="l" selected>Litros</option>';
+                    <option value="l" selected>Litros</option>
+                    <option value="g">Gramos</option>
+                    <option value="Kg">Kilogramos</option>';
+                }else if($unidad == 'g'){
+                    $selected_unidad = '<option value="ml">Mililitros</option>
+                    <option value="l">Litros</option>
+                    <option value="g" selected>Gramos</option>
+                    <option value="Kg">Kilogramos</option>';
+                }else if($unidad == 'Kg'){
+                    $selected_unidad = '<option value="ml">Mililitros</option>
+                    <option value="l">Litros</option>
+                    <option value="g">Gramos</option>
+                    <option value="Kg" selected>Kilogramos</option>';
                 }
 
-                //Combo tiempo
-                $tiempo = $row['tiempo'];
-                $selected_tiempo = "";
+                //Combo dosis unidad
+                $tiempo = $row['unidad_dosis'];
+                $selected_dosis_unidad = "";
 
-                if ($tiempo == 'semana'){
-                    $selected_tiempo = '<option value="semana" selected>Semanas</option>
-                                        <option value="dias">Dias</option>';
-                }else if($tiempo == 'dias'){
-                    $selected_tiempo = '<option value="semana">Semanas</option>
-                    <option value="dias" selected>Dias</option>';
+                if($tiempo == 'ml'){
+                    $selected_dosis_unidad = '<option value="ml" selected>Mililitros</option>
+                    <option value="l">Litros</option>
+                    <option value="g">Gramos</option>
+                    <option value="Kg">Kilogramos</option>';
+                }else if($tiempo == 'l'){
+                    $selected_dosis_unidad = '<option value="ml">Mililitros</option>
+                    <option value="l" selected>Litros</option>
+                    <option value="g">Gramos</option>
+                    <option value="Kg">Kilogramos</option>';
+                }else if($tiempo == 'g'){
+                    $selected_dosis_unidad = '<option value="ml">Mililitros</option>
+                    <option value="l">Litros</option>
+                    <option value="g" selected>Gramos</option>
+                    <option value="Kg">Kilogramos</option>';
+                }else if($tiempo == 'Kg'){
+                    $selected_dosis_unidad = '<option value="ml">Mililitros</option>
+                    <option value="l">Litros</option>
+                    <option value="g">Gramos</option>
+                    <option value="Kg" selected>Kilogramos</option>';
                 }
 
                 //Combo nutricion
@@ -998,7 +1026,7 @@ class Functions
                                     showCloseButton: true,
                                     width: "45rem",
                                     //icon: "info",
-                                    html: "<img src="+"../../img/svg/plant-sample.svg"+" style="+"height:70px"+" class="+"mb-2"+"><div class="+"row"+"> <div class="+"col-lg-6 col-md-6 col-sm-12"+"> <p class="+"font-weight-bold"+"> Nombre comercial </p> <p class="+"text-muted"+"> '.$row['nombre_comercial'].' </p> </div> <div class="+"col-lg-6 col-md-6 col-sm-12"+"> <p class="+"font-weight-bold"+"> Precio </p> <p class="+"text-muted"+"> $'.$row['precio'].' '.$row['moneda'].' </p> </div> <div class="+"col-lg-6 col-md-6 col-sm-12"+"> <p class="+"font-weight-bold"+"> Tipo o Causa </p> <p class="+"text-muted"+"> '.$text.' </p> </div> <div class="+"col-lg-6 col-md-6 col-sm-12"+"> <p class="+"font-weight-bold"+"> Cantidad </p> <p class="+"text-muted"+"> '.$row['cantidad'].' '.$row['unidad'].'</p> </div> <div class="+"col-lg-6 col-md-6 col-sm-12"+"> <p class="+"font-weight-bold"+"> Dosis </p> <p class="+"text-muted"+"> '.$row['dosis'].' </p> </div> <div class="+"col-lg-6 col-md-6 col-sm-12"+"> <p class="+"font-weight-bold"+"> Frecuencia </p> <p class="+"text-muted"+"> '.$row['frecuencia'].' </p> </div><div class="+"col-lg-6 col-md-6 col-sm-12"+"> <p class="+"font-weight-bold"+"> Fecha Inicio </p> <p class="+"text-muted"+"> '.$niu_fecha[2] . " de " . $month[$niu_fecha[1] - 1] . " de " . $niu_fecha[0].' </p> </div> <div class="+"col-lg-6 col-md-6 col-sm-12"+"> <p class="+"font-weight-bold"+"> Fecha Fin </p> <p class="+"text-muted"+"> '.$niu_fechaa[2] . " de " . $month[$niu_fechaa[1] - 1] . " de " . $niu_fechaa[0].' </p> </div> </div>",
+                                    html: "<img src="+"../../img/svg/plant-sample.svg"+" style="+"height:70px"+" class="+"mb-2"+"><div class="+"row"+"> <div class="+"col-lg-6 col-md-6 col-sm-12"+"> <p class="+"font-weight-bold"+"> Nombre comercial </p> <p class="+"text-muted"+"> '.$row['nombre_comercial'].' </p> </div> <div class="+"col-lg-6 col-md-6 col-sm-12"+"> <p class="+"font-weight-bold"+"> Precio </p> <p class="+"text-muted"+"> $'.$row['precio'].' '.$row['moneda'].' </p> </div> <div class="+"col-lg-6 col-md-6 col-sm-12"+"> <p class="+"font-weight-bold"+"> Tipo o Causa </p> <p class="+"text-muted"+"> '.$text.' </p> </div> <div class="+"col-lg-6 col-md-6 col-sm-12"+"> <p class="+"font-weight-bold"+"> Cantidad </p> <p class="+"text-muted"+"> '.$row['cantidad'].' '.$row['unidad'].'</p> </div> <div class="+"col-lg-6 col-md-6 col-sm-12"+"> <p class="+"font-weight-bold"+"> Dosis </p> <p class="+"text-muted"+"> '.$row['dosis'].' '.$row['unidad_dosis'].' </p> </div> <div class="+"col-lg-6 col-md-6 col-sm-12"+"> <p class="+"font-weight-bold"+"> Frecuencia </p> <p class="+"text-muted"+"> '.$row['frecuencia'].' </p> </div><div class="+"col-lg-6 col-md-6 col-sm-12"+"> <p class="+"font-weight-bold"+"> Fecha Inicio </p> <p class="+"text-muted"+"> '.$niu_fecha[2] . " de " . $month[$niu_fecha[1] - 1] . " de " . $niu_fecha[0].' </p> </div> <div class="+"col-lg-6 col-md-6 col-sm-12"+"> <p class="+"font-weight-bold"+"> Fecha Fin </p> <p class="+"text-muted"+"> '.$niu_fechaa[2] . " de " . $month[$niu_fechaa[1] - 1] . " de " . $niu_fechaa[0].' </p> </div> </div>",
                                        
                                     showCancelButton: false,
                                     confirmButtonColor: "#d33",
@@ -1127,9 +1155,9 @@ class Functions
                     
                                 <div class="col-lg-3 col-md-3 col-sm-6">
                                     <div class="form-group">
-                                        <label for="inputTiempo">Tiempo</label>
-                                        <select class="form-control" id="inputTiempo" name="tiempo">
-                                            '.$selected_tiempo.'
+                                        <label for="inputUnidadDosis">Unidad</label>
+                                        <select class="form-control" id="inputUnidadDosis" name="unidad_dosis">
+                                            '.$selected_dosis_unidad.'
                                         </select>
                                     </div>
                                 </div>
@@ -1408,7 +1436,7 @@ class Functions
         $cantidad,
         $unidad,
         $dosis,
-        $tiempo,
+        $unidad_dosis,
         $tipo_causa,
         $frecuencia,
         $fecha_inicio,
@@ -1417,7 +1445,7 @@ class Functions
     ){
         $conexion = new Database();
 
-        $query = "UPDATE agroquimicos SET  nombre_comercial = '$nombre_comercial', precio = '$precio', moneda = '$moneda', cantidad = '$cantidad', unidad = '$unidad', dosis = '$dosis', tiempo = '$tiempo', tipo_causa = '$tipo_causa', frecuencia = '$frecuencia', fecha_inicio = '$fecha_inicio', fecha_fin = '$fecha_fin', existencia = '$existencia', fecha_modif = now() WHERE id_cultivo = '$id_cultivo' AND id_agroquimico = '$id_agroquimico';";
+        $query = "UPDATE agroquimicos SET  nombre_comercial = '$nombre_comercial', precio = '$precio', moneda = '$moneda', cantidad = '$cantidad', unidad = '$unidad', dosis = '$dosis', unidad_dosis = '$unidad_dosis', tipo_causa = '$tipo_causa', frecuencia = '$frecuencia', fecha_inicio = '$fecha_inicio', fecha_fin = '$fecha_fin', existencia = '$existencia', fecha_modif = now() WHERE id_cultivo = '$id_cultivo' AND id_agroquimico = '$id_agroquimico';";
 
         $result = $conexion->query($query);
 
@@ -1905,7 +1933,7 @@ class Functions
         $cantidad,
         $unidad,
         $dosis,
-        $tiempo,
+        $unidad_dosis,
         $tipo,
         $frecuencia,
         $fecha_inicio,
@@ -1917,9 +1945,9 @@ class Functions
         $conexion = new Database();
         
         $query = "INSERT INTO agroquimicos (id_cultivo, aplicacion, nombre_comercial, precio, moneda,
-        cantidad, unidad, dosis, tiempo, tipo_causa, frecuencia, fecha_inicio, fecha_fin, existencia,
+        cantidad, unidad, dosis, unidad_dosis, tipo_causa, frecuencia, fecha_inicio, fecha_fin, existencia,
         fecha_registro) VALUES ('$id_cultivo',  '$aplicacion', '$nom_comer', 
-        '$precio', '$moneda', '$cantidad', '$unidad', '$dosis', '$tiempo', '$tipo', '$frecuencia', '$fecha_inicio',
+        '$precio', '$moneda', '$cantidad', '$unidad', '$dosis', '$unidad_dosis', '$tipo', '$frecuencia', '$fecha_inicio',
         '$fecha_fin', '$existencia', now())";
 
         $result = $conexion->query($query)

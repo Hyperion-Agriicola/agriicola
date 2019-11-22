@@ -689,6 +689,8 @@
                         <select class="form-control" id="inputUnidad" name="unidad">
                             <option value="ml">Mililitros</option>
                             <option value="l">Litros</option>
+                            <option value="g">Gramos</option>
+                            <option value="kg">Kilogramos</option>
                         </select>
                     </div>
                 </div>
@@ -706,10 +708,12 @@
 
                 <div class="col-lg-3 col-md-3 col-sm-6">
                     <div class="form-group">
-                        <label for="inputTiempo">Tiempo</label>
-                        <select class="form-control" id="inputTiempo" name="tiempo">
-                            <option value="semana">Semanas</option>
-                            <option value="dias">Dias</option>
+                        <label for="inputUnidadDosis">Unidad</label>
+                        <select class="form-control" id="inputUnidadDosis" name="unidad_dosis">
+                        <option value="ml">Mililitros</option>
+                            <option value="l">Litros</option>
+                            <option value="g">Gramos</option>
+                            <option value="kg">Kilogramos</option>
                         </select>
                     </div>
                 </div>
@@ -970,7 +974,7 @@
             $cantidad = $_POST['cantidad'];
             $unidad = $_POST['unidad'];
             $dosis = $_POST['dosis'];
-            $tiempo = $_POST['tiempo'];
+            $unidad_dosis = $_POST['unidad_dosis'];
             $frecuencia = $_POST['frecuencia'];
             $fecha_inicio = $_POST['fecha_inicio'];
             $fecha_fin = $_POST['fecha_fin'];
@@ -979,7 +983,7 @@
             
             
 
-            $data->modifyAgro($id_cultivo, $id_agroquimico, $nombre_comercial, $precio, $moneda, $cantidad, $unidad, $dosis, $tiempo, $tipo_causa, $frecuencia, $fecha_inicio, $fecha_fin, $existencia);
+            $data->modifyAgro($id_cultivo, $id_agroquimico, $nombre_comercial, $precio, $moneda, $cantidad, $unidad, $dosis, $unidad_dosis, $tipo_causa, $frecuencia, $fecha_inicio, $fecha_fin, $existencia);
             header('Location: dashboard.php?id_cultivo='.$_GET['id_cultivo'].'&tipo_suelo='.$_GET['tipo_suelo'].'');
         }
 
@@ -990,9 +994,9 @@
             $precio = $_POST['precio'];
             $moneda = $_POST['moneda'];
             $cantidad = $_POST['cantidad'];
-            $unidad = $_POST['unidad'];
+            $unidad_dosis = $_POST['unidad_dosis'];
             $dosis = $_POST['dosis'];
-            $tiempo = $_POST['tiempo'];
+            $unidad_dosis = $_POST['unidad_dosis'];
 
             if ($aplicacion == "Enfermedad") {
                 $tipo = $_POST['enfermedad'];
@@ -1016,7 +1020,7 @@
                 $cantidad,
                 $unidad,
                 $dosis,
-                $tiempo,
+                $unidad_dosis,
                 $tipo,
                 $frecuencia,
                 $fecha_inicio,
