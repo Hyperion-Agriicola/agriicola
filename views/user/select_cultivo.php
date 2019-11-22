@@ -746,39 +746,40 @@
 
 <script>
     var formnat = document.getElementById("natground-form");
-    document.getElementById("modalModifSueloNat").addEventListener("click", function () {
-
-        Swal.fire({
-            title: "Modificar datos del suelo",
-            showCloseButton: true,
-            width: '50rem',
-            html: formnat,
-            showCancelButton: false,
-            showConfirmButton: false,
-
-        }).then((result) => {
-            if (result.value) {
-                //form.submit();
-            }
-        })
-
-    });
-</script>
-
-<!--Modal agregar agro-->
-<div style="display: none;">
-    <form class="reg_agro" action="" method="post" id="addForm">
-        <input type="hidden" id="id_cultivo" name="id_cultivo" value="<?php echo $_GET['id_cultivo'];?>">
-        <input type="hidden" name="id_agroquimico" id="id_agroquimico">
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-12">
-                <div class="form-group">
-                    <label for="inputAplicacion2">Aplicación</label>
-                    <select class="form-control" id="inputAplicacion2" name="origin2">
-                        <option value="Nutriente">Nutriente</option>
-                        <option value="Enfermedad">Enfermedad</option>
-                        <option value="Plaga">Plaga</option>
-                    </select>
+        document.getElementById("modalModifSueloNat").addEventListener("click", function(){
+                        
+                Swal.fire({
+                    title: "Modificar datos del suelo",
+                    showCloseButton: true,
+                    width: '50rem',
+                    html: formnat,
+                    showCancelButton: false,
+                    showConfirmButton : false,
+                    
+                    }).then((result) => {
+                    if (result.value) {
+                        //form.submit();
+                    }
+                })
+            
+        });
+    </script>               
+    
+    <!--Modal agregar agro-->
+    <div style="display: none;">
+        <form id="addAgro-form"class="reg_agro" action="" method="post">
+            <input type="hidden" id="id_cultivo" name="id_cultivo" value="<?php echo $_GET['id_cultivo'];?>">
+            <input type="hidden" name="id_agroquimico" id="id_agroquimico">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <label for="inputAplicacion2">Aplicación</label>
+                        <select class="form-control" id="inputAplicacion2" name="origin2">
+                            <option value="Nutriente">Nutriente</option>
+                            <option value="Enfermedad">Enfermedad</option>
+                            <option value="Plaga">Plaga</option>
+                        </select>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">

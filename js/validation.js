@@ -1,7 +1,4 @@
-
-
-
-/*/*Login validation*/
+/*Validaciones Login*/
 
 jQuery(function(){
     $.validator.addMethod('EMAIL',function(value, element){
@@ -26,7 +23,7 @@ jQuery(function(){
     });
 });
 
-/*validacion jquery validate registro*/
+/*Validaciones Registro de usuario*/
 
 jQuery(function() {
     $.validator.addMethod( "letterswithbasicpunc", function( value, element ) {
@@ -102,15 +99,15 @@ jQuery( ".registro" ).validate({
             },
             messages: {
                     userName: {
-                            required: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese su nombre(s).</p></span>"
+                            required: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese su(s) nombre(s).</p></span>"
                     },
                     userLastName:{
-                        required: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese su apellido(s).</p></span>"
+                        required: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese su(s) apellido(s).</p></span>"
                     },
                     phoneNumber:{
                         number: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese sólo números.</p></span>",
-                        maxlength: "<span><p class='text-danger' style='font-size: 12px;'>*No debe ingresar más de 10 números.</p></span>",
-                        minlength: "<span><p class='text-danger' style='font-size: 12px;'>*No debe ingresar menos de 10 números.</p></span>",
+                        maxlength: "<span><p class='text-danger' style='font-size: 12px;'>*No debe ingresar más de 10 dígitos.</p></span>",
+                        minlength: "<span><p class='text-danger' style='font-size: 12px;'>*No debe ingresar menos de 10 dígitos.</p></span>",
                         required: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese un número teléfonico.</p></span>"
                     },
                     userEmail:{
@@ -120,17 +117,17 @@ jQuery( ".registro" ).validate({
                     },
                     userCompany:{
                         required: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese el nombre de su empresa.</p></span>",
-                        lettersonly: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese solo letras, no se aceptan caracteres especiales.</p></span>"
+                        lettersonly: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese sólo letras, no se aceptan caracteres especiales.</p></span>"
                     },
                     userCity:{
-                        required: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese una ciudad válida.</p></span>",
-                        remote:"<span><p class='text-danger' style='font-size: 12px;'>*La ciudad no existe, ingrese una ciudad válida .</p></span>",
-                        lettersonly: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese solo letras.</p></span>"
+                        required: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese una ciudad.</p></span>",
+                        remote:"<span><p class='text-danger' style='font-size: 12px;'>*La ciudad no existe, ingrese una ciudad válida.</p></span>",
+                        lettersonly: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese sólo letras.</p></span>"
                     },
                     userState:{
-                        required: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese un estado válido.</p></span>",
-                        remote:"<span><p class='text-danger' style='font-size: 12px;'>*El estado no existe, ingrese un estado válido .</p></span>",
-                        lettersonly: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese solo letras.</p></span>"
+                        required: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese un estado.</p></span>",
+                        remote:"<span><p class='text-danger' style='font-size: 12px;'>*El estado no existe, ingrese un estado válido.</p></span>",
+                        lettersonly: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese sólo letras.</p></span>"
                     },
                     userPass1:{
                         required: "<span><p class='text-danger' style='font-size: 12px;'>*Ingrese una contraseña.</p></span>"
@@ -140,20 +137,21 @@ jQuery( ".registro" ).validate({
                         equalTo: "<span><p class='text-danger' style='font-size: 12px;'>*Las contraseñas no coinciden.</p></span>"
                     },
                     newPassword:{
-                        required:"<span><p class='text-danger' style='font-size: 12px;'>*Este campo es obligatrio. porfavor introduzca una nueva contraseña.</p></span>",
+                        required:"<span><p class='text-danger' style='font-size: 12px;'>*Introduzca una nueva contraseña.</p></span>",
                         notEqualTo: "<span><p class='text-danger' style='font-size: 12px;'>*La contraseña debe ser diferente a la actual.</p></span>"
                     },
                     userPass:{
-                        required: "<span><p class='text-danger' style='font-size: 12px;'>*Este campo es obligatrio. porfavor introduzca su contraseña actual.</p></span>"
+                        required: "<span><p class='text-danger' style='font-size: 12px;'>*Introduzca su contraseña actual.</p></span>"
                     },
                     repeatPassword:{
-                        required: "<span><p class='text-danger' style='font-size: 12px;'>*Confirme la contraseña.</p></span>",
-                        equalTo: "<span><p class='text-danger' style='font-size: 12px;'>*La contraseña no coinciden con la nueva contraseña.</p></span>"
+                        required: "<span><p class='text-danger' style='font-size: 12px;'>*Confirme la nueva contraseña.</p></span>",
+                        equalTo: "<span><p class='text-danger' style='font-size: 12px;'>*La contraseña no coincide con la nueva contraseña.</p></span>"
                     }
             }
     });
  });          
- /*registro de cultivos validaciones*/
+
+ /*Validaciones Registro de cultivos*/
 
  jQuery(function(){
     $.validator.addMethod( "alphanumeric", function( value, element ) {
@@ -178,7 +176,7 @@ jQuery( ".registro" ).validate({
                 required: true,
                 number: true,
                 min: 0,
-                max: 100000,
+                max: 10000,
                 decimal: true
             },
             subspecie:{
@@ -209,14 +207,14 @@ jQuery( ".registro" ).validate({
         },
         messages:{
             namecrop:{
-                required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese un nombre, puede incluir números .</p>",
-                alphanumeric: "<p class='text-danger' style='font-size: 12px;'>*Ingrese solo letras y numeros.</p>"
+                required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese un nombre, puede incluir números.</p>",
+                alphanumeric: "<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo letras y números.</p>"
             },
             hectares:{
                 required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese hectáreas.</p>",
-                number:"<p class='text-danger' style='font-size: 12px;'>*Ingrese solo números.</p>",
-                min: "<p class='text-danger' style='font-size: 12px;'>*Numero negativos inválidos.</p>",
-                max: "<p class='text-danger' style='font-size: 12px;'>*Número no mayor a 100000.</p>",
+                number:"<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo números.</p>",
+                min: "<p class='text-danger' style='font-size: 12px;'>*Números negativos inválidos.</p>",
+                max: "<p class='text-danger' style='font-size: 12px;'>*Número no mayor a 10000.</p>",
             },
             subspecie:{
                 required: "<p class='text-danger' style='font-size: 12px;'>*Seleccione una subespecie.</p>"
@@ -226,33 +224,33 @@ jQuery( ".registro" ).validate({
             },
             variation:{
                 required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese una variedad.</p>",
-                lettersonly:"<p class='text-danger' style='font-size: 12px;'>*Ingrese solo letras.</p>"
+                lettersonly:"<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo letras.</p>"
             },
             bornDate:{
                 required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese una fecha.</p>",
                 date: "<p class='text-danger' style='font-size: 12px;'>*Ingrese una fecha válida.</p>",
-                max: "<p class='text-danger' style='font-size: 12px;'>*Ingrese una fec válida.</p>"
+                max: "<p class='text-danger' style='font-size: 12px;'>*Ingrese una fecha válida.</p>"
             },
             state:{
                 required:"<p class='text-danger' style='font-size: 12px;'>*Ingrese un estado.</p>",
-                letterswithbasicpunc: "<p class='text-danger' style='font-size: 12px;'>*Estado inexistente, ingrese sólo letras y puntos.</p>",
-                lettersonly: "<p class='text-danger' style='font-size: 12px;'>*Ingrese solo letras.</p>"
+                letterswithbasicpunc: "<p class='text-danger' style='font-size: 12px;'>*El estado no existe, ingrese una ciudad válida.</p>",
+                lettersonly: "<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo letras.</p>"
             },
             township:{
                 required:"<p class='text-danger' style='font-size: 12px;'>*Ingrese un municipio.</p>",
-                letterswithbasicpunc: "<p class='text-danger' style='font-size: 12px;'>*Municipio inexistente, ingrese sólo letras y puntos.</p>",
-                lettersonly: "<p class='text-danger' style='font-size: 12px;'>*Ingrese solo letras.</p>"
+                letterswithbasicpunc: "<p class='text-danger' style='font-size: 12px;'>*El municipio no existe, ingrese un municipio válido.</p>",
+                lettersonly: "<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo letras.</p>"
             },
             town:{
                 required:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una localidad.</p>",
-                letterswithbasicpunc: "<p class='text-danger' style='font-size: 12px;'>*Localidad inexistente, ingrese sólo letras y puntos.</p>",
-                lettersonly: "<p class='text-danger' style='font-size: 12px;'>*Ingrese solo letras.</p>" 
+                letterswithbasicpunc: "<p class='text-danger' style='font-size: 12px;'>*La localidad no existe, ingrese una localidad válida.</p>",
+                lettersonly: "<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo letras.</p>" 
             }
 
         }
     });
  });
- /**datapicker fecha de inicio registro de cultivo */
+ /*Datapicker fecha de inicio registro de cultivo */
 $(function(){
     $("#inputDate").datepicker({
         dateFormat: "yy-mm-dd",
@@ -262,7 +260,7 @@ $(function(){
     });
 });
 
- /**REgistro suelo natural validaciones */
+ /*Validaciones Suelo natural*/
 
 jQuery(function(){
     jQuery(".groundre").validate({
@@ -291,31 +289,32 @@ jQuery(function(){
         },
         messages:{
             inputPH:{
-                required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese Indice de PH.</p>",
-                maxlength: "<p class='text-danger' style='font-size: 12px;'>*PH invalido, revasaste el limite de digitos.</p>",
-                number: "<p class='text-danger' style='font-size: 12px;'>*Ingrese solo numeros.</p>",
-                min:"<p class='text-danger' style='font-size: 12px;'>*Indice de PH invalido, solo se aceptan numeros positivos.</p>",
+                required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese el índice de PH.</p>",
+                maxlength: "<p class='text-danger' style='font-size: 12px;'>*PH inválido, no debe contener más de 2 dígitos.</p>",
+                number: "<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo números.</p>",
+                min:"<p class='text-danger' style='font-size: 12px;'>*Índice de PH inválido, no debe ser menor a 1.</p>",
                 max:"<p class='text-danger' style='font-size: 12px;'>*Índice de PH inválido, no debe exceder a 14.</p>"
 
             },
             inputSalinity: {
-                required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese Indice de salinidad.</p>",
-                maxlength: "<p class='text-danger' style='font-size: 12px;'>*Indice de salinidad invalido, revasaste el limite de digitos,.</p>",
-                number: "<p class='text-danger' style='font-size: 12px;'>*Ingrese solo numeros.</p>",
-                min:"<p class='text-danger' style='font-size: 12px;'>*Indice de salinidad invalido, solo se aceptan numeros positivos.</p>"
+                required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese el índice de salinidad.</p>",
+                maxlength: "<p class='text-danger' style='font-size: 12px;'>*Índice de salinidad inválido, no debe contener más de 3 dígitos.</p>",
+                number: "<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo números.</p>",
+                min:"<p class='text-danger' style='font-size: 12px;'>*Índice de salinidad inválido, sólo se aceptan números positivos.</p>"
             },
             inputConduc:{
-                required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese indice de conductividad electrica.</p>",
-                maxlength: "<p class='text-danger' style='font-size: 12px;'>*Indice de conductividad electrica invalido, revasaste el limite de digitos.</p>",
-                number: "<p class='text-danger' style='font-size: 12px;'>*Ingrese solo numeros.</p>",
-                min:"<p class='text-danger' style='font-size: 12px;'>*Indice de conductividad electrica invalido, solo se aceptan numeros positivos.</p>"
+                required: "<p class='text-danger' style='font-size: 12px;'>*íngrese el índice de conductividad eléctrica.</p>",
+                maxlength: "<p class='text-danger' style='font-size: 12px;'>*Índice de conductividad eléctrica inválido, no debe contener más de 3.</p>",
+                number: "<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo números.</p>",
+                min:"<p class='text-danger' style='font-size: 12px;'>*Índice de conductividad eléctrica inválido, no debe ser menor a 0.</p>"
             }
         }
     });
 });
 
 
-/**Registro de agroquimicos validaciones */
+/*Validaciones Registro de agroquímicos*/
+
 jQuery(function(){
     $.validator.addMethod( "alphanumeric", function( value, element ) {
         return this.optional( element ) || /^[A-za-z0-9\sñ\s\sáéíóúñÑÁÉÍÓÚüÜ]+$/i.test( value );
@@ -323,43 +322,7 @@ jQuery(function(){
     $.validator.addMethod('decimal', function(value, element) {
         return this.optional(element) || /^((\d+(\\.\d{0,2})?)|((\d*(\.\d{1,2}))))$/.test(value);
       }, "<p class='text-danger' style='font-size: 12px;'>*Ingrese el formato correcto 0.00.</p>" );
-   /*$.validator.addMethod("dateBefore", function (value, element, params) {
-        
-        var end = $(params);
-        if (!end.data('validation.running')) {
-            $(element).data('validation.running', true);
-            setTimeout($.proxy(
-
-            function () {
-                this.element(end);
-            }, this), 0);
-           
-            setTimeout(function () {
-                $(element).data('validation.running', false);
-            }, 0);
-        }
-        return this.optional(element) || this.optional(end[0]) || new Date(value) <= new Date(end.val());
-
-    }, "<p class='text-danger' style='font-size: 12px;'>*La fecha deber ser anterior a la fecha de finalización correspondiente.</p>");
-    
-    $.validator.addMethod("dateAfter", function (value, element, params) {
-        var start = $(params);
-        if (!start.data('validation.running')) {
-            $(element).data('validation.running', true);
-            setTimeout($.proxy(
-
-            function () {
-                this.element(start);
-            }, this), 0);
-            setTimeout(function () {
-                $(element).data('validation.running', false);
-            }, 0);
-        }
-        return this.optional(element) || this.optional(start[0]) || new Date(value) >= new Date($(params).val());
-
-    },  "<p class='text-danger' style='font-size: 12px;'>*La fecha debe ser posterior a la fecha de inicio correspondiente.</p>");
-    */
-
+  
     jQuery(".reg_agro").validate({
             rules:{
                 name_agroq:{
@@ -404,26 +367,26 @@ jQuery(function(){
             messages:{
                 name_agroq:{
                     required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese un nombre comercial.</p>",
-                    alphanumeric:"<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo letras y numros.</p>"
+                    alphanumeric:"<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo letras y números.</p>"
                 },
                 precio:{
                     required:"<p class='text-danger' style='font-size: 12px;'>*Ingrese un precio.</p>",
                     number:"<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo números.</p>",
                     maxlength:"<p class='text-danger' style='font-size: 12px;'>*Ingrese un precio válido, no mayor a 11 dígitos.</p>",
-                    min:"<p class='text-danger' style='font-size: 12px;'>*Ingrese un precio valido, solo se aceptan precios positivos .</p>"
+                    min:"<p class='text-danger' style='font-size: 12px;'>*Ingrese un precio válido, sólo se aceptan precios mayores a 0.</p>"
                 },
                 cantidad:{
                     required:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad.</p>",
-                    number:"<p class='text-danger' style='font-size: 12px;'>*Ingrese solo números.</p>",
-                    min:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad valida, solo se aceptan cantidades positivas.</p>",
+                    number:"<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo números.</p>",
+                    min:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad válida, sólo se aceptan cantidades mayores a 0.</p>",
                     maxlength:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad válida, no mayor a 11 dígitos.</p>"
                     
                 },
                 dosis:{
-                    required:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una dosis .</p>",
+                    required:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una dosis.</p>",
                     number:"<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo números.</p>",
-                    maxlength:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una dosis valida, solo se aceptan 4 dígitos.</p>",
-                    min:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una dosis válida, solo se aceptan cantidades positivas .</p>"
+                    maxlength:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una dosis válida, no debe ser mayor a 4 dígitos.</p>",
+                    min:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una dosis válida, solo se aceptan cantidades mayores a 0.</p>"
                 },
                 fecha_inicio:{
                     required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese una fecha de inicio.</p>"
@@ -434,17 +397,16 @@ jQuery(function(){
                 existencia:{
                     required:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad.</p>",
                     number:"<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo números.</p>",
-                    maxlength:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad válida, solo se aceptan 4 dígitos.</p>",
-                    min:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad válida, solo se aceptan cantidades positivas .</p>"
+                    maxlength:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad válida, no debebs er mayor 4 dígitos.</p>",
+                    min:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad válida, no debe ser menor a 0.</p>"
                 }
 
             }
     });
 });
 
+/*Validaciones Fecha inicio-Fecha final*/
 
-
-/**Validacion fecha inicio-fecha final */
 jQuery( function() {
     var from = $( "#inputFechaInicio" )
         .datepicker({
@@ -505,7 +467,7 @@ jQuery( function() {
     }
   });
      
-/**Registro de gastos validaciones */
+/*Validaciones Registro de gastos*/
 
 jQuery(function(){
     $.validator.addMethod( "alphanumeric", function( value, element ) {
@@ -532,13 +494,13 @@ jQuery(function(){
         messages:{
             Concepto:{
                 required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese el concepto del gasto.</p>",
-                alphanumeric: "<p class='text-danger' style='font-size: 12px;'>*Ingrese solo letras o números.</p>"
+                alphanumeric: "<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo letras o números.</p>"
             },
             Precio:{
                 required:"<p class='text-danger' style='font-size: 12px;'>*Ingrese un precio.</p>",
                 number:"<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo números.</p>",
-                maxlength:"<p class='text-danger' style='font-size: 12px;'>*Ingrese un precio valido, solo se aceptan 11 dígitos.</p>",
-                min:"<p class='text-danger' style='font-size: 12px;'>*Ingrese un precio valido, solo se aceptan precios positivos .</p>"
+                maxlength:"<p class='text-danger' style='font-size: 12px;'>*Ingrese un precio válido, no debe ser mayor a 11 dígitos.</p>",
+                min:"<p class='text-danger' style='font-size: 12px;'>*Ingrese un precio válido, no debe ser menor a 0.</p>"
             },
             Fecha:{
                 required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese una fecha.</p>",
@@ -560,7 +522,8 @@ jQuery(function(){
         numberOfMonths: 2, 
     });
 });
-/**Modal calendario  */
+
+/*Modal Calendario*/
 
     jQuery("#event-form").validate({
         rules:{
@@ -589,8 +552,8 @@ jQuery(function(){
         },
         messages:{
             titulo:{
-                required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese un titulo de evento.</p>",
-                alphanumeric: "<p class='text-danger' style='font-size: 12px;'>*Solo se aceptan letras y números.</p>"
+                required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese un título de evento.</p>",
+                alphanumeric: "<p class='text-danger' style='font-size: 12px;'>*Sólo se aceptan letras y números.</p>"
             },
             fecha_inicio:{
                 required: "<p class='text-danger' style='font-size: 12px;'>*Seleccione una fecha de inicio.</p>"
@@ -599,13 +562,13 @@ jQuery(function(){
                 required: "<p class='text-danger' style='font-size: 12px;'>*Seleccione una fecha de finalización.</p>"
             },
             hora_inicio:{
-                required: "<p class='text-danger' style='font-size: 12px;'>*Seleccione una hora de Inicio.</p>"
+                required: "<p class='text-danger' style='font-size: 12px;'>*Seleccione una hora de inicio.</p>"
             },
             hora_final:{
                 required: "<p class='text-danger' style='font-size: 12px;'>*Seleccione una hora de finalización.</p>"
             },
             descripcion:{
-                required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese una descripcion del evento.</p>"
+                required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese una descripción del evento.</p>"
             }
         }
     });
@@ -652,21 +615,21 @@ jQuery(function(){
         },
         messages:{
             Cliente: {
-                required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese el nombre de un cliente.</p>",
-                lettersonly: "<p class='text-danger' style='font-size: 12px;'>*Ingrese solo letras.</p>"
+                required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese el nombre del cliente.</p>",
+                lettersonly: "<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo letras.</p>"
             },
             Fecha:{
                 required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese una fecha.</p>"
             },
             Peso:{
-                required:"<p class='text-danger' style='font-size: 12px;'>*Ingrese un peso valido.</p>",
+                required:"<p class='text-danger' style='font-size: 12px;'>*Ingrese un peso válido.</p>",
                 number:"<p class='text-danger' style='font-size: 12px;'>*Ingrese solo números.</p>",
                 min: "<p class='text-danger' style='font-size: 12px;'>*Numero negativos inválidos.</p>"
             },
             Precio:{
                 required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese un precio válido.</p>",
-                number: "<p class='text-danger' style='font-size: 12px;'>*Ingrese solo números.</p>",
-                min: "<p class='text-danger' style='font-size: 12px;'>*Numero negativos inválidos.</p>",
+                number: "<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo números.</p>",
+                min: "<p class='text-danger' style='font-size: 12px;'>*No debe ser menor que 0.</p>",
 
             }
         }
@@ -677,3 +640,169 @@ jQuery(function(){
             numberOfMonths: 2,
         });
     });
+    jQuery(function(){
+        jQuery(".reg_agro").validate({
+            rules:{
+                name_agroq:{
+                    required: true,
+                    alphanumeric: true
+                },
+                precio:{
+                    required: true,
+                    number: true,
+                    min: 0,
+                    maxlength: 11,
+                    decimal: true
+                },
+                cantidad:{
+                    required: true,
+                    number: true,
+                    min: 0,
+                    maxlength: 11
+                },
+                dosis:{
+                    required: true,
+                    number: true,
+                    min: 0,
+                    maxlength: 4,
+                    decimal: true
+        
+                },
+                fecha_inicio:{
+                    required: true
+                },
+                fecha_fin:{
+                    required: true
+                },
+                existencia:{
+                    required: true,
+                    number: true,
+                    min: 0,
+                    maxlength: 4
+                }
+            
+            },
+            messages:{
+                name_agroq:{
+                    required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese un nombre comercial.</p>",
+                    alphanumeric:"<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo letras y números.</p>"
+                },
+                precio:{
+                    required:"<p class='text-danger' style='font-size: 12px;'>*Ingrese un precio.</p>",
+                    number:"<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo números.</p>",
+                    maxlength:"<p class='text-danger' style='font-size: 12px;'>*Ingrese un precio válido, no debe ser mayor a 11 dígitos.</p>",
+                    min:"<p class='text-danger' style='font-size: 12px;'>*Ingrese un precio válido, no debe ser menor a 0.</p>"
+                },
+                cantidad:{
+                    required:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad.</p>",
+                    number:"<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo números.</p>",
+                    min:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad válida, no debe ser menor a 0.</p>",
+                    maxlength:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad válida, no debe ser mayor a 11 dígitos.</p>"
+                    
+                },
+                dosis:{
+                    required:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una dosis.</p>",
+                    number:"<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo números.</p>",
+                    maxlength:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una dosis valida, no debe ser mayor a 4 dígitos.</p>",
+                    min:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una dosis válida, no debe ser menor a 0.</p>"
+                },
+                fecha_inicio:{
+                    required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese una fecha de inicio.</p>"
+                },
+                fecha_fin:{
+                    required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese una fecha de finalización.</p>"
+                },
+                existencia:{
+                    required:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad.</p>",
+                    number:"<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo números.</p>",
+                    maxlength:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad válida, no debe ser mayor a 4 dígitos.</p>",
+                    min:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad válida, no debe ser menor a 0.</p>"
+                }
+        
+            }
+        });
+    });
+    jQuery(function(){
+        jQuery("#addAgro-form").validate({
+            rules:{
+                name_agroq:{
+                    required: true,
+                    alphanumeric: true
+                },
+                precio:{
+                    required: true,
+                    number: true,
+                    min: 0,
+                    maxlength: 11,
+                    decimal: true
+                },
+                cantidad:{
+                    required: true,
+                    number: true,
+                    min: 0,
+                    maxlength: 11
+                },
+                dosis:{
+                    required: true,
+                    number: true,
+                    min: 0,
+                    maxlength: 4,
+                    decimal: true
+        
+                },
+                fecha_inicio:{
+                    required: true
+                },
+                fecha_fin:{
+                    required: true
+                },
+                existencia:{
+                    required: true,
+                    number: true,
+                    min: 0,
+                    maxlength: 4
+                }
+            
+            },
+            messages:{
+                name_agroq:{
+                    required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese un nombre comercial.</p>",
+                    alphanumeric:"<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo letras y números.</p>"
+                },
+                precio:{
+                    required:"<p class='text-danger' style='font-size: 12px;'>*Ingrese un precio.</p>",
+                    number:"<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo números.</p>",
+                    maxlength:"<p class='text-danger' style='font-size: 12px;'>*Ingrese un precio válido, no debe ser mayor a 11 dígitos.</p>",
+                    min:"<p class='text-danger' style='font-size: 12px;'>*Ingrese un precio válido, no debe ser menor a 0.</p>"
+                },
+                cantidad:{
+                    required:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad.</p>",
+                    number:"<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo números.</p>",
+                    min:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad válida, no debe ser menor a 0.</p>",
+                    maxlength:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad válida, no debe ser mayor a 11 dígitos.</p>"
+                    
+                },
+                dosis:{
+                    required:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una dosis .</p>",
+                    number:"<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo números.</p>",
+                    maxlength:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una dósis valida, no debe ser mayor a 4 dígitos.</p>",
+                    min:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una dosis válida, no debe ser menor a 0.</p>"
+                },
+                fecha_inicio:{
+                    required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese una fecha de inicio.</p>"
+                },
+                fecha_fin:{
+                    required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese una fecha de finalización.</p>"
+                },
+                existencia:{
+                    required:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad.</p>",
+                    number:"<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo números.</p>",
+                    maxlength:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad válida, no debebe ser mayor a 4 dígitos.</p>",
+                    min:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad válida, no debe ser menor a 0.</p>"
+                }
+        
+            }
+        });
+    });
+
+
