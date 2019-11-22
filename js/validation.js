@@ -408,7 +408,7 @@ jQuery(function(){
 /*Validaciones Fecha inicio-Fecha final*/
 
 jQuery( function() {
-    var from = $( "#inputFechaInicio" )
+    var from = $( ".inputFechaInicio" )
         .datepicker({
           dateFormat: "yy-mm-dd",
           minDate: "-2W",
@@ -417,7 +417,7 @@ jQuery( function() {
         .on( "change", function() {
           to.datepicker( "option", "minDate", getDate( this ) );
         }),
-      to = $( "#inputFechaFinal" ).datepicker({
+      to = $( ".inputFechaFinal" ).datepicker({
         dateFormat: "yy-mm-dd"
       })
       .on( "change", function() {

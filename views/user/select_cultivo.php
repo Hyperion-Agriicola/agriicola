@@ -781,7 +781,7 @@
                         </select>
                     </div>
                 </div>
-            </div>
+            
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
                     <label for="inputNombreComercial">Nombre comercial</label>
@@ -940,7 +940,7 @@
 </div>
 
 <script>
-    var formagro = document.getElementById("addForm");
+    var formagro = document.getElementById("addAgro-form");
     document.getElementById("addNewAgro").addEventListener("click", function () {
 
         Swal.fire({
