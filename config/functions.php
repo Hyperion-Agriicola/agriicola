@@ -976,6 +976,8 @@ class Functions
                     $text = 'Micronutriente';
                 }else if($row['tipo_causa'] == 'macro'){
                     $text = 'Macronutriente';
+                }else{
+                    $text = $row['tipo_causa'];
                 }
                 
                 $month = array(
@@ -1010,7 +1012,7 @@ class Functions
                                 <a id="modif'.$row['id_agroquimico'].'" class="close">
                                     <img src="../../img/svg/edit-24px.svg"class="mb-2" alt="">
                                 </a>
-                                <a id="modal'.$row['id_agroquimico'].'" class="text-success text-left text-decoration-none" href="#!">Ver informacion
+                                <a id="modal'.$row['id_agroquimico'].'" class="text-success text-left text-decoration-none" href="#!">Ver información
 
                                 </a>
                             </div>
@@ -1501,7 +1503,7 @@ class Functions
 
                             <div class="card-body pt-3">
                                 
-                                <a id="modalViewGeneralSepend'.$row['id_gasto_general'].'" class="text-success text-left text-decoration-none" href="#">Ver informacion
+                                <a id="modalViewGeneralSepend'.$row['id_gasto_general'].'" class="text-success text-left text-decoration-none" href="#">Ver información
 
                                 </a>
                             </div>
@@ -1745,7 +1747,7 @@ class Functions
 
                             <div class="card-body pt-3">
                                
-                                <a id="modalViewSepend'.$row['id_gasto'].'" class="text-success text-left text-decoration-none" href="#!">Ver informacion
+                                <a id="modalViewSepend'.$row['id_gasto'].'" class="text-success text-left text-decoration-none" href="#!">Ver información
 
                                 </a>
                             </div>
@@ -2091,7 +2093,7 @@ class Functions
 
                             <div class="card-body pt-3">
                                
-                                <a id="modalViewCut'.$row['id_corte'].'" class="text-success text-left text-decoration-none" href="#!">Ver informacion
+                                <a id="modalViewCut'.$row['id_corte'].'" class="text-success text-left text-decoration-none" href="#!">Ver información
 
                                 </a>
                             </div>
