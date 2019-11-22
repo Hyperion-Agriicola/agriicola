@@ -631,7 +631,7 @@
     
     <!--Modal agregar agro-->
     <div style="display: none;">
-        <form id="addAgro-form" class="reg_agro" action="" method="post" id="addForm">
+        <form id="addAgro-form"class="reg_agro" action="" method="post">
             <input type="hidden" id="id_cultivo" name="id_cultivo" value="<?php echo $_GET['id_cultivo'];?>">
             <input type="hidden" name="id_agroquimico" id="id_agroquimico">
             <div class="row">

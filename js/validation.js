@@ -323,43 +323,7 @@ jQuery(function(){
     $.validator.addMethod('decimal', function(value, element) {
         return this.optional(element) || /^((\d+(\\.\d{0,2})?)|((\d*(\.\d{1,2}))))$/.test(value);
       }, "<p class='text-danger' style='font-size: 12px;'>*Ingrese el formato correcto 0.00.</p>" );
-   /*$.validator.addMethod("dateBefore", function (value, element, params) {
-        
-        var end = $(params);
-        if (!end.data('validation.running')) {
-            $(element).data('validation.running', true);
-            setTimeout($.proxy(
-
-            function () {
-                this.element(end);
-            }, this), 0);
-           
-            setTimeout(function () {
-                $(element).data('validation.running', false);
-            }, 0);
-        }
-        return this.optional(element) || this.optional(end[0]) || new Date(value) <= new Date(end.val());
-
-    }, "<p class='text-danger' style='font-size: 12px;'>*La fecha deber ser anterior a la fecha de finalización correspondiente.</p>");
-    
-    $.validator.addMethod("dateAfter", function (value, element, params) {
-        var start = $(params);
-        if (!start.data('validation.running')) {
-            $(element).data('validation.running', true);
-            setTimeout($.proxy(
-
-            function () {
-                this.element(start);
-            }, this), 0);
-            setTimeout(function () {
-                $(element).data('validation.running', false);
-            }, 0);
-        }
-        return this.optional(element) || this.optional(start[0]) || new Date(value) >= new Date($(params).val());
-
-    },  "<p class='text-danger' style='font-size: 12px;'>*La fecha debe ser posterior a la fecha de inicio correspondiente.</p>");
-    */
-
+  
     jQuery(".reg_agro").validate({
             rules:{
                 name_agroq:{
@@ -677,3 +641,169 @@ jQuery(function(){
             numberOfMonths: 2,
         });
     });
+    jQuery(function(){
+        jQuery(".reg_agro").validate({
+            rules:{
+                name_agroq:{
+                    required: true,
+                    alphanumeric: true
+                },
+                precio:{
+                    required: true,
+                    number: true,
+                    min: 0,
+                    maxlength: 11,
+                    decimal: true
+                },
+                cantidad:{
+                    required: true,
+                    number: true,
+                    min: 0,
+                    maxlength: 11
+                },
+                dosis:{
+                    required: true,
+                    number: true,
+                    min: 0,
+                    maxlength: 4,
+                    decimal: true
+        
+                },
+                fecha_inicio:{
+                    required: true
+                },
+                fecha_fin:{
+                    required: true
+                },
+                existencia:{
+                    required: true,
+                    number: true,
+                    min: 0,
+                    maxlength: 4
+                }
+            
+            },
+            messages:{
+                name_agroq:{
+                    required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese un nombre comercial.</p>",
+                    alphanumeric:"<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo letras y numros.</p>"
+                },
+                precio:{
+                    required:"<p class='text-danger' style='font-size: 12px;'>*Ingrese un precio.</p>",
+                    number:"<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo números.</p>",
+                    maxlength:"<p class='text-danger' style='font-size: 12px;'>*Ingrese un precio válido, no mayor a 11 dígitos.</p>",
+                    min:"<p class='text-danger' style='font-size: 12px;'>*Ingrese un precio valido, solo se aceptan precios positivos .</p>"
+                },
+                cantidad:{
+                    required:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad.</p>",
+                    number:"<p class='text-danger' style='font-size: 12px;'>*Ingrese solo números.</p>",
+                    min:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad valida, solo se aceptan cantidades positivas.</p>",
+                    maxlength:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad válida, no mayor a 11 dígitos.</p>"
+                    
+                },
+                dosis:{
+                    required:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una dosis .</p>",
+                    number:"<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo números.</p>",
+                    maxlength:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una dosis valida, solo se aceptan 4 dígitos.</p>",
+                    min:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una dosis válida, solo se aceptan cantidades positivas .</p>"
+                },
+                fecha_inicio:{
+                    required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese una fecha de inicio.</p>"
+                },
+                fecha_fin:{
+                    required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese una fecha de finalizacion.</p>"
+                },
+                existencia:{
+                    required:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad.</p>",
+                    number:"<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo números.</p>",
+                    maxlength:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad válida, solo se aceptan 4 dígitos.</p>",
+                    min:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad válida, solo se aceptan cantidades positivas .</p>"
+                }
+        
+            }
+        });
+    });
+    jQuery(function(){
+        jQuery("#addAgro-form").validate({
+            rules:{
+                name_agroq:{
+                    required: true,
+                    alphanumeric: true
+                },
+                precio:{
+                    required: true,
+                    number: true,
+                    min: 0,
+                    maxlength: 11,
+                    decimal: true
+                },
+                cantidad:{
+                    required: true,
+                    number: true,
+                    min: 0,
+                    maxlength: 11
+                },
+                dosis:{
+                    required: true,
+                    number: true,
+                    min: 0,
+                    maxlength: 4,
+                    decimal: true
+        
+                },
+                fecha_inicio:{
+                    required: true
+                },
+                fecha_fin:{
+                    required: true
+                },
+                existencia:{
+                    required: true,
+                    number: true,
+                    min: 0,
+                    maxlength: 4
+                }
+            
+            },
+            messages:{
+                name_agroq:{
+                    required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese un nombre comercial.</p>",
+                    alphanumeric:"<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo letras y numros.</p>"
+                },
+                precio:{
+                    required:"<p class='text-danger' style='font-size: 12px;'>*Ingrese un precio.</p>",
+                    number:"<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo números.</p>",
+                    maxlength:"<p class='text-danger' style='font-size: 12px;'>*Ingrese un precio válido, no mayor a 11 dígitos.</p>",
+                    min:"<p class='text-danger' style='font-size: 12px;'>*Ingrese un precio valido, solo se aceptan precios positivos .</p>"
+                },
+                cantidad:{
+                    required:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad.</p>",
+                    number:"<p class='text-danger' style='font-size: 12px;'>*Ingrese solo números.</p>",
+                    min:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad valida, solo se aceptan cantidades positivas.</p>",
+                    maxlength:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad válida, no mayor a 11 dígitos.</p>"
+                    
+                },
+                dosis:{
+                    required:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una dosis .</p>",
+                    number:"<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo números.</p>",
+                    maxlength:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una dosis valida, solo se aceptan 4 dígitos.</p>",
+                    min:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una dosis válida, solo se aceptan cantidades positivas .</p>"
+                },
+                fecha_inicio:{
+                    required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese una fecha de inicio.</p>"
+                },
+                fecha_fin:{
+                    required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese una fecha de finalizacion.</p>"
+                },
+                existencia:{
+                    required:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad.</p>",
+                    number:"<p class='text-danger' style='font-size: 12px;'>*Ingrese sólo números.</p>",
+                    maxlength:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad válida, solo se aceptan 4 dígitos.</p>",
+                    min:"<p class='text-danger' style='font-size: 12px;'>*Ingrese una cantidad válida, solo se aceptan cantidades positivas .</p>"
+                }
+        
+            }
+        });
+    });
+
+
