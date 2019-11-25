@@ -1004,7 +1004,7 @@ class Functions
                                     <button type="button" class="close edit_data"><span>&times</span></button>
                                 </a>
                                 <br>
-                                <h4>'.$row['aplicacion'].' : '.$row['nombre_comercial'].'</h4>
+                                <h4>'.ucfirst($row['nombre_comercial']).' : '.$text.'</h4>
                                 
                             </div>
 
@@ -1273,7 +1273,17 @@ class Functions
             }
 
           
-        }        
+        }else{
+            echo "
+            <div class='col-lg-4 col-md-4 col-sm-4 col-4'></div>
+            <div class='col-lg-4 col-md-4 col-sm-4 col-4'>
+                <h3 class='text-center'>No hay datos</h3>
+                <img class='col-12 col-sm-12 col-md-11 col-lg-11' src='../../img/svg/alerts/no_data.svg' width='150px'>
+               
+            </div>
+            <div class='col-lg-4 col-md-4 col-sm-4 col-4'></div>
+        ";
+        }       
         
     }
 

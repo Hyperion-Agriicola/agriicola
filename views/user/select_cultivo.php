@@ -829,7 +829,7 @@
                         <option value="ml">Mililitros</option>
                         <option value="l">Litros</option>
                         <option value="g">Gramos</option>
-                        <option value="kg">Kilogramos</option>
+                        <option value="Kg">Kilogramos</option>
                     </select>
                 </div>
             </div>
@@ -1050,7 +1050,7 @@
             $precio = $_POST['precio'];
             $moneda = $_POST['moneda'];
             $cantidad = $_POST['cantidad'];
-            $unidad_dosis = $_POST['unidad_dosis'];
+            $unidad = $_POST['unidad'];
             $dosis = $_POST['dosis'];
             $unidad_dosis = $_POST['unidad_dosis'];
 
