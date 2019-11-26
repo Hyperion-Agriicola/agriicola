@@ -1,10 +1,11 @@
 <header class="bg-light p-4">
     <div class="container text-center">
-        <div class="row">
+        <div class="row mb-2">
             <div class="col-lg-12 col-md-12 col-sm-12">
-                <a href="dashboard.php" class="close">
-                    <i class="fas fa-times text-danger"></i>
+                <a href="dashboard.php" class="close float-left">
+                    <i class="fas fa-arrow-left" style="color: #B59B7B;"></i>
                 </a>
+                <a id="" class="mt-2 mb-2 text-white btn text-uppercase brown-button float-right" href="#!">Finalizar cultivo</a>
             </div>
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <img src="../../img/svg/grain.svg" style="height:60px;">
