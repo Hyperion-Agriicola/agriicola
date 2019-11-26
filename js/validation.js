@@ -438,7 +438,7 @@ jQuery( function() {
   });
 
   jQuery( function() {
-    var from = $( "#inputInicio" )
+    var from = $( "#inputFechaInicio" )
         .datepicker({
           dateFormat: "yy-mm-dd",
           minDate: "-2W",
@@ -447,7 +447,7 @@ jQuery( function() {
         .on( "change", function() {
           to.datepicker( "option", "minDate", getDate( this ) );
         }),
-      to = $( "#inputFinal" ).datepicker({
+      to = $( "#inputFechaFinal" ).datepicker({
         dateFormat: "yy-mm-dd"
       })
       .on( "change", function() {
@@ -722,6 +722,39 @@ jQuery(function(){
             }
         });
     });
+
+    jQuery( function() {
+        var from = $( "#inputInicio" )
+            .datepicker({
+              dateFormat: "yy-mm-dd",
+              minDate: "-2W",
+              autoclose: true
+            })
+            .on( "change", function() {
+              to.datepicker( "option", "minDate", getDate( this ) );
+            }),
+          to = $( "#inputFinal" ).datepicker({
+            dateFormat: "yy-mm-dd"
+          })
+          .on( "change", function() {
+            from.datepicker( "option", "maxDate", getDate( this ) );
+          });
+      
+        function getDate( element ) {
+          var date;
+          var dateFormat = "yy-mm-dd";
+          try {
+            date = $.datepicker.parseDate( dateFormat, element.value );
+          } catch( error ) {
+            date = null;
+          }
+      
+          return date;
+        }
+      });
+
+
+
     jQuery(function(){
         jQuery("#addAgro-form").validate({
             rules:{
