@@ -4,8 +4,8 @@
             <div class="container text-center">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12">
-                        <a href="dashboard.php?cut=<?php echo $_GET['newCut'];?>&Ground=<?php echo $_GET['Ground'];?>"  class="close" >
-                        <i class="fas fa-times text-danger"></i>
+                        <a href="dashboard.php?cut=<?php echo $_GET['newCut'];?>&Ground=<?php echo $_GET['Ground'];?>"  class="close float-left" >
+                            <i class="fas fa-arrow-left" style="color: #B59B7B;"></i>
                         </a>   
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12">

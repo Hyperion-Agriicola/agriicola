@@ -5,7 +5,9 @@
                     <a href="dashboard.php" class="close float-left">
                         <i class="fas fa-arrow-left" style="color: #B59B7B;"></i>
                     </a>
-                    <a id="" class="mt-2 mb-2 text-white btn text-uppercase brown-button float-right" href="#!">Finalizar cultivo</a> 
+                    <a id="endCrop" class="mt-2 mb-2 text-white btn text-uppercase brown-button float-right" href="#!" data-toggle="tooltip" data-placement="left" title="Seleccione si desea finalizar el ciclo de su cultivo. Podrá reiniciarlo después.">
+                        Finalizar cultivo
+                    </a>
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <img src="../../img/svg/grain.svg" style="height:60px;">

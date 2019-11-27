@@ -78,7 +78,7 @@
 
   <section id="register" class="animated fadeIn animation1">
     <!-- Contenido -->
-    <div class="container col-12 col-sm-12 col-md-10 col-lg-10">
+    <div class="container col-12 col-sm-12 col-md-10 col-lg-8">
       <div class="row">
         <div class="col-2 col-md-4"></div>
         <div class="col-8 col-md-4 col-lg-4 col-sm-8">

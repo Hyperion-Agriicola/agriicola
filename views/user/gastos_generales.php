@@ -55,7 +55,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    ¿Está seguro de eliminar este gasto? Tome en cuenta que ésta acción es irreversible.
+                    ¿Está seguro de eliminar este gasto? Tome en cuenta que esta acción es irreversible.
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
