@@ -162,7 +162,7 @@
   <div class="container">
     <?php
     include('config/functions.php');
-    include('views/user/footer.php');
+    
     $data = new Functions();
 
     if (isset($_POST['userLogin'])) {
@@ -199,7 +199,15 @@
     ?>
   </div>
 
+  <footer class="page-footer font-small blue absolute-bottom">
 
+    <!-- Copyright -->
+    <div class="footer-copyright text-center text-white  shadow-sm py-3">© 2019 Copyright:
+      <a href="#" class="text-decoration-none text-success"> HYPERION</a>
+    </div>
+    <!-- Copyright -->
+
+</footer>
 
   <!-- Bootstrap y Javascripts -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

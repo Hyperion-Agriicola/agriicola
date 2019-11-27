@@ -1,5 +1,9 @@
-<footer class="footer">
-    <!--<div class="container col-lg-12 text-center text-muted">
-        <span>Todos los derechos reservados 2019 &copy; Desarrollado por Hyperion</span>
-    </div>-->
+<footer class="page-footer font-small blue static-bottom bg-white mt-4">
+
+<!-- Copyright -->
+<div class="footer-copyright text-center text-dark  border-top  py-3">© 2019 Copyright:
+  <a href="#"  style="color: #388e3c;"> HYPERION</a>
+</div>
+<!-- Copyright -->
+
 </footer>

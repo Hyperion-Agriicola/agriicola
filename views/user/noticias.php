@@ -18,7 +18,7 @@ include('navbar.php');
 ?>
 
 
-<div class="container">
+<div class="container pt-5 mt-4">
     <div class="row">
         <div class="col-lg-12 pb-4">
         <div class="bd-example">

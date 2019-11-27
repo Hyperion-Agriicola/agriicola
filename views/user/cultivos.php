@@ -1,11 +1,31 @@
-<header class="bg-light p-4">
+<script>
+    
+    window.addEventListener("load", function () {
+
+        Swal.fire({
+            title: "Atención",
+            icon: "info",
+            showCloseButton: true,
+            width: '45rem',
+            text: "No podrá cerrar el registro hasta completarlo. ¿Desea continuar?.",
+            showCancelButton: true,
+            cancelButtonColor: '#d33',
+            confirmButtonColor: '#388e3c',
+            confirmButtonText: "Si",
+            cancelButtonText: "No"
+        }).then((result) => {
+            if (!result.value) {
+                document.location = "dashboard.php";
+            }
+        })
+
+    });
+</script>
+
+<header class="bg-light p-4 pt-5 mt-4">
     <div class="container text-center">
         <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-                <a href="dashboard.php" class="close">
-                    <i class="fas fa-times text-danger"></i>
-                </a>
-            </div>
+            
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <img src="../../img/svg/add.svg" style="height:60px;">
             </div>

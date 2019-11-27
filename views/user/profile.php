@@ -2,7 +2,7 @@
 
 ?>
 
-<div class="bg-light">
+<div class="bg-light pt-5 mt-3">
     <div class="container text-center">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 mt-3">

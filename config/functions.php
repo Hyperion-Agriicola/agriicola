@@ -440,6 +440,41 @@ class Functions
         $result = $conexion->query($sql);
     }
 
+    public function endingCultivos($id_cultivo_recibido)
+    {
+        $conexion = new Database();
+        $sql="UPDATE agroquimicos SET estatus='finalizado' WHERE estatus='activo' AND id_cultivo=".$id_cultivo_recibido;
+        $result = $conexion->query($sql);
+
+        $sql="UPDATE suelo_natural SET estatus='finalizado' WHERE id_cultivo=".$id_cultivo_recibido;
+        $result = $conexion->query($sql);
+
+        $sql="UPDATE suelo_artificial SET estatus='finalizado' WHERE id_cultivo=".$id_cultivo_recibido;
+        $result = $conexion->query($sql);
+
+        $sql="UPDATE gastos SET estatus='finalizado' WHERE id_cultivo=".$id_cultivo_recibido;
+        $result = $conexion->query($sql);
+
+        $sql="UPDATE cultivos SET estatus='finalizado' WHERE id_cultivo=".$id_cultivo_recibido;
+        $result = $conexion->query($sql);
+    }
+
+    public function restoreCrop($id_cultivo_recibido)
+    {
+        $conexion = new Database();
+        $sql="UPDATE agroquimicos SET estatus='activo', fecha_inicio=now() WHERE estatus='finalizado' AND id_cultivo=".$id_cultivo_recibido;
+        $result = $conexion->query($sql);
+
+        $sql="UPDATE suelo_natural SET estatus='activo' WHERE id_cultivo=".$id_cultivo_recibido;
+        $result = $conexion->query($sql);
+
+        $sql="UPDATE suelo_artificial SET estatus='activo' WHERE id_cultivo=".$id_cultivo_recibido;
+        $result = $conexion->query($sql);
+
+        $sql="UPDATE cultivos SET estatus='activo', fecha_inicio=now() WHERE id_cultivo=".$id_cultivo_recibido;
+        $result = $conexion->query($sql);
+    }
+
 
     public function deleteAgroquimicos($id_agro_recibido)
     {
@@ -455,7 +490,7 @@ class Functions
         $conexion = new Database();
         $email = $_SESSION['correo'];
 
-        $query = "SELECT * FROM cultivos WHERE id_u = (SELECT id_u FROM users WHERE correo = '$email') AND estatus!='eliminado'";
+        $query = "SELECT * FROM cultivos WHERE id_u = (SELECT id_u FROM users WHERE correo = '$email') AND estatus!='eliminado' AND estatus!='finalizado'";
         $execQuery = $conexion->query($query);
         if (mysqli_num_rows($execQuery) > 0) {
             while ($row = $execQuery->fetch_array()) {
@@ -861,7 +896,7 @@ class Functions
 
         $conexion = new Database();
         
-        $query = "SELECT * FROM agroquimicos WHERE id_cultivo = '$id_cultivo' AND estatus !='eliminado'";
+        $query = "SELECT * FROM agroquimicos WHERE id_cultivo = '$id_cultivo' AND estatus ='activo';";
         $execQuery = $conexion->query($query);
 
         if (mysqli_num_rows($execQuery) > 0) {
@@ -1631,11 +1666,80 @@ class Functions
         $conexion = new Database();
         $email = $_SESSION['correo'];
 
-        $query = "SELECT * FROM cultivos WHERE id_u = (SELECT id_u FROM users WHERE correo = '$email') AND estatus ='eliminado'";
+        $query = "SELECT * FROM cultivos WHERE id_u = (SELECT id_u FROM users WHERE correo = '$email') AND estatus ='eliminado' OR estatus='finalizado'";
         $execQuery = $conexion->query($query);
         if (mysqli_num_rows($execQuery) > 0) {
             while ($row = $execQuery->fetch_array()) {
-                //../../img/svg/grain.svg
+               if($row['estatus'] == 'finalizado'){
+                    $fechaa = $row['fecha_inicio'];
+                    $niu_fechaa = explode("-", $fechaa);
+
+                    $month = array(
+                        'Enero',
+                        'Febrero',
+                        'Marzo',
+                        'Abril',
+                        'Mayo',
+                        'Junio',
+                        'Julio',
+                        'Agosto',
+                        'Septiembre',
+                        'Octubre',
+                        'Noviembre',
+                        'Diciembre');
+
+                                
+                    echo '
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 my-3">
+                        <div class="card shadow bg-light text-center" style="height: 300px;">
+                            
+                                <div class="card-header bg-white">
+                                    ' . $niu_fechaa[2] . " de " . $month[$niu_fechaa[1] - 1] . " de " . $niu_fechaa[0] . '             
+                                    
+                                </div>
+                                <div class="card-body">
+                                    
+                                        <img src="../../img/svg/grain.svg" width="60">
+                                        <p class="font-weight-bold mt-3"><strong>' . $row['nombre_predio'] . '</strong> </p>
+                                        <p class="text-muted">Estado: '.$row['estatus'].'</p>
+                                    
+                                </div>
+                                
+                                <div class="card-footer bg-white">
+                                    
+                                    <button  id="modalRestore'.$row['id_cultivo'].'" class="btn btn-block btn-success">
+                                        Restaurar
+                                    </button>
+                                   
+                                </div>
+                           
+                        </div>
+                    </div>
+                    
+                    <script>
+                    document.getElementById("modalRestore'.$row['id_cultivo'].'").addEventListener("click", function(){
+                        
+                            Swal.fire({
+                                title: "Atención",
+                                text: "¿Está seguro que desea restaurar este cultivo? A partir de hoy iniciará su cultivo.",
+                                icon: "info",
+                                showCancelButton: true,
+                                confirmButtonColor: "#388e3c",
+                                cancelButtonColor: "#78909c",
+                                cancelButtonText: "Cancelar",
+                                confirmButtonText: "Restaurar"
+                                }).then((result) => {
+                                if (result.value) {
+                                    document.location = "dashboard.php?restore='.$row['id_cultivo'].'";
+                                }
+                            })
+                        
+                    });
+                </script>';
+
+
+                    
+               }elseif ($row['estatus'] == 'eliminado'){
                 $fechaa = $row['fecha_inicio'];
                 $niu_fechaa = explode("-", $fechaa);
 
@@ -1656,7 +1760,7 @@ class Functions
                                
                 echo '
                 <div class="col-lg-4 col-md-4 col-sm-12 col-12 my-3">
-                    <div class="card shadow bg-light text-center">
+                    <div class="card shadow bg-light text-center" style=" height: 300px;">
                         
                             <div class="card-header bg-white">
                                 ' . $niu_fechaa[2] . " de " . $month[$niu_fechaa[1] - 1] . " de " . $niu_fechaa[0] . '             
@@ -1682,31 +1786,12 @@ class Functions
                          </a>-->
                     </div>
                 </div>
-                <!--Modal eliminar-->
-                <div class="modal fade" id="modalEliminar'.$row["id_cultivo"].'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Advertencia</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                ¿Está seguro de eliminar este cultivo? Tome en cuenta que ésta acción es irreversible.
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                                <a href="dashboard.php?cultivo='.$row['id_cultivo'].'" class="btn btn-success" role="button" aria-disabled="true">Aceptar</a>
-                           
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
 
 
                 ';
+               }
+                
             }
         } else {
             echo "

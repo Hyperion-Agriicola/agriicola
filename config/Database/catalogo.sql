@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-11-2019 a las 07:54:47
+-- Tiempo de generación: 25-11-2019 a las 23:49:00
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.8
 
@@ -41,7 +41,6 @@ INSERT INTO `enfermedades` (`id_enfermedad`, `nom_enfermedad`) VALUES
 (32, 'Alternariosis'),
 (31, 'Antracnosis'),
 (2, 'Bacteria'),
-(29, 'Bacteria podredumbre humeda'),
 (37, 'Carbón de la cebolla'),
 (36, 'Cercosporiosis'),
 (7, 'Chancro bacteriano'),
@@ -113,14 +112,16 @@ CREATE TABLE `infraestructura` (
 --
 
 INSERT INTO `infraestructura` (`id_infraestructura`, `nom_infraestructura`) VALUES
+(8, 'A cielo abierto'),
+(10, 'Casa sombra'),
 (1, 'Invernadero'),
 (7, 'Invernaderos de alta tecnologia'),
 (4, 'Invernaderos para plantulas'),
 (3, 'Macrotúnel'),
-(6, 'Macrotuneles'),
-(2, 'Malla de sombra'),
-(5, 'Malla sombra'),
-(8, 'Sin infraestructura');
+(2, 'Malla de sombra o Filtrasol'),
+(9, 'Microtúnel'),
+(12, 'Pabellón'),
+(11, 'Vivero');
 
 -- --------------------------------------------------------
 
@@ -139,15 +140,18 @@ CREATE TABLE `plagas` (
 
 INSERT INTO `plagas` (`id_plaga`, `nom_plaga`) VALUES
 (5, 'Araña roja'),
-(9, 'Gallina Ciega'),
+(9, 'Escarabajo'),
+(13, 'Larva'),
 (11, 'Minadores de hoja'),
 (4, 'Mosca blanca'),
 (10, 'Moscas de la frutas'),
 (1, 'Mosquito'),
-(7, 'Nematodos'),
+(7, 'Nemátodos'),
+(14, 'oruga'),
 (8, 'Picudo'),
 (3, 'Pulgón'),
-(6, 'Tisanópteros');
+(6, 'Tisanópteros'),
+(15, 'Trips');
 
 -- --------------------------------------------------------
 
@@ -166,7 +170,6 @@ CREATE TABLE `riego` (
 
 INSERT INTO `riego` (`id_riego`, `nom_riego`) VALUES
 (3, 'Aspersión'),
-(6, 'Automático'),
 (8, 'Fertirrigación XILEMA'),
 (2, 'Goteo'),
 (5, 'Hidropónico'),
@@ -274,18 +277,51 @@ INSERT INTO `subespecie` (`id_subespecie`, `nom_subespecie`, `id_especie`) VALUE
 (86, 'Papaya', 3),
 (87, 'Yaca', 3),
 (88, 'Lichi', 3),
-(89, 'Cerezo', 3),
 (90, 'Nectarina', 3),
 (91, 'Anacardo', 3),
 (93, 'Rambután', 3),
 (94, 'Guindo', 3),
 (95, 'Higuera', 3),
 (96, 'Fruta de estrella', 3),
-(97, 'Chico zapote', 3),
+(97, 'Chicozapote', 3),
 (98, 'Nogal', 3),
 (99, 'Albaricoque', 3),
 (100, 'Pecan', 3),
-(101, 'Castaño', 3);
+(102, 'Breva', 3),
+(103, 'Cereza', 3),
+(104, 'Ciruela', 3),
+(105, 'Frambuesa', 3),
+(107, 'Melocotón', 3),
+(108, 'Melón', 3),
+(109, 'Membrillero', 3),
+(111, 'Pera', 3),
+(112, 'Sandía', 3),
+(115, 'Caqui', 3),
+(116, 'Chirimoyo', 3),
+(117, 'Coco', 3),
+(118, 'Dátil', 3),
+(119, 'Kiwi', 3),
+(120, 'Kiwiño', 3),
+(124, 'Piña', 3),
+(126, 'Almendro', 3),
+(127, 'Castañas', 3),
+(128, 'Avellanas', 3),
+(129, 'Pistacho', 3),
+(133, 'Zapallo', 2),
+(140, 'Papa', 2),
+(143, 'Arveja', 2),
+(144, 'Locoto', 2),
+(145, 'Chile', 2),
+(146, 'Pimentón', 2),
+(148, 'Yuca', 2),
+(149, 'Quínoa', 1),
+(150, 'Chayote', 2),
+(151, 'Mandarina', 3),
+(152, 'Uva', 3),
+(154, 'Cilantro', 2),
+(155, 'Epazote', 2),
+(156, 'Nopal', 2),
+(157, 'Cacao', 3);
 
 -- --------------------------------------------------------
 
@@ -335,6 +371,7 @@ CREATE TABLE `tipo_suelo` (
 --
 
 INSERT INTO `tipo_suelo` (`id_tipo_suelo`, `nom_tipo_suelo`) VALUES
+(17, 'Acolchado'),
 (4, 'Arcilloso'),
 (8, 'Arcilloso arenoso'),
 (9, 'Arcilloso limoso'),
@@ -420,13 +457,13 @@ ALTER TABLE `tipo_suelo`
 -- AUTO_INCREMENT de la tabla `infraestructura`
 --
 ALTER TABLE `infraestructura`
-  MODIFY `id_infraestructura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_infraestructura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `plagas`
 --
 ALTER TABLE `plagas`
-  MODIFY `id_plaga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_plaga` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `riego`
@@ -435,10 +472,16 @@ ALTER TABLE `riego`
   MODIFY `id_riego` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT de la tabla `subespecie`
+--
+ALTER TABLE `subespecie`
+  MODIFY `id_subespecie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=158;
+
+--
 -- AUTO_INCREMENT de la tabla `tipo_suelo`
 --
 ALTER TABLE `tipo_suelo`
-  MODIFY `id_tipo_suelo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_tipo_suelo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Restricciones para tablas volcadas

@@ -126,6 +126,12 @@ if (!isset($_SESSION['correo'])) {
                 include('select_seguimiento_corte.php');
             }else if (isset($_GET['newCut'])) {
                 include('corte.php');
+            }else if (isset($_GET['end'])) {
+                $data->endingCultivos($_GET['end']);
+                header('Location: dashboard.php');
+            }else if (isset($_GET['restore'])) {
+                $data->restoreCrop($_GET['restore']);
+                header('Location: dashboard.php');
             }else {
                 include('profile.php');
                 ?>
@@ -163,7 +169,9 @@ if (!isset($_SESSION['correo'])) {
                 </div>
             </div>
         <?php
+            
             }
+            include('footer.php');
         ?>
 
         <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
