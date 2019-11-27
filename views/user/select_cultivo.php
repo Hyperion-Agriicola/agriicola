@@ -966,20 +966,20 @@
 <script>
     document.getElementById("endCrop").addEventListener("click", function(){
         
-            Swal.fire({
-                title: "Atención",
-                text: "¿Está seguro que desea finalizar este cultivo? Podrá reinciar su perido más tarde, en historial de cultivos",
-                icon: "info",
-                showCancelButton: true,
-                confirmButtonColor: "#388e3c",
-                cancelButtonColor: "#78909c",
-                cancelButtonText: "Cancelar",
-                confirmButtonText: "Finalizar"
-                }).then((result) => {
-                if (result.value) {
-                    document.location = "dashboard.php?end=<?php echo $_GET['id_cultivo']; ?>";
-                }
-            })
+        Swal.fire({
+            title: "Atención",
+            text: "¿Está seguro que desea finalizar este cultivo? Podrá reinciar su perido más tarde, en historial de cultivos",
+            icon: "info",
+            showCancelButton: true,
+            confirmButtonColor: "#388e3c",
+            cancelButtonColor: "#78909c",
+            cancelButtonText: "Cancelar",
+            confirmButtonText: "Finalizar"
+            }).then((result) => {
+            if (result.value) {
+                document.location = "dashboard.php?end=<?php echo $_GET['id_cultivo']; ?>";
+            }
+        })
         
     });
 </script>

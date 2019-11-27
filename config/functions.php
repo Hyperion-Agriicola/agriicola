@@ -370,7 +370,27 @@ class Functions
         $execUserQuery = $conexion->query($getUserQuery) or trigger_error(mysqli_error($conexion));
 
         $upperNomCom = ucwords(strtolower($nom_comer));
+        
+        $color = '';
+        if($aplicacion == 'Nutriente'){
+            $color = "#6D4C41";
+        }elseif($aplicacion == 'Enfermedad'){
+            $color = "#FBC02D";
+        }elseif($aplicacion == 'Plaga'){
+            $color = "#e53935";
+        }
 
+        $text = "";
+        if($tipo == 'micro'){
+            $text = 'Micronutriente';
+        }else if($tipo == 'macro'){
+            $text = 'Macronutriente';
+        }else{
+            $text = $tipo;
+        }
+
+        $descripcion = $dosis . " " . $unidad_dosis . " " . strtolower($frecuencia);
+        $titulo = $nom_comer . " : " . $text;
         if ($execUserQuery) {
             $userRow = $execUserQuery->fetch_array();
 
@@ -382,7 +402,11 @@ class Functions
 
             $result = $conexion->query($query)
                 or trigger_error(mysqli_error($conexion));
-
+            
+            $query = "INSERT INTO eventos (id_cultivo, titulo, descripcion, inicio, fin, color, text_color, fecha_registro) VALUES ('$userRow[id_cultivo]', '$titulo', '$descripcion','$fecha_inicio', '$fecha_fin', '$color', '#fff', now() )";
+        
+            $result = $conexion->query($query) or trigger_error(mysqli_error($conexion));
+            
             if (!$result) {
                 echo "
                 <div class='container mt-4'>
@@ -438,6 +462,9 @@ class Functions
 
         $sql="UPDATE cultivos SET estatus='eliminado' WHERE id_cultivo=".$id_cultivo_recibido;
         $result = $conexion->query($sql);
+
+        $sql="DELETE FROM eventos  WHERE id_cultivo=".$id_cultivo_recibido;
+        $result = $conexion->query($sql);
     }
 
     public function endingCultivos($id_cultivo_recibido)
@@ -456,6 +483,9 @@ class Functions
         $result = $conexion->query($sql);
 
         $sql="UPDATE cultivos SET estatus='finalizado' WHERE id_cultivo=".$id_cultivo_recibido;
+        $result = $conexion->query($sql);
+
+        $sql="DELETE FROM eventos  WHERE id_cultivo=".$id_cultivo_recibido;
         $result = $conexion->query($sql);
     }
 
@@ -2038,7 +2068,26 @@ class Functions
         $existencia
 
     ) {
+        $color = '';
+        if($aplicacion == 'Nutriente'){
+            $color = "#6D4C41";
+        }elseif($aplicacion == 'Enfermedad'){
+            $color = "#FBC02D";
+        }elseif($aplicacion == 'Plaga'){
+            $color = "#e53935";
+        }
 
+        $text = "";
+        if($tipo == 'micro'){
+            $text = 'Micronutriente';
+        }else if($tipo == 'macro'){
+            $text = 'Macronutriente';
+        }else{
+            $text = $tipo;
+        }
+
+        $descripcion = $dosis . " " . $unidad_dosis . " " . strtolower($frecuencia);
+        $titulo = $nom_comer . " : " . $text;
         $conexion = new Database();
         
         $query = "INSERT INTO agroquimicos (id_cultivo, aplicacion, nombre_comercial, precio, moneda,
@@ -2047,8 +2096,11 @@ class Functions
         '$precio', '$moneda', '$cantidad', '$unidad', '$dosis', '$unidad_dosis', '$tipo', '$frecuencia', '$fecha_inicio',
         '$fecha_fin', '$existencia', now())";
 
-        $result = $conexion->query($query)
-            or trigger_error(mysqli_error($conexion));
+        $result = $conexion->query($query) or trigger_error(mysqli_error($conexion));
+        
+        $query = "INSERT INTO eventos (id_cultivo, titulo, descripcion, inicio, fin, color, text_color, fecha_registro) VALUES ('$id_cultivo', '$titulo', '$descripcion','$fecha_inicio', '$fecha_fin', '$color', '#fff', now() )";
+        
+        $result = $conexion->query($query) or trigger_error(mysqli_error($conexion));    
 
         if (!$result) {
             echo "

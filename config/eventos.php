@@ -1,19 +1,16 @@
 <?php
-    //include('../views/dashboard.php');
-    //include('functions.php');
-   // $data = new Functions();
+    
     header('Content-Type: application/json');
     $pdo = new PDO("mysql:dbname=agriicola; host=localhost","root","");
-    //$id_u = $data->getUserProfile()[9];
+   
     $accion=(isset($_GET['accion']))?$_GET['accion']:'leer';
     
     switch($accion){
         case 'agregar':
             //Agrega un evento a la BD
-            $sql = $pdo->prepare("INSERT INTO eventos(id_u, id_cultivo, titulo, descripcion, inicio, fin, text_color, color, fecha_registro) VALUES(:id_u, :id_cultivo, :title, :descripcion, :start, :end, :textColor, :color, now())");
+            $sql = $pdo->prepare("INSERT INTO eventos(id_cultivo, titulo, descripcion, inicio, fin, text_color, color, fecha_registro) VALUES(:id_cultivo, :title, :descripcion, :start, :end, :textColor, :color, now())");
 
             $resultado = $sql->execute(array(
-                "id_u" => $_POST['id_u'],
                 "id_cultivo" => $_POST['id_cultivo'],
                 "title" => $_POST['title'],
                 "descripcion" => $_POST['descripcion'],
@@ -32,7 +29,8 @@
                 inicio=:start,
                 fin=:end,
                 text_color=:textColor,
-                color=:color
+                color=:color,
+                fecha_modif = now()
                 WHERE id_evento=:id_evento
             ");
 
@@ -60,7 +58,7 @@
             break;    
         default:
             //Consulta los eventos en la BD, y los convierte a json para mostrar en calendario
-            $sql = $pdo->prepare("SELECT id_u, id_cultivo, id_evento, titulo as 'title', descripcion, inicio as 'start', fin as 'end', color, text_color as 'textColor' FROM eventos WHERE id_u= 10");
+            $sql = $pdo->prepare("SELECT id_cultivo, id_evento, titulo as 'title', descripcion, inicio as 'start', fin as 'end', color, text_color as 'textColor' FROM eventos WHERE id_cultivo= ".$_GET['accion']."");
             $sql->execute();
             $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
             echo json_encode($resultado);  

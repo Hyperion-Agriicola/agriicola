@@ -2,6 +2,9 @@
         $id_u = $data->getUserId($_SESSION['correo']);
         $id_cultivo = $_GET['Tracing'];
     ?>
+    <script>
+        EnviarInformacion(<?php echo $id_cultivo; ?>, "");
+    </script>
 <script
 			  src="https://code.jquery.com/jquery-3.4.1.min.js"
 			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -16,7 +19,6 @@
  <div style="display: none;">
     <form id="event-form" class="form-eventos" action="" method="POST">
         <div class="row">
-            <input type="hidden"  id="id_u" name="id_u" value="<?php echo $id_u; ?>">
             <input type="hidden"  id="id_cultivo" name="id_cultivo" value="<?php echo $id_cultivo; ?>">
             <input type="hidden"  id="id_evento" name="id_evento">
             <div class="col-lg-12 col-md-12 col-sm-12">
@@ -37,7 +39,7 @@
                 <div class="form-group">
                     <label for="inputHoraInicio">Hora</label>
                     <div class="input-group clockpicker" data-autoclose="true">
-                        <input type="text" placeholder="08:00" class="form-control" id="inputHoraInicio" name="hora_inicio" required>
+                        <input type="text" placeholder="..." class="form-control" id="inputHoraInicio" name="hora_inicio" required>
                         <span id="alert1"></span>
                     </div>    
                 </div>
@@ -54,7 +56,7 @@
                 <div class="form-group">
                     <label for="inputHoraFinal">Hora</label>
                     <div class="input-group clockpicker" data-autoclose="true">
-                        <input type="text" placeholder="08:00" class="form-control" id="inputHoraFinal" name="hora_final">
+                        <input type="text" placeholder="..." class="form-control" id="inputHoraFinal" name="hora_final">
                         <span id="alert2"></span>
                     </div>
                     
@@ -80,7 +82,7 @@
 
         <div class="swal2">
             
-            <button id="btGuardar" type="submit" class="swal2-confirm swal2-styled" style="background-color: #388e3c;">Guardar</button>
+            <button id="btGuardar" type="button" class="swal2-confirm swal2-styled" style="background-color: #388e3c;">Guardar</button>
             <button id="btModificar" type="button" class="swal2-confirm swal2-styled" style="background-color: #388e3c;">Actualizar</button>
             <button id="btEliminar" type="button" class="swal2-confirm swal2-styled" style="background-color: #d33;">Eliminar</button>
         </div>
@@ -104,15 +106,6 @@
             
             dayClick:function(date, jsEvent, view){
                 
-                $('#btGuardar').show();
-                $('#btModificar').hide();
-                $('#btEliminar').hide();
-
-                LimpiarFormularioEvento();
-                $('#tituloEvento').html("Nuevo evento: " + date.format());
-                $('#inputFechaInicio').val(date.format());
-                $('#inputFechaFinal').val(date.format());
-                
                 Swal.fire({
                     title: "Nuevo evento: " + date.format(),
                     showCloseButton: true,
@@ -122,36 +115,22 @@
                     showConfirmButton : false,
                     
                     }).then((result) => {
-                    if (result.value) {
-                        //form.submit();
+                    if (!result.value) {
+                        
                     }
                 });
+                LimpiarFormularioEvento();
+               
+                $('#inputFechaInicio').val(date.format());
+                $('#inputFechaFinal').val(date.format());
+                $('#btGuardar').show();
+                $('#btModificar').hide();
+                $('#btEliminar').hide();
             },
-            events:'http://localhost:8080/agriicola/config/eventos.php',
+            events:'http://localhost:8080/agriicola/config/eventos.php?accion=<?php echo $_GET['Tracing'];?>',
         
             
             eventClick:function(calEvent, jsEvent, view){
-                
-
-                //Mostar los datos en los inputs
-                $('#inputDescripcion').val(calEvent.descripcion);
-                $('#id_u').val(calEvent.id_u);
-                $('#id_cultivo').val(calEvent.id_cultivo);
-                $('#id_evento').val(calEvent.id_evento);
-                $('#inputTitulo').val(calEvent.title);
-                $('#inputColor').val(calEvent.color);
-
-                var FechaHoraInicio = calEvent.start._i.split(" ");
-                $('#inputFechaInicio').val(FechaHoraInicio[0]);
-                $('#inputHoraInicio').val(FechaHoraInicio[1]);
-
-                var FechaHoraFinal = calEvent.end._i.split(" ");
-                $('#inputFechaFinal').val(FechaHoraFinal[0]);
-                $('#inputHoraInicio').val(FechaHoraInicio[1]);
-                
-                $('#btModificar').show();
-                $('#btEliminar').show();
-                $('#btGuardar').hide();
                 
                 Swal.fire({
                     title: calEvent.title,
@@ -162,10 +141,31 @@
                     showConfirmButton : false,
                     
                     }).then((result) => {
-                    if (result.value) {
-                        //form.submit();
+                        
+                    if (result.dismiss == Swal.DismissReason.close) {
+                        
+                        LimpiarFormularioEvento();
+                      
                     }
                 });
+                
+                $('#btModificar').show();
+                $('#btEliminar').show();
+                $('#btGuardar').hide();
+                //Mostar los datos en los inputs
+                $('#inputDescripcion').val(calEvent.descripcion);
+                $('#id_cultivo').val(calEvent.id_cultivo);
+                $('#id_evento').val(calEvent.id_evento);
+                $('#inputTitulo').val(calEvent.title);
+                $('#inputColor').val(calEvent.color);
+
+                var FechaHoraInicio = calEvent.start.format().split("T");
+                $('#inputFechaInicio').val(FechaHoraInicio[0]);
+                $('#inputHoraInicio').val(FechaHoraInicio[1]);
+
+                var FechaHoraFinal = calEvent.end.format().split("T");
+                $('#inputFechaFinal').val(FechaHoraFinal[0]);
+                $('#inputHoraFinal').val(FechaHoraFinal[1]);
             },
             editable: true,
             eventDrop:function(calEvent){
@@ -184,6 +184,7 @@
 
                 RecolectarDatosUI();
                 EnviarInformacion('modificar', nuevo_evento, true);
+                
             }
             
 
@@ -191,30 +192,6 @@
     });
 </script>
 
-    
-    
-    
-    
-    <!--<script>
-        var formagro = document.getElementById("event-form");
-        document.getElementById("addNewAgro").addEventListener("click", function(){
-                        
-                Swal.fire({
-                    title: "Modificar datos del suelo",
-                    showCloseButton: true,
-                    width: '50rem',
-                    html: formagro,
-                    showCancelButton: false,
-                    showConfirmButton : false,
-                    
-                    }).then((result) => {
-                    if (result.value) {
-                        //form.submit();
-                    }
-                })
-            
-        });
-    </script> -->
 
 <script>
     
@@ -223,25 +200,50 @@
     $('#btGuardar').click(function(){
 
         RecolectarDatosUI();
-        EnviarInformacion('agregar', nuevo_evento);
         
+        if($('#inputTitulo').val() != "" || $('#inputDescripcion').val() != "" || $('#inputHoraInicio').val() != "" || $('#inputHoraFinal').val() != ""){
+        EnviarInformacion('agregar', nuevo_evento);
+        Swal.close();
+
+        const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        onOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+        });
+
+        Toast.fire({
+        icon: 'success',
+        title: 'Evento creado correctamente!'
+        });
+        }else{
+            Swal.fire(
+                    'Error!',
+                   'Asegúrese de no dejar campos vacíos.',
+                   'info'
+               );
+        }
     });
 
     $('#btEliminar').click(function(){
         RecolectarDatosUI();
         EnviarInformacion('eliminar', nuevo_evento);
-        
+        Swal.close();
     });
 
     $('#btModificar').click(function(){
         RecolectarDatosUI();
         EnviarInformacion('modificar', nuevo_evento);
-        
+        Swal.close();
     });
 
     function RecolectarDatosUI(){
             nuevo_evento = {
-            id_u: $('#id_u').val(),
             id_cultivo: $('#id_cultivo').val(),
             id_evento: $('#id_evento').val(),
             title: $('#inputTitulo').val(),
@@ -260,17 +262,14 @@
             type:'POST',
             url:'../../config/eventos.php?accion='+accion,
             data: objEvento,
-            success:function(msg){
-                if(msg){
-                    $('#calendar').fullCalendar('refetchEvents');
-                    if(!modal){
-                            $('#modalEventos').swal('toggle');
-                        }
-                    
-                }
+            success:function(){   
+                $('#calendar').fullCalendar('refetchEvents');
             },
             error:function(){
-                alert("Ha ocurrido un error");
+               Swal.fire(
+                   'No se ha podido completar la acción',
+                   'error'
+               );
             }
         });
 
@@ -281,8 +280,10 @@
     function LimpiarFormularioEvento(){
         $('#id_evento').val('');
         $('#inputTitulo').val('');
-        $('#inputColor').val('');
+        $('#inputColor').val('#303F9F');
         $('#inputDescripcion').val('');
+        
+        
     }
 </script>
 
