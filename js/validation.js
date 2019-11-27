@@ -254,8 +254,9 @@ jQuery( ".registro" ).validate({
 $(function(){
     $("#inputDate").datepicker({
         dateFormat: "yy-mm-dd",
-        numberOfMonths: 2,
-        minDate: "-2W"
+        numberOfMonths: 1,
+        minDate: "-2W",
+        autoclose: true
         
     });
 });
@@ -418,7 +419,8 @@ jQuery( function() {
           to.datepicker( "option", "minDate", getDate( this ) );
         }),
       to = $( ".inputFechaFinal" ).datepicker({
-        dateFormat: "yy-mm-dd"
+        dateFormat: "yy-mm-dd",
+        autoclose: true
       })
       .on( "change", function() {
         from.datepicker( "option", "maxDate", getDate( this ) );
@@ -448,7 +450,8 @@ jQuery( function() {
           to.datepicker( "option", "minDate", getDate( this ) );
         }),
       to = $( "#inputFechaFinal" ).datepicker({
-        dateFormat: "yy-mm-dd"
+        dateFormat: "yy-mm-dd",
+        autoclose: true
       })
       .on( "change", function() {
         from.datepicker( "option", "maxDate", getDate( this ) );
@@ -513,13 +516,15 @@ jQuery(function(){
 jQuery(function(){
     $("#inputFechaGasto").datepicker({
         dateFormat: "yy-mm-dd",
-        numberOfMonths: 2,
+        numberOfMonths: 1,
+        autoclose: true
     });
 });
 jQuery(function(){
     $("#inputFechaG").datepicker({
         dateFormat: "yy-mm-dd",
-        numberOfMonths: 2, 
+        numberOfMonths: 1, 
+        autoclose: true
     });
 });
 
@@ -637,7 +642,8 @@ jQuery(function(){
     jQuery(function(){
         $("#inputFechaCorte").datepicker({
             dateFormat: "yy-mm-dd",
-            numberOfMonths: 2,
+            numberOfMonths: 1,
+            autoclose: true
         });
     });
     jQuery(function(){
@@ -734,7 +740,8 @@ jQuery(function(){
               to.datepicker( "option", "minDate", getDate( this ) );
             }),
           to = $( "#inputFinal" ).datepicker({
-            dateFormat: "yy-mm-dd"
+            dateFormat: "yy-mm-dd",
+            autoclose: true
           })
           .on( "change", function() {
             from.datepicker( "option", "maxDate", getDate( this ) );
