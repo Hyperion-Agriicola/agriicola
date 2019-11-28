@@ -31,7 +31,7 @@
             <div class="col-lg-6 col-md-6 col-sm-6">    
                 <div class="form-group">
                     <label for="inputFechaInicio">Fecha de inicio</label>
-                    <input placeholder="Seleccione una fecha" class="form-control" id="inputFechaInicio" name="fecha_inicio" required>
+                    <input  placeholder="Seleccione una fecha" class="form-control" id="inputFechaInicio" name="fecha_inicio" required>
                 </div>
             </div>
 
@@ -39,7 +39,7 @@
                 <div class="form-group">
                     <label for="inputHoraInicio">Hora</label>
                     <div class="input-group clockpicker" data-autoclose="true">
-                        <input type="text" placeholder="..." class="form-control" id="inputHoraInicio" name="hora_inicio" required>
+                        <input  placeholder="..." class="form-control" id="inputHoraInicio" name="hora_inicio" required>
                         <span id="alert1"></span>
                     </div>    
                 </div>
@@ -56,7 +56,7 @@
                 <div class="form-group">
                     <label for="inputHoraFinal">Hora</label>
                     <div class="input-group clockpicker" data-autoclose="true">
-                        <input type="text" placeholder="..." class="form-control" id="inputHoraFinal" name="hora_final">
+                        <input placeholder="..." class="form-control" id="inputHoraFinal" name="hora_final">
                         <span id="alert2"></span>
                     </div>
                     
@@ -127,7 +127,7 @@
                 $('#btModificar').hide();
                 $('#btEliminar').hide();
             },
-            events:'http://localhost:8080/agriicola/config/eventos.php?accion=<?php echo $_GET['Tracing'];?>',
+            events:'http://localhost:4040/agriicola/config/eventos.php?accion=<?php echo $_GET['Tracing'];?>',
         
             
             eventClick:function(calEvent, jsEvent, view){
