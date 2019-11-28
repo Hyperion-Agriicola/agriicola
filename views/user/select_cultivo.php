@@ -44,7 +44,7 @@
         <div class="col-md-4 col-sm-10">
             <a href="dashboard.php?Tracing=<?php echo $_GET['id_cultivo'];?>&Ground=<?php echo $_GET['tipo_suelo'];?>"
                 class="href text-decoration-none" name="seguimiento">
-                <button type="button" class=" btn1 btn btn-light btn-block p-3 shadow mb-4"
+                <button type="button" class=" btn0 btn-light btn-block p-3 shadow mb-4"
                     style="font-size: 20px; text-align:center;">
                     <i class="far fa-chart-bar float-left"></i>
                     Seguimiento
@@ -55,7 +55,7 @@
         <div class="col-md-4 col-sm-10">
             <a href="dashboard.php?Spend=<?php echo $_GET['id_cultivo'];?>&Ground=<?php echo $_GET['tipo_suelo'];?>"
                 class="href text-decoration-none">
-                <button type="button" class="btn2 btn-light btn-block p-3 shadow mb-4"
+                <button type="button" class="btn0 btn-light btn-block p-3 shadow mb-4"
                     style="font-size: 20px; text-align:center">
                     <i class="fas fa-dollar-sign float-left"></i>
                     Gastos

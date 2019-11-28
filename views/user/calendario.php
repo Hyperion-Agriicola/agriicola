@@ -31,11 +31,11 @@
             <div class="col-lg-6 col-md-6 col-sm-6">    
                 <div class="form-group">
                     <label for="inputFechaInicio">Fecha de inicio</label>
-                    <input placeholder="Seleccione una fecha" class="form-control" id="inputFechaInicio" name="fecha_inicio" required>
+                    <input disabled type="date" placeholder="Seleccione una fecha" class="form-control" id="inputFechaInicio" name="fecha_inicio" required>
                 </div>
             </div>
 
-            <div class="col-lg-6 col-md-6 col-sm-6">    
+           <!-- <div class="col-lg-6 col-md-6 col-sm-6">    
                 <div class="form-group">
                     <label for="inputHoraInicio">Hora</label>
                     <div class="input-group clockpicker" data-autoclose="true">
@@ -43,16 +43,16 @@
                         <span id="alert1"></span>
                     </div>    
                 </div>
-            </div>
+            </div>-->
 
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="form-group">
-                    <label for="inputFechaFinal">Fecha de finalización</label>
-                    <input placeholder="Seleccione una fecha" class="form-control" id="inputFechaFinal" name="fecha_final">
+                    <label for="inputFinal">Fecha de finalización</label>
+                    <input type="datepicker" placeholder="Seleccione una fecha" class="form-control" id="inputFinal" name="">
                 </div>
             </div>
 
-            <div class="col-lg-6 col-md-6 col-sm-6">    
+            <!--<div class="col-lg-6 col-md-6 col-sm-6">    
                 <div class="form-group">
                     <label for="inputHoraFinal">Hora</label>
                     <div class="input-group clockpicker" data-autoclose="true">
@@ -61,7 +61,7 @@
                     </div>
                     
                 </div>
-            </div>
+            </div>-->
 
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <div class="form-group">
@@ -109,20 +109,20 @@
                 Swal.fire({
                     title: "Nuevo evento: " + date.format(),
                     showCloseButton: true,
-                    width: '50rem',
+                    width: '40rem',
                     html: formevent,
                     showCancelButton: false,
                     showConfirmButton : false,
                     
                     }).then((result) => {
-                    if (!result.value) {
+                    if (result.value) {
                         
                     }
                 });
                 LimpiarFormularioEvento();
                
                 $('#inputFechaInicio').val(date.format());
-                $('#inputFechaFinal').val(date.format());
+                $('#inputFinal').val(date.format());
                 $('#btGuardar').show();
                 $('#btModificar').hide();
                 $('#btEliminar').hide();
@@ -135,7 +135,7 @@
                 Swal.fire({
                     title: calEvent.title,
                     showCloseButton: true,
-                    width: '50rem',
+                    width: '40rem',
                     html: formevent,
                     showCancelButton: false,
                     showConfirmButton : false,
@@ -161,11 +161,11 @@
 
                 var FechaHoraInicio = calEvent.start.format().split("T");
                 $('#inputFechaInicio').val(FechaHoraInicio[0]);
-                $('#inputHoraInicio').val(FechaHoraInicio[1]);
+                //$('#inputHoraInicio').val(FechaHoraInicio[1]);
 
                 var FechaHoraFinal = calEvent.end.format().split("T");
-                $('#inputFechaFinal').val(FechaHoraFinal[0]);
-                $('#inputHoraFinal').val(FechaHoraFinal[1]);
+                $('#inputFinal').val(FechaHoraFinal[0]);
+                //$('#inputHoraFinal').val(FechaHoraFinal[1]);
             },
             editable: true,
             eventDrop:function(calEvent){
@@ -176,11 +176,11 @@
 
                 var FechaHoraInicio = calEvent.start.format().split("T");
                 $('#inputFechaInicio').val(FechaHoraInicio[0]);
-                $('#inputHoraInicio').val(FechaHoraInicio[1]);
+                //$('#inputHoraInicio').val(FechaHoraInicio[1]);
 
                 var FechaHoraFinal = calEvent.end.format().split("T");
-                $('#inputFechaFinal').val(FechaHoraFinal[0]);
-                $('#inputHoraFinal').val(FechaHoraFinal[1]);
+                $('#inputFinal').val(FechaHoraFinal[0]);
+                //$('#inputHoraFinal').val(FechaHoraFinal[1]);
 
                 RecolectarDatosUI();
                 EnviarInformacion('modificar', nuevo_evento, true);
@@ -201,7 +201,7 @@
 
         RecolectarDatosUI();
         
-        if($('#inputTitulo').val() != "" || $('#inputDescripcion').val() != "" || $('#inputHoraInicio').val() != "" || $('#inputHoraFinal').val() != ""){
+        if($('#inputTitulo').val() != ""){
         EnviarInformacion('agregar', nuevo_evento);
         Swal.close();
 
@@ -223,9 +223,9 @@
         });
         }else{
             Swal.fire(
-                    'Error!',
-                   'Asegúrese de no dejar campos vacíos.',
-                   'info'
+                    'No se puede crear el evento',
+                   'Asegúrese de ponerle un título.',
+                   'error'
                );
         }
     });
@@ -247,8 +247,8 @@
             id_cultivo: $('#id_cultivo').val(),
             id_evento: $('#id_evento').val(),
             title: $('#inputTitulo').val(),
-            start: $('#inputFechaInicio').val() + " " + $('#inputHoraInicio').val(),
-            end: $('#inputFechaFinal').val() + " " + $('#inputHoraFinal').val(),
+            start: $('#inputFechaInicio').val(), //+ " " + $('#inputHoraInicio').val(),
+            end: $('#inputFinal').val(), //+ " " + $('#inputHoraFinal').val(),
             color: $('#inputColor').val(),
             descripcion: $('#inputDescripcion').val(),
             textColor: "#FFFFFF"
@@ -268,6 +268,7 @@
             error:function(){
                Swal.fire(
                    'No se ha podido completar la acción',
+                   'Recargue la página y vuelva a interntarlo',
                    'error'
                );
             }

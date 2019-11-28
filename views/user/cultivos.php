@@ -50,8 +50,8 @@
 
         $name = $_POST['namecrop'];
         $hectares = $_POST['hectares'];
-        $subspecie = $_POST['subspecie'];
-        $specieType = $_POST['specieType'];
+        $subspecie = $_POST['cbx_subespecie'];
+        $specieType = $_POST['cbx_especie'];
         $variation = $_POST['variation'];
         $bornDate = $_POST['bornDate'];
         $state = $_POST['state'];
@@ -115,27 +115,48 @@
                 </div>
             </div>
 
+            <?php
+                $conexion = new Catalog();
+                $query = "SELECT id_especie, nom_especie FROM especie ORDER BY nom_especie";
+                $resultado=$conexion->query($query);
+            ?>
+            <script language="javascript" src="../../js/jquery-3.1.1.min.js"></script>
+            <script language="javascript">
+                $(document).ready(function () {
+                    $("#cbx_especie").change(function () {
+
+
+
+                        $("#cbx_especie option:selected").each(function () {
+                            id_especie = $(this).val();
+                            $.post("../../config/getsubespecie.php", {
+                                id_especie: id_especie
+                            }, function (data) {
+                                $("#cbx_subespecie").html(data);
+                            });
+                        });
+                    })
+                });
+            </script>
+
+
+
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
                     <label for="inputSpecie">Tipo de especie</label>
-                    <select name="specieType" class="form-control" id="inputSpecie">
-                        <option disabled>Selecciona una especie</option>
-                        <?php 
-                            $data->getSpecie("");
-                        ?>
+                    <select name="cbx_especie" class="form-control" id="cbx_especie">
+                        <option value="0">Selecciona la especie</option>
+                        <?php while($row = $resultado->fetch_array()) { ?>
+                        <option value="<?php echo $row['nom_especie']; ?>"><?php echo $row['nom_especie']; ?></option>
+                        <?php } ?>
                     </select>
                 </div>
             </div>
-            
+
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
                     <label for="inputSubspecie">Subespecie</label>
-                    <select name="subspecie" class="form-control" id="inputSubspecie">
-                        <option disabled>Selecciona una subespecie</option>
-                        <?php 
-                            $data->getSubspecie("");
-                        ?>
-                    </select>
+                    <select name="cbx_subespecie" class="form-control" id="cbx_subespecie"></select>
                 </div>
             </div>
             

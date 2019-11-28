@@ -34,7 +34,7 @@ if (!isset($_SESSION['correo'])) {
         <style>
             .fc th {
                 padding: 15px;
-                background: #5C6BC0;
+                background: #1976D2;
                 color: #fff;
                 font-weight: 500;
             }
@@ -52,7 +52,7 @@ if (!isset($_SESSION['correo'])) {
             .fc-button {
                 width: 80px;
                 height: 50px !important;
-                background: #3949AB;
+                background: #1976D2;
                 color: #ffffff !important;
                 font-weight: 500 !important;
                 border: none;
@@ -63,6 +63,10 @@ if (!isset($_SESSION['correo'])) {
                 height: 25px;
                 font-size: 15px;
 
+            }
+
+            .fc-center h2::first-letter{
+                text-transform: capitalize;
             }
         </style>
     </head>

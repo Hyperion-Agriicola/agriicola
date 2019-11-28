@@ -577,20 +577,7 @@ jQuery(function(){
             }
         }
     });
-    $("#inputHoraFinal").blur(function(){
-        var horaInicio = $("#inputHoraInicio").val();
-        var horaFin = $("#inputHoraFinal").val();
-        if (horaFin == "00:00" && horaInicio > horaFin) {
-            $("#inputHoraFinal").parent().after(
-                $("#alert2").html('<p class="text-success" style="font-size: 12px;">Finalizaste la jornada para esta fecha.</p>')
-            );
-        } else if (horaFin <= horaInicio) {
-            $("#inputHoraFinal").parent().after(
-                $("#alert2").html('<p class="text-danger" style="font-size: 12px;">*La hora de finalización debe ser mayor a la hora de inicio.</p>')
-            );
-            $("#inputHoraFinal").val("");
-        } 
-    })
+   
 
     jQuery("#corte").validate({
         rules:{
