@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 22-11-2019 a las 00:37:12
+-- Tiempo de generación: 28-11-2019 a las 00:11:03
 -- Versión del servidor: 5.7.24
 -- Versión de PHP: 7.2.11
 
@@ -57,21 +57,40 @@ INSERT INTO `agroquimicos` (`id_cultivo`, `id_agroquimico`, `aplicacion`, `nombr
 (33, 14, 'Nutriente', 'Abono de crecimiento', 4, 'pesos', 7, 'ml', 6, 'semana', 'micro', 'Diario', '2019-11-11', '2019-11-20', 6, 'eliminado', '2019-11-11', NULL),
 (34, 15, 'Plaga', 'lc3', 800, 'pesos', 70, 'ml', 2, 'dias', 'AraÃ±a roja', 'Cada 2 dias', '2019-11-20', '2019-11-29', 3, 'activo', '2019-11-11', NULL),
 (35, 16, 'Nutriente', 'Abono', 5, 'pesos', 2, 'ml', 3, 'semana', '', 'Diario', '2019-11-16', '2019-11-17', 4, 'eliminado', '2019-11-16', '2019-11-20'),
-(36, 17, 'Nutriente', 'Nombresito de nutriente', 15, 'pesos', 10, 'ml', 8, 'semana', 'micro', 'Diario', '2019-11-16', '2019-11-19', 4, 'activo', '2019-11-16', NULL),
-(37, 18, 'Nutriente', 'Abono', 5, 'pesos', 7, 'Kg', 4, 'semana', 'micro', 'Diario', '2019-11-20', '2019-11-28', 4, 'activo', '2019-11-18', NULL),
-(37, 19, 'Nutriente', 'Segundo abono', 500, 'Pesos', 10, 'ml', 10, 'Semana', 'micro', 'Diario', '2019-11-18', '2019-11-19', 2, 'activo', '2019-11-18', NULL),
-(37, 20, 'Nutriente', 'Abono', 9, 'pesos', 9, 'ml', 4, 'semana', 'macro', 'Diario', '2019-11-18', '2019-11-19', 5, 'activo', '2019-11-18', '2019-11-18'),
+(36, 17, 'Nutriente', 'Nombresito de nutriente', 15, 'pesos', 10, 'ml', 8, 'semana', 'micro', 'Diario', '2019-11-16', '2019-11-19', 4, 'eliminado', '2019-11-16', NULL),
+(37, 18, 'Nutriente', 'Abono', 5, 'pesos', 7, 'Kg', 4, 'semana', 'micro', 'Diario', '2019-11-26', '2019-11-28', 4, 'finalizado', '2019-11-18', NULL),
+(37, 19, 'Nutriente', '', 500, '', 10, 'ml', 10, '', 'micro', 'Diario', '2019-11-26', '2019-11-19', 2, 'finalizado', '2019-11-18', '2019-11-22'),
+(37, 20, 'Nutriente', '', 9, 'pesos', 9, 'ml', 4, '', 'macro', 'Diario', '2019-11-26', '2019-11-19', 5, 'finalizado', '2019-11-18', '2019-11-22'),
 (38, 21, 'Nutriente', 'Abono', 700, 'pesos', 20, 'Kg', 1, 'semana', 'macro', 'Diario', '2019-11-19', '2019-11-20', 8, 'eliminado', '2019-11-19', NULL),
 (39, 22, 'Nutriente', 'Abono', 3, 'pesos', 2, 'l', 3, 'dias', 'macro', 'Cada 13 dias', '2019-11-22', '2019-11-29', 6, 'activo', '2019-11-19', NULL),
-(37, 23, 'Plaga', 'Tengo piojos :c', 3, 'pesos', 4, 'ml', 2, 'semana', '', 'Diario', '2019-11-20', '2019-11-21', 2, 'eliminado', '2019-11-20', '2019-11-20'),
-(37, 24, '', 'Toy enfermo :c', 3, 'pesos', 2, 'ml', 2, 'semana', '', 'Diario', '2019-11-21', '2019-11-22', 2, 'eliminado', '2019-11-20', '2019-11-20'),
+(37, 23, 'Plaga', 'Tengo piojos :c', 3, 'pesos', 4, 'ml', 2, 'semana', '', 'Diario', '2019-11-26', '2019-11-21', 2, 'finalizado', '2019-11-20', '2019-11-20'),
+(37, 24, '', 'Toy enfermo :c', 3, 'pesos', 2, 'ml', 2, 'semana', '', 'Diario', '2019-11-26', '2019-11-22', 2, 'finalizado', '2019-11-20', '2019-11-20'),
 (35, 25, 'Enfermedad', 'Terminator', 5, 'pesos', 4, 'ml', 3, 'semana', '', 'Diario', '2019-11-20', '2019-11-21', 4, 'eliminado', '2019-11-20', '2019-11-20'),
-(36, 26, 'Nutriente', 'Ab', 6, 'pesos', 5, 'ml', 3, 'semana', 'micro', 'Diario', '2019-11-20', '2019-11-21', 3, 'activo', '2019-11-20', '2019-11-20'),
-(36, 27, 'Enfermedad', 'Terminator 2', 5, 'pesos', 4, 'ml', 3, 'semana', 'Cercosporosis', 'Diario', '2019-11-20', '2019-11-21', 3, 'activo', '2019-11-20', '2019-11-20'),
-(36, 28, 'Plaga', 'Antipiojos', 4, 'pesos', 1, 'l', 3, 'semana', 'Mosquita', 'Diario', '2019-11-20', '2019-11-22', 4, 'activo', '2019-11-20', '2019-11-20'),
-(37, 29, 'Nutriente', 'ABono 2', 12, 'pesos', 6, '', 10, 'g', 'micro', 'Diario', '2019-11-21', '2019-11-22', 5, 'activo', '2019-11-21', NULL),
-(40, 30, 'Nutriente', 'Abono', 5, 'dolar', 3, 'l', 2, 'ml', 'macro', 'Diario', '2019-11-21', '2019-11-22', 3, 'activo', '2019-11-21', '2019-11-21'),
-(41, 31, 'Plaga', 'Foley', 250, 'pesos', 1, 'l', 200, 'ml', 'PulgÃ³n', 'Cada 3 dias', '2019-11-28', '2019-12-27', 2, 'activo', '2019-11-21', NULL);
+(36, 26, 'Nutriente', 'Ab', 6, 'pesos', 5, 'ml', 3, 'semana', 'micro', 'Diario', '2019-11-20', '2019-11-21', 3, 'eliminado', '2019-11-20', '2019-11-20'),
+(36, 27, 'Enfermedad', 'Terminator 2', 5, 'pesos', 4, 'ml', 3, 'semana', 'Cercosporosis', 'Diario', '2019-11-20', '2019-11-21', 3, 'eliminado', '2019-11-20', '2019-11-20'),
+(36, 28, 'Plaga', 'Antipiojos', 4, 'pesos', 1, 'l', 3, 'semana', 'Mosquita', 'Diario', '2019-11-20', '2019-11-22', 4, 'eliminado', '2019-11-20', '2019-11-20'),
+(37, 29, 'Nutriente', '', 12, 'pesos', 6, '', 10, 'g', 'micro', 'Diario', '2019-11-26', '2019-11-22', 5, 'finalizado', '2019-11-21', '2019-11-22'),
+(40, 30, 'Nutriente', 'Abono', 5, 'dolar', 3, 'l', 2, 'ml', 'macro', 'Diario', '2019-11-21', '2019-11-22', 3, 'eliminado', '2019-11-21', '2019-11-21'),
+(41, 31, 'Plaga', 'Foley', 250, 'pesos', 1, 'l', 200, 'ml', 'PulgÃ³n', 'Cada 3 dias', '2019-11-28', '2019-12-27', 2, 'activo', '2019-11-21', NULL),
+(41, 32, 'Nutriente', '', 250, 'pesos', 1, '', 200, 'ml', 'micro', 'Diario', '2019-11-21', '2019-11-22', 2, 'eliminado', '2019-11-21', '2019-11-21'),
+(37, 33, 'Enfermedad', 'Foley', 100, 'pesos', 10, '', 12, 'ml', 'Hernia de la col', 'Cada 10 dias', '2019-11-26', '2019-12-27', 12, 'finalizado', '2019-11-22', NULL),
+(37, 34, 'Plaga', 'Insecticida', 200, 'pesos', 10, '', 100, 'ml', 'PulgÃ³n', 'Cada 2 dias', '2019-11-26', '2019-11-24', 10, 'finalizado', '2019-11-24', NULL),
+(37, 35, 'Plaga', 'Insecticida', 100, 'pesos', 5, 'l', 100, 'ml', 'AraÃ±a roja', 'Cada 5 dias', '2019-11-26', '2019-12-31', 1, 'finalizado', '2019-11-24', NULL),
+(37, 36, 'Nutriente', 'Abono', 450, 'pesos', 20, 'kg', 100, 'g', 'micro', 'Cada 1 dias', '2019-11-26', '2019-11-23', 2, 'finalizado', '2019-11-24', NULL),
+(37, 37, 'Nutriente', 'Abono', 200, 'pesos', 10, 'Kg', 200, 'g', 'micro', 'Cada 2 dias', '2019-11-26', '2019-12-31', 2, 'finalizado', '2019-11-24', NULL),
+(40, 38, 'Enfermedad', 'Fuley', 500, 'pesos', 20, 'l', 10, 'ml', 'Grasa de la judia', 'Cada 2 dias', '2019-11-15', '2019-11-30', 2, 'eliminado', '2019-11-24', NULL),
+(40, 39, 'Plaga', 'Insecticida', 100, 'pesos', 1, 'l', 20, 'ml', 'AraÃ±a roja', 'Cada 1 dias', '2019-11-24', '2019-11-29', 1, 'eliminado', '2019-11-24', NULL),
+(42, 40, 'Nutriente', 'Abono', 200, 'pesos', 10, 'l', 100, 'ml', 'micro', 'Diario', '2019-11-27', '2019-11-28', 12, 'activo', '2019-11-26', NULL),
+(42, 41, 'Enfermedad', 'Enfermito', 500, 'pesos', 10, 'Kg', 10, 'g', 'Esclerotinosis', 'Cada 1 dias', '2019-11-26', '2019-11-28', 4, 'eliminado', '2019-11-26', NULL),
+(43, 42, 'Nutriente', 'Crecimax', 300, 'pesos', 20, 'Kg', 100, 'g', 'macro', 'Cada 3 dias', '2019-11-26', '2019-12-20', 1, 'activo', '2019-11-26', NULL),
+(44, 43, 'Nutriente', 'El Abono De Siempre', 100, 'pesos', 10, 'Kg', 100, 'g', 'micro', 'Diario', '2019-11-27', '2019-12-07', 1, 'activo', '2019-11-27', NULL),
+(42, 44, 'Nutriente', 'Nutri', 5, 'pesos', 3, 'Kg', 3, 'g', 'micro', 'Cada 1 dias', '2019-11-27', '2019-11-29', 2, 'activo', '2019-11-27', NULL),
+(42, 45, 'Enfermedad', 'Enfermito', 200, 'pesos', 7, 'l', 40, 'ml', 'Grasa de la judia', 'Cada 1 dias', '2019-11-27', '2019-11-15', 1, 'activo', '2019-11-27', NULL),
+(42, 46, 'Plaga', 'Raid', 100, 'pesos', 2, 'l', 10, 'ml', 'Larva', 'Cada 1 dias', '2019-11-18', '2019-11-20', 1, 'eliminado', '2019-11-27', NULL),
+(42, 47, 'Plaga', 'XD', 3, 'pesos', 5, 'ml', 4, 'ml', 'AraÃ±a roja', 'Cada 1 dias', '2019-11-18', '2019-11-20', 3, 'eliminado', '2019-11-27', NULL),
+(42, 48, 'Plaga', 'XD', 3, 'pesos', 4, 'ml', 3, 'ml', 'AraÃ±a roja', 'Cada 1 dias', '2019-11-27', '2019-11-20', 3, 'activo', '2019-11-27', NULL),
+(42, 49, 'Nutriente', 'Abono Pro', 500, 'pesos', 20, 'Kg', 200, 'g', 'micro', 'Cada 4 dias', '2019-11-27', '2019-11-16', 2, 'activo', '2019-11-27', NULL),
+(45, 50, 'Nutriente', 'Abono', 300, 'pesos', 20, 'Kg', 200, 'g', 'micro', 'Diario', '2019-11-19', '2019-11-29', 1, 'activo', '2019-11-27', NULL);
 
 -- --------------------------------------------------------
 
@@ -134,12 +153,16 @@ INSERT INTO `cultivos` (`id_u`, `id_cultivo`, `nombre_predio`, `hectareas`, `tip
 (7, 33, 'Predio Pro', 5, 'Granos', 'Maiz', 'Maiz negro', '2019-11-11', 'Michoacan de Ocampo', 'Hidalgo', 'Mangana', 'artificial', 'activo', '2019-11-11', NULL),
 (8, 34, 'Predio Agua Blanca', 80, 'Frutales', 'Aguacate', 'azul', '2019-11-11', 'Michoacan de Ocampo', 'LÃ¡zaro CÃ¡rdenas', 'LÃ¡zaro CÃ¡rdenas', 'natural', 'activo', '2019-11-11', NULL),
 (10, 35, 'La Joya', 12, 'Granos', 'Arroz', 'Grande', '2019-11-16', 'MichoacÃ¡n de Ocampo', 'Hidalgo', 'Hidalgo', 'artificial', 'eliminado', '2019-11-16', '2019-11-18'),
-(10, 36, 'Segundo Predio', 10, 'Frutales', 'Aguacate', 'Haz', '2019-11-16', 'Michoacan de Ocampo', 'Hidalgo', 'Hidalgo', 'artificial', 'activo', '2019-11-16', '2019-11-18'),
-(10, 37, 'Jujodesu', 100, 'Frutales', 'Acelga', 'Sin Variedad', '2019-11-21', 'Michoacan de Ocampo', 'Hidalgo', 'Hidalgo', 'natural', 'activo', '2019-11-18', NULL),
+(10, 36, 'Segundo Predio', 10, 'Frutales', 'Aguacate', 'Haz', '2019-11-16', 'Michoacan de Ocampo', 'Hidalgo', 'Hidalgo', 'artificial', 'eliminado', '2019-11-16', '2019-11-18'),
+(10, 37, 'Jujodesu', 100, 'Frutales', 'Acelga', 'Sin Variedad', '2019-11-26', 'Michoacan de Ocampo', 'Hidalgo', 'Hidalgo', 'natural', 'finalizado', '2019-11-18', NULL),
 (11, 38, 'Predio 1', 6, 'Granos', 'Maiz', 'Maiz Blanco', '2019-11-19', 'Michoacan de Ocampo', 'Hidalgo', 'Ciudad Hidalgo', 'natural', 'eliminado', '2019-11-19', NULL),
 (11, 39, 'Tomates Locos', 1, 'Hortalizas', 'Jitomate', 'Rojo', '2019-11-20', 'Michoacan de Ocampo', 'Hidalgo', 'Ciudad Hidalgo', 'artificial', 'activo', '2019-11-19', NULL),
-(10, 40, 'San Geronimo', 19, 'Frutales', 'Aguacate', 'Szsss', '2019-11-21', 'Michoacan de Ocampo', 'Hidalgo', 'Hidalgo', 'natural', 'activo', '2019-11-21', NULL),
-(12, 41, 'Predio Uno', 3, 'Hortalizas', 'Calabaza', 'Suchini', '2019-11-07', 'Michoacan de Ocampo', 'Tuxpan', 'Tuxpan', 'natural', 'activo', '2019-11-21', NULL);
+(10, 40, 'San Geronimo', 19, 'Frutales', 'Aguacate', 'Szsss', '2019-11-21', 'Michoacan de Ocampo', 'Hidalgo', 'Hidalgo', 'natural', 'eliminado', '2019-11-21', '2019-11-22'),
+(12, 41, 'Predio Uno', 3, 'Hortalizas', 'Calabaza', 'Suchini', '2019-11-07', 'Michoacan de Ocampo', 'Tuxpan', 'Tuxpan', 'natural', 'activo', '2019-11-21', NULL),
+(13, 42, 'San Pablo', 10, 'Granos', 'MaÃ­z', 'Negro', '2019-11-27', 'Michoacan de Ocampo', 'Hidalgo', 'Hidalgo', 'artificial', 'activo', '2019-11-26', NULL),
+(10, 43, 'Benito Juarez', 12, 'Granos', 'Alfalfa', 'Sxd', '2019-11-26', 'Tlaxcala', 'Huixtla', 'Huixtla', 'artificial', 'activo', '2019-11-26', NULL),
+(13, 44, 'Julito', 1, 'Hortalizas', 'Acelga', 'Acelga Chida', '2019-11-27', 'Michoacan de Ocampo', 'Hidalgo', 'Hidalgo', 'artificial', 'activo', '2019-11-27', NULL),
+(13, 45, 'El Predion', 10, 'Frutales', 'Aguacate', 'Haz', '2019-11-27', 'Michoacan de Ocampo', 'Uruapan', 'Uruapan', 'natural', 'activo', '2019-11-27', NULL);
 
 -- --------------------------------------------------------
 
@@ -148,7 +171,6 @@ INSERT INTO `cultivos` (`id_u`, `id_cultivo`, `nombre_predio`, `hectareas`, `tip
 --
 
 CREATE TABLE `eventos` (
-  `id_u` int(11) NOT NULL,
   `id_cultivo` int(11) NOT NULL,
   `id_evento` int(11) NOT NULL,
   `titulo` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
@@ -165,8 +187,9 @@ CREATE TABLE `eventos` (
 -- Volcado de datos para la tabla `eventos`
 --
 
-INSERT INTO `eventos` (`id_u`, `id_cultivo`, `id_evento`, `titulo`, `descripcion`, `inicio`, `fin`, `color`, `text_color`, `fecha_registro`, `fecha_modif`) VALUES
-(10, 37, 1, 'asd', 'asd', '2019-11-18 00:00:00', '2019-11-19 00:00:00', '#4caf50', '#FFFFFF', '2019-11-18', NULL);
+INSERT INTO `eventos` (`id_cultivo`, `id_evento`, `titulo`, `descripcion`, `inicio`, `fin`, `color`, `text_color`, `fecha_registro`, `fecha_modif`) VALUES
+(44, 45, 'Evento de Juli', 'Evento bien chido', '2019-11-04 00:00:00', '2019-11-06 01:00:00', '#303f9f', '#FFFFFF', '2019-11-27', NULL),
+(45, 69, 'Abono : Micronutriente', '200 g diario', '2019-11-19 00:00:00', '2019-11-29 00:00:00', '#6D4C41', '#fff', '2019-11-27', NULL);
 
 -- --------------------------------------------------------
 
@@ -192,7 +215,7 @@ CREATE TABLE `gastos` (
 --
 
 INSERT INTO `gastos` (`id_cultivo`, `id_gasto`, `concepto`, `precio`, `moneda`, `frecuencia`, `fecha_gasto`, `estatus`, `fecha_registro`, `fecha_modif`) VALUES
-(37, 1, 'Nurientes', 27, 'Pesos', 'Semanal', '2019-11-21', 'activo', '2019-11-20', NULL);
+(37, 1, 'Nurientes', 27, 'Pesos', 'Semanal', '2019-11-21', 'finalizado', '2019-11-20', NULL);
 
 -- --------------------------------------------------------
 
@@ -260,8 +283,11 @@ CREATE TABLE `suelo_artificial` (
 INSERT INTO `suelo_artificial` (`id_cultivo`, `id_suelo_artificial`, `sustrato`, `infraestructura`, `riego`, `estatus`, `fecha_registro`, `fecha_modif`) VALUES
 (33, 8, 'De origen naturales', 'Invernaderos de alta tecnologia', 'AutomÃ¡tico', 'eliminado', '2019-11-11', NULL),
 (35, 9, 'Arcilla expandida', 'Invernadero', 'AspersiÃ²n', 'eliminado', '2019-11-16', NULL),
-(36, 10, 'Arcilla expandida', 'Macro tuneles', 'NebulizaciÃ³n', 'activo', '2019-11-16', '2019-11-18'),
-(39, 11, 'Grava', 'Malla de sombra', 'Goteo', 'activo', '2019-11-19', NULL);
+(36, 10, 'Arcilla expandida', 'Macro tuneles', 'NebulizaciÃ³n', 'eliminado', '2019-11-16', '2019-11-18'),
+(39, 11, 'Grava', 'Malla de sombra', 'Goteo', 'activo', '2019-11-19', NULL),
+(42, 12, 'Grava', 'Sin infraestructura', 'Sin riego', 'activo', '2019-11-26', NULL),
+(43, 13, 'Arcilla expandida', 'A cielo abierto', 'AspersiÃ³n', 'activo', '2019-11-26', NULL),
+(44, 14, 'Arcilla expandida', 'A cielo abierto', 'Rodado', 'activo', '2019-11-27', NULL);
 
 -- --------------------------------------------------------
 
@@ -301,10 +327,11 @@ CREATE TABLE `suelo_natural` (
 
 INSERT INTO `suelo_natural` (`id_cultivo`, `id_suelo_natural`, `tipo_suelo`, `infraestructura`, `riego`, `ph`, `salinidad`, `conduc_elec`, `materia_organica`, `zinc`, `nitratos`, `fosforo`, `potasio`, `manganeso`, `calcio`, `cobre`, `oxido_azufre`, `boro`, `magnesio`, `oxigeno`, `estatus`, `fecha_registro`, `fecha_modif`) VALUES
 (34, 6, 'Arenosos', 'Macro tuneles', 'Rodado', 4, 2, 3, 62, 55, 38, 26, 60, 60, 26, 17, 73, 65, 21, 17, 'activo', '2019-11-11', NULL),
-(37, 7, 'Arenosos', 'Invernaderos de alta tecnologia', 'AutomÃ¡tico', 12, 4, 6, 40, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 'activo', '2019-11-18', '2019-11-18'),
+(37, 7, 'Arenosos', 'Invernaderos de alta tecnologia', 'AutomÃ¡tico', 12, 4, 6, 40, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 'finalizado', '2019-11-18', '2019-11-18'),
 (38, 8, 'Arcillosos', 'Invernadero', 'AspersiÃ²n', 14, 4, 3, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 'eliminado', '2019-11-19', NULL),
-(40, 9, 'Arcilloso limoso', 'Sin infraestructura', 'Sin riego', 7, 5, 6, 43, 4, 74, 6, 39, 4, 39, 9, 80, 50, 50, 11, 'activo', '2019-11-21', NULL),
-(41, 10, 'Franco limoso', 'Macrotuneles', 'Goteo', 7, 5, 3, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 'activo', '2019-11-21', NULL);
+(40, 9, 'Arcilloso limoso', 'Sin infraestructura', 'Sin riego', 7, 5, 6, 43, 4, 74, 6, 39, 4, 39, 9, 80, 50, 50, 11, 'eliminado', '2019-11-21', NULL),
+(41, 10, 'Franco limoso', 'Macrotuneles', 'Goteo', 7, 5, 3, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 'activo', '2019-11-21', NULL),
+(45, 11, 'Arenoso', 'A cielo abierto', 'Sin riego', 9, 3, 4, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 'activo', '2019-11-27', NULL);
 
 -- --------------------------------------------------------
 
@@ -339,9 +366,10 @@ INSERT INTO `users` (`id_u`, `nombre`, `apellido`, `telefono`, `correo`, `acceso
 (7, 'Abraham', 'Ayala Padilla', 7861191310, 'dev.abxy@gmail.com', 'a23cceabef4dec1f5cb71c7a1a3f6073dac756bd', 'ARPAN', 'user', 'Morelia', 'Michoacan de Ocampo', '2019-11-11', '2019-11-11', '50fe2fbf139a9bb14df0f59a85964988', '2019-11-16 17:29:08'),
 (8, 'MARICELA', 'ALVAREZ SANCHEZ', 4432454567, 'MALVAREZ@ITSCH.EDU.MX', '1ba06515413d507858e0071c591356d1ec652af9', 'ITSCH', 'user', 'Hidalgo', 'Michoacan de Ocampo', '2019-11-11', NULL, '', '0000-00-00 00:00:00'),
 (9, 'Lil', 'Pepe', 7861234569, 'lil@agriicola.com', 'a23cceabef4dec1f5cb71c7a1a3f6073dac756bd', 'ARPAN', 'user', 'Morelia', 'Michoacan', '2019-11-11', '2019-11-16', '27939345b942f4517f765a0327dc4933', '2019-11-16 09:25:35'),
-(10, 'Prueba', 'Prueba', 7875462626, 'prueba@gmail.com', 'f5a88633f84d974671d09fce75a5d2758eaf00fd', 'PRUEBACORP', 'user', 'Morelia', 'Michoacan', '2019-11-16', NULL, NULL, NULL),
+(10, 'Test', 'Prueba', 7875462626, 'prueba@gmail.com', 'f5a88633f84d974671d09fce75a5d2758eaf00fd', 'PRUEBACORP', 'user', 'Morelia', 'Michoacan', '2019-11-16', '2019-11-26', NULL, NULL),
 (11, 'Prueba Innmortal', 'Apellido', 7861456789, 'innmortal@agriicola.com', 'f5a88633f84d974671d09fce75a5d2758eaf00fd', 'INNMORTAL', 'user', 'Morelia', 'Michoacan de Ocampo', '2019-11-19', NULL, NULL, NULL),
-(12, 'Test', 'Test', 4531236578, 'test@gmail.com', 'f5a88633f84d974671d09fce75a5d2758eaf00fd', 'TEST', 'user', 'Hidalgo', 'Michoacan de Ocampo', '2019-11-21', NULL, NULL, NULL);
+(12, 'Test', 'Test', 4531236578, 'test@gmail.com', 'f5a88633f84d974671d09fce75a5d2758eaf00fd', 'TEST', 'user', 'Hidalgo', 'Michoacan de Ocampo', '2019-11-21', NULL, NULL, NULL),
+(13, 'German ', 'Suarez', 5523151995, 'german@gmail.com', 'f5a88633f84d974671d09fce75a5d2758eaf00fd', 'FORD', 'user', 'Hidalgo', 'Michoacan de Ocampo', '2019-11-22', NULL, NULL, NULL);
 
 --
 -- Índices para tablas volcadas
@@ -373,8 +401,7 @@ ALTER TABLE `cultivos`
 --
 ALTER TABLE `eventos`
   ADD PRIMARY KEY (`id_evento`),
-  ADD KEY `id_cultivo` (`id_cultivo`),
-  ADD KEY `id_u` (`id_u`);
+  ADD KEY `id_cultivo` (`id_cultivo`);
 
 --
 -- Indices de la tabla `gastos`
@@ -425,7 +452,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `agroquimicos`
 --
 ALTER TABLE `agroquimicos`
-  MODIFY `id_agroquimico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_agroquimico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT de la tabla `corte`
@@ -437,13 +464,13 @@ ALTER TABLE `corte`
 -- AUTO_INCREMENT de la tabla `cultivos`
 --
 ALTER TABLE `cultivos`
-  MODIFY `id_cultivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id_cultivo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT de la tabla `eventos`
 --
 ALTER TABLE `eventos`
-  MODIFY `id_evento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_evento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT de la tabla `gastos`
@@ -467,19 +494,19 @@ ALTER TABLE `profiles`
 -- AUTO_INCREMENT de la tabla `suelo_artificial`
 --
 ALTER TABLE `suelo_artificial`
-  MODIFY `id_suelo_artificial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_suelo_artificial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `suelo_natural`
 --
 ALTER TABLE `suelo_natural`
-  MODIFY `id_suelo_natural` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_suelo_natural` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_u` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_u` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Restricciones para tablas volcadas
@@ -507,8 +534,7 @@ ALTER TABLE `cultivos`
 -- Filtros para la tabla `eventos`
 --
 ALTER TABLE `eventos`
-  ADD CONSTRAINT `eventos_ibfk_1` FOREIGN KEY (`id_cultivo`) REFERENCES `cultivos` (`id_cultivo`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `eventos_ibfk_2` FOREIGN KEY (`id_u`) REFERENCES `users` (`id_u`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `eventos_ibfk_1` FOREIGN KEY (`id_cultivo`) REFERENCES `cultivos` (`id_cultivo`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `gastos`
