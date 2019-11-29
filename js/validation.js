@@ -408,36 +408,6 @@ jQuery(function(){
 
 /*Validaciones Fecha inicio-Fecha final*/
 
-jQuery( function() {
-    var from = $( ".inputFechaInicio" )
-        .datepicker({
-          dateFormat: "yy-mm-dd",
-          minDate: "-2W",
-          autoclose: true
-        })
-        .on( "change", function() {
-          to.datepicker( "option", "minDate", getDate( this ) );
-        }),
-      to = $( ".inputFechaFinal" ).datepicker({
-        dateFormat: "yy-mm-dd",
-        autoclose: true
-      })
-      .on( "change", function() {
-        from.datepicker( "option", "maxDate", getDate( this ) );
-      });
-  
-    function getDate( element ) {
-      var date;
-      var dateFormat = "yy-mm-dd";
-      try {
-        date = $.datepicker.parseDate( dateFormat, element.value );
-      } catch( error ) {
-        date = null;
-      }
-  
-      return date;
-    }
-  });
 
   jQuery( function() {
     var from = $( "#inputFechaInicio" )
@@ -529,55 +499,42 @@ jQuery(function(){
 });
 
 /*Modal Calendario*/
+/**FECHAS DEL CALENDARIO */
+jQuery( function() {
+    var from = $( "#inputfechaInicio" )
+        .datepicker({
+          dateFormat: "yy-mm-dd",
+          autoclose: true
+        })
+        .on( "change", function() {
+          to.datepicker( "option", "minDate", getDate( this ) );
+        }),
+      to = $( "#inputFFinal" ).datepicker({
+        dateFormat: 'yy-mm-dd',
+        autoSize: true,
+        minDate: new Date(),
+        autoclose: true
+      })
+      .on( "change", function() {
+        from.datepicker( "option", "maxDate", getDate( this ) );
+      });
+  
+    function getDate( element ) {
+      var date;
+      var dateFormat = "yy/mm/dd";
+      try {
+        date = $.datepicker.parseDate( dateFormat, element.value );
+      } catch( error ) {
+        date = null;
+      }
+  
+      return date;
+    }
+  });
 
-    jQuery("#event-form").validate({
-        rules:{
-            titulo:{
-                required: true,
-                alphanumeric: true
-            },
-            fecha_inicio:{
-                required: true
-            },
-            fecha_final:{
-                required: true
+  
 
-            },
-            hora_inicio:{
-                required: true
-                
-            },
-            hora_final:{
-                required: true
-               
-            },
-            descripcion:{
-                required: true
-            }
-        },
-        messages:{
-            titulo:{
-                required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese un título de evento.</p>",
-                alphanumeric: "<p class='text-danger' style='font-size: 12px;'>*Sólo se aceptan letras y números.</p>"
-            },
-            fecha_inicio:{
-                required: "<p class='text-danger' style='font-size: 12px;'>*Seleccione una fecha de inicio.</p>"
-            },
-            fecha_final:{
-                required: "<p class='text-danger' style='font-size: 12px;'>*Seleccione una fecha de finalización.</p>"
-            },
-            hora_inicio:{
-                required: "<p class='text-danger' style='font-size: 12px;'>*Seleccione una hora de inicio.</p>"
-            },
-            hora_final:{
-                required: "<p class='text-danger' style='font-size: 12px;'>*Seleccione una hora de finalización.</p>"
-            },
-            descripcion:{
-                required: "<p class='text-danger' style='font-size: 12px;'>*Ingrese una descripción del evento.</p>"
-            }
-        }
-    });
-   
+
 
     jQuery("#corte").validate({
         rules:{
@@ -715,38 +672,37 @@ jQuery(function(){
             }
         });
     });
-
-    jQuery( function() {
-        var from = $( "#inputInicio" )
-            .datepicker({
-              dateFormat: "yy-mm-dd",
-              minDate: "-2W",
-              autoclose: true
-            })
-            .on( "change", function() {
-              to.datepicker( "option", "minDate", getDate( this ) );
-            }),
-          to = $( "#inputFinal" ).datepicker({
-            dateFormat: "yy-mm-dd",
-            autoclose: true
-          })
-          .on( "change", function() {
-            from.datepicker( "option", "maxDate", getDate( this ) );
-          });
-      
-        function getDate( element ) {
-          var date;
-          var dateFormat = "yy-mm-dd";
-          try {
-            date = $.datepicker.parseDate( dateFormat, element.value );
-          } catch( error ) {
-            date = null;
-          }
-      
-          return date;
-        }
+   /**Agregar agroquimico */
+   jQuery( function() {
+    var from = $( "#inputFecha1" )
+        .datepicker({
+          dateFormat: "yy-mm-dd",
+          minDate: "-2W",
+          autoclose: true
+        })
+        .on( "change", function() {
+          to.datepicker( "option", "minDate", getDate( this ) );
+        }),
+      to = $( "#inputFecha2" ).datepicker({
+        dateFormat: "yy-mm-dd",
+        autoclose: true
+      })
+      .on( "change", function() {
+        from.datepicker( "option", "maxDate", getDate( this ) );
       });
-
+  
+    function getDate( element ) {
+      var date;
+      var dateFormat = "yy-mm-dd";
+      try {
+        date = $.datepicker.parseDate( dateFormat, element.value );
+      } catch( error ) {
+        date = null;
+      }
+  
+      return date;
+    }
+  });
 
 
     jQuery(function(){

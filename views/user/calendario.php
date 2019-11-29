@@ -31,7 +31,7 @@
             <div class="col-lg-6 col-md-6 col-sm-6">    
                 <div class="form-group">
                     <label for="inputFechaInicio">Fecha de inicio</label>
-                    <input disabled type="datepicker" placeholder="Seleccione una fecha" class="form-control" id="inputFechaInicio" name="fecha_inicio" required>
+                    <input disabled  placeholder="Seleccione una fecha" class="form-control" id="inputfechaInicio" name="fecha_inicio" required>
                 </div>
             </div>
 
@@ -48,7 +48,7 @@
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="form-group">
                     <label for="inputFinal">Fecha de finalización</label>
-                    <input type="datepicker" placeholder="Seleccione una fecha" class="form-control" id="inputFinal" name="">
+                    <input  placeholder="Seleccione una fecha" class="form-control" id="inputFFinal" name="fecha_fin1">
                 </div>
             </div>
 
@@ -121,8 +121,8 @@
                 });
                 LimpiarFormularioEvento();
                
-                $('#inputFechaInicio').val(date.format());
-                $('#inputFinal').val(date.format());
+                $('#inputfechaInicio').val(date.format());
+                $('#inputFFinal').val("");
                 $('#btGuardar').show();
                 $('#btModificar').hide();
                 $('#btEliminar').hide();
@@ -160,11 +160,11 @@
                 $('#inputColor').val(calEvent.color);
 
                 var FechaHoraInicio = calEvent.start.format().split("T");
-                $('#inputFechaInicio').val(FechaHoraInicio[0]);
+                $('#inputfechaInicio').val(FechaHoraInicio[0]);
                 //$('#inputHoraInicio').val(FechaHoraInicio[1]);
 
                 var FechaHoraFinal = calEvent.end.format().split("T");
-                $('#inputFinal').val(FechaHoraFinal[0]);
+                $('#inputFFinal').val(FechaHoraFinal[0]);
                 //$('#inputHoraFinal').val(FechaHoraFinal[1]);
             },
             editable: true,
@@ -175,11 +175,11 @@
                 $('#inputDescripcion').val(calEvent.descripcion);
 
                 var FechaHoraInicio = calEvent.start.format().split("T");
-                $('#inputFechaInicio').val(FechaHoraInicio[0]);
+                $('#inputfechaInicio').val(FechaHoraInicio[0]);
                 //$('#inputHoraInicio').val(FechaHoraInicio[1]);
 
                 var FechaHoraFinal = calEvent.end.format().split("T");
-                $('#inputFinal').val(FechaHoraFinal[0]);
+                $('#inputFFinal').val(FechaHoraFinal[0]);
                 //$('#inputHoraFinal').val(FechaHoraFinal[1]);
 
                 RecolectarDatosUI();
@@ -247,8 +247,8 @@
             id_cultivo: $('#id_cultivo').val(),
             id_evento: $('#id_evento').val(),
             title: $('#inputTitulo').val(),
-            start: $('#inputFechaInicio').val(), //+ " " + $('#inputHoraInicio').val(),
-            end: $('#inputFinal').val(), //+ " " + $('#inputHoraFinal').val(),
+            start: $('#inputfechaInicio').val(), //+ " " + $('#inputHoraInicio').val(),
+            end: $('#inputFFinal').val(), //+ " " + $('#inputHoraFinal').val(),
             color: $('#inputColor').val(),
             descripcion: $('#inputDescripcion').val(),
             textColor: "#FFFFFF"
