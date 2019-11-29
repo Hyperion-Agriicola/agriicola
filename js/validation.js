@@ -531,7 +531,22 @@ jQuery( function() {
       return date;
     }
   });
-
+jQuery(function(){
+    jQuery.validator.addMethod("greaterStart", function (value, element, params) {
+        return this.optional(element) || new Date(value) >= new Date($(params).val());
+    });
+    $("#event-form").validate({
+        rules: {
+          fecha_fin1: {
+            required: function(element) {return ($("#inputFFinal").val()!="");},
+            greaterStart: "#inputfechaInicio"
+          }
+        },
+        messages:{
+            fecha_fin1: "<p class='text-danger' style='font-size: 12px;'>*La fecha de finalización debe ser posterior a la fecha de inicio.</p>"
+        }
+      });
+});
   
 
 
