@@ -512,7 +512,6 @@ jQuery( function() {
       to = $( "#inputFFinal" ).datepicker({
         dateFormat: 'yy-mm-dd',
         autoSize: true,
-        minDate: new Date(),
         autoclose: true
       })
       .on( "change", function() {
@@ -521,7 +520,7 @@ jQuery( function() {
   
     function getDate( element ) {
       var date;
-      var dateFormat = "yy/mm/dd";
+      var dateFormat = "yy-mm-dd";
       try {
         date = $.datepicker.parseDate( dateFormat, element.value );
       } catch( error ) {

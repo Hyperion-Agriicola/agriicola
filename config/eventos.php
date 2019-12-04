@@ -8,7 +8,7 @@
     switch($accion){
         case 'agregar':
             //Agrega un evento a la BD
-            $sql = $pdo->prepare("INSERT INTO eventos(id_cultivo, titulo, descripcion, inicio, fin, text_color, color, fecha_registro) VALUES(:id_cultivo, :title, :descripcion, :start, :end, :textColor, :color, now())");
+            $sql = $pdo->prepare("INSERT INTO eventos(id_cultivo, titulo, descripcion, inicio, fin, text_color, color, fecha_registro, icon) VALUES(:id_cultivo, :title, :descripcion, :start, :end, :textColor, :color, now(), :icon)");
 
             $resultado = $sql->execute(array(
                 "id_cultivo" => $_POST['id_cultivo'],
@@ -17,7 +17,9 @@
                 "start" => $_POST['start'],
                 "end" => $_POST['end'],
                 "textColor" => $_POST['textColor'],
-                "color" => $_POST['color']
+                "color" => $_POST['color'],
+                "icon" =>$_POST['icon']
+                
             ));
             echo json_encode($resultado);
             break;
@@ -42,6 +44,7 @@
                 "end" => $_POST['end'],
                 "textColor" => $_POST['textColor'],
                 "color" => $_POST['color']
+                
             ));
             echo json_encode($resultado);
             break;
@@ -58,7 +61,7 @@
             break;    
         default:
             //Consulta los eventos en la BD, y los convierte a json para mostrar en calendario
-            $sql = $pdo->prepare("SELECT id_cultivo, id_evento, titulo as 'title', descripcion, inicio as 'start', fin as 'end', color, text_color as 'textColor' FROM eventos WHERE id_cultivo= ".$_GET['accion']."");
+            $sql = $pdo->prepare("SELECT id_cultivo, id_evento, titulo as 'title', descripcion, inicio as 'start', fin as 'end', icon,  color, text_color as 'textColor' FROM eventos WHERE id_cultivo= ".$_GET['accion']."");
             $sql->execute();
             $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
             echo json_encode($resultado);  

@@ -28,14 +28,16 @@ if (!isset($_SESSION['correo'])) {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
         <link rel="stylesheet" href="../../css/calendario/fullcalendar.min.css">
         <link rel="stylesheet" href="../../css/calendario/bootstrap-clockpicker.min.css">
-
+        <link rel="shortcut icon" href="../../img/icono.ico" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0-rc.1/Chart.bundle.js"></script>
+        <script language="javascript" src="../../js/jquery-3.1.1.min.js"></script>
         <title>AGRIICOLA</title>
 
 
         <style>
             .fc th {
                 padding: 15px;
-                background: #1976D2;
+                background: #0D47A1;
                 color: #fff;
                 font-weight: 500;
             }
@@ -53,11 +55,23 @@ if (!isset($_SESSION['correo'])) {
             .fc-button {
                 width: 80px;
                 height: 50px !important;
-                background: #1976D2;
+                background: #0D47A1;
                 color: #ffffff !important;
                 font-weight: 500 !important;
                 border: none;
                 padding: 10px;
+            }
+
+            .fc-time{
+                display: none;
+            }
+            .fc-button:hover{
+                background: #1565C0;
+            }
+
+            .fc-day:hover, .fc-day-top:hover{
+                background: #EEEEEE;
+                cursor: pointer;
             }
 
             .fc-content {
@@ -137,6 +151,8 @@ if (!isset($_SESSION['correo'])) {
             }else if (isset($_GET['restore'])) {
                 $data->restoreCrop($_GET['restore']);
                 header('Location: dashboard.php');
+            }else if (isset($_GET['res'])) {
+                include('select_resumen.php');
             }else {
                 include('profile.php');
                 ?>

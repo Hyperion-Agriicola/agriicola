@@ -2,9 +2,7 @@
         $id_u = $data->getUserId($_SESSION['correo']);
         $id_cultivo = $_GET['Tracing'];
     ?>
-    <script>
-        EnviarInformacion(<?php echo $id_cultivo; ?>, "");
-    </script>
+    
 <script
 			  src="https://code.jquery.com/jquery-3.4.1.min.js"
 			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -31,19 +29,19 @@
             <div class="col-lg-6 col-md-6 col-sm-6">    
                 <div class="form-group">
                     <label for="inputFechaInicio">Fecha de inicio</label>
-                    <input disabled  placeholder="Seleccione una fecha" class="form-control" id="inputfechaInicio" name="fecha_inicio" required>
+                    <input   placeholder="Seleccione una fecha" class="form-control" id="inputfechaInicio" name="fecha_inicio" required>
                 </div>
             </div>
 
-           <!-- <div class="col-lg-6 col-md-6 col-sm-6">    
+            <div class="col-lg-6 col-md-6 col-sm-6" style="display: none;">    
                 <div class="form-group">
                     <label for="inputHoraInicio">Hora</label>
                     <div class="input-group clockpicker" data-autoclose="true">
-                        <input  placeholder="..." class="form-control" id="inputHoraInicio" name="hora_inicio" required>
+                        <input  placeholder="..." class="form-control" id="inputHoraInicio" name="hora_inicio" value= "00:00:00" required>
                         <span id="alert1"></span>
                     </div>    
                 </div>
-            </div>-->
+            </div>
 
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="form-group">
@@ -52,16 +50,16 @@
                 </div>
             </div>
 
-            <!--<div class="col-lg-6 col-md-6 col-sm-6">    
+            <div class="col-lg-6 col-md-6 col-sm-6" style="display: none;">    
                 <div class="form-group">
                     <label for="inputHoraFinal">Hora</label>
                     <div class="input-group clockpicker" data-autoclose="true">
-                        <input placeholder="..." class="form-control" id="inputHoraFinal" name="hora_final">
+                        <input placeholder="..." value= "00:00:00" class="form-control" id="inputHoraFinal" name="hora_final">
                         <span id="alert2"></span>
                     </div>
                     
                 </div>
-            </div>-->
+            </div>
 
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <div class="form-group">
@@ -107,7 +105,7 @@
             dayClick:function(date, jsEvent, view){
                 
                 Swal.fire({
-                    title: "Nuevo evento: " + date.format(),
+                    title: "Nuevo evento: " + date.format('MMMM d YYYY'),
                     showCloseButton: true,
                     width: '40rem',
                     html: formevent,
@@ -115,19 +113,20 @@
                     showConfirmButton : false,
                     
                     }).then((result) => {
-                    if (result.value) {
+                        if (result.dismiss == Swal.DismissReason.close) {
                         
+                        LimpiarFormularioEvento();
+                        console.log('Cerrado modal new event')
                     }
                 });
                 LimpiarFormularioEvento();
                
-                $('#inputfechaInicio').val(date.format());
-                $('#inputFFinal').val("");
+                
                 $('#btGuardar').show();
                 $('#btModificar').hide();
                 $('#btEliminar').hide();
             },
-            events:'http://localhost:4040/agriicola/config/eventos.php?accion=<?php echo $_GET['Tracing'];?>',
+            events:'http://localhost:8080/agriicola/config/eventos.php?accion=<?php echo $_GET['Tracing'];?>',
         
             
             eventClick:function(calEvent, jsEvent, view){
@@ -141,12 +140,12 @@
                     showConfirmButton : false,
                     
                     }).then((result) => {
-                        
-                    if (result.dismiss == Swal.DismissReason.close) {
+                        if (result.dismiss == Swal.DismissReason.close) {
                         
                         LimpiarFormularioEvento();
-                      
+                        console.log('Cerrado modal event');
                     }
+                    
                 });
                 
                 $('#btModificar').show();
@@ -161,11 +160,11 @@
 
                 var FechaHoraInicio = calEvent.start.format().split("T");
                 $('#inputfechaInicio').val(FechaHoraInicio[0]);
-                //$('#inputHoraInicio').val(FechaHoraInicio[1]);
+                $('#inputHoraInicio').val(FechaHoraInicio[1]);
 
                 var FechaHoraFinal = calEvent.end.format().split("T");
                 $('#inputFFinal').val(FechaHoraFinal[0]);
-                //$('#inputHoraFinal').val(FechaHoraFinal[1]);
+                $('#inputHoraFinal').val(FechaHoraFinal[1]);
             },
             editable: true,
             eventDrop:function(calEvent){
@@ -176,15 +175,28 @@
 
                 var FechaHoraInicio = calEvent.start.format().split("T");
                 $('#inputfechaInicio').val(FechaHoraInicio[0]);
-                //$('#inputHoraInicio').val(FechaHoraInicio[1]);
+                $('#inputHoraInicio').val(FechaHoraInicio[1]);
 
                 var FechaHoraFinal = calEvent.end.format().split("T");
                 $('#inputFFinal').val(FechaHoraFinal[0]);
-                //$('#inputHoraFinal').val(FechaHoraFinal[1]);
+                $('#inputHoraFinal').val(FechaHoraFinal[1]);
 
                 RecolectarDatosUI();
                 EnviarInformacion('modificar', nuevo_evento, true);
                 
+            },
+
+            eventRender: function (event, element, view) {
+                var i = document.createElement('i');
+                // Add all your other classes here that are common, for demo just 'fa'
+                i.className = 'fas'; /*'ace-icon fa yellow bigger-250'*/
+                i.classList.add(event.icon);
+                // If you want it inline with title
+                element.find('div.fc-content').prepend(i);
+                // If you want it on a line before
+                // element.prepend(i);
+                // Or the next line after title
+                //element.append(i)
             }
             
 
@@ -201,7 +213,7 @@
 
         RecolectarDatosUI();
         
-        if($('#inputTitulo').val() != ""){
+        if($('#inputTitulo').val() != "" & $('#inputFFinal').val() > $('#inputfechaInicio').val()){
         EnviarInformacion('agregar', nuevo_evento);
         Swal.close();
 
@@ -224,7 +236,7 @@
         }else{
             Swal.fire(
                     'No se puede crear el evento',
-                   'Asegúrese de ponerle un título.',
+                   'Asegúrese de ponerle un título y una fecha de finalización posterior a la fecha de inicio.',
                    'error'
                );
         }
@@ -240,6 +252,22 @@
         RecolectarDatosUI();
         EnviarInformacion('modificar', nuevo_evento);
         Swal.close();
+        const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        onOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+        });
+
+        Toast.fire({
+        icon: 'success',
+        title: 'Evento actualizado correctamente!'
+        });
     });
 
     function RecolectarDatosUI(){
@@ -247,11 +275,12 @@
             id_cultivo: $('#id_cultivo').val(),
             id_evento: $('#id_evento').val(),
             title: $('#inputTitulo').val(),
-            start: $('#inputfechaInicio').val(), //+ " " + $('#inputHoraInicio').val(),
-            end: $('#inputFFinal').val(), //+ " " + $('#inputHoraFinal').val(),
+            start: $('#inputfechaInicio').val() + " " + $('#inputHoraInicio').val(),
+            end: $('#inputFFinal').val() + " " + $('#inputHoraFinal').val(),
             color: $('#inputColor').val(),
             descripcion: $('#inputDescripcion').val(),
-            textColor: "#FFFFFF"
+            textColor: "#FFFFFF",
+            icon: "fa-calendar-day"
         };
         
         
@@ -283,7 +312,8 @@
         $('#inputTitulo').val('');
         $('#inputColor').val('#303F9F');
         $('#inputDescripcion').val('');
-        
+        $('#inputfechaInicio').val('');
+        $('#inputFFinal').val('');
         
     }
 </script>

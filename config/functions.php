@@ -372,12 +372,16 @@ class Functions
         $upperNomCom = ucwords(strtolower($nom_comer));
         
         $color = '';
+        $icon = '';
         if($aplicacion == 'Nutriente'){
             $color = "#6D4C41";
+            $icon = "fa-seedling";
         }elseif($aplicacion == 'Enfermedad'){
-            $color = "#FBC02D";
+            $color = "#F57C00";
+            $icon = "prescription-bottle-alt";
         }elseif($aplicacion == 'Plaga'){
             $color = "#e53935";
+            $icon = "fa-bug";
         }
 
         $text = "";
@@ -403,7 +407,7 @@ class Functions
             $result = $conexion->query($query)
                 or trigger_error(mysqli_error($conexion));
             
-            $query = "INSERT INTO eventos (id_cultivo, titulo, descripcion, inicio, fin, color, text_color, fecha_registro) VALUES ('$userRow[id_cultivo]', '$titulo', '$descripcion','$fecha_inicio', '$fecha_fin', '$color', '#fff', now() )";
+            $query = "INSERT INTO eventos (id_cultivo, titulo, descripcion, inicio, fin, color, text_color, fecha_registro, icon) VALUES ('$userRow[id_cultivo]', '$titulo', '$descripcion','$fecha_inicio', '$fecha_fin', '$color', '#fff', now(), '$icon')";
         
             $result = $conexion->query($query) or trigger_error(mysqli_error($conexion));
             
@@ -599,14 +603,12 @@ class Functions
             }
         } else {
             echo "
-                <div class='col-lg-1 col-md-1 col-sm-12'></div>
-                <div class='col-lg-4 col-md-4 col-sm-12'></div>
-                <div class='col-lg-4 col-md-4 col-sm-12'>
-                    <h3>No hay datos</h3>
-                    <img src='../../img/svg/alerts/no_data.svg' width='150'>
-                    <p><a class='text-success text-uppercase' href='dashboard.php?cultivos'>Crear un nuevo registro</a></p>
-                </div>
-                <div class='col-lg-4 col-md-4 col-sm-12'></div>
+            <div class='col-lg-4 col-md-4 col-sm-4 col-4'></div>
+            <div class='col-lg-4 col-md-4 col-sm-4 col-4'>
+                <h3 class='text-center'>No hay datos</h3>
+                <img class='col-12 col-sm-12 col-md-11 col-lg-11' src='../../img/svg/alerts/no_data.svg' width='150px'>
+                <p class='text-center'><a class='text-success text-uppercase' href='dashboard.php?cultivos'>Crear un nuevo registro</a></p>
+            </div>
             ";
         }
     }
@@ -1149,7 +1151,7 @@ class Functions
 
                     <!--Modif agro-->
                     <div style="display: none;">
-                        <form id="modifagro'.$row['id_agroquimico'].'" class="reg_agro" action="" method="POST">
+                        <form id="modifagro'.$row['id_agroquimico'].'" class="reg_agro'.$row['id_agroquimico'].'" action="" method="POST">
                             <input name="input_id_cultivo" id="input_id_cultivo" value='.$row['id_cultivo'].' style="display: none;">
                             <input name="input_id_agroquimico" id="input_id_agroquimico" value='.$row['id_agroquimico'].' style="display: none;">
                             <div class="row">
@@ -1329,7 +1331,96 @@ class Functions
                                 });
                             
                         });
-
+                        
+                        jQuery(function(){
+                            $.validator.addMethod( "alphanumeric", function( value, element ) {
+                                return this.optional( element ) || /^[A-za-z0-9\sñ\s\sáéíóúñÑÁÉÍÓÚüÜ]+$/i.test( value );
+                            }, "<p class='; echo "'text-danger'"; echo" style='font-size: 12px;'"; echo'>*Ingrese sólo letras y numros.</p>" );
+                            $.validator.addMethod("decimal", function(value, element) {
+                                return this.optional(element) || /^((\d+(\\.\d{0,2})?)|((\d*(\.\d{1,2}))))$/.test(value);
+                              }, "<p class='; echo "'text-danger'"; echo" style='font-size: 12px;'"; echo'>*Ingrese el formato correcto 0.00.</p>" );
+                          
+                            jQuery(".reg_agro'.$row['id_agroquimico'].'").validate({
+                                    rules:{
+                                        name_agroq:{
+                                            required: true,
+                                            alphanumeric: true
+                                        },
+                                        precio:{
+                                            required: true,
+                                            number: true,
+                                            min: 0,
+                                            maxlength: 11,
+                                            decimal: true
+                                        },
+                                        cantidad:{
+                                            required: true,
+                                            number: true,
+                                            min: 0,
+                                            maxlength: 11
+                                        },
+                                        dosis:{
+                                            required: true,
+                                            number: true,
+                                            min: 0,
+                                            maxlength: 4,
+                                            decimal: true
+                        
+                                        },
+                                        fecha_inicio:{
+                                            required: true
+                                        },
+                                        fecha_fin:{
+                                            required: true
+                                        },
+                                        existencia:{
+                                            required: true,
+                                            number: true,
+                                            min: 0,
+                                            maxlength: 4
+                                        }
+                                    
+                                    },
+                                    messages:{
+                                        name_agroq:{
+                                            required: "<p class='; echo "'text-danger'"; echo" style='font-size: 12px;'"; echo'>*Ingrese un nombre comercial.</p>",
+                                            alphanumeric:"<p class='; echo "'text-danger'"; echo" style='font-size: 12px;'"; echo'>Ingrese sólo letras y números.</p>"
+                                        },
+                                        precio:{
+                                            required:"<p class='; echo "'text-danger'"; echo" style='font-size: 12px;'"; echo'>*Ingrese un precio.</p>",
+                                            number:"<p class='; echo "'text-danger'"; echo" style='font-size: 12px;'"; echo'>*Ingrese sólo números.</p>",
+                                            maxlength:"<p class='; echo "'text-danger'"; echo" style='font-size: 12px;'"; echo'>*Ingrese un precio válido, no mayor a 11 dígitos.</p>",
+                                            min:"<p class='; echo "'text-danger'"; echo" style='font-size: 12px;'"; echo'>*Ingrese un precio válido, sólo se aceptan precios mayores a 0.</p>"
+                                        },
+                                        cantidad:{
+                                            required:"<p class='; echo "'text-danger'"; echo" style='font-size: 12px;'"; echo'>*Ingrese una cantidad.</p>",
+                                            number:"<p class='; echo "'text-danger'"; echo" style='font-size: 12px;'"; echo'>*Ingrese sólo números.</p>",
+                                            min:"<p class='; echo "'text-danger'"; echo" style='font-size: 12px;'"; echo'>*Ingrese una cantidad válida, sólo se aceptan cantidades mayores a 0.</p>",
+                                            maxlength:"<p class='; echo "'text-danger'"; echo" style='font-size: 12px;'"; echo'>*Ingrese una cantidad válida, no mayor a 11 dígitos.</p>"
+                                            
+                                        },
+                                        dosis:{
+                                            required:"<p class='; echo "'text-danger'"; echo" style='font-size: 12px;'"; echo'>*Ingrese una dosis.</p>",
+                                            number:"<p class='; echo "'text-danger'"; echo" style='font-size: 12px;'"; echo'>*Ingrese sólo números.</p>",
+                                            maxlength:"<p class='; echo "'text-danger'"; echo" style='font-size: 12px;'"; echo'>*Ingrese una dosis válida, no debe ser mayor a 4 dígitos.</p>",
+                                            min:"<p class='; echo "'text-danger'"; echo" style='font-size: 12px;'"; echo'>*Ingrese una dosis válida, solo se aceptan cantidades mayores a 0.</p>"
+                                        },
+                                        fecha_inicio:{
+                                            required: "<p class='; echo "'text-danger'"; echo" style='font-size: 12px;'"; echo'>*Ingrese una fecha de inicio.</p>"
+                                        },
+                                        fecha_fin:{
+                                            required: "<p class='; echo "'text-danger'"; echo" style='font-size: 12px;'"; echo'>*Ingrese una fecha de finalizacion.</p>"
+                                        },
+                                        existencia:{
+                                            required:"<p class='; echo "'text-danger'"; echo" style='font-size: 12px;'"; echo'>*Ingrese una cantidad.</p>",
+                                            number:"<p class='; echo "'text-danger'"; echo" style='font-size: 12px;'"; echo'>*Ingrese sólo números.</p>",
+                                            maxlength:"<p class='; echo "'text-danger'"; echo" style='font-size: 12px;'"; echo'>*Ingrese una cantidad válida, no debebs er mayor 4 dígitos.</p>",
+                                            min:"<p class='; echo "'text-danger'"; echo" style='font-size: 12px;'"; echo'>*Ingrese una cantidad válida, no debe ser menor a 0.</p>"
+                                        }
+                        
+                                    }
+                            });
+                        });
                         
                     </script>
 
@@ -2069,12 +2160,16 @@ class Functions
 
     ) {
         $color = '';
+        $icon = '';
         if($aplicacion == 'Nutriente'){
             $color = "#6D4C41";
+            $icon = "fa-seedling";
         }elseif($aplicacion == 'Enfermedad'){
-            $color = "#FBC02D";
+            $color = "#F57C00";
+            $icon = "prescription-bottle-alt";
         }elseif($aplicacion == 'Plaga'){
             $color = "#e53935";
+            $icon = "fa-bug";
         }
 
         $text = "";
@@ -2098,7 +2193,7 @@ class Functions
 
         $result = $conexion->query($query) or trigger_error(mysqli_error($conexion));
         
-        $query = "INSERT INTO eventos (id_cultivo, titulo, descripcion, inicio, fin, color, text_color, fecha_registro) VALUES ('$id_cultivo', '$titulo', '$descripcion','$fecha_inicio', '$fecha_fin', '$color', '#fff', now() )";
+        $query = "INSERT INTO eventos (id_cultivo, titulo, descripcion, inicio, fin, color, text_color, fecha_registro, icon) VALUES ('$id_cultivo', '$titulo', '$descripcion','$fecha_inicio', '$fecha_fin', '$color', '#fff', now(), '$icon' )";
         
         $result = $conexion->query($query) or trigger_error(mysqli_error($conexion));    
 
@@ -2358,6 +2453,193 @@ class Functions
             ";
         } else {
             //header('Location: dashboard.php?cut');
+        }
+    }
+
+    //Funciones graficas
+    public function getGraphYGastoCultivo($id_cultivo){
+        $conexion = new Database();
+        $query = "SELECT * FROM gastos WHERE id_cultivo = $id_cultivo;";
+        $result = $conexion->query($query);
+        $precio = "";
+        $datos = "";
+        $data = "";
+        $color = "";
+        if (!$result) {
+            return "
+            <div class='container mt-4'>
+                <div class='alert alert-danger' role='alert'>
+                    Hubo un error al cargar los datos en el grafico, verifique sus campos o intente más tarde
+                </div>
+            </div>
+            ";  
+        }else{
+            while($row = mysqli_fetch_array($result)){
+                $precio = $precio . '"' . $row['precio'] .'",';
+                $color = $color . " 'rgb(2,119,189)',";
+            }
+
+            
+            $data = trim($data,",");
+            $color = trim($color,",");
+            $data = $data . "{
+                label: 'Mi Gasto',
+                data: [ " . $precio . " ],
+                backgroundColor: 'rgb(179,157,219)',
+                borderColor: [
+                    " . $color . "
+                ],
+                borderWidth: 5
+            },";
+            return $data;
+        }
+    }
+
+    public function getGraphXGastoCultivo($id_cultivo){
+        $conexion = new Database();
+        $query = "SELECT concepto FROM gastos WHERE id_cultivo = '$id_cultivo'";
+        $result = $conexion->query($query);
+        $concepto = "";
+        if (!$result) {
+            echo "
+            <div class='container mt-4'>
+                <div class='alert alert-danger' role='alert'>
+                    Hubo un error al cargar los datos en el grafico, verifique sus campos o intente más tarde
+                </div>
+            </div>
+            ";
+        }else{
+            while($row = mysqli_fetch_array($result)){
+                $concepto = $concepto . '"' . $row['concepto'] .'",';
+            }
+            $concepto = trim($concepto,",");
+            return $concepto;
+        }
+    }
+
+    public function getGraphYCorte($id_cultivo){
+        $conexion = new Database();
+        $query = "SELECT * FROM corte WHERE id_cultivo = $id_cultivo;";
+        $result = $conexion->query($query);
+        $precio = "";
+        $datos = "";
+        $data = "";
+        $color = "";
+        if (!$result) {
+            return "
+            <div class='container mt-4'>
+                <div class='alert alert-danger' role='alert'>
+                    Hubo un error al cargar los datos en el grafico, verifique sus campos o intente más tarde
+                </div>
+            </div>
+            ";  
+        }else{
+            while($row = mysqli_fetch_array($result)){
+                $precio = $precio . '"' . $row['precio'] .'",';
+                $color = $color . " 'rgb(48,63,159)',";
+            }
+
+            
+            $data = trim($data,",");
+            $color = trim($color,",");
+            $data = $data . "{
+                label: 'Corte por Cliente',
+                data: [ " . $precio . " ],
+                backgroundColor: 'rgb(30,136,229)',
+                borderColor: [
+                    " . $color . "
+                ],
+                borderWidth: 3
+            },";
+            return $data;
+        }
+    }
+
+    public function getGraphXCorte($id_cultivo){
+        $conexion = new Database();
+        $query = "SELECT cliente FROM corte WHERE id_cultivo = '$id_cultivo'";
+        $result = $conexion->query($query);
+        $concepto = "";
+        if (!$result) {
+            echo "
+            <div class='container mt-4'>
+                <div class='alert alert-danger' role='alert'>
+                    Hubo un error al cargar los datos en el grafico, verifique sus campos o intente más tarde
+                </div>
+            </div>
+            ";
+        }else{
+            while($row = mysqli_fetch_array($result)){
+                $concepto = $concepto . '"' . $row['cliente'] .'",';
+            }
+            $concepto = trim($concepto,",");
+            return $concepto;
+        }
+    }
+
+    public function getGraphYAgro($id_cultivo){
+        $conexion = new Database();
+        $query = "SELECT * FROM agroquimicos WHERE id_cultivo = $id_cultivo AND estatus != 'eliminado';";
+        $result = $conexion->query($query);
+        $precio = "";
+        $datos = "";
+        $data = "";
+        $color = "";
+        if (!$result) {
+            return "
+            <div class='container mt-4'>
+                <div class='alert alert-danger' role='alert'>
+                    Hubo un error al cargar los datos en el grafico, verifique sus campos o intente más tarde
+                </div>
+            </div>
+            ";  
+        }else{
+
+            while($row = mysqli_fetch_array($result)){
+                $precio = $precio . '"' . $row['precio'] .'",';
+                if($row['aplicacion'] == 'Nutriente'){
+                    $color = $color .   " 'rgb(109,76,65)',";
+                }else if($row['aplicacion'] == 'Enfermedad'){
+                    $color = $color . " 'rgb(245,124,0)',";
+                }else if($row['aplicacion'] == 'Plaga'){
+                    $color = $color . " 'rgb(211,47,47)',";
+                }
+                
+            }
+
+            
+            $data = trim($data,",");
+            $color = trim($color,",");
+            $data = $data . "{
+                label: 'Gasto por Agroquímico',
+                data: [ " . $precio . " ],
+                backgroundColor: [".$color."],
+                borderColor: 'rgb(189,189,189)',
+                borderWidth: 1
+            },";
+            return $data;
+        }
+    }
+
+    public function getGraphXAgro($id_cultivo){
+        $conexion = new Database();
+        $query = "SELECT aplicacion, nombre_comercial FROM agroquimicos WHERE id_cultivo = '$id_cultivo' AND estatus != 'eliminado' ";
+        $result = $conexion->query($query);
+        $concepto = "";
+        if (!$result) {
+            echo "
+            <div class='container mt-4'>
+                <div class='alert alert-danger' role='alert'>
+                    Hubo un error al cargar los datos en el grafico, verifique sus campos o intente más tarde
+                </div>
+            </div>
+            ";
+        }else{
+            while($row = mysqli_fetch_array($result)){
+                $concepto = $concepto . '"' . $row['aplicacion'] .' : '.$row['nombre_comercial'].'",';
+            }
+            $concepto = trim($concepto,",");
+            return $concepto;
         }
     }
 }
