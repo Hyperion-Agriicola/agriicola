@@ -234,3 +234,11 @@ nav a:hover {
 .btn-green{
   background: #228B22 !important;
 }
+
+.green-text{
+  color: #228B22;
+}
+
+.brown-text{
+  color: #c2a88c !important;
+}

@@ -54,7 +54,7 @@
                 <div class="form-group">
                     <label for="inputHoraFinal">Hora</label>
                     <div class="input-group clockpicker" data-autoclose="true">
-                        <input placeholder="..." value= "00:00:00" class="form-control" id="inputHoraFinal" name="hora_final">
+                        <input placeholder="..." value= "23:59:00" class="form-control" id="inputHoraFinal" name="hora_final">
                         <span id="alert2"></span>
                     </div>
                     
@@ -213,7 +213,7 @@
 
         RecolectarDatosUI();
         
-        if($('#inputTitulo').val() != "" & $('#inputFFinal').val() > $('#inputfechaInicio').val()){
+        if($('#inputTitulo').val() != "" ){
         EnviarInformacion('agregar', nuevo_evento);
         Swal.close();
 

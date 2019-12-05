@@ -2642,6 +2642,26 @@ class Functions
             return $concepto;
         }
     }
+
+    public function sendHelpRequest($comment){
+        
+        $conexion = new Database();
+        $email = $_SESSION['correo'];
+        $request = "INSERT INTO help_center(correo, comentario, fecha) VALUES('$email','$comment', now())";
+        $response = $conexion->query($request) or trigger_error($conexion->error);
+
+        if($response){
+            echo "
+            <div class='container mt-4'>
+                <div class='alert alert-success' role='alert'>
+                    Su comentario se envió correctamente, recibirá respuesta lo antes posible
+                </div>
+            </div>
+            ";
+        }else{
+            echo "Error xd";
+        }
+    }
 }
 
 ob_end_flush();

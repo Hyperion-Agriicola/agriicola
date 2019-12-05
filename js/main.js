@@ -1,4 +1,7 @@
 $(document).ready(function () {
+    scrollAnimation();
+    readScroll();
+    
     $('#register').hide();
     $('#create_account').click(function () {
         $('#register').show();
@@ -107,8 +110,28 @@ function selectLocation() {
     });
 }
 
+function readScroll() {
+    $(window).scroll(function () {
+        if ($(document).scrollTop() > 200) {
+            $('nav').addClass('navChanged').removeClass('navInactive');
+        } else {
+            $('nav').removeClass('navChanged').addClass('navInactive');
+        }
+    });
+}
+
 function decode_utf8(data) {
     return decodeURIComponent(escape(data));
+}
+
+function scrollAnimation() {
+    $(document).on('click', 'a[href^="#"]', function (event) {
+        event.preventDefault();
+
+        $('html, body').animate({
+            scrollTop: $($.attr(this, 'href')).offset().top
+        }, 500);
+    });
 }
 
 function dataRange() {
