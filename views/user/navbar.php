@@ -22,6 +22,10 @@
                 </div>
             </li>
              -->
+             <li class="nav-item">
+                <a id="showNews" class="nav-link active" href="dashboard.php?users"><i class="fas fa-users"></i>
+                    <span>Usuarios</span></a>
+            </li>
             <li class="nav-item">
                 <a id="showNews" class="nav-link active" href="noticias.php"><i class="fas fa-newspaper"></i>
                     <span>Noticias</span></a>

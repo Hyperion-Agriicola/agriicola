@@ -1,6 +1,7 @@
 $(document).ready(function () {
     scrollAnimation();
     readScroll();
+    getUserFrame();
     
     $('#register').hide();
     $('#create_account').click(function () {
@@ -66,7 +67,7 @@ $(document).ready(function () {
 
 
     //Calendario
-   
+
 
     //Tooltip noob
     $(function () {
@@ -88,10 +89,22 @@ $(document).ready(function () {
     $("#myToast").toast({ delay: 3000 });
     $("#myToast").toast('show');
 
-    $('#sendEmailRecovery').click(function(){
+    $('#sendEmailRecovery').click(function () {
         passwordReset();
     });
+
+    
 });
+
+function nobackbutton() {
+
+    window.location.hash = "no-back-button";
+
+    window.location.hash = "Again-No-back-button" //chrome
+
+    window.onhashchange = function () { window.location.hash = "no-back-button"; }
+
+}
 
 function selectLocation() {
     $(".state").autocomplete({
@@ -142,7 +155,7 @@ function dataRange() {
             etiqueta1.innerHTML = rangeOrganic.value + " %";
 
             rangeOrganic.addEventListener('input', function () {
-                etiqueta1.innerHTML = rangeOrganic.value + " %" ;
+                etiqueta1.innerHTML = rangeOrganic.value + " %";
             }, false);
         }
     }
@@ -154,7 +167,7 @@ function dataRange() {
             etiqueta2.innerHTML = rangeZinc.value + " %";
 
             rangeZinc.addEventListener('input', function () {
-                etiqueta2.innerHTML = rangeZinc.value + " %" ;
+                etiqueta2.innerHTML = rangeZinc.value + " %";
             }, false);
         }
     }
@@ -166,7 +179,7 @@ function dataRange() {
             etiqueta3.innerHTML = rangeNitrates.value + " %";
 
             rangeNitrates.addEventListener('input', function () {
-                etiqueta3.innerHTML = rangeNitrates.value + " %" ;
+                etiqueta3.innerHTML = rangeNitrates.value + " %";
             }, false);
         }
     }
@@ -280,9 +293,16 @@ function dataRange() {
     }
 }
 
+function getUserFrame() {
+    $('#createUserForm').hide();
+    $('#addNewUserFromAdmin').click(function () {
+        $('#createUserForm').show();
+    });
+}
+
 function passwordReset() {
     var email = $('#emailRecovery').val();
-    
+
     $.ajax({
         url: 'password_reset.php',
         method: 'POST',
@@ -290,19 +310,17 @@ function passwordReset() {
         data: {
             email: email
         },
-        success: function(response){
+        success: function (response) {
             console.log(response);
         },
-        error: function(error){
+        error: function (error) {
             console.log(error);
         }
     });
 }
 
-$(document).ready(function(){
+$(document).ready(function () {
     $('.carousel').carousel({
         interval: 2000
-      })
-  });
-
-
+    })
+});

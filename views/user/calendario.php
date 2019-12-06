@@ -105,7 +105,7 @@
             dayClick:function(date, jsEvent, view){
                 
                 Swal.fire({
-                    title: "Nuevo evento: " + date.format('MMMM d YYYY'),
+                    title: "Nuevo evento: " + date.format(),
                     showCloseButton: true,
                     width: '40rem',
                     html: formevent,
@@ -189,7 +189,7 @@
             eventRender: function (event, element, view) {
                 var i = document.createElement('i');
                 // Add all your other classes here that are common, for demo just 'fa'
-                i.className = 'fas'; /*'ace-icon fa yellow bigger-250'*/
+                i.className = 'fas '; /*'ace-icon fa yellow bigger-250'*/
                 i.classList.add(event.icon);
                 // If you want it inline with title
                 element.find('div.fc-content').prepend(i);

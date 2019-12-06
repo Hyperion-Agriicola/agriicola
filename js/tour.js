@@ -45,6 +45,9 @@ $(document).ready(function () {
                 element: "#addNewSpend",
                 title: "Crea un nuevo gasto",
                 content: "Presiona aquí para agregar un nuevo gasto general"
+            },
+            {
+                
             }
         ],
         template: "<div class='popover tour'>" +

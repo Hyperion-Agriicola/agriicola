@@ -82,7 +82,7 @@
                                 En la página principal, de clic en <b class="text-success">editar cuenta</b>, en la nueva página
                                 hay un formulario para poder editar los campos donde puede editar su contraseña. <br>
                                 Una vez que haya realizado los cambios deseados seleccione <b class="text-success">guardar</b>. <br>
-                                <br>a
+                                <br>
                                 <i class="fas fa-hand-paper text-success"></i> De otro modo, puede dar <a href="dashboard.php?editProfile" class="text-success">click aquí para entrar a la configuración de perfil</a>
                             </p>
                             <img width="100%" src="../../img/gif/change-password.gif" alt="">
