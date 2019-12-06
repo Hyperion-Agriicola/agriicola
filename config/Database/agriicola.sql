@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 06, 2019 at 12:15 AM
+-- Generation Time: Dec 06, 2019 at 08:41 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -101,7 +101,10 @@ INSERT INTO `agroquimicos` (`id_cultivo`, `id_agroquimico`, `aplicacion`, `nombr
 (53, 58, 'Nutriente', 'Ab', 13, 'pesos', 8, 'ml', 8, 'ml', 'micro', 'Diario', '2019-12-02', '2019-12-05', 2, 'activo', '2019-12-02', '2019-12-03'),
 (53, 59, 'Enfermedad', 'XD', 4, 'pesos', 4, 'ml', 3, 'ml', 'Alternariosis', 'Cada 1 dias', '2019-12-11', '2019-12-13', 2, 'activo', '2019-12-02', NULL),
 (53, 60, 'Plaga', 'Insecticida', 50, 'pesos', 7, 'ml', 7, 'ml', 'AraÃ±a roja', 'Diario', '2019-12-11', '2019-12-13', 4, 'activo', '2019-12-02', '2019-12-03'),
-(53, 61, 'Enfermedad', 'Curatodo', 100, 'pesos', 8, 'ml', 7, 'ml', 'Alternariosis', 'Diario', '2019-12-04', '2019-12-14', 2, 'activo', '2019-12-03', '2019-12-03');
+(53, 61, 'Enfermedad', 'Curatodo', 100, 'pesos', 8, 'ml', 7, 'ml', 'Alternariosis', 'Diario', '2019-12-04', '2019-12-14', 2, 'activo', '2019-12-03', '2019-12-03'),
+(33, 62, 'Enfermedad', 'Csm', 200, 'pesos', 2, 'l', 12, 'ml', 'Bacteria', 'Cada 10 dias', '2019-12-13', '2019-12-31', 0, 'eliminado', '2019-12-06', NULL),
+(33, 63, 'Enfermedad', 'Csm', 200, 'pesos', 500, 'ml', 300, 'ml', 'Alternarosis', 'Cada 11 dias', '2019-12-06', '2019-12-08', 2, 'activo', '2019-12-06', NULL),
+(53, 64, 'Nutriente', 'Prueba', 12, 'pesos', 12, 'l', 12, 'ml', 'micro', 'Cada 4 dias', '2019-12-03', '2019-12-03', 1, 'activo', '2019-12-06', NULL);
 
 -- --------------------------------------------------------
 
@@ -165,7 +168,7 @@ CREATE TABLE `cultivos` (
 INSERT INTO `cultivos` (`id_u`, `id_cultivo`, `nombre_predio`, `hectareas`, `tipo_especie`, `subespecie`, `variedad`, `fecha_inicio`, `estado`, `municipio`, `localidad`, `tipo_suelo`, `estatus`, `fecha_registro`, `fecha_modif`) VALUES
 (7, 33, 'Predio Pro', 5, 'Granos', 'Maiz', 'Maiz negro', '2019-11-11', 'Michoacan de Ocampo', 'Hidalgo', 'Mangana', 'artificial', 'activo', '2019-11-11', NULL),
 (8, 34, 'Predio Agua Blanca', 80, 'Frutales', 'Aguacate', 'azul', '2019-11-11', 'Michoacan de Ocampo', 'LÃ¡zaro CÃ¡rdenas', 'LÃ¡zaro CÃ¡rdenas', 'natural', 'activo', '2019-11-11', NULL),
-(10, 35, 'La Joya', 12, 'Granos', 'Arroz', 'Grande', '2019-11-16', 'MichoacÃ¡n de Ocampo', 'Hidalgo', 'Hidalgo', 'artificial', 'activo', '2019-11-16', '2019-11-18'),
+(10, 35, 'La Joya', 12, 'Granos', 'Arroz', 'Grande', '2019-11-16', 'MichoacÃ¡n de Ocampo', 'Hidalgo', 'Hidalgo', 'artificial', 'finalizado', '2019-11-16', '2019-11-18'),
 (10, 36, 'Segundo Predio', 10, 'Frutales', 'Aguacate', 'Haz', '2019-11-16', 'Michoacan de Ocampo', 'Hidalgo', 'Hidalgo', 'artificial', 'activo', '2019-11-16', '2019-11-18'),
 (10, 37, 'Jujodesu', 100, 'Frutales', 'Acelga', 'Sin Variedad', '2019-11-30', 'Michoacan de Ocampo', 'Hidalgo', 'Hidalgo', 'natural', 'activo', '2019-11-18', NULL),
 (11, 38, 'Predio 1', 6, 'Granos', 'Maiz', 'Maiz Blanco', '2019-11-19', 'Michoacan de Ocampo', 'Hidalgo', 'Ciudad Hidalgo', 'natural', 'activo', '2019-11-19', NULL),
@@ -173,15 +176,15 @@ INSERT INTO `cultivos` (`id_u`, `id_cultivo`, `nombre_predio`, `hectareas`, `tip
 (10, 40, 'San Geronimo', 19, 'Frutales', 'Aguacate', 'Szsss', '2019-11-21', 'Michoacan de Ocampo', 'Hidalgo', 'Hidalgo', 'natural', 'activo', '2019-11-21', '2019-11-22'),
 (12, 41, 'Predio Uno', 3, 'Hortalizas', 'Calabaza', 'Suchini', '2019-11-07', 'Michoacan de Ocampo', 'Tuxpan', 'Tuxpan', 'natural', 'activo', '2019-11-21', NULL),
 (13, 42, 'San Pablo', 10, 'Granos', 'MaÃ­z', 'Negro', '2019-11-27', 'Michoacan de Ocampo', 'Hidalgo', 'Hidalgo', 'artificial', 'activo', '2019-11-26', NULL),
-(10, 43, 'Benito Juarez', 12, 'Granos', 'Alfalfa', 'Sxd', '2019-11-26', 'Tlaxcala', 'Huixtla', 'Huixtla', 'artificial', 'activo', '2019-11-26', NULL),
+(10, 43, 'Benito Juarez', 12, 'Granos', 'Alfalfa', 'Sxd', '2019-11-26', 'Tlaxcala', 'Huixtla', 'Huixtla', 'artificial', 'eliminado', '2019-11-26', NULL),
 (13, 44, 'Julito', 1, 'Hortalizas', 'Acelga', 'Acelga Chida', '2019-11-27', 'Michoacan de Ocampo', 'Hidalgo', 'Hidalgo', 'artificial', 'activo', '2019-11-27', NULL),
 (13, 45, 'El Predion', 10, 'Frutales', 'Aguacate', 'Haz', '2019-11-27', 'Michoacan de Ocampo', 'Uruapan', 'Uruapan', 'natural', 'activo', '2019-11-27', NULL),
-(10, 46, 'Lailto', 10, '', '', 'Sin Espina', '2019-11-28', 'Michoacan de Ocampo', 'Hidalgo', 'Hidalgo', 'natural', 'activo', '2019-11-28', NULL),
-(10, 47, 'Lalito', 10, '2', '150', 'Espinudo', '2019-11-28', 'Michoacan de Ocampo', 'Hidalgo', 'Hidalgo', 'natural', 'activo', '2019-11-28', NULL),
-(10, 48, 'Lalito2', 10, 'Granos', 'Maï¿½z', 'Negro', '2019-11-28', 'Michoacan de Ocampo', 'Hidalgo', 'Hidalgo', 'artificial', 'activo', '2019-11-28', NULL),
-(10, 49, 'Predio 12', 4, 'Frutales', 'Almendro', 'Xd', '2019-11-28', 'Michoacan de Ocampo', 'Hidalgo', 'Hidalgo', 'natural', 'activo', '2019-11-28', NULL),
+(10, 46, 'Lailto', 10, '', '', 'Sin Espina', '2019-11-28', 'Michoacan de Ocampo', 'Hidalgo', 'Hidalgo', 'natural', 'eliminado', '2019-11-28', NULL),
+(10, 47, 'Lalito', 10, '2', '150', 'Espinudo', '2019-11-28', 'Michoacan de Ocampo', 'Hidalgo', 'Hidalgo', 'natural', 'eliminado', '2019-11-28', NULL),
+(10, 48, 'Lalito2', 10, 'Granos', 'Maï¿½z', 'Negro', '2019-11-28', 'Michoacan de Ocampo', 'Hidalgo', 'Hidalgo', 'artificial', 'eliminado', '2019-11-28', NULL),
+(10, 49, 'Predio 12', 4, 'Frutales', 'Almendro', 'Xd', '2019-11-28', 'Michoacan de Ocampo', 'Hidalgo', 'Hidalgo', 'natural', 'eliminado', '2019-11-28', NULL),
 (10, 50, 'Xd', 1, 'Granos', 'MaÃ­z', 'Xd', '2019-11-28', 'Michoacan de Ocampo', 'Hid', 'sdsd', 'natural', 'activo', '2019-11-28', NULL),
-(10, 51, 'Xd', 12, 'Granos', 'Ma?z', 'Xd', '2019-11-28', 'Michoacan de Ocampo', 'Hidalgo', 'Hidalgo', 'natural', 'activo', '2019-11-28', NULL),
+(10, 51, 'Xd', 12, 'Granos', 'Ma?z', 'Xd', '2019-11-28', 'Michoacan de Ocampo', 'Hidalgo', 'Hidalgo', 'natural', 'eliminado', '2019-11-28', NULL),
 (10, 52, 'Sdfsddd', 1, 'Granos', 'MaÃ­z', 'Xd', '2019-11-28', 'Campeche', 'PabellÃ³n de Arteaga', 'PabellÃ³n de Arteaga', 'natural', 'activo', '2019-11-28', NULL),
 (10, 53, 'Predio Para Desarrollo', 10, 'Granos', 'MaÃ­z', 'Blanco', '2019-11-29', 'Michoacan de Ocampo', 'Hidalgo', 'Hidalgo', 'natural', 'activo', '2019-11-30', NULL);
 
@@ -220,8 +223,10 @@ INSERT INTO `eventos` (`id_cultivo`, `id_evento`, `titulo`, `descripcion`, `inic
 (53, 104, 'XD : Alternariosi', '3 ml cada 1 dias', '2019-12-10 00:00:00', '2019-12-12 00:00:00', '#ed9105', '#FFFFFF', '2019-12-02', '2019-12-03', 'fa-prescription-bottle-alt'),
 (53, 105, 'Insecticida : AraÃ±a rojas', '7 ml cada 1 dias', '2019-12-11 00:00:00', '2019-12-15 00:00:00', '#e53935', '#FFFFFF', '2019-12-02', '2019-12-03', 'fa-bug'),
 (53, 110, 'XD', 'XD', '2019-12-24 00:00:00', '2019-12-29 00:00:00', '#303f9f', '#FFFFFF', '2019-12-02', '2019-12-02', 'fa-calendar-day'),
-(53, 111, 'Curatodo : Alternariosis', '7 ml cada 1 dias', '2019-12-04 00:00:00', '2019-12-14 00:00:00', '#F57C00', '#fff', '2019-12-03', NULL, 'prescription-bottle-alt'),
-(33, 112, 'Titulo', '', '2019-12-10 00:00:00', '2019-12-10 23:59:00', '#73fdff', '#FFFFFF', '2019-12-05', '2019-12-05', 'fa-calendar-day');
+(33, 112, 'Titulo', '', '2019-12-10 00:00:00', '2019-12-10 23:59:00', '#73fdff', '#FFFFFF', '2019-12-05', '2019-12-05', 'fa-calendar-day'),
+(33, 114, 'Csm : Alternarosis', '300 ml cada 11 dias', '2019-12-06 00:00:00', '2019-12-08 00:00:00', '#F57C00', '#fff', '2019-12-06', NULL, 'fa-prescription-bottle-alt'),
+(53, 115, 'xd', '', '2019-12-03 00:00:00', '2019-12-03 23:59:00', '#303f9f', '#FFFFFF', '2019-12-06', '2019-12-06', 'fa-calendar-day'),
+(53, 116, 'Prueba : Micronutriente', '12 ml cada 4 dias', '2019-12-01 00:00:00', '2019-12-01 23:59:00', '#6d4c41', '#FFFFFF', '2019-12-06', '2019-12-06', 'fa-seedling');
 
 -- --------------------------------------------------------
 
@@ -297,24 +302,8 @@ CREATE TABLE `help_center` (
 --
 
 INSERT INTO `help_center` (`id`, `correo`, `comentario`, `fecha`) VALUES
-(1, 'dev.abxy@gmail.com', 'esta es una prueba de mensaje', '2019-12-04');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `profiles`
---
-
-CREATE TABLE `profiles` (
-  `id_profile` int(11) NOT NULL,
-  `id_u` int(11) NOT NULL,
-  `nombre` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
-  `apellido` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
-  `rol` enum('agronomo','agricultor') COLLATE utf8_spanish_ci NOT NULL,
-  `telefono` bigint(10) NOT NULL,
-  `correo` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
-  `acceso` varchar(255) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+(1, 'dev.abxy@gmail.com', 'esta es una prueba de mensaje', '2019-12-04'),
+(2, 'dev.abxy@gmail.com', 'sfbdfgdfgsfg', '2019-12-06');
 
 -- --------------------------------------------------------
 
@@ -339,7 +328,7 @@ CREATE TABLE `suelo_artificial` (
 
 INSERT INTO `suelo_artificial` (`id_cultivo`, `id_suelo_artificial`, `sustrato`, `infraestructura`, `riego`, `estatus`, `fecha_registro`, `fecha_modif`) VALUES
 (33, 8, 'De origen naturales', 'Invernaderos de alta tecnologia', 'AutomÃ¡tico', 'eliminado', '2019-11-11', NULL),
-(35, 9, 'Arcilla expandida', 'Invernadero', 'AspersiÃ²n', 'eliminado', '2019-11-16', NULL),
+(35, 9, 'Arcilla expandida', 'Invernadero', 'AspersiÃ²n', 'finalizado', '2019-11-16', NULL),
 (36, 10, 'Arcilla expandida', 'Macro tuneles', 'NebulizaciÃ³n', 'eliminado', '2019-11-16', '2019-11-18'),
 (39, 11, 'Grava', 'Malla de sombra', 'Goteo', 'activo', '2019-11-19', NULL),
 (42, 12, 'Grava', 'Sin infraestructura', 'Sin riego', 'activo', '2019-11-26', NULL),
@@ -423,13 +412,42 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id_u`, `nombre`, `apellido`, `telefono`, `correo`, `acceso`, `empresa`, `tipo_usuario`, `ciudad`, `estado`, `fecha_registro`, `fecha_modif`, `token`, `tokenExp`) VALUES
 (5, 'Ivan', 'Suarez', 7861134498, 'ivan.suap@gmail.com', '8cb2237d0679ca88db6464eac60da96345513964', 'HYPERION', 'user', 'Hidalgo', 'Michoacan', '2019-11-06', NULL, '', '0000-00-00 00:00:00'),
 (6, 'Eduardo', 'Hernandez', 7861125421, 'lalohh68@gmail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'tics', 'user', 'Morelia', 'Michoacan', '2019-11-07', NULL, '', '0000-00-00 00:00:00'),
-(7, 'Abraham', 'Ayala Padilla', 7861191310, 'dev.abxy@gmail.com', 'da28f1274e1c592383a1cbf9a02e105f5de9b472', 'ARPAN', 'user', 'Morelia', 'Michoacan de Ocampo', '2019-11-11', '2019-12-04', 'fca48e3096a802484c6b639ed881ed35', '2019-12-04 22:37:21'),
+(7, 'Abraham', 'Ayala Padilla', 7861191310, 'dev.abxy@gmail.com', 'da28f1274e1c592383a1cbf9a02e105f5de9b472', 'ARPAN', 'superadmin', 'Morelia', 'Michoacan de Ocampo', '2019-11-11', '2019-12-04', 'fca48e3096a802484c6b639ed881ed35', '2019-12-04 22:37:21'),
 (8, 'MARICELA', 'ALVAREZ SANCHEZ', 4432454567, 'MALVAREZ@ITSCH.EDU.MX', '1ba06515413d507858e0071c591356d1ec652af9', 'ITSCH', 'user', 'Hidalgo', 'Michoacan de Ocampo', '2019-11-11', NULL, '', '0000-00-00 00:00:00'),
 (9, 'Lil', 'Pepe', 7861234569, 'lil@agriicola.com', 'a23cceabef4dec1f5cb71c7a1a3f6073dac756bd', 'ARPAN', 'user', 'Morelia', 'Michoacan', '2019-11-11', '2019-11-16', '27939345b942f4517f765a0327dc4933', '2019-11-16 09:25:35'),
 (10, 'Test', 'Prueba', 7875462626, 'prueba@gmail.com', 'f5a88633f84d974671d09fce75a5d2758eaf00fd', 'PRUEBACORP', 'user', 'Morelia', 'Michoacan', '2019-11-16', '2019-11-26', NULL, NULL),
 (11, 'Prueba Innmortal', 'Apellido', 7861456789, 'innmortal@agriicola.com', 'f5a88633f84d974671d09fce75a5d2758eaf00fd', 'INNMORTAL', 'user', 'Morelia', 'Michoacan de Ocampo', '2019-11-19', NULL, NULL, NULL),
 (12, 'Test', 'Test', 4531236578, 'test@gmail.com', 'f5a88633f84d974671d09fce75a5d2758eaf00fd', 'TEST', 'user', 'Hidalgo', 'Michoacan de Ocampo', '2019-11-21', NULL, NULL, NULL),
 (13, 'German ', 'Suarez', 5523151995, 'german@gmail.com', 'f5a88633f84d974671d09fce75a5d2758eaf00fd', 'FORD', 'user', 'Hidalgo', 'Michoacan de Ocampo', '2019-11-22', NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_helper`
+--
+
+CREATE TABLE `user_helper` (
+  `id_helper` int(11) NOT NULL,
+  `superadmin_id` int(11) NOT NULL,
+  `nombre` varchar(45) CHARACTER SET latin1 NOT NULL,
+  `apellido` varchar(45) CHARACTER SET latin1 NOT NULL,
+  `telefono` bigint(10) NOT NULL,
+  `correo` varchar(45) CHARACTER SET latin1 NOT NULL,
+  `acceso` varchar(45) CHARACTER SET latin1 NOT NULL,
+  `tipo_usuario` enum('admin','user') CHARACTER SET latin1 DEFAULT NULL,
+  `fecha_registro` date NOT NULL,
+  `fecha_modif` date DEFAULT NULL,
+  `token` varchar(255) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `tokenExp` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Dumping data for table `user_helper`
+--
+
+INSERT INTO `user_helper` (`id_helper`, `superadmin_id`, `nombre`, `apellido`, `telefono`, `correo`, `acceso`, `tipo_usuario`, `fecha_registro`, `fecha_modif`, `token`, `tokenExp`) VALUES
+(1, 7, 'Jessica ', 'Villegas Bucio', 7861163254, 'jessica@agriicola.com', '0b97d59673ee037950f7f52531aa5749cc5dee7a', 'admin', '2019-12-06', NULL, NULL, NULL),
+(2, 7, 'Brayan', 'Bucio Tello', 5567432190, 'brayan@agriicola.com', '0b97d59673ee037950f7f52531aa5749cc5dee7a', 'user', '2019-12-06', NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -484,13 +502,6 @@ ALTER TABLE `help_center`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `profiles`
---
-ALTER TABLE `profiles`
-  ADD PRIMARY KEY (`id_profile`),
-  ADD KEY `id_u` (`id_u`);
-
---
 -- Indexes for table `suelo_artificial`
 --
 ALTER TABLE `suelo_artificial`
@@ -511,6 +522,13 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id_u`);
 
 --
+-- Indexes for table `user_helper`
+--
+ALTER TABLE `user_helper`
+  ADD PRIMARY KEY (`id_helper`),
+  ADD KEY `superadmin_id` (`superadmin_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -518,7 +536,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `agroquimicos`
 --
 ALTER TABLE `agroquimicos`
-  MODIFY `id_agroquimico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id_agroquimico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT for table `corte`
@@ -536,7 +554,7 @@ ALTER TABLE `cultivos`
 -- AUTO_INCREMENT for table `eventos`
 --
 ALTER TABLE `eventos`
-  MODIFY `id_evento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
+  MODIFY `id_evento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
 
 --
 -- AUTO_INCREMENT for table `gastos`
@@ -554,13 +572,7 @@ ALTER TABLE `gastos_generales`
 -- AUTO_INCREMENT for table `help_center`
 --
 ALTER TABLE `help_center`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `profiles`
---
-ALTER TABLE `profiles`
-  MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `suelo_artificial`
@@ -579,6 +591,12 @@ ALTER TABLE `suelo_natural`
 --
 ALTER TABLE `users`
   MODIFY `id_u` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `user_helper`
+--
+ALTER TABLE `user_helper`
+  MODIFY `id_helper` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
@@ -621,12 +639,6 @@ ALTER TABLE `gastos_generales`
   ADD CONSTRAINT `gastos_generales_ibfk_1` FOREIGN KEY (`id_u`) REFERENCES `users` (`id_u`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `profiles`
---
-ALTER TABLE `profiles`
-  ADD CONSTRAINT `profiles_ibfk_1` FOREIGN KEY (`id_u`) REFERENCES `users` (`id_u`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Constraints for table `suelo_artificial`
 --
 ALTER TABLE `suelo_artificial`
@@ -637,6 +649,12 @@ ALTER TABLE `suelo_artificial`
 --
 ALTER TABLE `suelo_natural`
   ADD CONSTRAINT `suelo_natural_ibfk_1` FOREIGN KEY (`id_cultivo`) REFERENCES `cultivos` (`id_cultivo`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `user_helper`
+--
+ALTER TABLE `user_helper`
+  ADD CONSTRAINT `user_helper_ibfk_1` FOREIGN KEY (`superadmin_id`) REFERENCES `users` (`id_u`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
