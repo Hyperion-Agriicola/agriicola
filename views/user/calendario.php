@@ -54,7 +54,7 @@
                 <div class="form-group">
                     <label for="inputHoraFinal">Hora</label>
                     <div class="input-group clockpicker" data-autoclose="true">
-                        <input placeholder="..." value= "00:00:00" class="form-control" id="inputHoraFinal" name="hora_final">
+                        <input placeholder="..." value= "23:59:00" class="form-control" id="inputHoraFinal" name="hora_final">
                         <span id="alert2"></span>
                     </div>
                     
@@ -105,7 +105,7 @@
             dayClick:function(date, jsEvent, view){
                 
                 Swal.fire({
-                    title: "Nuevo evento: " + date.format('MMMM d YYYY'),
+                    title: "Nuevo evento: " + date.format(),
                     showCloseButton: true,
                     width: '40rem',
                     html: formevent,
@@ -189,7 +189,7 @@
             eventRender: function (event, element, view) {
                 var i = document.createElement('i');
                 // Add all your other classes here that are common, for demo just 'fa'
-                i.className = 'fas'; /*'ace-icon fa yellow bigger-250'*/
+                i.className = 'fas '; /*'ace-icon fa yellow bigger-250'*/
                 i.classList.add(event.icon);
                 // If you want it inline with title
                 element.find('div.fc-content').prepend(i);
@@ -213,7 +213,7 @@
 
         RecolectarDatosUI();
         
-        if($('#inputTitulo').val() != "" & $('#inputFFinal').val() > $('#inputfechaInicio').val()){
+        if($('#inputTitulo').val() != "" ){
         EnviarInformacion('agregar', nuevo_evento);
         Swal.close();
 

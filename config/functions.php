@@ -5,8 +5,8 @@ include('database.php');
 include('catalogDB.php');
 use PHPMailer\PHPMailer\PHPMailer;
 
-class Functions
-{
+class Functions{
+
     public function checkForEmail($userEmail){
         $conexion = new Database();
         $request = "SELECT correo FROM users WHERE correo = '$userEmail'";
@@ -59,7 +59,7 @@ class Functions
 
                 $insert = "INSERT INTO users(nombre, apellido, telefono, correo, 
                 acceso, empresa, tipo_usuario, ciudad, estado, fecha_registro) VALUES ('$upperUserName', '$upperUserLastName', 
-                '$phoneNumber', '$userEmail', sha1('$userPass2'), '$userCompany', 'user', '$userCity', '$userState', now())";
+                '$phoneNumber', '$userEmail', sha1('$userPass2'), '$userCompany', 'superadmin', '$userCity', '$userState', now())";
 
                 $result = mysqli_query($conexion, $insert);
 
@@ -72,8 +72,7 @@ class Functions
         }
     }
 
-    public function userLogin($email, $password)
-    {
+    public function userLogin($email, $password, $role){
         $conexion = new Database();
         $query = "SELECT * FROM users WHERE correo = '$email' AND acceso = sha1('$password')";
         $row = $conexion->query($query);
@@ -90,13 +89,14 @@ class Functions
             ";
         } else {
             session_start();
+            //$_SESSION['correo'] = array($user['correo'], $role);
             $_SESSION['correo'] = $user['correo'];
             header('Location: views/user/dashboard.php');
         }
+       
     }
 
-    public function getUserProfile()
-    {
+    public function getUserProfile(){
         $conexion = new Database();
 
         $email = $_SESSION['correo'];
@@ -121,6 +121,13 @@ class Functions
 
             return $resultSet;
         }
+    }
+
+    public function getUserRole($email){
+        $conexion = new Database();
+        $userEmail = $_SESSION['correo'];
+
+        $request = "SELECT tipo_usuario FROM ";
     }
 
     public function insertNatural(
@@ -378,7 +385,7 @@ class Functions
             $icon = "fa-seedling";
         }elseif($aplicacion == 'Enfermedad'){
             $color = "#F57C00";
-            $icon = "prescription-bottle-alt";
+            $icon = "fa-prescription-bottle-alt"; 
         }elseif($aplicacion == 'Plaga'){
             $color = "#e53935";
             $icon = "fa-bug";
@@ -407,7 +414,7 @@ class Functions
             $result = $conexion->query($query)
                 or trigger_error(mysqli_error($conexion));
             
-            $query = "INSERT INTO eventos (id_cultivo, titulo, descripcion, inicio, fin, color, text_color, fecha_registro, icon) VALUES ('$userRow[id_cultivo]', '$titulo', '$descripcion','$fecha_inicio', '$fecha_fin', '$color', '#fff', now(), '$icon')";
+            $query = "INSERT INTO eventos (id_cultivo, titulo, descripcion, inicio, fin, color, text_color, fecha_registro, icon) VALUES ('$userRow[id_cultivo]', '$titulo', '$descripcion','$fecha_inicio 00:00:00', '$fecha_fin 23:59:00', '$color', '#fff', now(), '$icon')";
         
             $result = $conexion->query($query) or trigger_error(mysqli_error($conexion));
             
@@ -2166,7 +2173,7 @@ class Functions
             $icon = "fa-seedling";
         }elseif($aplicacion == 'Enfermedad'){
             $color = "#F57C00";
-            $icon = "prescription-bottle-alt";
+            $icon = "fa-prescription-bottle-alt";
         }elseif($aplicacion == 'Plaga'){
             $color = "#e53935";
             $icon = "fa-bug";
@@ -2193,7 +2200,7 @@ class Functions
 
         $result = $conexion->query($query) or trigger_error(mysqli_error($conexion));
         
-        $query = "INSERT INTO eventos (id_cultivo, titulo, descripcion, inicio, fin, color, text_color, fecha_registro, icon) VALUES ('$id_cultivo', '$titulo', '$descripcion','$fecha_inicio', '$fecha_fin', '$color', '#fff', now(), '$icon' )";
+        $query = "INSERT INTO eventos (id_cultivo, titulo, descripcion, inicio, fin, color, text_color, fecha_registro, icon) VALUES ('$id_cultivo', '$titulo', '$descripcion','$fecha_inicio 00:00:00', '$fecha_fin 23:59:00', '$color', '#fff', now(), '$icon' )";
         
         $result = $conexion->query($query) or trigger_error(mysqli_error($conexion));    
 
@@ -2640,6 +2647,26 @@ class Functions
             }
             $concepto = trim($concepto,",");
             return $concepto;
+        }
+    }
+
+    public function sendHelpRequest($comment){
+        
+        $conexion = new Database();
+        $email = $_SESSION['correo'];
+        $request = "INSERT INTO help_center(correo, comentario, fecha) VALUES('$email','$comment', now())";
+        $response = $conexion->query($request) or trigger_error($conexion->error);
+
+        if($response){
+            echo "
+            <div class='container mt-4'>
+                <div class='alert alert-success' role='alert'>
+                    Su comentario se envió correctamente, recibirá respuesta lo antes posible
+                </div>
+            </div>
+            ";
+        }else{
+            echo "Error xd";
         }
     }
 }

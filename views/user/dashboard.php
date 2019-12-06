@@ -2,6 +2,7 @@
 ob_start();
 session_start();
 include('../../config/functions.php');
+include('../../config/adminFunctions.php');
 $data = new Functions();
 $data2 = new Functions();
 
@@ -86,7 +87,7 @@ if (!isset($_SESSION['correo'])) {
         </style>
     </head>
 
-    <body class="bg-white">
+    <body class="bg-white" > 
 
 
 
@@ -153,6 +154,8 @@ if (!isset($_SESSION['correo'])) {
                 header('Location: dashboard.php');
             }else if (isset($_GET['res'])) {
                 include('select_resumen.php');
+            }else if(isset($_GET['users'])){
+                include('users.php');
             }else {
                 include('profile.php');
                 ?>

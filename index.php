@@ -1,4 +1,10 @@
-<?php ob_start(); ?>
+<?php
+ob_start();
+session_start();
+if (isset($_SESSION['correo'])) {
+  header('location: views/user/dashboard.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -34,12 +40,56 @@
       <div class="row ">
         <div class="col py-3 px-lg-5  align-self-center col-12 col-sm-12 col-md-4 col-lg-6">
           <img src="img/agriicola_logo_alternativo.png" width="580" class="img-fluid">
+          <?php
+          include('config/functions.php');
+
+          $data = new Functions();
+
+          if (isset($_POST['userLogin'])) {
+            $email = $_POST['email'];
+            $pass = $_POST['pass'];
+            $role = $_POST['role'];
+
+            $data->userLogin($email, $pass, $role);
+          } else if (isset($_POST['registerUser'])) {
+            $userName = $_POST['userName'];
+            $userlastName = $_POST['userLastName'];
+            $phoneNumber = $_POST['phoneNumber'];
+            $userEmail = $_POST['userEmail'];
+            $userCity = $_POST['userCity'];
+            $userState = $_POST['userState'];
+
+            $userCompany = $_POST['userCompany'];
+            $userPass1 = $_POST['userPass1'];
+            $userPass2 = $_POST['userPass2'];
+
+            $data->registerUser(
+              $userName,
+              $userlastName,
+              $phoneNumber,
+              $userEmail,
+              $userCompany,
+              $userCity,
+              $userState,
+              $userPass1,
+              $userPass2
+            );
+          }
+          ?>
         </div>
         <div class="col py-3 px-lg-5 col-sm-12 col-md-8 col-lg-6">
           <div class="card px-3 pt-3">
             <div class="card-body">
               <h1 class="text-center">Iniciar sesión</h1>
               <form id="form-vali" class="p-4" method="POST" action="">
+                <div class="form-group">
+                  <label for="rol">Tipo de usuario</label>
+                  <select id="rol" class="form-control" name="role">
+                    <option value="superadmin">Administrador</option>
+                    <option value="admin">Agrónomo</option>
+                    <option value="user">Contador</option>
+                  </select>
+                </div>
                 <div class="form-group">
                   <label for="emaill">Correo electrónico</label>
                   <input type="email" class="form-control" id="emaill" name="email" aria-describedby="emailHelp" placeholder="usuario@mail.com.mx">
@@ -64,7 +114,6 @@
                       Regístrate
                     </button>
                   </div>
-
                 </div>
               </form>
             </div>
@@ -162,40 +211,6 @@
 
   <div class="container">
     <?php
-    include('config/functions.php');
-    
-    $data = new Functions();
-
-    if (isset($_POST['userLogin'])) {
-      $email = $_POST['email'];
-      $pass = $_POST['pass'];
-
-      $data->userLogin($email, $pass);
-    } else if (isset($_POST['registerUser'])) {
-      $userName = $_POST['userName'];
-      $userlastName = $_POST['userLastName'];
-      $phoneNumber = $_POST['phoneNumber'];
-      $userEmail = $_POST['userEmail'];
-      $userCity = $_POST['userCity'];
-      $userState = $_POST['userState'];
-
-      $userCompany = $_POST['userCompany'];
-      $userPass1 = $_POST['userPass1'];
-      $userPass2 = $_POST['userPass2'];
-
-      $data->registerUser(
-        $userName,
-        $userlastName,
-        $phoneNumber,
-        $userEmail,
-        $userCompany,
-        $userCity,
-        $userState,
-        $userPass1,
-        $userPass2
-      );
-    }
-
     ob_end_flush();
     ?>
   </div>
@@ -208,7 +223,7 @@
     </div>
     <!-- Copyright -->
 
-</footer>
+  </footer>
 
   <!-- Bootstrap y Javascripts -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

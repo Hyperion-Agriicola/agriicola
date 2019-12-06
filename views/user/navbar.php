@@ -1,5 +1,5 @@
 <!-- Main bar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm bg-white fixed-top ">
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm bg-white">
     <a id="imageBrand" class="navbar-brand" href="dashboard.php">
         <img src="../../img/agriicola_logo_alternativo.png" width="140" class="d-inline-block align-top" alt="">
     </a>
@@ -22,6 +22,10 @@
                 </div>
             </li>
              -->
+             <li class="nav-item">
+                <a id="showNews" class="nav-link active" href="dashboard.php?users"><i class="fas fa-users"></i>
+                    <span>Usuarios</span></a>
+            </li>
             <li class="nav-item">
                 <a id="showNews" class="nav-link active" href="noticias.php"><i class="fas fa-newspaper"></i>
                     <span>Noticias</span></a>
