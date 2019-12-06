@@ -7,11 +7,11 @@
             icon: "info",
             showCloseButton: true,
             width: '45rem',
-            text: "No podrá cerrar el registro hasta completarlo. ¿Desea continuar?.",
+            text: "No podrá cerrar el registro hasta completarlo. ¿Desea continuar?",
             showCancelButton: true,
             cancelButtonColor: '#d33',
             confirmButtonColor: '#388e3c',
-            confirmButtonText: "Si",
+            confirmButtonText: "Sí",
             cancelButtonText: "No"
         }).then((result) => {
             if (!result.value) {
@@ -208,6 +208,10 @@
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="form-group">
                     <label for="inputTipoSuelo">Tipo de suelo</label>
+                    <i class="icon-grey-color fas fa-question-circle"
+                                data-toggle="tooltip" data-placement="top" data-html="true" title="<strong>Suelo natural:</strong> no modificado químicamente. <br> <strong>Suelo artificial:</strong> elaborado a base de mezclas de diferentes residuos no peligrosos y subproductos."></i>
+
+
                     <select name="groundType" class="form-control" id="inputTipoSuelo">
                         <option value="natural">Natural</option>
                         <option value="artificial">Artificial</option>
