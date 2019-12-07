@@ -112,6 +112,8 @@ function selectLocation() {
         minLength: 1
     });
 
+    
+
     $(".township").autocomplete({
         source: "http://localhost:8080/agriicola/config/searching/townships.php",
         minLength: 1
