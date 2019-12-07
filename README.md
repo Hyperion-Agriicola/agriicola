@@ -13,12 +13,27 @@
     http://localhost:8080/agriicola/config/searching/states.php
   </code>
 </pre>
-    El dominio <b>localhost:8080</b> deberá ser cambiado por el DNS final.
+    El dominio <b>localhost:8080</b> deberá ser cambiado por el DNS final en cada función
+</p>
+
+<strong>
+    <h3>calendario.php</h3>
+</strong>
+<p>
+    En el archivo Calendario ubicado en <strong>views/user/calendario.php</strong> línea 129 se deberá modificar también la 
+    URL de acceso por el DNS final como:
+    <pre>
+        <code>
+            events:'http://localhost:8080/agriicola/config/eventos.php?accion=<?php echo $_GET['Tracing'];?>',
+        </code>
+    </pre>
+
 </p>
 
 <h3><strong>Actualización de archivo de Base de Datos</strong></h3>
 <p>
-    Antes de correr el proyecto en tu web no olvides moficar el archivo database.php situado en: 
+    Antes de correr el proyecto en tu web no olvides moficar los archivos <strong>database.php</strong> 
+    y el archivo <strong>locationDB.php</strong> situados en: 
     <strong>config/database.php </strong> 
     En el que tienes que modificar el valor de las siguientes variables:
     <ul>
