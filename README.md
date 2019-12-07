@@ -43,6 +43,14 @@
 
 </p>
 
+<h3><strong>Recuperación de Contraseña</strong></h3>
+<p>
+    El sistema trabaja con envio de correo electrónico con un Token para la recuperación de acceso. <br>
+    Esta función se encuentra en <strong>config/functions.php</strong> en la linea 2,220 con el nombre de 
+    <strong>sendRecoveryEmail()</strong>. <br>
+    En ella se deberán modificar las URL y el correo de salida.
+</p>
+
 <h3><strong>Actualización de archivo de Base de Datos</strong></h3>
 <p>
     Antes de correr el proyecto en tu web no olvides moficar los archivos <strong>database.php</strong>
