@@ -1,5 +1,5 @@
 <!-- Main bar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm bg-white">
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm bg-white fixed-top">
     <a id="imageBrand" class="navbar-brand" href="dashboard.php">
         <img src="../../img/agriicola_logo_alternativo.png" width="140" class="d-inline-block align-top" alt="">
     </a>

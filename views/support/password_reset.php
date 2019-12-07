@@ -20,7 +20,7 @@
 
         <div class="container mt-4">
             <div class="row justify-content-center align-items-center">
-                <div class="col-4">
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4">
                     <div class="card">
                         <div class="card-body">
                             <form action="" method="post">
